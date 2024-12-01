@@ -1,0 +1,92 @@
+.step4 {
+    border-radius: 39px;
+    width: 1186px;
+    height: 626px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #f2f3f5;
+    margin-top: 11px;
+    padding: 44px 40px 44px 60px;
+    background: url(../../../img/fourth_bg.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    h3 {
+        font-family: "Inter Tight", sans-serif;
+        font-weight: 700;
+        font-size: 32px;
+        letter-spacing: -0.02em;
+        color: #1a1c20;
+    }
+    p {
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 140%;
+        letter-spacing: -0.03em;
+        color: #1a1c20;
+        margin-top: 29px;
+    }
+    .crm, .bots, .pay {
+        border-radius: 19px;
+        width: 232px;
+        height: 92px;
+        background: #fff;
+        display: flex;
+        position: absolute;
+        top: 336px;
+        left: 60px;
+        img {
+            width: 57px;
+            height: 52px;
+            margin-left: 15px;
+            margin-top: 20px;
+        }
+        p {
+            margin-top: 18px;
+            margin-left: 22px;
+            margin-bottom: 0;
+        }
+    }
+    .bots {
+        width: 303px;
+        left: 307px;
+    }
+    .pay {
+        width: 249px;
+        top: 438px;
+    }
+    .icon {
+        background: url(../../../img/fourth.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 100px;
+        height: 116px;
+        position: absolute;
+        top: 79px;
+        left: 572px;
+        z-index: 3;
+    }
+    .screen {
+        border-radius: 39px;
+        width: 499px;
+        height: 469px;
+        background: #fff;
+        position: absolute;
+        top: 44px;
+        right: 40px;
+        left: auto;
+    }
+    button {
+        width: 299px;
+        height: 78px;
+        font-weight: 700;
+        font-size: 15px;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+        color: #fff;
+        border: none;
+        border-radius: 92px;
+        background: linear-gradient(178deg, #ff6d0e 0%, #fd4e12 100%);        
+        margin-top: 374px;
+    }
+}

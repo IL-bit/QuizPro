@@ -3,7 +3,7 @@ import './section5.scss';
 const Section5 = () => {
     return (
         <div className="row" id="fifth_section">
-            <div className="col-10">
+            <div className="col-12">
                 <h2><b>Удобный личный кабинет</b><br/>для предпринимателя и маркетолога</h2>
                 <div className="list">
                     <button className="list_item">

@@ -1,0 +1,101 @@
+.step1 {
+    border-radius: 39px;
+    width: 1186px;
+    height: 557px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #f2f3f5;
+    margin-top: 54px;
+    padding: 44px 40px 44px 60px;
+    h3 {
+        font-family: "Inter Tight", sans-serif;
+        font-weight: 700;
+        font-size: 32px;
+        letter-spacing: -0.02em;
+        color: #1a1c20;
+    }
+    p {
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 140%;
+        letter-spacing: -0.03em;
+        color: #1a1c20;
+        margin-top: 27px;
+        span {
+            border-radius: 20px;
+            width: 139px;
+            height: 35px;
+            background: #dfeaff;
+            font-weight: 400;
+            font-size: 20px;
+            line-height: 140%;
+            letter-spacing: -0.03em;
+            color: #105efe;
+            padding: 2px 11px 5px 12px;
+        }
+    }
+    .vk, .site, .social, .link, .tg {
+        border-radius: 19px;
+        width: 217px;
+        height: 92px;
+        background: #fff;
+        position: absolute;
+        top: 204px;
+        left: 60px;
+        display: flex;
+        img {
+            width: 57px;
+            height: 52px;
+            margin-left: 15px;
+            margin-top: 20px;
+        }
+        p {
+            margin-top: 32px;
+            margin-left: 22px;
+            margin-bottom: 0;
+        }
+    }
+    .site {
+        width: 172px;
+        height: 92px;
+        left: 296px;
+    }
+    .social {
+        width: 299px;
+        height: 92px;
+        top: 309px;
+    }
+    .link {
+        width: 274px;
+        height: 92px;
+        top: 414px;
+    }
+    .tg {
+        width: 210px;
+        height: 92px;
+        top: 414px;
+        left: 354px;
+    }
+    .icon {
+        background: url(../../../img/first.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 100px;
+        height: 116px;
+        position: absolute;
+        top: 79px;
+        left: 572px;
+        z-index: 3;
+    }
+    .screen {
+        border-radius: 39px;
+        width: 499px;
+        height: 469px;
+        background: #fff;
+        position: absolute;
+        top: 44px;
+        right: 40px;
+        left: auto;
+    }
+}

@@ -1,3 +1,4 @@
+import './App.scss';
 import Header from "./components/header/header";
 import Section1 from "./components/section1/section1";
 import Section2 from "./components/section2/section2";
@@ -8,7 +9,7 @@ import Section6 from "./components/section6/section6";
 function App() {
   return (
     <>
-      <div className="container-fluid">
+      <div className="container p-3">
         <header>
           <Header />
         </header>
@@ -31,6 +32,8 @@ function App() {
           <section>
             <Section6/>
           </section>
+          <div id="bg1"></div>
+          <div id="bg2"></div>
         </main>
         <footer>
 

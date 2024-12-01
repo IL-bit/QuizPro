@@ -2,3 +2,35 @@
     margin: 0;
     padding: 0;
 }
+.container {
+    padding-top: 0 !important;
+    main {
+        position: relative;
+        #bg1 {
+            background: url(./components/img/bg1.png);
+            background-repeat: no-repeat;
+            background-size: cover;
+            width: 1846px;
+            height: 854px;
+            position: absolute;
+            top: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+            overflow: hidden;
+        }
+        #bg2 {
+            background: url(./components/img/bg2.png);
+            background-repeat: no-repeat;
+            background-size: cover;
+            width: 1846px;
+            height: 932px;
+            position: absolute;
+            top: 890px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+            overflow: hidden;
+        }
+    }
+}

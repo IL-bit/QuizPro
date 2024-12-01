@@ -1,0 +1,9 @@
+@font-face {
+	font-family: 'Aeonik-Light';
+	src: url('../fonts/aeonik-light.eot'); /* IE 9 Compatibility Mode */
+	src: url('../fonts/aeonik-light.eot?#iefix') format('embedded-opentype'), /* IE < 9 */
+		url('../fonts/aeonik-light.woff2') format('woff2'), /* Super Modern Browsers */
+		url('../fonts/aeonik-light.woff') format('woff'), /* Firefox >= 3.6, any other modern browser */
+		url('../fonts/aeonik-light.ttf') format('truetype'), /* Safari, Android, iOS */
+		url('../fonts/aeonik-light.svg#aeonik-light') format('svg'); /* Chrome < 4, Legacy iOS */
+}
