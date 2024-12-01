@@ -1,0 +1,89 @@
+#ninth_section {
+    margin-top: 144px;
+    position: relative;
+    z-index: 3;
+    h2 {
+        font-family: "Inter Tight", sans-serif;
+        font-weight: 400;
+        font-size: 44px;
+        letter-spacing: -0.02em;
+        color: #1a1c20;
+        margin-left: -9px;
+        b {
+            font-weight: 700;
+        }
+        span {
+            font-weight: 700;
+            color: #105efe;
+        }
+    }
+    h4 {
+        font-weight: 250;
+        font-size: 29px;
+        line-height: 140%;
+        letter-spacing: -0.03em;
+        color: #1a1c20;
+        margin-left: -9px;
+        margin-top: 30px;
+        b {
+            font-weight: 700;
+        }
+    }
+    .first {
+        margin-top: 29px;
+        display: flex;
+        img {
+            width: 54px;
+            height: 78px;
+            margin-left: -20px;
+        }
+        p {
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 140%;
+            letter-spacing: -0.03em;
+            color: #1a1c20;
+            margin-top: 18px;
+        }
+    }
+    .second {
+        display: flex;
+        img {
+            width: 54px;
+            height: 78px;
+            margin-left: -20px;
+        }
+        p {
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 140%;
+            letter-spacing: -0.03em;
+            color: #1a1c20;
+            margin-top: 18px;
+        }
+    }
+    .right {
+        width: 548px;
+        height: 446px;        
+        box-shadow: 0 -302px 500px 0 rgba(0, 0, 0, 0.12);
+        background: #e4e4e4;
+        border-radius: 39px;
+        margin-left: -80px;
+    }
+    button {
+        width: 299px;
+        height: 78px;
+        font-weight: 700;
+        font-size: 15px;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+        color: #fff;
+        border: none;
+        border-radius: 92px;
+        background: linear-gradient(178deg, #ff6d0e 0%, #fd4e12 100%);   
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: -130px;
+    }
+}

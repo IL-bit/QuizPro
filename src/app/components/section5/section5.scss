@@ -11,4 +11,81 @@
             font-weight: 700;
         }
     }
+    .list {
+        width: 1186px;
+        height: auto;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-top: 56px;
+        .list_item {
+            border-radius: 19px;
+            width: 604px;
+            height: 92px;
+            background: #f2f3f5;
+            border: none;
+            margin-bottom: 10px;
+            padding-left: 67px;
+            text-align: left;
+            font-weight: 400;
+            font-size: 24px;
+            line-height: 140%;
+            letter-spacing: -0.03em;
+            color: #1a1c20;
+            position: relative;
+            img {
+                background: none;
+                position: absolute;
+                top: 40px;
+                left: 25px;
+            }
+        }
+        :nth-child(1) {
+            background: #105efe;  
+            color: #fff;                      
+        }        
+        .img_list {
+            position: absolute;
+            left: auto;
+            top: 0;
+            right: 0;
+            border-radius: 39px;
+            width: 548px;
+            height: 603px;
+            box-shadow: 0 -302px 500px 0 rgba(0, 0, 0, 0.12);
+            background: #fff;
+        }
+    }
+    .more_funct {
+        width: 1186px;
+        height: 77px;
+        border-top: 1px solid rgba(16, 18, 16, 0.16);
+        border-bottom: 1px solid rgba(16, 18, 16, 0.16);;
+        text-align: center;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-top: 63px;
+        cursor: pointer;
+        p {
+            margin-top: 20px;
+            font-weight: 400;
+            font-size: 24px;
+            line-height: 140%;
+            letter-spacing: -0.03em;
+            color: #1a1c20;
+            span {
+                border-radius: 20px;
+                width: 60px;
+                height: 35px;
+                background: #dfeaff;
+                font-weight: 400;
+                font-size: 20px;
+                line-height: 140%;
+                letter-spacing: -0.03em;
+                color: #105efe;
+                padding: 2px 11px 5px 12px;
+            }
+        }
+    }
 }

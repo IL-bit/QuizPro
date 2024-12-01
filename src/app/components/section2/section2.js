@@ -3,7 +3,7 @@ import './section2.scss';
 const Section2 = () => {
     return(
         <div className="row" id="second_section">
-            <div className="col-12">
+            <div className="col-xxl-12">
                 <div className="video"></div>
                 <div className="items">
                     <div className="item">

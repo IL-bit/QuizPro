@@ -1,0 +1,81 @@
+#footer {
+    margin-top: 94px;
+    hr {
+        width: 1204px;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(16, 18, 16, 0.16);
+    }
+    .col-xxl-3 {
+        display: flex;
+        img {
+            width: 126px;
+            height: 110px;
+            margin-left: -75px;
+            margin-top: 41px;
+        }
+        p {
+            font-family: "Inter Tight", sans-serif;
+            font-weight: 400;
+            font-size: 18px;
+            letter-spacing: -0.02em;
+            color: #1a1c20;
+            margin-left: 46px;
+            margin-top: 72px;
+        }
+        a {
+            font-family: "Inter Tight", sans-serif;
+            font-weight: 400;
+            font-size: 18px;
+            letter-spacing: -0.02em;
+            text-decoration: underline;
+            text-decoration-skip-ink: none;
+            color: #1a1c20;
+            margin-left: 19px;
+            margin-top: 28px;
+        }
+    }
+    .col-xxl-5 {
+        padding-top: 80px;
+        :nth-child(1) {
+            font-family: "Inter Tight", sans-serif;
+            font-weight: 400;
+            font-size: 18px;
+            letter-spacing: -0.02em;
+            color: #105efe;
+            margin-left: 74px;
+            text-decoration: none;
+        }
+        :nth-child(2) {
+            font-family: "Inter Tight", sans-serif;
+            font-weight: 400;
+            font-size: 18px;
+            letter-spacing: -0.02em;
+            color: #000;
+            margin-left: 94px;
+            text-decoration: none;
+        }
+    }
+    .col-xxl-2 {
+        padding-top: 33px;
+        padding-left: 23px;
+        .vk, .tg {
+            display: flex;
+            margin-bottom: 25px;
+            img {
+                width: 57px;
+                height: 52px;
+            }
+            p {
+                font-weight: 400;
+                font-size: 20px;
+                line-height: 140%;
+                letter-spacing: -0.03em;
+                color: #1a1c20;
+                margin-left: 22px;
+                margin-top: 12px;
+            }
+        }
+    }
+}

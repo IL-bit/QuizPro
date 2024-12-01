@@ -5,7 +5,7 @@ import icon3Svg from '../img/icon3.svg';
 const Section3 = () => {
     return(
         <div className="row" id="third_section">
-            <div className="col-12">
+            <div className="col-xxl-12">
                 <h2>Квизы - самый популярный способ<br/><span>быстро и дешево</span> получить<br/><b>первые заявки в свой бизнес</b></h2>
                 <div className="items">
                     <div className="item">

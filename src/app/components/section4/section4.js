@@ -7,7 +7,7 @@ import Step4 from './steps/step4/step4';
 const Section4 = () => {
     return(
         <div className="row" id="fourth_section">
-            <div className="col-12">
+            <div className="col-xxl-12">
                 <div className="min">4 шага</div>
                 <div className="pro"></div>
                 <h2>отделяют вас <b>от первых клиентов</b></h2>

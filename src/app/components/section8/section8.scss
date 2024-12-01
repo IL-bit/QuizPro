@@ -1,0 +1,109 @@
+#eighth_section {
+    margin-top: 89px;
+    .chat {
+        margin-top: 9px;
+        margin-left: -1px;
+        .message {
+            border-radius: 39px;
+            width: 398px;
+            height: auto;
+            box-shadow: 0 100px 80px 0 rgba(0, 0, 0, 0.05);
+            background: #fff;
+            padding-top: 33px;
+            padding-left: 33px;
+            padding-bottom: 33px;
+            margin-bottom: 19px;
+            display: flex;
+            p {
+                margin-bottom: 0;
+                margin-left: 26px;
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 140%;
+                letter-spacing: -0.03em;
+                color: #1a1c20;
+            }
+            img {
+                width: 58px;
+                height: 58px;
+            }
+        }
+    }
+    .left {
+        margin-left: -9px;
+        h2 {
+            font-family: "Inter Tight", sans-serif;
+            font-weight: 400;
+            font-size: 44px;
+            letter-spacing: -0.02em;
+            color: #1a1c20;
+            b {
+                font-weight: 700;
+            }
+        }
+        p {
+            font-weight: 400;
+            font-size: 29px;
+            line-height: 140%;
+            letter-spacing: -0.03em;
+            color: #1a1c20;
+            margin-top: 30px;
+            span {
+                color: #105efe;
+            }
+        }     
+        .market {
+            margin-top: 20px;
+            position: relative;
+            img {
+                width: 86px;
+                height: 78px;
+                transform: rotate(-1s4deg);
+                position: absolute;
+                top: 41px;
+                left: 5px;
+            }
+            .photo {
+                box-shadow: 0 100px 80px 0 rgba(0, 0, 0, 0.07);
+                background: #fff, rgba(0, 0, 0, 0.12);
+                transform: rotate(-7deg);
+                border-radius: 89px;
+                width: 149px;
+                height: 148px;
+                margin-left: 55px;
+                margin-top: 14px;
+            }
+            span {
+                position: absolute;
+                top: 0;
+                left: 218px;
+                font-family: "Inter Tight", sans-serif;
+                font-weight: 400;
+                font-size: 34px;
+                line-height: 127%;
+                color: #105efe;
+            }
+            h5 {
+                font-weight: 700;
+                font-size: 18px;
+                line-height: 140%;
+                letter-spacing: -0.03em;
+                color: #1a1c20;
+                position: absolute;
+                top: 18px;
+                left: 259px;
+            }
+            p {
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 140%;
+                letter-spacing: -0.03em;
+                color: #1a1c20;
+                position: absolute;
+                top: 82px;
+                left: 259px;
+            }
+        }   
+    }
+
+}
