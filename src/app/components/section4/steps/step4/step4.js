@@ -5,26 +5,36 @@ import pay from '../../../img/pay.svg';
 
 const Step4 = () => {
     return(
-        <div id="step4">
-            <h3>Предлагаете оставить заявку</h3>
-            <p className="pc">Правильные вопросы и конец качественного<br/>диалога - идеальный момент для оставления<br/>заявки</p>
-            <p className="mob">Правильные вопросы и конец<br/>качественного диалога - идеальный<br/>момент для оставления заявки</p>
-            <div className="crm">
-                <img src={crm} alt="#" />
-                <p>Интеграция<br/>с CRM</p>
+        <article id="step4" aria-labelledby="step4-heading">
+            <h3 id="step4-heading">Предлагаете оставить заявку</h3>
+            <p className="pc">
+                Правильные вопросы и конец качественного<br />
+                диалога - идеальный момент для оставления<br />
+                заявки
+            </p>
+            <p className="mob">
+                Правильные вопросы и конец<br />
+                качественного диалога - идеальный<br />
+                момент для оставления заявки
+            </p>
+            <div className="features">
+                <div className="crm" aria-label="Интеграция с CRM">
+                    <img src={crm} alt="Интеграция с CRM" />
+                    <p>Интеграция<br />с CRM</p>
+                </div>
+                <div className="bots" aria-label="Перевод в воронки и чат-боты">
+                    <img src={bots} alt="Перевод в воронки и чат-боты" />
+                    <p>Перевод в воронки<br />и чат-боты</p>
+                </div>
+                <div className="pay" aria-label="Оплата здесь и сейчас">
+                    <img src={pay} alt="Оплата здесь и сейчас" />
+                    <p>Оплата здесь<br />и сейчас</p>
+                </div>
             </div>
-            <div className="bots">
-                <img src={bots} alt="#" />
-                <p>Перевод в воронки<br/>и чат-боты</p>
-            </div>
-            <div className="pay">
-                <img src={pay} alt="#" />
-                <p>Оплата здесь<br/>и сейчас</p>
-            </div>
-            <div className="icon"></div>
-            <div className="screen"></div>
-            <button>попробовать бесплатно</button>
-        </div>
+            <div className="icon" aria-hidden="true"></div>
+            <div className="screen" aria-hidden="true"></div>
+            <button aria-label="Попробовать бесплатно">попробовать бесплатно</button>
+        </article>
     )
 }
 

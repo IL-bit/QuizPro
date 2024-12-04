@@ -88,6 +88,9 @@
         border-radius: 92px;
         background: linear-gradient(178deg, #ff6d0e 0%, #fd4e12 100%);        
         margin-top: 374px;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
     }
     .mob {
         display: none;

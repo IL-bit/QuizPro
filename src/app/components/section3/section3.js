@@ -7,33 +7,33 @@ import icon2MobSvg from '../img/icon2_mob.svg';
 import icon3MobSvg from '../img/icon3_mob.svg';
 const Section3 = () => {
     return(
-        <div className="row" id="third_section">
+        <section className="row" id="third_section" aria-labelledby="section3-heading">
             <div className="col-xxl-12 col-12">
-                <h2 className="pc">Квизы - самый популярный способ<br/><span>быстро и дешево</span> получить<br/><b>первые заявки в свой бизнес</b></h2>
+                <h2 id="section3-heading" className="section-title">Квизы - самый популярный способ<br/><span>быстро и дешево</span> получить<br/><b>первые заявки в свой бизнес</b></h2>
                 <h2 className="mob">Квизы - самый популярный<br/>способ <span>быстро и дешево</span><br/>получить <b>первые заявки<br/>в свой бизнес</b></h2>
                 <div className="items">
-                    <div className="item">
-                        <img src={icon1Svg} alt="#" className="icon pc" />
-                        <img src={icon1MobSvg} alt="#" className="icon mob" />
-                        <h4>Идеальный вариант<br/><b>тестировать </b>новые<br/>ниши и направления</h4>
+                    <article className="item" aria-labelledby="item1-heading">
+                        <img src={icon1Svg} alt="Иконка тестирования ниш" className="icon pc" />
+                        <img src={icon1MobSvg} alt="Иконка тестирования ниш для мобильных" className="icon mob" />
+                        <h3 id="item1-heading">Идеальный вариант<br/><b>тестировать </b>новые<br/>ниши и направления</h3>
                         <div></div>
-                    </div>
-                    <div className="item">
-                        <img src={icon2Svg} alt="#" className="icon pc" />
-                        <img src={icon2MobSvg} alt="#" className="icon mob" />
-                        <h4 className="pc"><b>Не нужно платить</b><br/>за дорогой сайт, ждать<br/>его разработки и рисковать<br/>остаться без заявок</h4>
-                        <h4 className="mob"><b>Не нужно платить</b> за дорогой сайт,<br/>ждать его разработки и рисковать<br/>остаться без заявок</h4>
+                    </article>
+                    <article className="item" aria-labelledby="item2-heading">
+                        <img src={icon2Svg} alt="Иконка сайта" className="icon pc" />
+                        <img src={icon2MobSvg} alt="Иконка сайта для мобильных" className="icon mob" />
+                        <h3 className="pc" id="item2-heading"><b>Не нужно платить</b><br/>за дорогой сайт, ждать<br/>его разработки и рисковать<br/>остаться без заявок</h3>
+                        <h3 className="mob" id="item2-heading"><b>Не нужно платить</b> за дорогой сайт,<br/>ждать его разработки и рисковать<br/>остаться без заявок</h3>
                         <div></div>
-                    </div>
-                    <div className="item">
-                        <img src={icon3Svg} alt="#" className="icon pc" />
-                        <img src={icon3MobSvg} alt="#" className="icon mob" />
-                        <h4><b>Простой и понятный дизайн</b><br/>поможет создать квиз новичку<br/>и опытному предпринимателю<br/>за 5-10 минут</h4>
+                    </article>
+                    <article className="item" aria-labelledby="item3-heading">
+                        <img src={icon3Svg} alt="Иконка дизайна" className="icon pc" />
+                        <img src={icon3MobSvg} alt="Иконка дизайна для мобильных" className="icon mob" />
+                        <h3 id="item3-heading"><b>Простой и понятный дизайн</b><br/>поможет создать квиз новичку<br/>и опытному предпринимателю<br/>за 5-10 минут</h3>
                         <div></div>
-                    </div>
+                    </article>
                 </div>
             </div>
-        </div>
+        </section>
     )
 }
 

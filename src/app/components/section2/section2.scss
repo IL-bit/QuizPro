@@ -1,8 +1,10 @@
 #second_section {
     position: relative;
     z-index: 2;
+
     .video {
-        width: 1186px;
+        width: 100%; // Изменено для адаптивности
+        max-width: 1186px; // Максимальная ширина
         height: 561px;
         position: relative;
         left: 50%;
@@ -11,37 +13,42 @@
         background-color: #fff;   
         margin-top: 68px;
     }
+
     .items {
         display: flex;
         justify-content: space-between;
-        width: 1186px;
+        width: 100%; // Изменено для адаптивности
+        max-width: 1186px; // Максимальная ширина
         position: relative;
         left: 50%;
         transform: translateX(-50%);
         margin-top: 13px;
-        .item {
-            width: 384px;
+
+        article {
+            width: 384px; // Ширина для больших экранов
             height: 327px;
             border-radius: 39px; 
             box-shadow: 0 -302px 500px 0 rgba(0, 0, 0, 0.17);
             background: #fff;
             padding-top: 41px;
-            h4 {
-                
+            text-align: center; // Центрирование текста
+
+            h3 {
                 font-weight: 400;
                 font-size: 20px;
                 line-height: 140%;
                 letter-spacing: -0.03em;
-                text-align: center;
                 color: #1a1c20;
+
                 b {
                     font-weight: 700;
                 }
             }
+
             .img {
                 width: 334px;
                 height: 240px;
-                background: #0f5eff;
+                background: #0f5eff; // Цвет фона для изображений
                 border-radius: 39px;    
                 position: relative;
                 left: 50%;
@@ -52,48 +59,37 @@
         }
     }
 }
+
+// Адаптивные стили для мобильных устройств
 @media (max-width: 375px) {
     #second_section {
         .video {
-            width: 309px;
-            height: 451px;
+            width: 100%; // Адаптивная ширина
+            height: auto; // Автоматическая высота
             margin-top: 36px;
         }
+
         .items {
             display: block;
-            width: 304px;
+            width: 100%; // Адаптивная ширина
             margin-top: 19px;
-            .item {
-                width: 304px;
-                height: 259px;
+
+            article {
+                width: 100%; // Полная ширина для мобильных
+                height: auto; // Автоматическая высота
                 padding-top: 32px;
-                h4 {
+
+                h3 {
                     font-size: 15px;
                     line-height: 140%;
                     letter-spacing: -0.03em;
                 }
+
                 .img {
-                    width: 264px;
-                    height: 190px;
+                    width: 100%; // Полная ширина для мобильных
+                    height: auto; // Автоматическая высота
                     margin-top: 36px;
                     box-shadow: none;  
-                }
-            }
-            :nth-child(1) {
-                box-shadow: none;       
-            }
-            :nth-child(2) {
-                box-shadow: 0 -239px 396px 0 rgba(0, 0, 0, 0.17);                
-                margin-top: 61px;
-                img {
-                    box-shadow: 0 -239px 396px 0 rgba(0, 0, 0, 0.17);
-                }
-            }
-            :nth-child(3) {
-                box-shadow: 0 -239px 396px 0 rgba(0, 0, 0, 0.17);                
-                margin-top: 61px;      
-                img {
-                    box-shadow: 0 -239px 396px 0 rgba(0, 0, 0, 0.17);
                 }
             }
         }
