@@ -1,4 +1,4 @@
-.step1 {
+#step1 {
     border-radius: 39px;
     width: 1186px;
     height: 557px;
@@ -97,5 +97,88 @@
         top: 44px;
         right: 40px;
         left: auto;
+    }
+}
+@media (max-width: 375px) {
+    #step1 {
+        width: 304px;
+        height: 554px;
+        padding: 0;
+        padding-top: 32px;
+        margin-top: 27px;
+        h3 {
+            font-weight: 700;
+            font-size: 16px;
+            letter-spacing: -0.02em;
+            text-align: center;
+        }
+        p {
+            font-size: 16px;
+            line-height: 140%;
+            letter-spacing: -0.03em;
+            text-align: center;
+            margin-top: 20px;
+            span {
+                font-size: 16px;
+                line-height: 140%;
+                letter-spacing: -0.03em;
+                padding: 2px 8px 4px 8px;
+            }
+        }
+        .icon {
+            display: none;
+        }
+        .screen {
+            width: 272px;
+            height: 247px;
+            top: auto;
+            bottom: 13px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .vk, .site, .social, .link, .tg {
+            border-radius: 10px;
+            width: 116px;
+            height: 49px;
+            top: 115px;
+            left: 46px;
+            img {
+                width: 30px;
+                height: 27px;
+                margin-left: 8px;
+                margin-top: 11px;
+            }
+            p {
+                margin-left: 11px;
+                margin-top: 17px;
+                font-weight: 400;
+                font-size: 10px;
+                line-height: 140%;
+                letter-spacing: -0.03em;
+            }
+        }
+        .site {
+            width: 92px;
+            height: 49px;
+            left: 165px;
+        }
+        .social {
+            width: 160px;
+            height: 49px;
+            top: 171px;
+            left: 72px;
+        }
+        .link {
+            width: 146px;
+            height: 49px;
+            top: 227px;
+            left: 21px;
+        }
+        .tg {
+            width: 112px;
+            height: 49px;
+            top: 227px;
+            left: 170px;
+        }
     }
 }

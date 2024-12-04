@@ -8,8 +8,7 @@
         left: 50%;
         transform: translateX(-50%);
         border-radius: 39px;    
-        background-color: #fff;
-        border: 1px solid #000;    
+        background-color: #fff;   
         margin-top: 68px;
     }
     .items {
@@ -24,11 +23,11 @@
             width: 384px;
             height: 327px;
             border-radius: 39px; 
-            border: 1px solid #000;   
             box-shadow: 0 -302px 500px 0 rgba(0, 0, 0, 0.17);
             background: #fff;
+            padding-top: 41px;
             h4 {
-                margin-top: 41px;
+                
                 font-weight: 400;
                 font-size: 20px;
                 line-height: 140%;
@@ -42,13 +41,60 @@
             .img {
                 width: 334px;
                 height: 240px;
-                box-shadow: 0 -302px 500px 0 rgba(0, 0, 0, 0.17);
                 background: #0f5eff;
                 border-radius: 39px;    
                 position: relative;
                 left: 50%;
                 transform: translateX(-50%);
                 margin-top: 45px;            
+                box-shadow: 0 -302px 500px 0 rgba(0, 0, 0, 0.17);
+            }
+        }
+    }
+}
+@media (max-width: 375px) {
+    #second_section {
+        .video {
+            width: 309px;
+            height: 451px;
+            margin-top: 36px;
+        }
+        .items {
+            display: block;
+            width: 304px;
+            margin-top: 19px;
+            .item {
+                width: 304px;
+                height: 259px;
+                padding-top: 32px;
+                h4 {
+                    font-size: 15px;
+                    line-height: 140%;
+                    letter-spacing: -0.03em;
+                }
+                .img {
+                    width: 264px;
+                    height: 190px;
+                    margin-top: 36px;
+                    box-shadow: none;  
+                }
+            }
+            :nth-child(1) {
+                box-shadow: none;       
+            }
+            :nth-child(2) {
+                box-shadow: 0 -239px 396px 0 rgba(0, 0, 0, 0.17);                
+                margin-top: 61px;
+                img {
+                    box-shadow: 0 -239px 396px 0 rgba(0, 0, 0, 0.17);
+                }
+            }
+            :nth-child(3) {
+                box-shadow: 0 -239px 396px 0 rgba(0, 0, 0, 0.17);                
+                margin-top: 61px;      
+                img {
+                    box-shadow: 0 -239px 396px 0 rgba(0, 0, 0, 0.17);
+                }
             }
         }
     }

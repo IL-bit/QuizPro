@@ -6,7 +6,7 @@
     padding-top: 0 !important;
     main {
         position: relative;
-        #bg1 {
+        #bg1, #bg2, #bg3, #bg4, #bg5 {
             background: url(./components/img/bg1.png);
             background-repeat: no-repeat;
             background-size: cover;
@@ -21,55 +21,56 @@
         }
         #bg2 {
             background: url(./components/img/bg2.png);
-            background-repeat: no-repeat;
-            background-size: cover;
-            width: 1846px;
             height: 932px;
-            position: absolute;
             top: 890px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 1;
-            overflow: hidden;
         }
         #bg3 {
             background: url(./components/img/bg3.png);
-            background-repeat: no-repeat;
-            background-size: cover;
-            width: 1846px;
             height: 375px;
-            position: absolute;
             top: 6447px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 1;
-            overflow: hidden;
         }
         #bg4 {
             background: url(./components/img/bg4.png);
-            background-repeat: no-repeat;
-            background-size: cover;
-            width: 1846px;
             height: 1364px;
-            position: absolute;
             top: 6836px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 1;
-            overflow: hidden;
         }
         #bg5 {
             background: url(./components/img/bg5.png);
-            background-repeat: no-repeat;
-            background-size: cover;
-            width: 1846px;
             height: 1003px;
-            position: absolute;
             top: 9758px;
             left: 50%;
-            transform: translateX(-50%);
-            z-index: 1;
-            overflow: hidden;
+        }
+    }
+}
+@media (max-width: 375px) {
+    .container {
+        padding-top: 0 !important;
+        main {
+            position: relative;
+            #bg1, #bg2, #bg3, #bg4, #bg5 {
+                background: url(./components/img/bg1_mobile.png);
+                width: 345px;
+                height: 398px;
+                top: 15px;
+            }
+            #bg2 {
+                background: url(./components/img/bg2_mobile.png);
+                height: 682px;
+                top: 465px;
+            }
+            #bg3 {
+                background: url(./components/img/bg3_mobile.png);
+                height: 705px;
+                top: 7442px;
+            }
+            #bg4 {
+                display: none;
+            }
+            #bg5 {
+                background: url(./components/img/bg5_mobile.png);
+                height: 705px;
+                top: 11054px;
+            }
         }
     }
 }

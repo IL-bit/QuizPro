@@ -7,7 +7,7 @@ import tg from '../../../img/tg.svg';
 
 const Step1 = () => {
     return(
-        <div className="step1">
+        <div id="step1">
             <h3>Выбираете формат</h3>
             <p><span>6 вариантов</span> размещения</p>
             <div className="vk">

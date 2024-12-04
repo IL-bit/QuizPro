@@ -48,6 +48,7 @@
         background: url(../img/easy.png);
         background-repeat: no-repeat;
         background-size: cover;
+        background-position: center;
         border: none;
         position: relative;
         left: 50%;
@@ -82,5 +83,60 @@
         left: 50%;
         transform: translateX(-50%);
         margin-top: 44px;
+    }
+    .pc {
+        display: block;        
+    }
+    .mob {
+        display: none;
+    }
+}
+@media (max-width: 375px) {
+    #first_section {
+        padding-top: 49px;
+        h4 {
+            font-size: 10px;
+            line-height: 140%;
+            letter-spacing: 0.64em;
+        }
+        h1 {
+            font-weight: 400;
+            font-size: 23px;
+            letter-spacing: -0.02em;
+        }
+        h3 {
+            font-size: 16px;
+            line-height: 140%;
+            letter-spacing: -0.03em;
+            margin-top: 10px;
+        }
+        .min {
+            width: 150px;
+            height: 70px;
+            font-weight: 700;
+            font-size: 25px;
+            letter-spacing: -0.02em;
+            margin-top: -29px;
+            padding-top: 30px;
+        }
+        .easy {
+            width: 91px;
+            height: 36px;
+            margin-top: -2px;
+        }
+        button {
+            width: 299px;
+            height: 78px;
+            margin-top: 30px;
+            font-weight: 700;
+            font-size: 15px;
+            letter-spacing: 0.03em;
+        }
+        .pc {
+            display: none;
+        }
+        .mob {
+            display: block;
+        }
     }
 }

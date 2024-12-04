@@ -1,4 +1,4 @@
-.step2 {
+#step2 {
     border-radius: 39px;
     width: 1186px;
     height: 557px;
@@ -82,4 +82,80 @@
         right: 40px;
         left: auto;
     }
+    .mob {
+        display: none;
+    }
+    .pc {
+        display: block;
+    }
+}
+@media (max-width: 375px) {
+    #step2 {
+        width: 304px;
+        height: 701px;
+        background: url(../../../img/second_bg_mobile.png);   
+        margin-top: 24px;
+        padding: 0;
+        padding-top: 32px;    
+        .icon {
+            display: none;
+        }
+        .screen {
+            width: 272px;
+            height: 247px;
+            top: auto;
+            bottom: 13px;
+            left: 50%;
+            transform: translateX(-50%);
+        } 
+        h3 {
+            font-weight: 700;
+            font-size: 16px;
+            letter-spacing: -0.02em;
+            text-align: center;
+            margin-top: 0;
+        }
+        p {
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 140%;
+            letter-spacing: -0.03em;
+            text-align: center;
+            margin-top: 20px;
+            span {
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 140%;
+                letter-spacing: -0.03em;
+                padding: 0; 
+                margin: 0;    
+                background: none;                        
+            }
+        }
+        .quistions {
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-top: 265px;
+            span {
+                border-radius: 20px;
+                width: 109px;
+                height: 28px;
+                background: #dfeaff;
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 140%;
+                letter-spacing: -0.03em;
+                color: #105efe;
+                padding: 2px 8px 4px 8px;
+            }
+        }
+        .pc {
+            display: none;
+        }
+        .mob {
+            display: block;
+        }
+    }
+
 }
