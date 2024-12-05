@@ -2,6 +2,12 @@
     position: relative;
     z-index: 2;
     margin-top: 283px;
+    .mob {
+        display: none;
+    }
+    .pc {
+        display: block;
+    }
     h2 {
         font-family: "Inter Tight", sans-serif;
         font-weight: 400;
@@ -69,5 +75,57 @@
         left: 50%;
         transform: translateX(-50%);
         margin-top: 44px;
+    }
+}
+@media (max-width: 375px) {
+    #tenth_section {
+        margin-top: 148px;
+        .pc {
+            display: none;
+        }
+        .mob {
+            display: block;
+        }
+        h2 {
+            font-weight: 700;
+            font-size: 23px;
+            letter-spacing: -0.02em;
+            text-align: center;
+            margin-bottom: 143px;
+            span {
+                font-weight: 400;
+            }
+        }
+        .cards {
+            display: block;
+            width: 319px;
+            height: auto;
+            .card {
+                width: 319px;
+                height: 321px;
+                border-radius: 32px;
+                margin-bottom: 16px;
+                box-shadow: 0 83px 67px 0 rgba(0, 0, 0, 0.07);
+                img {
+                    border-radius: 32px;
+                    width: 283px;
+                    height: 181px;
+                }
+                h5 {
+                    font-size: 14px;
+                    line-height: 120%;
+                    letter-spacing: -0.03em;
+                    text-align: center;
+                }
+            }
+        }
+        button {
+            font-size: 13px;
+            letter-spacing: 0.03em;
+            width: 268px;
+            height: 70px;
+            border-radius: 83px;
+            margin-top: 41px;
+        }
     }
 }

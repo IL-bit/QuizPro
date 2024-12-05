@@ -22,4 +22,34 @@
         margin-top: 40px;
         margin-left: 1px;
     }
+    .pc {
+        display: block;
+    }
+    .mob {
+        display: none;
+    }
+}
+@media (max-width: 375px) {
+    #sixth_section {
+        margin-top: 86px;
+        h2 {
+            font-size: 23px;
+            letter-spacing: -0.02em;
+            text-align: center;
+        }
+        p {
+            font-size: 20px;
+            line-height: 140%;
+            letter-spacing: -0.03em;
+            text-align: center;
+            margin-top: 27px;
+        }
+        .mob {
+            display: block;
+        }
+        .pc {
+            display: none;
+        }
+        
+    }
 }

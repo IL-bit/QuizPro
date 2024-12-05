@@ -9,7 +9,7 @@ const Section3 = () => {
     return(
         <section className="row" id="third_section" aria-labelledby="section3-heading">
             <div className="col-xxl-12 col-12">
-                <h2 id="section3-heading" className="section-title">Квизы - самый популярный способ<br/><span>быстро и дешево</span> получить<br/><b>первые заявки в свой бизнес</b></h2>
+                <h2 id="section3-heading" className="section-title pc">Квизы - самый популярный способ<br/><span>быстро и дешево</span> получить<br/><b>первые заявки в свой бизнес</b></h2>
                 <h2 className="mob">Квизы - самый популярный<br/>способ <span>быстро и дешево</span><br/>получить <b>первые заявки<br/>в свой бизнес</b></h2>
                 <div className="items">
                     <article className="item" aria-labelledby="item1-heading">

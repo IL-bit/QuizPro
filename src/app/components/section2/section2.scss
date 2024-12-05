@@ -58,27 +58,36 @@
             }
         }
     }
+    .pc {
+        display: block;        
+    }
+    .mob {
+        display: none;
+    }
 }
 
 // Адаптивные стили для мобильных устройств
 @media (max-width: 375px) {
     #second_section {
         .video {
-            width: 100%; // Адаптивная ширина
-            height: auto; // Автоматическая высота
+            width: 100%; 
+            height: auto; 
             margin-top: 36px;
         }
 
         .items {
             display: block;
-            width: 100%; // Адаптивная ширина
+            width: 100%; 
             margin-top: 19px;
 
             article {
-                width: 100%; // Полная ширина для мобильных
-                height: auto; // Автоматическая высота
+                width: 304px;
+                height: 259px; 
                 padding-top: 32px;
-
+                margin-top: 61px;
+                position: relative;
+                left: 50%;
+                transform: translateX(-50%);                
                 h3 {
                     font-size: 15px;
                     line-height: 140%;
@@ -86,12 +95,21 @@
                 }
 
                 .img {
-                    width: 100%; // Полная ширина для мобильных
-                    height: auto; // Автоматическая высота
+                    width: 264px;
+                    height: 190px; 
                     margin-top: 36px;
                     box-shadow: none;  
                 }
             }
+            :nth-child(1) {
+                margin-top: 0;
+            }
+        }
+        .mob {
+            display: block;        
+        }
+        .pc {
+            display: none;
         }
     }
 }

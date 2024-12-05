@@ -25,7 +25,7 @@ function App() {
           <Section5/>
           <Section6/>
           <Section7/>
-          <Section8/>
+          {/* <Section8/> */}
           <Section9/>
           <Section10/>
           <Section11/>
@@ -35,7 +35,7 @@ function App() {
           <div id="bg4"></div>
           <div id="bg5"></div>
         </main>
-        <Footer/>
+        {/* <Footer/> */}
       </div>
     </>
   );

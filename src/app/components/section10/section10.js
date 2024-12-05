@@ -3,8 +3,9 @@ import './section10.scss';
 const Section10 = () => {
     return(
         <section className="row" id="tenth_section" aria-labelledby="section10-title">
-            <div className="col-xxl-12">
-                <h2 id="section10-title"><strong>10+ инструментов</strong><br />для повышения продаж через ваш<br />диалог с клиентом</h2>
+            <div className="col-xxl-12 col-xl-12 col-lg-12 col-12">
+                <h2 id="section10-title" className="pc"><strong>10+ инструментов</strong><br />для повышения продаж через ваш<br />диалог с клиентом</h2>
+                <h2 id="section10-title" className="mob">10+ инструментов<br />для повышения продаж<br /><br /><span>через ваш<br />диалог с клиентом</span></h2>
                 <div className="cards">
                     <article className="card" aria-labelledby="card-title-1">
                         <img src="#" alt="Адаптация дизайна" />

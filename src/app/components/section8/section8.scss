@@ -28,6 +28,11 @@
                 height: 58px;
             }
         }
+        :nth-child(4) {
+            p {
+                margin-top: 9px;
+            }
+        }
     }
     .left {
         margin-left: -9px;
@@ -106,4 +111,9 @@
         }   
     }
 
+}
+@media (max-width: 375px) {
+    #eighth_section {
+        
+    }
 }
