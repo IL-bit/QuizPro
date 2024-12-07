@@ -12,33 +12,39 @@ const Section7 = () => {
                 <h3 className="pc">Мы собрали базу <b>самых прибыльных</b> и актуальных опросников.<br />Вам остается выбрать нишу и <b>получать заявки</b></h3>
                 <h2 id="section7-title" className="mob">Десятки квизов в разных<br />нишах <b>приносят прибыль</b><br/>клиентам <span>прямо сейчас</span></h2>
                 <h3 className="mob">Мы собрали базу <b>самых прибыльных</b><br/>и актуальных опросников.<br /><br />Вам остается выбрать нишу<br/>и <b>получать заявки</b></h3>
-                <div className="cards pc">
-                    {Array(3).fill().map((_, index) => (
-                        <div className="card" key={index} aria-labelledby={`card-title-${index}`}>
-                            <p id={`card-title-${index}`}>#НазваниеНиши</p>
-                            <p>Конверсия <span>19%</span></p>
-                            <img src="#" alt="Изображение квиза" />
-                            <h5>Привели 1.000.000₽<br />в нишу дачных домов</h5>
-                            <a href="#" title="Смотреть квиз" aria-label="Смотреть квиз">Смотреть квиз</a>
-                            <button title="Попробовать бесплатно" aria-label="Попробовать бесплатно">попробовать бесплатно</button>
-                        </div>
-                    ))}
+                <div className="pc">
+                    <div className="cards">
+                        {Array(3).fill().map((_, index) => (
+                            <div className="card" key={index} aria-labelledby={`card-title-${index}`}>
+                                <p id={`card-title-${index}`}>#НазваниеНиши</p>
+                                <p>Конверсия <span>19%</span></p>
+                                <img src="#" alt="Изображение квиза" />
+                                <h5>Привели 1.000.000₽<br />в нишу дачных домов</h5>
+                                <a href="#" title="Смотреть квиз" aria-label="Смотреть квиз">Смотреть квиз</a>
+                                <button title="Попробовать бесплатно" aria-label="Попробовать бесплатно">попробовать бесплатно</button>
+                            </div>
+                        ))}
+                    </div>
+                    <div className="cards">
+                        {Array(3).fill().map((_, index) => (
+                            <div className="card" key={index} aria-labelledby={`card-title-${index}`}>
+                                <p id={`card-title-${index}`}>#НазваниеНиши</p>
+                                <p>Конверсия <span>19%</span></p>
+                                <img src="#" alt="Изображение квиза" />
+                                <h5>Привели 1.000.000₽<br />в нишу дачных домов</h5>
+                                <a href="#" title="Смотреть квиз" aria-label="Смотреть квиз">Смотреть квиз</a>
+                                <button title="Попробовать бесплатно" aria-label="Попробовать бесплатно">попробовать бесплатно</button>
+                            </div>
+                        ))}
+                    </div>
                 </div>
-                <div className="cards pc">
-                    {Array(3).fill().map((_, index) => (
-                        <div className="card" key={index} aria-labelledby={`card-title-${index}`}>
-                            <p id={`card-title-${index}`}>#НазваниеНиши</p>
-                            <p>Конверсия <span>19%</span></p>
-                            <img src="#" alt="Изображение квиза" />
-                            <h5>Привели 1.000.000₽<br />в нишу дачных домов</h5>
-                            <a href="#" title="Смотреть квиз" aria-label="Смотреть квиз">Смотреть квиз</a>
-                            <button title="Попробовать бесплатно" aria-label="Попробовать бесплатно">попробовать бесплатно</button>
-                        </div>
-                    ))}
+
+                <div className="more_funct" id="pc">
+                    <img src={cursor} alt="Иконка курсора"/>
+                    <p>Смотреть больше квизов</p>
                 </div>
-                <div className="more_funct">
-                    <img src={cursor} alt="Иконка курсора" className="pc"/>
-                    <img src={cursor2} alt="Иконка курсора" className="mob"/>
+                <div className="more_funct" id="mob">
+                    <img src={cursor2} alt="Иконка курсора"/>
                     <p>Смотреть больше квизов</p>
                 </div>
             </div>

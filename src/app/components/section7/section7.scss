@@ -1,5 +1,5 @@
 #seventh_section {
-    padding-top: 141px;
+    padding-top: 131px;
     position: relative;
     z-index: 2;
     .logo {
@@ -136,6 +136,18 @@
             }
         }
     }
+    .mob {
+        display: none;
+    }
+    .pc {
+        display: block;
+    } 
+    #mob {
+        display: none;
+    }   
+    #pc {
+        display: flex;
+    }
     .more_funct {
         width: 1186px;
         height: 77px;
@@ -164,8 +176,6 @@
             color: #1a1c20;
 
         }                      
-        
-
     }
 
 }
@@ -184,21 +194,21 @@
             font-weight: 400;
             margin-top: 27px;
         }
-        .more_funct {
-            width: 345px;
-            .pc {
-                display: none;
-            }
-            .mob {
-                display: block;
-            }
-        }        
         .pc {
             display: none;
         }
         .mob {
             display: block;
+        }        
+        #mob {
+            display: flex;
+        }   
+        #pc {
+            display: none;
         }
-
+        .more_funct {
+            width: 345px;
+            display: flex;
+        }        
     }
 }

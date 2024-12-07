@@ -83,4 +83,21 @@
             }
         }
     }
+    .pc {
+        display: block;
+    }
+    .mob {
+        display: none;
+    }
+}
+@media (max-width: 375px) {
+    #eleventh_section {
+
+        .mob {
+            display: block;
+        }
+        .pc {
+            display: none;
+        }
+    }
 }

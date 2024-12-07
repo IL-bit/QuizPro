@@ -41,11 +41,12 @@
             top: 9758px;
             left: 50%;
         }
-    }
+    }  
 }
 @media (max-width: 375px) {
     .container {
         padding-top: 0 !important;
+        position: relative;
         main {
             position: relative;
             #bg1, #bg2, #bg3, #bg4, #bg5 {
@@ -72,8 +73,19 @@
             #bg5 {
                 background: url(./components/img/bg5_mobile.png);
                 height: 705px;
-                top: 9235px;
+                top: 10150px;
             }
+            
+        }
+        #bg {
+            border-radius: 31px;
+            width: 304px;
+            height: 621px;
+            background: #f2f3f5;
+            position: absolute;
+            bottom: 61px;
+            left: 50%;
+            transform: translateX(-50%);
         }
     }
 }
