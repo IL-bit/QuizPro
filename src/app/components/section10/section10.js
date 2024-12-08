@@ -1,6 +1,12 @@
 import './section10.scss';
+import { togglePopup } from '../../../actions';
+import { useDispatch } from 'react-redux';
 
 const Section10 = () => {
+    const dispatch = useDispatch();
+    const handleToggle = (menu) => {     
+        dispatch(togglePopup(menu));
+    };
     return(
         <section className="row" id="tenth_section" aria-labelledby="section10-title">
             <div className="col-xxl-12 col-xl-12 col-lg-12 col-12">
@@ -34,7 +40,7 @@ const Section10 = () => {
                         <h5 id="card-title-6"><strong>Удобные варианты оплаты</strong><br />для клиентов</h5>
                     </article>
                 </div>
-                <button title="Попробовать бесплатно" aria-label="Попробовать бесплатно">попробовать бесплатно</button>
+                <button title="Попробовать бесплатно" aria-label="Попробовать бесплатно" onClick={() => handleToggle('log_in')}>попробовать бесплатно</button>
             </div>
         </section>
     )

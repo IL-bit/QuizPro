@@ -6,7 +6,7 @@ import Step4 from './steps/step4/step4';
 
 const Section4 = () => {
     return(
-        <div className="row" id="fourth_section" aria-labelledby="section4-heading">
+        <section className="row" id="fourth_section" aria-labelledby="section4-heading">
             <div className="col-xxl-12">
                 <div className="min">4 шага</div>
                 <div className="pro"></div>
@@ -18,7 +18,7 @@ const Section4 = () => {
                 <Step3/>
                 <Step4/>
             </div>
-        </div>
+        </section>
     )
 }
 

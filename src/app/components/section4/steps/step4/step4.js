@@ -1,9 +1,15 @@
 import './step4.scss';
+import { togglePopup } from '../../../../../actions';
+import { useDispatch } from 'react-redux';
 import crm from '../../../img/crm.svg';
 import bots from '../../../img/bots.svg';
 import pay from '../../../img/pay.svg';
 
 const Step4 = () => {
+    const dispatch = useDispatch();
+    const handleToggle = (menu) => {     
+        dispatch(togglePopup(menu));
+    };
     return(
         <article id="step4" aria-labelledby="step4-heading">
             <h3 id="step4-heading">Предлагаете оставить заявку</h3>
@@ -33,7 +39,7 @@ const Step4 = () => {
             </div>
             <div className="icon" aria-hidden="true"></div>
             <div className="screen" aria-hidden="true"></div>
-            <button aria-label="Попробовать бесплатно">попробовать бесплатно</button>
+            <button aria-label="Попробовать бесплатно" onClick={() => handleToggle('log_in')}>попробовать бесплатно</button>
         </article>
     )
 }

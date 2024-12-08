@@ -69,6 +69,12 @@
     .create {
         display: none;
     }
+    .pc {
+        display: block;
+    }
+    .mob {
+        display: none;
+    }
 }
 @media (max-width: 375px) {
     #header {
@@ -113,6 +119,12 @@
             top: 0;
             right: 12px;
             left: auto;
+        }
+        .mob {
+            display: block;
+        }
+        .pc {
+            display: none;
         }
     }
 }

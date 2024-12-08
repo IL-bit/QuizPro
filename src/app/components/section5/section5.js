@@ -1,8 +1,14 @@
 import './section5.scss';
+import { togglePopup } from '../../../actions';
+import { useDispatch } from 'react-redux';
 import openSvg from '../img/open.svg';
 import closeSvg from '../img/close.svg';
 
 const Section5 = () => {
+    const dispatch = useDispatch();
+    const handleToggle = (menu) => {     
+        dispatch(togglePopup(menu));
+    };
     return (
         <section className="row" id="fifth_section" aria-labelledby="fifth_section_title">
             <div className="col-xxl-12 col-xl-12 col-lg-12 col-12">
@@ -67,7 +73,7 @@ const Section5 = () => {
                     </button>                   
                 </article>
 
-                <div className="more_funct">
+                <div className="more_funct" onClick={() => handleToggle('log_in')}>
                     <p><span>+15</span> удобных функций</p>
                 </div>
             </div>

@@ -1,9 +1,15 @@
 import './section7.scss';
+import { togglePopup } from '../../../actions';
+import { useDispatch } from 'react-redux';
 import logoSvg from '../img/logo2.svg';
 import cursor from '../img/cursor.svg';
 import cursor2 from '../img/cursor_mob.svg';
 
 const Section7 = () => {
+    const dispatch = useDispatch();
+    const handleToggle = (menu) => {     
+        dispatch(togglePopup(menu));
+    };
     return(
         <section className="row" id="seventh_section" aria-labelledby="section7-title">
             <div className="col-xxl-12 col-xl-12 col-lg-12 col-12">
@@ -21,7 +27,7 @@ const Section7 = () => {
                                 <img src="#" alt="Изображение квиза" />
                                 <h5>Привели 1.000.000₽<br />в нишу дачных домов</h5>
                                 <a href="#" title="Смотреть квиз" aria-label="Смотреть квиз">Смотреть квиз</a>
-                                <button title="Попробовать бесплатно" aria-label="Попробовать бесплатно">попробовать бесплатно</button>
+                                <button title="Попробовать бесплатно" aria-label="Попробовать бесплатно" onClick={() => handleToggle('log_in')}>попробовать бесплатно</button>
                             </div>
                         ))}
                     </div>
@@ -33,17 +39,17 @@ const Section7 = () => {
                                 <img src="#" alt="Изображение квиза" />
                                 <h5>Привели 1.000.000₽<br />в нишу дачных домов</h5>
                                 <a href="#" title="Смотреть квиз" aria-label="Смотреть квиз">Смотреть квиз</a>
-                                <button title="Попробовать бесплатно" aria-label="Попробовать бесплатно">попробовать бесплатно</button>
+                                <button title="Попробовать бесплатно" aria-label="Попробовать бесплатно" onClick={() => handleToggle('log_in')}>попробовать бесплатно</button>
                             </div>
                         ))}
                     </div>
                 </div>
 
-                <div className="more_funct" id="pc">
+                <div className="more_funct" id="pc" onClick={() => handleToggle('log_in')}>
                     <img src={cursor} alt="Иконка курсора"/>
                     <p>Смотреть больше квизов</p>
                 </div>
-                <div className="more_funct" id="mob">
+                <div className="more_funct" id="mob" onClick={() => handleToggle('log_in')}>
                     <img src={cursor2} alt="Иконка курсора"/>
                     <p>Смотреть больше квизов</p>
                 </div>

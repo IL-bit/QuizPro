@@ -14,15 +14,16 @@
             height: 110px;
             margin-left: -75px;
             margin-top: 41px;
+            display: flex;
         }
-        p {
+        #footer-title {
             font-family: "Inter Tight", sans-serif;
             font-weight: 400;
             font-size: 18px;
             letter-spacing: -0.02em;
             color: #1a1c20;
-            margin-left: 46px;
-            margin-top: 72px;
+            margin-left: 96px;
+            margin-top: -82px;
         }
         a {
             font-family: "Inter Tight", sans-serif;

@@ -15,7 +15,6 @@ const Step3 = () => {
             </p>
             <p className="left"><span>Разные предложения</span><br />в зависимости от ответов</p>
             <p className="right"><span>Калькулятор</span><br />стоимости</p>
-            {/* <img className="columns" src="#" alt="Описание изображения" /> */}
             <div className="icon" aria-hidden="true"></div>
             <div className="screen" aria-hidden="true"></div>
         </article>

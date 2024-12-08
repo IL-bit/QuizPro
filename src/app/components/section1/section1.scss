@@ -42,6 +42,12 @@
         transform: translateX(-50%) rotate(-7deg);
         margin-top: -67px;
         padding-top: 65px;
+        overflow: hidden;
+        transition: opacity 0.5s ease; // Плавный переход для появления текста
+        opacity: 1;
+        :empty {
+            opacity: 0;
+        }
     }
     .easy {
         width: 231px;

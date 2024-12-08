@@ -1,8 +1,14 @@
 import './section9.scss';
+import { togglePopup } from '../../../actions';
+import { useDispatch } from 'react-redux';
 import firstSvg from '../img/first_1.svg';
 import secondSvg from '../img/second_2.svg';
 
 const Section9 = () => {
+    const dispatch = useDispatch();
+    const handleToggle = (menu) => {     
+        dispatch(togglePopup(menu));
+    };
     return(
         <section className="row" id="ninth_section" aria-labelledby="section9-title">
             <div className="col-xxl-6 offset-xxl-1 pc">
@@ -19,7 +25,7 @@ const Section9 = () => {
             </div>
             <div className="col-xxl-5 pc">
                 <div className="right" aria-hidden="true"></div>
-                <button title="Попробовать бесплатно" aria-label="Попробовать Quiz Pro бесплатно">попробовать бесплатно</button>
+                <button title="Попробовать бесплатно" aria-label="Попробовать Quiz Pro бесплатно" onClick={() => handleToggle('log_in')}>попробовать бесплатно</button>
             </div>
             <div className="col-12 mob">
                 <h2 id="section9-title">Внедряйте Quiz Pro своим<br />клиентам и зарабатывайте</h2>
@@ -33,7 +39,7 @@ const Section9 = () => {
                     <p>Чем больше проектов и заявок,<br />тем больше вы зарабатываете</p>
                 </div>
                 <div className="right" aria-hidden="true"></div>
-                <button title="Попробовать бесплатно" aria-label="Попробовать Quiz Pro бесплатно">попробовать бесплатно</button>                
+                <button title="Попробовать бесплатно" aria-label="Попробовать Quiz Pro бесплатно" onClick={() => handleToggle('log_in')}>попробовать бесплатно</button>                
             </div>
 
         </section>
