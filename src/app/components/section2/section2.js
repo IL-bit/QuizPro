@@ -4,7 +4,9 @@ const Section2 = () => {
     return(
         <section className="row" id="second_section" aria-labelledby="section2-heading">
             <div className="col-xxl-12 col-12">
-                <div className="video" aria-label="Видеопрезентация"></div>
+                <div className="video" aria-label="Видеопрезентация">
+                    <video src="#"></video>
+                </div>
                 <div className="items">
                     <article className="item" aria-labelledby="item1-heading">
                         <h3 id="item1-heading"><b>Фильтр-защита от спама</b><br />и нецелевых номеров</h3>

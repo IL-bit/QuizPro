@@ -2,7 +2,8 @@ import { createReducer } from "@reduxjs/toolkit";
 
 const initialState = {
     type: '',
-    pop_up: false
+    pop_up: false,
+    button: 1
 };
 
 const RootReducer = createReducer(initialState, builder => {
@@ -14,6 +15,9 @@ const RootReducer = createReducer(initialState, builder => {
     .addCase('CLOSEPOPUP', (state) => {
         state.pop_up = false;
         document.body.classList.remove('no-scroll');
+    })
+    .addCase('TOGGLEBUTTON', (state, action) => {
+        state.button = action.payload;
     })
 });
 

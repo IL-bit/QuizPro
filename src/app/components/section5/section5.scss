@@ -158,6 +158,18 @@
                     background: #fff;
                 }
             }
+            :nth-child(2).show {     
+                height: 465px;
+                .img_list {
+                    margin-top: 80px;
+                }                    
+            }
+            :nth-child(4).show {     
+                height: 465px;
+                .img_list {
+                    margin-top: 80px;
+                }                    
+            }
         }
         .more_funct {
             width: 345px;
