@@ -90,44 +90,121 @@
         display: none;
     }
 }
-@media (max-width: 375px) {
+@media (max-width: 576px) {
+    #eleventh_section {
+        h2 {
+            font-size: 23px;
+            letter-spacing: -0.02em;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .slider {
+            width: 100vw;
+            height: 480px;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+            user-select: none;
+            touch-action: pan-y;    
+                  
+            .slider-list {
+                width: 100%;
+                height: 552px;
+                overflow: hidden;
+                position: relative;
+                left: 50%;
+                transform: translateX(-50%);
+                z-index: 2;
 
-    .cards {
-        transition: transform 0.3s ease;
-        .card {
-            border-radius: 32px;
-            width: 320px;
-            height: 402px;
-            margin-bottom: 16px;
-            box-shadow: 0 83px 67px 0 rgba(0, 0, 0, 0.07);
-            background: #fff;
-            box-sizing: border-box;
-            img {
+            }
+            .slider-track {
+                display: flex;
+                justify-content: space-between;
+                gap: calc(100vw - 320px);
+            }
+            .card {
                 border-radius: 32px;
-                width: 283px;
-                height: 181px;
+                width: 320px;
+                height: 402px;
+                margin-bottom: 16px;
+                background: #fff;
+                border: none;
+                flex-shrink: 0;
+                position: relative;
+                left: 50%;
+                transform: translateX(-50%);
+                z-index: 3;
+                opacity: 0;
+                box-shadow: 0 83px 67px 0 rgba(0, 0, 0, 0.07);
+                transition: opacity 0.5s ease, transform 0.5s ease;
+                img {
+                    border-radius: 32px;
+                    width: 283px;
+                    height: 181px;
+                    background: #ededed;
+                    margin-top: 21px;
+                    position: relative;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    poiner-events: none;
+                }
+                h5 {
+                    font-size: 14px;
+                    line-height: 120%;
+                    letter-spacing: -0.03em;
+                    text-align: center;
+                    margin-top: 42px;
+                }
+                p {
+                    font-weight: 400;
+                    font-size: 16px;
+                    line-height: 120%;
+                    letter-spacing: -0.03em;
+                    text-align: center;
+                    margin-top: 22px;
+                }
             }
-            h5 {
-                font-size: 14px;
-                line-height: 120%;
-                letter-spacing: -0.03em;
-                text-align: center;
+            .card.visible {
+                opacity: 1; // Показать карточку
+                transform: translateY(0); // Вернуть на место
             }
-            p {
-                font-weight: 400;
-                font-size: 16px;
-                line-height: 120%;
-                letter-spacing: -0.03em;
-                text-align: center;
-                margin-top: 22px;
+            .swipe {
+                width: 24px;
+                height: 24px;  
+                position: relative;
+                left: 50%;
+                transform: translateX(-50%); 
+                margin-top: -250px;
+            }
+            .indic {
+                width: 92px;
+                height: 7px;
+                display: flex;
+                justify-content: space-around;
+                position: relative;
+                left: 50%;
+                transform: translateX(-50%); 
+                margin-top: -115px;
+                button {
+                    display: block;
+                    border: none;
+                    border-radius: 100%;
+                    background: #d9d9d9;
+                    width: 7px;
+                    height: 7px;
+                }
+                .activ {
+                    background: #105efe;
+                }
             }
         }
+        .mob {
+            display: block;
+        }
+        .pc {
+            display: none;
+        }        
     }
-    .mob {
-        display: block;
-    }
-    .pc {
-        display: none;
-    }
+
     
 }
