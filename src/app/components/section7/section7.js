@@ -1,6 +1,8 @@
 import './section7.scss';
 import { togglePopup } from '../../../actions';
 import { useDispatch } from 'react-redux';
+import React, { useState, useRef } from 'react';
+import swipeSvg from '../img/swipe.svg';
 import logoSvg from '../img/logo2.svg';
 import cursor from '../img/cursor.svg';
 import cursor2 from '../img/cursor_mob.svg';
@@ -9,6 +11,55 @@ const Section7 = () => {
     const dispatch = useDispatch();
     const handleToggle = (menu) => {     
         dispatch(togglePopup(menu));
+    };
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const sliderRef = useRef(null);
+    let startX = 0;
+    let isSwiping = false;
+    let tempIndex = currentIndex;
+    const handleTouchStart = (e) => {
+        startX = e.touches[0].clientX;
+        isSwiping = true;
+    };
+
+    const handleTouchMove = (e) => {
+        if (!isSwiping) return;
+
+        const currentX = e.touches[0].clientX;
+        const diffX = startX - currentX;
+
+        const sliderTrack = sliderRef.current.querySelector('.slider-track');
+        sliderTrack.style.transition = 'none';
+        sliderTrack.style.transform = `translateX(-${tempIndex * 100 + (diffX / window.innerWidth) * 100}%)`;
+    };
+
+    const handleTouchEnd = (e) => {
+        if (!isSwiping) return; // Если не свайпим, выходим
+
+        const currentX = e.changedTouches[0].clientX;
+        const diffX = startX - currentX;
+
+        if (diffX > 50 && tempIndex < 5) {
+            // Swipe left, если не последняя карточка
+            tempIndex = Math.min(tempIndex + 1, 5); // Увеличиваем временный индекс, но не больше 5
+        } else if (diffX < -50 && tempIndex > 0) {
+            // Swipe right, если не первая карточка
+            tempIndex = Math.max(tempIndex - 1, 0); // Уменьшаем временный индекс, но не меньше 0
+        }
+
+        // Устанавливаем окончательную позицию слайдера
+        const sliderTrack = sliderRef.current.querySelector('.slider-track');
+        sliderTrack.style.transition = 'transform 0.3s ease'; // Включаем переход для плавного перемещения
+        sliderTrack.style.transform = `translateX(-${tempIndex * 100}%)`; // Устанавливаем позицию на основе временного индекса
+
+        // Обновляем состояние currentIndex только после завершения свайпа
+        setCurrentIndex(tempIndex);
+
+        isSwiping = false; // Сбрасываем флаг
+    };
+
+    const handleIndicatorClick = (index) => {
+        setCurrentIndex(index);
     };
     return(
         <section className="row" id="seventh_section" aria-labelledby="section7-title">
@@ -42,6 +93,34 @@ const Section7 = () => {
                                 <button title="Попробовать бесплатно" aria-label="Попробовать бесплатно" onClick={() => handleToggle('log_in')}>попробовать бесплатно</button>
                             </div>
                         ))}
+                    </div>
+                </div>
+                <div className="mob">
+                    <div className="slider" ref={sliderRef}>
+                        <div className="slider-list">
+                            <div className="slider-track" style={{ transition: 'transform 0.3s ease', transform: `translateX(-${currentIndex * 100}%)` }}>
+                                {Array(6).fill().map((_, index) => (
+                                    <div className="card" key={index} onTouchStart={handleTouchStart} onTouchMove={handleTouchMove} onTouchEnd={handleTouchEnd} style={{ opacity: currentIndex === index ? 1 : 0, visibility: currentIndex === index ? 'visible' : 'hidden', transition: 'opacity 0.5s ease' }}>
+                                        <p id={`card-title-${index}`}>#НазваниеНиши</p>
+                                        <p>Конверсия <span>19%</span></p>
+                                        <img src="#" alt="Изображение квиза" />
+                                        <h5>Привели 1.000.000₽<br />в нишу дачных домов</h5>
+                                        <a href="#" title="Смотреть квиз" aria-label="Смотреть квиз">Смотреть квиз</a>
+                                        <button title="Попробовать бесплатно" aria-label="Попробовать бесплатно" onClick={() => handleToggle('log_in')}>попробовать бесплатно</button>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                        <img src={swipeSvg} alt="#" className="swipe" />
+                        <div className="indic">
+                            {[...Array(6)].map((_, index) => (
+                                <button
+                                    key={index}
+                                    className={currentIndex === index ? 'activ' : ''}
+                                    onClick={() => handleIndicatorClick(index)}
+                                ></button>
+                            ))}
+                        </div>
                     </div>
                 </div>
 

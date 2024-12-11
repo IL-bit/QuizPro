@@ -1,11 +1,14 @@
 import './menu.scss';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { togglePopup, closePopup } from '../../../actions';
 import closeSvg from '../img/menu_close.svg';
+import logoSvg from '../img/logo.svg';
 
 const Menu = () => {
     const isOpen = useSelector((state) => state.pop_up);
     const dispatch = useDispatch();
+    const [showLogin, setShowLogin] = useState(true);
     
     const handleClosePopup = () => {
         dispatch(closePopup());
@@ -13,7 +16,22 @@ const Menu = () => {
     const handleToggle = (menu) => {     
         dispatch(togglePopup(menu));
     };
+    useEffect(() => {
+        if (isOpen === 'burger') {
+            const timer = setInterval(() => {
+                setShowLogin((prev) => !prev); // Переключаем состояние каждые 5 секунд
+            }, 7000);
 
+            return () => clearInterval(timer); // Очистка таймера при размонтировании
+        }
+    }, [isOpen]);
+    const handleScroll = (item) => {
+        dispatch(closePopup());
+        const element = document.getElementById(item);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+        }
+    }
 
     const renderForm = () => {
         switch (isOpen) {
@@ -21,12 +39,14 @@ const Menu = () => {
                 return (
                     <form id="log_in">
                         <button className="close" onClick={() => handleClosePopup()}><p><img src={closeSvg} alt="#" />Закрыть</p></button>
-                        <h2>Войти<span>Нет аккаунта? <a href="#">Зарегистрироваться</a></span></h2>
+                        <h2 className="pc">Войти<span>Нет аккаунта? <a href="#" onClick={() => handleToggle('regist')}>Зарегистрироваться</a></span></h2>
+                        <h2 className="mob">Войти<br/><span>Нет аккаунта? <a href="#" onClick={() => handleToggle('regist')}>Зарегистрироваться</a></span></h2>
                         <input type="email" placeholder='Введите почту'/>
                         <input type="password" placeholder='Введите пароль'/>  
                         <button>войти</button>                  
                         <button onClick={() => handleToggle('reset')}>Я забыл(а) пароль</button>
-                        <p>Нажимая на кнопку, вы соглашаетесь <a href="#" >с политикой<br/>конфиденциальности и политикой использования<br/>персональных данных</a></p>
+                        <p className="pc">Нажимая на кнопку, вы соглашаетесь <a href="#" >с политикой<br/>конфиденциальности и политикой использования<br/>персональных данных</a></p>
+                        <p className="mob">Нажимая на кнопку, вы соглашаетесь<br/><a href="#" >с политикой конфиденциальности и политикой<br/>использования персональных данных</a></p>
                     </form>
                 );
             case 'regist':
@@ -40,7 +60,7 @@ const Menu = () => {
                         <input type="password" placeholder="Введите пароль"/>
                         <input type="password" placeholder="Повторите пароль"/>
                         <button>Зарегистрироваться</button>
-                        <p>Нажимая на кнопку, вы соглашаетесь <a href="#">с политикой конфиденциальности<br/>и политикой использования персональных данных</a></p>
+                        <p className="mob">Нажимая на кнопку, вы соглашаетесь<br/><a href="#">с политикой конфиденциальности и политикой<br/> использования персональных данных</a></p>
                     </form>
                 );
             case 'reset':
@@ -50,6 +70,7 @@ const Menu = () => {
                         <h2>Восстановить пароль</h2>
                         <input type="email" placeholder="Введите почту"/>
                         <button type="button" onClick={() => handleToggle('send')}>сбросить пароль</button>
+                        <p className="mob">Нажимая на кнопку, вы соглашаетесь<br/><a href="#" >с политикой конфиденциальности и политикой<br/>использования персональных данных</a></p>
                     </form>
                 );
             case 'send':
@@ -59,6 +80,32 @@ const Menu = () => {
                         <h2>Отправили письмо<br/>на вашу почту</h2>
                         <p>Зайдите на ваш email<br/>и восстановите пароль</p>
                         <button onClick={() => handleToggle('log_in')}>вернуться к авторизации</button>
+                        <p className="mob">Нажимая на кнопку, вы соглашаетесь<br/><a href="#" >с политикой конфиденциальности и политикой<br/>использования персональных данных</a></p>
+                    </div>
+                );
+            case 'burger':
+                return (
+                    <div id="burger">
+                        <header>
+                            <img src={logoSvg} alt="#" />
+                            <button>Создать квиз</button>
+                            <button onClick={() => handleClosePopup()}></button>
+                        </header>
+                        <nav>
+                            <ul>
+                            <li onClick={() => handleScroll('third_section')}>О квизах</li>
+                            <li onClick={() => handleScroll('fourth_section')}>Преимущества</li>
+                            <li onClick={() => handleScroll('seventh_section')}>Кейсы</li>
+                            <li onClick={() => handleScroll('eighth_section')}>Возможности</li>
+                            <li onClick={() => handleScroll('fifth_section')}>Маркетологам</li>
+                            </ul>
+                        </nav>
+                        {showLogin ? (
+                            <button className="log_in" onClick={() => handleToggle('log_in')}>Войти</button>
+                        ) : (
+                            <button className="regist" onClick={() => handleToggle('regist')}>Регистрация</button>
+                        )}
+                        <p onClick={() => handleToggle('reset')}>Забыли пароль?</p>
                     </div>
                 );
             default:
