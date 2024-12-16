@@ -8,6 +8,7 @@ import cursor from '../img/cursor.svg';
 import cursor2 from '../img/cursor_mob.svg';
 
 const Section7 = () => {
+    const appData = window.appData;
     const dispatch = useDispatch();
     const handleToggle = (menu) => {     
         dispatch(togglePopup(menu));
@@ -71,24 +72,24 @@ const Section7 = () => {
                 <h3 className="mob">Мы собрали базу <b>самых прибыльных</b><br/>и актуальных опросников.<br /><br />Вам остается выбрать нишу<br/>и <b>получать заявки</b></h3>
                 <div className="pc">
                     <div className="cards">
-                        {Array(3).fill().map((_, index) => (
-                            <div className="card" key={index} aria-labelledby={`card-title-${index}`}>
-                                <p id={`card-title-${index}`}>#НазваниеНиши</p>
-                                <p>Конверсия <span>19%</span></p>
+                        {appData.slice(0, 3).map((item, index) => (
+                            <div className="card" key={item.id} aria-labelledby={`card-title-${index}`}>
+                                <p id={`card-title-${index}`}>{item.cardTitle}</p>
+                                <p>Конверсия <span>{item.convers}</span></p>
                                 <img src="#" alt="Изображение квиза" />
-                                <h5>Привели 1.000.000₽<br />в нишу дачных домов</h5>
+                                <h5>{item.name}</h5>
                                 <a href="#" title="Смотреть квиз" aria-label="Смотреть квиз">Смотреть квиз</a>
                                 <button title="Попробовать бесплатно" aria-label="Попробовать бесплатно" onClick={() => handleToggle('log_in')}>попробовать бесплатно</button>
                             </div>
                         ))}
                     </div>
                     <div className="cards">
-                        {Array(3).fill().map((_, index) => (
-                            <div className="card" key={index} aria-labelledby={`card-title-${index}`}>
-                                <p id={`card-title-${index}`}>#НазваниеНиши</p>
-                                <p>Конверсия <span>19%</span></p>
+                        {appData.slice(3, 6).map((item, index) => (
+                            <div className="card" key={item.id} aria-labelledby={`card-title-${index}`}>
+                                <p id={`card-title-${index}`}>{item.cardTitle}</p>
+                                <p>Конверсия <span>{item.convers}</span></p>
                                 <img src="#" alt="Изображение квиза" />
-                                <h5>Привели 1.000.000₽<br />в нишу дачных домов</h5>
+                                <h5>{item.name}</h5>
                                 <a href="#" title="Смотреть квиз" aria-label="Смотреть квиз">Смотреть квиз</a>
                                 <button title="Попробовать бесплатно" aria-label="Попробовать бесплатно" onClick={() => handleToggle('log_in')}>попробовать бесплатно</button>
                             </div>
@@ -99,12 +100,12 @@ const Section7 = () => {
                     <div className="slider" ref={sliderRef}>
                         <div className="slider-list">
                             <div className="slider-track" style={{ transition: 'transform 0.3s ease', transform: `translateX(-${currentIndex * 100}%)` }}>
-                                {Array(6).fill().map((_, index) => (
-                                    <div className="card" key={index} onTouchStart={handleTouchStart} onTouchMove={handleTouchMove} onTouchEnd={handleTouchEnd} style={{ opacity: currentIndex === index ? 1 : 0, visibility: currentIndex === index ? 'visible' : 'hidden', transition: 'opacity 0.5s ease' }}>
-                                        <p id={`card-title-${index}`}>#НазваниеНиши</p>
-                                        <p>Конверсия <span>19%</span></p>
+                                {appData.slice(0, 6).map((item, index) => (
+                                    <div className="card" key={item.id} aria-labelledby={`card-title-${index}`}>
+                                        <p id={`card-title-${index}`}>{item.cardTitle}</p>
+                                        <p>Конверсия <span>{item.convers}</span></p>
                                         <img src="#" alt="Изображение квиза" />
-                                        <h5>Привели 1.000.000₽<br />в нишу дачных домов</h5>
+                                        <h5>{item.name}</h5>
                                         <a href="#" title="Смотреть квиз" aria-label="Смотреть квиз">Смотреть квиз</a>
                                         <button title="Попробовать бесплатно" aria-label="Попробовать бесплатно" onClick={() => handleToggle('log_in')}>попробовать бесплатно</button>
                                     </div>

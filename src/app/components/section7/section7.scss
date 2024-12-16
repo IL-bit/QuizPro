@@ -107,9 +107,12 @@
                 text-align: center;
                 color: #1a1c20;
                 margin-top: 28px;
+                width: 170px;
+                position: relative;
+                left: 50%;
+                transform: translateX(-50%);
             }
             a {
-                margin-top: 34px;
                 font-weight: 400;
                 font-size: 14px;
                 line-height: 140%;
@@ -117,6 +120,10 @@
                 color: #105efe;
                 text-decoration: none;
                 text-align: center;
+                position: absolute;
+                bottom: 116px;
+                left: 50%;
+                transform: translateX(-50%);
             }
             button {
                 width: 299px;
@@ -129,10 +136,10 @@
                 border: none;
                 border-radius: 92px;
                 background: linear-gradient(178deg, #ff6d0e 0%, #fd4e12 100%); 
-                margin-top: 16px;
-                position: relative;
+                position: absolute;
+                bottom: 20px;
                 left: 50%;
-                transform: translateX(-50%);   
+                transform: translateX(-50%); 
             }
         }
     }
@@ -277,9 +284,12 @@
                     letter-spacing: -0.03em;
                     text-align: center;
                     margin-top: 25px;
+                    width: 170px;
+                    position: relative;
+                    left: 50%;
+                    transform: translateX(-50%);
                 }
                 a {
-                    margin-top: 32px;
                     font-weight: 400;
                     font-size: 12px;
                     line-height: 140%;
@@ -287,6 +297,10 @@
                     color: #105efe;
                     text-decoration: none;
                     text-align: center;
+                    position: absolute;
+                    bottom: 104px;
+                    left: 50%;
+                    transform: translateX(-50%);
                 }
                 button {
                     border-radius: 83px;
@@ -301,8 +315,8 @@
                     border: none;
                     border-radius: 92px;
                     background: linear-gradient(178deg, #ff6d0e 0%, #fd4e12 100%); 
-                    margin-top: 16px;
-                    position: relative;
+                    bottom: 20px;
+                    position: absolute;
                     left: 50%;
                     transform: translateX(-50%);   
                 }

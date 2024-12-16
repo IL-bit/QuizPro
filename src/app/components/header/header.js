@@ -31,7 +31,7 @@ const Header = () => {
                             <li onClick={() => handleScroll('fifth_section')}>Маркетологам</li>
                         </ul>
                     </nav>
-                    <button className="create" title="Создать новый квиз">Создать квиз</button>                
+                    <button className="create" title="Создать новый квиз" onClick={() => handleToggle('log_in')}>Создать квиз</button>                
                 </div>
                 <div className="col-xxl-3 col-xl-3 col-lg-3 col-2">
                     <div className="buttons">

@@ -4,6 +4,7 @@ import icon1 from '../img/user.svg';
 import icon2 from '../img/support.svg';
 
 const Section8 = () => {
+    const appConfig = window.appConfig;
     return(
         <section className="row" id="eighth_section" aria-labelledby="section8-title">
             <div className="col-xxl-6 offset-xxl-1 pc">
