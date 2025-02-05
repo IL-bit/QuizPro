@@ -16,20 +16,20 @@ const Section3 = () => {
                         <img src={icon1Svg} alt="Иконка тестирования ниш" className="icon pc" />
                         <img src={icon1MobSvg} alt="Иконка тестирования ниш для мобильных" className="icon mob" />
                         <h3 id="item1-heading">Идеальный вариант<br/><b>тестировать </b>новые<br/>ниши и направления</h3>
-                        <div></div>
+                        <div className='div_img1'></div>
                     </article>
                     <article className="item" aria-labelledby="item2-heading">
                         <img src={icon2Svg} alt="Иконка сайта" className="icon pc" />
                         <img src={icon2MobSvg} alt="Иконка сайта для мобильных" className="icon mob" />
                         <h3 className="pc" id="item2-heading"><b>Не нужно платить</b><br/>за дорогой сайт, ждать<br/>его разработки и рисковать<br/>остаться без заявок</h3>
                         <h3 className="mob" id="item2-heading"><b>Не нужно платить</b> за дорогой сайт,<br/>ждать его разработки и рисковать<br/>остаться без заявок</h3>
-                        <div></div>
+                        <div className='div_img2'></div>
                     </article>
                     <article className="item" aria-labelledby="item3-heading">
                         <img src={icon3Svg} alt="Иконка дизайна" className="icon pc" />
                         <img src={icon3MobSvg} alt="Иконка дизайна для мобильных" className="icon mob" />
                         <h3 id="item3-heading"><b>Простой и понятный дизайн</b><br/>поможет создать квиз новичку<br/>и опытному предпринимателю<br/>за 5-10 минут</h3>
-                        <div></div>
+                        <div className='div_img3'></div>
                     </article>
                 </div>
             </div>

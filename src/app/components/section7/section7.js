@@ -101,7 +101,11 @@ const Section7 = () => {
                         <div className="slider-list">
                             <div className="slider-track" style={{ transition: 'transform 0.3s ease', transform: `translateX(-${currentIndex * 100}%)` }}>
                                 {appData.slice(0, 6).map((item, index) => (
-                                    <div className="card" key={item.id} aria-labelledby={`card-title-${index}`}>
+                                    <div className="card" key={item.id} aria-labelledby={`card-title-${index}`}
+                                    onTouchStart={handleTouchStart} 
+                                    onTouchMove={handleTouchMove} 
+                                    onTouchEnd={handleTouchEnd} style={{ opacity: currentIndex === index ? 1 : 0, visibility: currentIndex === index ? 'visible' : 'hidden', transition: 'opacity 0.5s ease' }}
+                                    >
                                         <p id={`card-title-${index}`}>{item.cardTitle}</p>
                                         <p>Конверсия <span>{item.convers}</span></p>
                                         <img src="#" alt="Изображение квиза" />

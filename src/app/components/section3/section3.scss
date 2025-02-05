@@ -60,10 +60,22 @@
                 width: 334px;
                 height: 230px;
                 background: #d3d3d3;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
                 position: absolute;
                 top: 234px;
                 left: 50%;
                 transform: translateX(-50%);
+            }
+            .div_img1 {
+                background: url(../img/div_0.png);
+            }
+            .div_img2 {
+                background: url(../img/div_1.png);
+            }
+            .div_img3 {
+                background: url(../img/div_2.png);
             }
         }
     }

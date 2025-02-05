@@ -3,6 +3,12 @@ import { togglePopup, toggleButton } from '../../../actions';
 import { useDispatch, useSelector } from 'react-redux';
 import openSvg from '../img/open.svg';
 import closeSvg from '../img/close.svg';
+import div_func_1 from '../img/div_func_1.png';
+import div_func_2 from '../img/div_func_2.png';
+import div_func_3 from '../img/div_func_3.png';
+import div_func_4 from '../img/div_func_4.png';
+import div_func_5 from '../img/div_func_5.png';
+import div_func_6 from '../img/div_func_6.png';
 
 
 const Section5 = () => {
@@ -16,13 +22,13 @@ const Section5 = () => {
         dispatch(toggleButton(index));
     };
     const images = [
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
+        '..',
+        div_func_1,
+        div_func_2,
+        div_func_3,
+        div_func_4,
+        div_func_5,
+        div_func_6
     ];    
     
     return (
