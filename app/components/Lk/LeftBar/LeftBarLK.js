@@ -1,3 +1,4 @@
+"use client";
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -31,7 +32,7 @@ const LeftBarLK = () => {
           <p>Все заявки</p>
           <div className="count">22</div>
         </div>
-        <div className="rate">
+        <div className="rate" onClick={() => window.location.href = '/user/rate'}>
           <Image src={Rate} alt="#"/>
           <p>Тариф</p>
           <div className="rates activ">Base</div>
@@ -43,7 +44,7 @@ const LeftBarLK = () => {
           <div className="btns">
             <button>Создать квиз <Image src={Arrow} alt='#'/></button>
             <button>Недавние <Image src={Arrow2} alt='#'/></button>
-            <button>Мои квизы</button>         
+            <button onClick={() => window.location.href = '/user'}>Мои квизы</button>         
             <Link href='#'><Image alt='#' src={Support}/>Написать в поддержку</Link>
           </div>
           <Link href='#'><Image alt='#' src={Logout}/>Сменить аккаунт</Link>

@@ -1,11 +1,14 @@
 import './style.scss';
+import Image from 'next/image';
+import Logo from '../public/logo.svg'
+
 export default function Home() {
   return (
     <div className="container">
       <div className="row">
         <div className="col-xxl-4 mx-auto text-center">
           <div id="blur"></div>
-          <div className="img"></div>
+          <Image src={Logo} alt='#' className='img' />
           <h2>Войти</h2>
           <form action="#">
               <input type="email" name="email" placeholder="Введите почту" className="form"/>
