@@ -1,3 +1,4 @@
+"use client";
 import './style.scss';
 import Image from 'next/image';
 import Logo from '../public/logo.svg'
@@ -10,7 +11,7 @@ export default function Home() {
           <div id="blur"></div>
           <Image src={Logo} alt='#' className='img' />
           <h2>Войти</h2>
-          <form action="#">
+          <form action="#" onClick={() => window.location.href = '/user'}>
               <input type="email" name="email" placeholder="Введите почту" className="form"/>
               <input type="password" name="password" placeholder="Введите пароль" className="form"/>
               <button>Вход</button>

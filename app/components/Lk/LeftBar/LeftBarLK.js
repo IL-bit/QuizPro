@@ -12,6 +12,7 @@ import Rate from '../../../../public/rate.svg';
 import applications from '../../../../public/applic.svg';
 import Balance from '../../../../public/balance.svg';
 import Balance2 from '../../../../public/balance2.svg';
+import Pop_up from './pop-up/pop-up';
 
 const LeftBarLK = () => {
   return (
@@ -25,6 +26,7 @@ const LeftBarLK = () => {
           <div className="account">
             <button className='base'>D</button>
             <div className="new">1</div>
+            <Pop_up />
           </div>
         </div>
         <div className="applications">
