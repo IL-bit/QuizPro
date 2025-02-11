@@ -1,0 +1,43 @@
+#notification {
+    width: 100%;
+    height: calc(100vh - 50px);
+    max-height: 902px;
+    border: 1px solid #1d2a33;
+    border-radius: 25px;
+    background: #0f181e;
+    padding-top: 30px;
+    padding-left: 15px;
+    position: relative;
+    h2 {
+        margin-left: 39px;
+        font-weight: 500;
+        font-size: 26px;
+        color: #fff;
+        margin-bottom: 0;
+    }
+    >.count {
+        width: 29px;
+        height: 29px;
+        border-radius: 100%;
+        background: #ff3a3a;
+        position: absolute;
+        left: auto;
+        top: 31px;
+        right: 41px;
+        font-weight: 700;
+        font-size: 15px;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .notification_content {
+        margin-top: 37px;
+        border: 1px solid rgba(66, 87, 102, 0.38);
+        border-radius: 20px;
+        width: 98%;
+        height: 789px;
+        background: #0f181e;
+        padding: 15px 13px;
+    }
+}

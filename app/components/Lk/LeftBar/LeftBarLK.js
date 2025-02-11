@@ -1,5 +1,5 @@
 "use client";
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import './style.scss';
@@ -12,9 +12,27 @@ import Rate from '../../../../public/rate.svg';
 import applications from '../../../../public/applic.svg';
 import Balance from '../../../../public/balance.svg';
 import Balance2 from '../../../../public/balance2.svg';
-import Pop_up from './pop-up/pop-up';
+import Pop_up from './pop-up/Pop-up';
 
 const LeftBarLK = () => {
+  const [isPopupVisible, setIsPopupVisible] = useState(false);
+
+  const handleAccountClick = () => {
+    setIsPopupVisible(true);
+  };
+
+  const handleDocumentClick = (event) => {
+    if (!event.target.closest('.account') && !event.target.closest('.pop-up')) {
+      setIsPopupVisible(false);
+    }
+  };
+
+  React.useEffect(() => {
+    document.addEventListener('click', handleDocumentClick);
+    return () => {
+      document.removeEventListener('click', handleDocumentClick);
+    };
+  }, []);
   return (
     <div id="LeftBarLk">
         <div className="head">
@@ -23,13 +41,13 @@ const LeftBarLK = () => {
             <p><Image src={Balance} alt="#"/>Баланс</p>
             <button><Image src={Balance2} alt="#"/><p>1.234 ₽</p></button>
           </div>
-          <div className="account">
-            <button className='base'>D</button>
+          <div className="account" onClick={handleAccountClick}>
+            <button className="base">D</button>
             <div className="new">1</div>
-            <Pop_up />
+            {isPopupVisible && <Pop_up />}
           </div>
         </div>
-        <div className="applications">
+        <div className="applications" onClick={() => window.location.href = '/user/applications'}>
           <Image src={applications} alt="#"/>
           <p>Все заявки</p>
           <div className="count">22</div>

@@ -15,7 +15,7 @@ const Pop_up = () => {
     <div id='pop_up'>
         <div className="head">
             <h3><Image src={person} alt='#'/>Мой профиль</h3>
-            <button className='notification'><span>1</span></button>
+            <button className='notification' onClick={() => window.location.href = '/user/notifications'}><span>1</span></button>
         </div>
         <div className="application">
             <p className='count'>{data.max - data.count} заявок осталось</p>
@@ -28,7 +28,7 @@ const Pop_up = () => {
         </div>
         <h4>Помощь</h4>
         <ul>
-            <li>База знаний</li>
+            <li onClick={() => window.location.href = '/user/base'}>База знаний</li>
             <li>Галерея шаблонов</li>
             <li>Ответы на частые вопросы</li>
             <li>Новые фичи в Qz</li>
