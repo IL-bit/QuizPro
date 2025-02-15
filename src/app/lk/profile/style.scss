@@ -1,0 +1,220 @@
+#profile {
+    width: 100%;
+    height: calc(100vh - 50px);
+    max-height: 902px;
+    border: 1px solid #1d2a33;
+    border-radius: 25px;
+    background: #0f181e;
+    padding-top: 17px;
+    position: relative;
+    >.head {
+        width: 100%;
+        display: flex;
+        margin-bottom: 20px;
+        h2 {
+            margin: 0;
+            margin-top: 13px;
+            margin-left: 54px;
+            font-weight: 500;
+            font-size: 26px;
+            color: #fff;
+        }
+        p {
+            margin: 0;
+            margin-top: 20px;
+            margin-left: auto;
+            margin-right: 26px;
+            font-weight: 500;
+            font-size: 16px;
+            color: #fff;
+            img {
+                margin-right: 7px;
+                margin-top: -4px;
+            }
+        }
+        .balance {
+            border: 1px solid #1d2a33;
+            border-radius: 18px;
+            width: 129px;
+            height: 61px;
+            background: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 16px;
+            color: #fff;
+            margin-right: 8px;
+        }
+        >:nth-child(4) {
+            border: 1px solid #1d2a33;
+            border-radius: 18px;
+            width: 129px;
+            height: 61px;
+            background: #105efe;
+            font-weight: 500;
+            font-size: 16px;
+            color: #fff;
+            margin-right: 8px;
+        }
+        >:nth-child(5) {
+            border: 1px solid #fff;
+            border-radius: 18px;
+            width: 129px;
+            height: 61px;
+            background: none;
+            font-weight: 500;
+            font-size: 16px;
+            color: #fff;
+            margin-right: 56px;
+        }
+    }
+    .email, .password, .name, .phone {
+        border: none;
+        border-top: 1px solid #1d2a33;
+        background: #0f181e;        
+        border-radius: 25px;
+        width: 100%;        
+        padding-left: 54px;
+        padding-top: 18px;
+        display: flex;
+        position: relative;
+        >h6 {
+            margin: 0;
+            font-weight: 500;
+            font-size: 16px;
+            color: #fff;
+            margin-top: 19px;
+        }
+        >div {
+            position: absolute;
+            border: 1px solid #1d2a33;
+            border-radius: 29px;
+            width: 424px;
+            height: 58px;
+            left: 237px;
+            top: 18px;
+            display: flex;
+            align-items: center;
+            font-weight: 400;
+            font-size: 16px;
+            color: #96a4ad;
+            padding-left: 37px;
+        }
+    }
+    >.email {
+        height: 95px;
+    }
+    >.password {
+        height: 97px;
+    }
+    >.name {
+        height: 95px;
+    }
+    >.phone {
+        border-bottom: 1px solid #1d2a33;
+        height: 276px;
+        >:nth-child(3) {
+            border: none;
+            border-radius: 18px;
+            width: 351px;
+            height: 82px;
+            background: #105efe;
+            font-weight: 500;
+            font-size: 18px;
+            color: #fff;
+            position: absolute;
+            left: 54px;
+            top: auto;
+            bottom: 47px;
+        }
+        >:nth-child(4) {
+            font-weight: 500;
+            font-size: 18px;
+            color: #fff;
+            position: absolute;
+            left: 442px;
+            top: auto;
+            bottom: 74px;
+            margin-bottom: 0px;
+            cursor: pointer;
+        }
+    }
+    >.tg_notification {
+        border: none;
+        border-bottom: 1px solid #1d2a33;
+        background: #0f181e;        
+        border-radius: 25px;
+        width: 100%;        
+        height: 114px;
+        padding-left: 54px;
+        display: flex;
+        align-items: center;
+        position: relative;
+        p {
+            font-weight: 400;
+            font-size: 16px;
+            color: #96a4ad;
+            margin: 0;
+            span {
+                font-weight: 500;
+                color: #fff;
+            }
+        }
+        div {
+            border: 1px solid #1d2a33;
+            border-radius: 29px;
+            width: 424px;
+            height: 58px;
+            display: flex;
+            align-items: center;
+            font-weight: 400;
+            font-size: 16px;
+            color: #96a4ad;
+            padding-left: 37px;
+            margin-left: auto;
+            margin-right: 56px;
+        }
+    }
+    >.referal {
+        width: 100%;        
+        padding-left: 54px;
+        padding-top: 24px;
+        display: flex;
+        p {
+            font-weight: 500;
+            font-size: 14px;
+            color: #fff;
+            margin-top: 12px;
+        }
+        div {
+            border: none;
+            border-radius: 18px;
+            width: 280px;
+            height: 60px;
+            background: none;
+            display: flex;
+            padding-left: 28px;
+            align-items: center;
+            margin-left: 32px;
+            font-weight: 500;
+            font-size: 15px;
+            color: #fff;
+        }
+        button {
+            margin-top: 4px;
+            margin-left: 11px;
+            font-weight: 300;
+            font-size: 15px;
+            color: #fff;
+            border-radius: 18px;
+            width: 139px;
+            height: 51px;
+            background: none;
+            border: none;
+            img {
+                margin-left: 6px;
+            }
+        }
+    }
+}
