@@ -1,0 +1,159 @@
+#constructor {
+    width: 100%;
+    height: calc(100vh - 50px);
+    max-height: 902px;
+    border: 1px solid #1d2a33;
+    border-radius: 25px;
+    background: #0f181e;
+    padding: 14px 16px 13px 15px;
+    position: relative;
+    >button {
+        border: none;
+        border-radius: 16px;
+        width: 211px;
+        height: 58px;
+        background: none;        
+        font-weight: 400;
+        font-size: 16px;
+        color: #fff;
+    }
+    >:nth-child(2), >:nth-child(3) {
+        margin-left: 9px;
+        border: 1px solid #1d2a33;
+        width: 179px;
+    }
+    >.activ {
+        background: #105efe;
+    }
+    >.body {
+        width: calc(100% - 15px - 16px - 2px);
+        padding-top: 7px;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 13px;
+        height: auto;
+        border: 1px solid #1d2a33;
+        border-radius: 25px;
+        background: #0f181e;
+        margin-top: auto;
+        margin-bottom: 0;
+        >canvas {
+            width: calc(100% - 18px);
+            height: 500px;
+            background: #fff;
+            border-radius: 25px;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        >.instrumens {
+            width: 100%;
+            padding-left: 23px;
+            margin-top: 30px;
+            display: flex;
+            >.background {
+                width: 308px;
+                height: 91px;        
+                p {
+                    margin: 0;
+                    font-weight: 400;
+                    font-size: 14px;
+                    color: #fff;
+                }
+                >div {
+                    width: 100%;
+                    padding-left: 4px;
+                    padding-right: 4px;
+                    display: flex;
+                    align-items: center;
+                    border: 1px solid #1d2a33;
+                    border-radius: 16px;
+                    margin-top: 16px;
+                    height: 58px;
+                    button {
+                        border-radius: 16px;
+                        width: 157px;
+                        height: 52px;
+                        background: none;
+                        font-weight: 400;
+                        font-size: 16px;
+                        color: #425766;
+                        border: none;
+                    }
+                    >button.active {
+                        color: #0f171e;
+                        background: #fff;
+                    }
+                }
+            }
+            >.design {
+                width: 277px;
+                height: 88px;
+                margin-left: 30px;
+                p {
+                    margin: 0;
+                    font-weight: 400;
+                    font-size: 14px;
+                    color: #fff;
+                }
+                >div {
+                    width: 100%;
+                    height: 52px;
+                    border-radius: 16px;
+                    border: none;
+                    background: #fff;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-top: 19px;
+                }
+            }      
+            >.align {
+                width: 144px;
+                height: 91px;
+                margin-left: 30px;
+                p {
+                    margin: 0;
+                    font-weight: 400;
+                    font-size: 14px;
+                    color: #fff;
+                }
+                >div {
+                    width: 100%;
+                    padding-left: 4px;
+                    padding-right: 4px;
+                    display: flex;
+                    align-items: center;
+                    border: 1px solid #1d2a33;
+                    border-radius: 16px;
+                    margin-top: 16px;
+                    height: 58px;
+                }
+            }      
+        }
+        >.start {
+            border: none;
+            border-top: 1px solid #1d2a33;
+            border-radius: 25px;
+            width: 100%;
+            height: 109px;
+            background: #0f181e;
+            margin-top: 63px;
+            padding-right: 38px;
+            padding-left: 39px;
+            display: flex;
+            align-items: center;
+            p {
+                font-weight: 400;
+                font-size: 20px;
+                color: #fff;
+                margin: 0;
+            }
+            >:nth-child(2) {
+                margin-left: auto;
+                margin-right: 0;
+            }
+        }
+    }
+}

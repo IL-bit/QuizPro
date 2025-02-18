@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './style.scss';
 import trash from '../../../img/application/trash.svg';
 import eye from '../../../img/application/eye.svg';
@@ -8,6 +9,10 @@ import email from '../../../img/application/email.svg';
 import subtract from '../../../img/application/Subtract.svg';
 
 const ApplicationSmall = () => {
+  const navigate = useNavigate();   
+  const handleClick = (route) => {
+    navigate(route);
+  };
   return (
     <div className="item">
       <div className="number">1</div>
@@ -18,7 +23,7 @@ const ApplicationSmall = () => {
         <li><img src={phone} alt="#" />+79129285745</li>
         <li><img src={email} alt="#" />emesh26042015@gmail.com</li>
       </ul>
-      <button className='look'><img src={eye} alt="#" /></button>
+      <button className='look' onClick={() => handleClick('/user/applications/answer')}><img src={eye} alt="#" /></button>
       <button className="delete"><img src={trash} alt="#" /></button>
     </div>
   )

@@ -64,7 +64,7 @@ const LeftBar = () => {
         </div>
         <nav>
           <div className="btns">
-            <button>Создать квиз <img src={Arrow} alt="#" /></button>
+            <button onClick={() => handleClick('/user/createquiz')}>Создать квиз <img src={Arrow} alt="#" /></button>
             <button>Недавние <img src={Arrow2} alt="#" /></button>
             <button onClick={() => handleClick('/user')}>Мои квизы</button>    
             <a href="#"><img src={Support} alt="#" />Написать в поддержку</a>     

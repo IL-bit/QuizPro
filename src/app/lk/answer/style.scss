@@ -1,0 +1,154 @@
+#answer {
+    border: 1px solid #1d2a33;
+    border-radius: 25px;
+    width: 100%;
+    height: auto;
+    background: #0f181e;
+    position: relative;
+    padding: 17px 26px 39px 15px;
+    >.answers {
+        border: 1px solid rgba(66, 87, 102, 0.38);
+        border-radius: 20px;
+        width: 100%;
+        height: auto;
+        background: #0f181e;
+        padding-top: 25px;
+        padding-bottom: 26px;
+        h2 {
+            margin: 0;
+            margin-left: 29px;
+            margin-bottom: 24px;
+            font-weight: 500;
+            font-size: 26px;
+            color: #fff;
+        }
+        >.info {
+            width: 100%;
+            height: auto;
+            padding: 20px 29px 31px 29px;
+            border: none;
+            border-top: 1px solid rgba(66, 87, 102, 0.38);
+            border-radius: 20px;
+            p {
+                margin: 0;
+                margin-bottom: 28px;
+                font-weight: 300;
+                font-size: 18px;
+                line-height: 36px;
+                color: #425766;
+                span {
+                    color: #fff;
+                }
+            }
+            >:nth-child(2) {
+                margin-bottom: 0;
+            }
+        }
+        >.answer {
+            width: 100%;
+            height: auto;
+            padding: 26px 29px 26px 29px;
+            border: none;
+            border-top: 1px solid rgba(66, 87, 102, 0.38);
+            border-radius: 20px;
+            >h2 {
+                margin-left: 0;
+            }
+            >div {
+                border: 1px solid rgba(66, 87, 102, 0.38);
+                border-radius: 20px;
+                width: 100%;
+                height: auto;
+                background: #151e26;
+                padding: 37px 46px 47px 57px;
+                p {
+                    margin: 0;
+                    margin-bottom: 28px;
+                    font-weight: 300;
+                    font-size: 18px;
+                    line-height: 140%;
+                    color: #667d8d;
+                    span {
+                        color: #fff;
+                    }
+                }
+                >:nth-last-child(1) {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+    >.footer {
+        width: 100%;
+        padding-top: 22px;
+        padding-left: 45px;
+        padding-right: 45px;
+        position: relative;
+        >.id_answer {
+            width: 100%;
+            border: 1px solid rgba(66, 87, 102, 0.38);
+            border-radius: 20px;
+            height: 101px;
+            background: #151e26;
+            padding-left: 57px;
+            padding-right: 15px;
+            display: flex;
+            align-items: center;
+            font-weight: 300;
+            font-size: 18px;
+            line-height: 140%;
+            color: #667d8d;
+            >div {
+                margin-left: auto;
+                margin-right: 0;
+                width: 645px;
+                border: 1px solid rgba(66, 87, 102, 0.38);
+                border-radius: 20px;
+                height: 72px;
+                background: #151e26;
+                padding-left: 34px;
+                display: flex;
+                align-items: center;
+                font-weight: 300;
+                font-size: 18px;
+                line-height: 140%;
+                color: #fff;
+            }
+        }
+        >.actions {
+            display: flex;
+            justify-content: space-between;
+            width: 490px;
+            height: 49px;
+            margin-top: 47px;
+            p {
+                margin: 0;
+                font-weight: 300;
+                font-size: 18px;
+                line-height: 140%;
+                color: #fff;
+                cursor: pointer;
+                img {
+                    margin-right: 10px;
+                    margin-top: -5px;
+                }
+            }
+        }
+        >button {
+            position: absolute;
+            left: auto;
+            right: 45px;
+            top: auto;
+            bottom: 0;
+            border: 1px solid rgba(66, 87, 102, 0.38);
+            border-radius: 20px;
+            width: 276px;
+            height: 72px;
+            background: #151e26;
+            font-weight: 300;
+            font-size: 18px;
+            line-height: 140%;
+            color: #fff;
+        }
+    }
+}

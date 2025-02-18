@@ -3,6 +3,8 @@ import LeftBar from '../../components/lk/leftBar/LeftBar';
 import './style.scss';
 import reload from '../../img/application/reload.svg';
 import expor from '../../img/application/export.svg';
+import filter from '../../img/application/filter.svg';
+import reset from '../../img/application/reset.svg';
 import ApplicationSmall from '../../components/lk/applications/ApplicationSmall';
 
 const Application = () => {
@@ -20,7 +22,13 @@ const Application = () => {
                     <button><img src={reload} alt="#" />Обновить</button>
                     <button><img src={expor} alt="#" />Экспорт</button>
                     <div className="content">
-                        <div className="filters"></div>
+                        <div className="filters">
+                            <div>Все заявки<img src={filter} alt="#" /></div>
+                            <div>Квизы<img src={filter} alt="#" /></div>
+                            <div>Город<img src={filter} alt="#" /></div>
+                            <div>За все время<img src={filter} alt="#" /></div>
+                            <p><img src={reset} alt="#" />Сбросить</p>
+                        </div>
                         <div className="items">
                             <div className="name">
                                 <p>№ заявки</p>

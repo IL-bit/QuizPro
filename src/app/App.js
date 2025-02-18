@@ -18,6 +18,9 @@ import Profile from './lk/profile/Profile.js';
 import Balance from './lk/balance/Balance.js';
 import Deposits from './lk/history/Deposits.js';
 import WriteOff from './lk/history/WriteOff.js';
+import Answer from './lk/answer/Answer.js';
+import CreateQuizes from './constructor/CreateQuizes.js';
+import CreateNew from './constructor/new/CreateNew.js';
 function App() {
   return (
     <>
@@ -27,6 +30,7 @@ function App() {
           <Route path="/user" element={<Start />} />
           <Route path="/user/rates" element={<User />} />
           <Route path="/user/applications" element={<Application />} />
+          <Route path="/user/applications/answer" element={<Answer />} />          
           <Route path="/user/notifications" element={<Notifications />} />
           <Route path="/user/base" element={<Base />} />
           <Route path="/user/base/advert" element={<Advert />} />
@@ -41,6 +45,8 @@ function App() {
           <Route path="/user/balance" element={<Balance />} />
           <Route path="/user/deposits" element={<Deposits />} />
           <Route path="/user/writeoff" element={<WriteOff />} />
+          <Route path="/user/createquiz" element={<CreateQuizes />} />
+          <Route path="/user/createquiz/new" element={<CreateNew />} />
         </Routes>
       </BrowserRouter>
     </>
