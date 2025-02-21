@@ -33,7 +33,7 @@ const PopUp = () => {
         <h4>Помощь</h4>
         <ul>
             <li onClick={() => handleClick('/user/base')}>База знаний</li>
-            <li>Галерея шаблонов</li>
+            <li onClick={() => handleClick('/user/createquizes')}>Галерея шаблонов</li>
             <li>Ответы на частые вопросы</li>
             <li>Новые фичи в Qz</li>
             <li>Предложить идею</li>

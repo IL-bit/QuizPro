@@ -1,0 +1,39 @@
+#integ {
+    border: 1px solid #1d2a33;
+    border-radius: 25px;
+    width: 100%;
+    height: 902px;
+    background: #0f181e;
+    padding-top: 37px;
+    position: relative;
+    h2 {
+        margin: 0;
+        margin-left: 48px;
+        margin-bottom: 30px;
+        font-weight: 500;
+        font-size: 26px;
+        color: #fff;
+    }
+    >.bitrix, >.amo, >.whatsapp, >.tg {
+        height: 107px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        padding-left: 48px;
+        border: none;
+        border-top: 1px solid #1d2a33;
+        border-radius: 25px;
+        background: #0f181e;
+        p {
+            margin: 0;
+            margin-left: 17px;
+            font-weight: 500;
+            font-size: 18px;
+            color: #fff;
+            img {
+                margin-left: 10px;
+                margin-top: -4px;
+            }
+        }
+    }
+}

@@ -21,6 +21,10 @@ import WriteOff from './lk/history/WriteOff.js';
 import Answer from './lk/answer/Answer.js';
 import CreateQuizes from './constructor/CreateQuizes.js';
 import CreateNew from './constructor/new/CreateNew.js';
+import Install from './constructor/install/Install.js';
+import Setting from './constructor/settings/Settings.js';
+import Referal from './lk/referal/Referal.js';
+import Integrations from './constructor/integ/Integrations.js';
 function App() {
   return (
     <>
@@ -29,6 +33,7 @@ function App() {
           <Route path="/" element={<Auth />} />
           <Route path="/user" element={<Start />} />
           <Route path="/user/rates" element={<User />} />
+          <Route path="/user/referal" element={<Referal />} />
           <Route path="/user/applications" element={<Application />} />
           <Route path="/user/applications/answer" element={<Answer />} />          
           <Route path="/user/notifications" element={<Notifications />} />
@@ -45,8 +50,11 @@ function App() {
           <Route path="/user/balance" element={<Balance />} />
           <Route path="/user/deposits" element={<Deposits />} />
           <Route path="/user/writeoff" element={<WriteOff />} />
-          <Route path="/user/createquiz" element={<CreateQuizes />} />
+          <Route path="/user/createquizes" element={<CreateQuizes />} />
           <Route path="/user/createquiz/new" element={<CreateNew />} />
+          <Route path="/user/quiz/install" element={<Install />} />
+          <Route path="/user/quiz/settings" element={<Setting />} />
+          <Route path="/user/quiz/integrations" element={<Integrations />} />
         </Routes>
       </BrowserRouter>
     </>

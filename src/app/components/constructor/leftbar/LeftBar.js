@@ -22,15 +22,15 @@ const LeftBar = () => {
     <div id="LeftBarConstr">
       <div className="head">
         <img src={logo} alt="#" />
-        <button onClick={() => handleClick('/user/createquiz')}></button>
+        <button onClick={() => handleClick('/user/createquizes')}></button>
       </div>
       <nav>
-        <div className="edit">
+        <div className="edit" onClick={() => handleClick('/user/createquiz/new')}>
           <img src={pen} alt="#" />
           <p>Редактор</p>
           <img src={arrow1} alt="#"/>
         </div>
-        <div className="install">
+        <div className="install" onClick={() => handleClick('/user/quiz/install')}>
           <img src={install} alt="#" />
           <p>Установка</p>
           <img src={arrow2} alt="#"/>
@@ -51,12 +51,12 @@ const LeftBar = () => {
         <p>Дизайн</p>
         <img src={arrow2} alt="#" />
       </div>
-      <div className="integrations">
+      <div className="integrations" onClick={() => handleClick('/user/quiz/integrations')}>
         <img src={integ} alt="#" />
         <p>Интеграции</p>
         <img src={arrow2} alt="#" />
       </div>
-      <div className="settings">
+      <div className="settings" onClick={() => handleClick('/user/quiz/settings')}>
         <img src={settings} alt="#" />
         <p>Настройки</p>
         <img src={arrow2} alt="#" />
