@@ -1,5 +1,4 @@
 import { createAction } from "@reduxjs/toolkit";
-import { data } from "react-router";
 
 // Действия для управления состоянием
 export const buttonClick = createAction('HANDLEBUTTONCLICK');
@@ -25,3 +24,6 @@ export const setCurrentQuestion = createAction('HANDLESETCURRENTQUESTION');
 export const addQuestion = createAction('ADDQUESTION', data => ({ payload: data }));
 export const updateQuestion = createAction('UPDATEQUESTION', data => ({ payload: data }));
 export const incremenCountQuestion = createAction('INCREMENTCOUNTQUESTION');
+export const changeQuestion = createAction('CHANGEQUESTION');
+export const removeQuestion = createAction('REMOVEQUESTION');
+export const clearCanvas2 = createAction('CLEAR_CANVAS2');

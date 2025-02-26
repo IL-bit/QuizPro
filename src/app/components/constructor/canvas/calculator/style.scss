@@ -139,6 +139,30 @@
                 }
             }
         }  
+        >.btns {
+            position: absolute;
+            right: 40px;
+            bottom: 30px;
+            width: 85px;
+            height: 46px;
+            display: flex;
+            justify-content: space-between;
+            button {
+                width: 33px;
+                height: 46px;
+                border: none;
+                background: url(../../../../img/Constructor/create/arrow2.svg);
+                background-position: center;
+                background-size: cover;
+                background-repeat: no-repeat;
+            }
+            >:nth-child(1) {
+                transform: rotate(180deg);
+            }            
+            >.disactive {
+                background: url(../../../../img/Constructor/create/arrow3.svg);
+            }
+        }
         >:nth-last-child(1).plus {
             width: 69px;
             height: 69px;

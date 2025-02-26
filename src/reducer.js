@@ -6,7 +6,6 @@ const initialState = {
         currentSection: 0,
         currentQuestion: null,
         currentQuestionIndex: 0,
-        countQuestion: 1,
         data: {
             canvas1: {
                 title: 'Введите заголовок формы',
@@ -19,11 +18,6 @@ const initialState = {
                 button: 'Начать'
             },
             canvas2: [
-                {
-                    name: 'Answers',
-                    question: 'Впишите заголовок вопроса',
-                    answers: ['ffff', 'ffff', 'ffff']
-                }
             ],
             canvas3: {
                 title: 'Введите заголовок формы',
@@ -32,7 +26,8 @@ const initialState = {
                 name: 'Иван',
                 email: 'Mail@example.com',
                 phone: '+7 (900) 000-00-00'
-            }            
+            },
+            title: ''         
         }
 
     },
@@ -79,7 +74,6 @@ const RootReducer = createReducer(initialState, builder => {
         state.createQuiz.currentQuestion = action.payload;
     })
     .addCase('INCREMENTCOUNTQUESTION', (state) => {
-        ++state.createQuiz.countQuestion;
         ++state.createQuiz.currentQuestionIndex;
         state.createQuiz.currentQuestion = null;
     })
@@ -89,6 +83,23 @@ const RootReducer = createReducer(initialState, builder => {
             ...state.createQuiz.data.canvas2[index], // Сохраняем остальные поля
             ...newQuestionData // Обновляем только нужные поля
         };
+    })
+    .addCase('CHANGEQUESTION', (state, action) => {
+        if (state.createQuiz.currentQuestionIndex === 0) {
+            state.createQuiz.currentQuestionIndex = 0;
+        } else {
+            state.createQuiz.currentQuestionIndex += action.payload; // Увеличиваем или уменьшаем индекс
+        }
+
+    })
+    .addCase('REMOVEQUESTION', (state, action) => {
+        const { index } = action.payload;
+        state.createQuiz.data.canvas2.splice(index, 1); // Удаляем вопрос по индексу
+        state.createQuiz.currentQuestion = null; // Устанавливаем currentQuestion в null
+    })
+    .addCase('CLEAR_CANVAS2', (state) => {
+        state.createQuiz.data.canvas2 = []; // Очищаем canvas2
+        state.createQuiz.currentQuestionIndex = 0; // Сбрасываем индекс текущего вопроса
     })
 });
 

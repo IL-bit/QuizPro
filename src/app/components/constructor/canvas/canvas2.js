@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector} from 'react-redux';
-import { setCurrentQuestion, incremenCountQuestion } from '../../../../actions';
+import { setCurrentQuestion, clearCanvas2 } from '../../../../actions';
 import './style.scss';
 import answer1 from '../../../img/Constructor/create/answer1.svg';
 import answer2 from '../../../img/Constructor/create/answer2.svg';
@@ -19,8 +19,13 @@ const Canvas2 = () => {
   const dispatch = useDispatch();
   const index = useSelector((state) => state.createQuiz.currentQuestionIndex);
   const currentQuestion = useSelector((state) => state.createQuiz.currentQuestion);
+
   const handleButtonClick = (componentName) => {
     dispatch(setCurrentQuestion(componentName));
+  };
+
+  const handleClearCanvas = () => {
+    dispatch(clearCanvas2()); // Вызываем action для очистки canvas2
   };
 
   const renderComponent = () => {
@@ -67,7 +72,7 @@ const Canvas2 = () => {
         </div>
       </div>    
       <div className="start">
-        <p><img src={close} alt="#" />Очистить все</p>
+        <p onClick={handleClearCanvas}><img src={close} alt="#" />Очистить все</p>
         <p>Настроить форму<img src={arrow} alt="#" /></p>
       </div>
     </>
