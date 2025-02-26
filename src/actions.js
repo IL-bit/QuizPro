@@ -23,4 +23,5 @@ export const setCurrentSection = createAction('HANDLESETCURRENTSECTION');
 
 export const setCurrentQuestion = createAction('HANDLESETCURRENTQUESTION');
 export const addQuestion = createAction('ADDQUESTION', data => ({ payload: data }));
+export const updateQuestion = createAction('UPDATEQUESTION', data => ({ payload: data }));
 export const incremenCountQuestion = createAction('INCREMENTCOUNTQUESTION');

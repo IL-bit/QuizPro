@@ -18,7 +18,13 @@ const initialState = {
                 tel: '+7 (900) 000-00-00',
                 button: 'Начать'
             },
-            canvas2: [],
+            canvas2: [
+                {
+                    name: 'Answers',
+                    question: 'Впишите заголовок вопроса',
+                    answers: ['ffff', 'ffff', 'ffff']
+                }
+            ],
             canvas3: {
                 title: 'Введите заголовок формы',
                 subtitle: 'Дополнительный текст-описание',
@@ -76,6 +82,13 @@ const RootReducer = createReducer(initialState, builder => {
         ++state.createQuiz.countQuestion;
         ++state.createQuiz.currentQuestionIndex;
         state.createQuiz.currentQuestion = null;
+    })
+    .addCase('UPDATEQUESTION', (state, action) => {
+        const { index, newQuestionData } = action.payload;
+        state.createQuiz.data.canvas2[index] = {
+            ...state.createQuiz.data.canvas2[index], // Сохраняем остальные поля
+            ...newQuestionData // Обновляем только нужные поля
+        };
     })
 });
 
