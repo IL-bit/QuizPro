@@ -12,6 +12,7 @@ import img from '../../../../img/Constructor/create/img.svg';
 const AnswersAndImg = () => {
     const dispatch = useDispatch();
     const index = useSelector((state) => state.createQuiz.currentQuestionIndex);
+    const count = useSelector((state) => state.createQuiz.countQuestions);
     const canvas2 = useSelector((state) => state.createQuiz.data.canvas2);
     
     const [data, setData] = useState({
@@ -48,7 +49,7 @@ const AnswersAndImg = () => {
     }, [canvas2, index]);
 
     const addAnswer = () => {
-        if (answers.length < 4) {
+        if (answers.length < 5) {
             setAnswers([...answers, {
                 id: Date.now(),
                 text: 'Добавьте ответ',
@@ -202,14 +203,14 @@ const AnswersAndImg = () => {
                             </div>
                         </div>
                     ))}
-                    <p onClick={addAnswer} style={{ display: answers.length > 3 ? 'none' : 'block' }}>Добавить ответ</p>
+                    <p onClick={addAnswer} style={{ display: answers.length > 4 ? 'none' : 'block' }}>Добавить ответ</p>
                     <p className="delete" onClick={handleDeleteQuestion}><img src={close} alt="#" />Удалить этот вопрос</p>
                 </div>
                 <div className="btns">
                     <button className={index === 0 ? 'disactive' : ''} onClick={handlePreviousQuestion}></button>
-                    <button className={index === canvas2.length ? 'disactive' : ''} onClick={handleNextQuestion}></button>
+                    <button className={index === canvas2.length - 1 ? 'disactive' : ''} onClick={handleNextQuestion}></button>
                 </div>
-                <div onClick={handleIncrement}><img src={plus} alt="#" /></div>            
+                <div onClick={handleIncrement} style={{display: count === 10 ? 'none' : 'flex'}}><img src={plus} alt="#" /></div>            
             </div>
         </div>
     );

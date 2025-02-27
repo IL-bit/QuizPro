@@ -9,6 +9,7 @@ import plus from '../../../../img/Constructor/create/plus.svg';
 const Calculator = () => {
     const dispatch = useDispatch();
     const index = useSelector((state) => state.createQuiz.currentQuestionIndex);
+    const count = useSelector((state) => state.createQuiz.countQuestions);
     const canvas2 = useSelector((state) => state.createQuiz.data.canvas2);
     
     const [data, setData] = useState({
@@ -92,9 +93,9 @@ const Calculator = () => {
                 </div>
                 <div className="btns">
                     <button className={index === 0 ? 'disactive' : ''} onClick={handlePreviousQuestion}></button>
-                    <button className={index === canvas2.length ? 'disactive' : ''} onClick={handleNextQuestion}></button>
-                </div>                
-                <div className='plus' onClick={handleIncrement}><img src={plus} alt="#" /></div>            
+                    <button className={index === canvas2.length - 1 ? 'disactive' : ''} onClick={handleNextQuestion}></button>
+                </div>
+                <div onClick={handleIncrement} style={{display: count === 10 ? 'none' : 'flex'}} className='plus'><img src={plus} alt="#" /></div>             
             </div>
         </div>
     );

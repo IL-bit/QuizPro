@@ -6,6 +6,7 @@ const initialState = {
         currentSection: 0,
         currentQuestion: null,
         currentQuestionIndex: 0,
+        countQuestions: 0,
         data: {
             canvas1: {
                 title: 'Введите заголовок формы',
@@ -68,14 +69,21 @@ const RootReducer = createReducer(initialState, builder => {
     })
     .addCase('ADDQUESTION', (state, action) => {
         state.createQuiz.data.canvas2.push(action.payload);
+
+        if (state.createQuiz.currentQuestionIndex === 9) {
+            state.createQuiz.countQuestions = 10;
+        }
         console.log(initialState);
     })
     .addCase('HANDLESETCURRENTQUESTION', (state, action) => {
         state.createQuiz.currentQuestion = action.payload;
     })
     .addCase('INCREMENTCOUNTQUESTION', (state) => {
-        ++state.createQuiz.currentQuestionIndex;
-        state.createQuiz.currentQuestion = null;
+        state.createQuiz.currentQuestion = null;        
+        state.createQuiz.currentQuestionIndex = state.createQuiz.data.canvas2.length;
+        if (state.createQuiz.currentQuestionIndex === 9) {
+            state.createQuiz.countQuestions = 10;
+        }
     })
     .addCase('UPDATEQUESTION', (state, action) => {
         const { index, newQuestionData } = action.payload;
@@ -86,10 +94,14 @@ const RootReducer = createReducer(initialState, builder => {
     })
     .addCase('CHANGEQUESTION', (state, action) => {
         if (state.createQuiz.currentQuestionIndex === 0) {
-            state.createQuiz.currentQuestionIndex = 0;
+            state.createQuiz.currentQuestionIndex = 1;
+        } else if (state.createQuiz.currentQuestionIndex === 9) {
+            state.createQuiz.countQuestions = 10;
+            state.createQuiz.currentQuestionIndex = 8;
         } else {
             state.createQuiz.currentQuestionIndex += action.payload; // Увеличиваем или уменьшаем индекс
         }
+        console.log(state.createQuiz.currentQuestionIndex);
 
     })
     .addCase('REMOVEQUESTION', (state, action) => {
