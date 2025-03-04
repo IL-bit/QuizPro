@@ -6,6 +6,9 @@ import Instrument3 from './instruments/Instrument3.js';
 import arrow from '../../../img/Constructor/create/arrow.svg';
 import close from '../../../img/Constructor/create/close.svg';
 import mobile from '../../../img/Constructor/create/mobile.svg';
+import user from '../../../img/Constructor/create/user2.svg';
+import letter from '../../../img/Constructor/create/Letter.svg';
+import phone from '../../../img/Constructor/create/Phone2.svg';
 
 
 const Canvas3 = () => {
@@ -78,21 +81,21 @@ const Canvas3 = () => {
               {createQuiz.data.canvas3.name && (
                 <div className="name">
                   <p>Имя*</p>
-                  <div><img src="#" alt="#" />{createQuiz.data.canvas3.name}</div>
+                  <div><img src={user} alt="#" />{createQuiz.data.canvas3.name}</div>
                   <button onClick={() => handleButtonB('name', null)}></button>
                 </div>
               )}
               {createQuiz.data.canvas3.email && (
                 <div className="email">
                   <p>Email*</p>
-                  <div><img src="#" alt="#" />{createQuiz.data.canvas3.email}</div>
+                  <div><img src={letter} alt="#" />{createQuiz.data.canvas3.email}</div>
                   <button onClick={() => handleButtonB('email', null)}></button>
                 </div>
               )}
               {createQuiz.data.canvas3.phone && (
                 <div className="phone">
                   <p>Телефон*</p>
-                  <div><img src="#" alt="#" />{createQuiz.data.canvas3.phone}</div>
+                  <div><img src={phone} alt="#" />{createQuiz.data.canvas3.phone}</div>
                   <button onClick={() => handleButtonB('phone', null)}></button>
                 </div>
               )}

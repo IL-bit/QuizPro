@@ -1,0 +1,57 @@
+#previevQuizPc {
+    .col-12 {
+        border: 1px solid #1d2a33;
+        border-radius: 25px;
+        width: 100%;
+        height: 902px;   
+        position: relative;
+        padding: 94px 61px 134px 73px;
+        >.close {
+            position: absolute;
+            right: 22px;
+            top: 24px;
+            height: 18px;
+            width: 18px;
+            background: none;
+            border: none;
+            padding: 0;
+            img {
+                height: 18px;
+                width: 18px;
+                margin-top: -7px;
+            }
+        }
+        >.previev {
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+.white-theme {
+    >div {
+        background: #fff;
+        p {
+            color: #1d2a33;
+        }
+        h1 {
+            color: #1d2a33;
+        }
+        h3 {
+            color: #1d2a33;
+        }
+        .right {
+            >button {
+                background: #105efe;
+                color: #fff;
+            }    
+            a {
+                color: #1d2a33;
+                text-decoration-color: #105efe;
+                span {
+                    color: #105efe;
+                }
+            }        
+        }
+
+    }
+}

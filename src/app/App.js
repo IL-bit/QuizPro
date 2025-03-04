@@ -28,6 +28,7 @@ import Referal from './lk/referal/Referal.js';
 import Integrations from './constructor/integ/Integrations.js';
 import PrivateRoute from './PrivateRoute.js';
 import Register from './Register.js';
+import PrevievQuizPc from './constructor/previevQuizPc/PrevievQuizPc.js';
 
 function App() {
   const isAuthenticated = useSelector((state) => state.isAuth); // Логика проверки авторизации
@@ -56,6 +57,7 @@ function App() {
         <Route path="/user/deposits" element={<PrivateRoute element={<Deposits />} isAuthenticated={isAuthenticated} />} />
         <Route path="/user/writeoff" element={<PrivateRoute element={<WriteOff />} isAuthenticated={isAuthenticated} />} />
         <Route path="/user/createquizes" element={<PrivateRoute element={<CreateQuizes />} isAuthenticated={isAuthenticated} />} />
+        <Route path="/user/createquizes/previev/pc" element={<PrivateRoute element={<PrevievQuizPc />} isAuthenticated={isAuthenticated} />} />
         <Route path="/user/createquiz/new" element={<PrivateRoute element={<CreateNew />} isAuthenticated={isAuthenticated} />} />
         <Route path="/user/quiz/install" element={<PrivateRoute element={<Install />} isAuthenticated={isAuthenticated} />} />
         <Route path="/user/quiz/settings" element={<PrivateRoute element={<Setting />} isAuthenticated={isAuthenticated} />} />

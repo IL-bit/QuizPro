@@ -64,7 +64,7 @@ const LeftBar = () => {
       <div className="prev">
         <img src={eye} alt="#" />
         <p>Предпросмотр</p>
-        <button></button>
+        <button onClick={() => handleClick('/user/createquizes/previev/pc')}></button>
         <button></button>
       </div>
       <button className="publish">Опубликовать</button>
