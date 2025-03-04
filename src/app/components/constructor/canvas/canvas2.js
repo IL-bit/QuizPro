@@ -1,6 +1,6 @@
 import React from 'react';
-import { useDispatch, useSelector} from 'react-redux';
-import { setCurrentQuestion, clearCanvas2 } from '../../../../actions';
+import { useDispatch, useSelector } from 'react-redux';
+import { setCurrentQuestion, clearCanvas2, buttonClick, changeTitle } from '../../../../actions';
 import './style.scss';
 import answer1 from '../../../img/Constructor/create/answer1.svg';
 import answer2 from '../../../img/Constructor/create/answer2.svg';
@@ -14,11 +14,11 @@ import AnswersImg from './answers_img/AnswersImg';
 import Calculator from './calculator/Calculator';
 import AnswersAndImg from './answers_and_img/AnswersAndImg';
 
-
 const Canvas2 = () => {
   const dispatch = useDispatch();
   const index = useSelector((state) => state.createQuiz.currentQuestionIndex);
   const currentQuestion = useSelector((state) => state.createQuiz.currentQuestion);
+  const title = useSelector((state) => state.createQuiz.data.title); // Получаем заголовок из состояния
 
   const handleButtonClick = (componentName) => {
     dispatch(setCurrentQuestion(componentName));
@@ -26,6 +26,11 @@ const Canvas2 = () => {
 
   const handleClearCanvas = () => {
     dispatch(clearCanvas2()); // Вызываем action для очистки canvas2
+  };
+
+  const handleTitleChange = (e) => {
+    const newTitle = e.currentTarget.textContent; // Получаем новое значение заголовка
+    dispatch(changeTitle(newTitle)); // Диспатчим новое значение заголовка
   };
 
   const renderComponent = () => {
@@ -61,11 +66,23 @@ const Canvas2 = () => {
         );
     }
   };
+
+  const handleButton = (index) => {
+    dispatch(buttonClick(index));
+  };
+
   return (
     <>
       <div id="canvas2">
         <div className="head">
-          <h2>Заголовок страницы</h2><img src={pen} alt="#" />
+          <h2 
+            contentEditable="true" 
+            suppressContentEditableWarning={true} 
+            onBlur={handleTitleChange} // Диспатчим новое значение при потере фокуса
+          >
+            {title}
+          </h2>
+          <img src={pen} alt="#" />
         </div>
         <div className="canvas">
           {renderComponent()}
@@ -73,11 +90,10 @@ const Canvas2 = () => {
       </div>    
       <div className="start">
         <p onClick={handleClearCanvas}><img src={close} alt="#" />Очистить все</p>
-        <p>Настроить форму<img src={arrow} alt="#" /></p>
+        <p onClick={() => handleButton(2)}>Настроить форму<img src={arrow} alt="#" /></p>
       </div>
     </>
-
-  )
+  );
 }
 
 export default Canvas2;

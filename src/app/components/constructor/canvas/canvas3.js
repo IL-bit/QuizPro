@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { inputChange, buttonBlur, imageChange } from '../../../../actions.js';
+import { inputChange, buttonBlur, imageChange, buttonClick, videoChange, mobileChange } from '../../../../actions.js';
 import './style.scss';
+import Instrument3 from './instruments/Instrument3.js';
 import arrow from '../../../img/Constructor/create/arrow.svg';
 import close from '../../../img/Constructor/create/close.svg';
+import mobile from '../../../img/Constructor/create/mobile.svg';
+
 
 const Canvas3 = () => {
   const dispatch = useDispatch();
+  const video = useSelector((state) => state.createQuiz.isvideo1);
   const { createQuiz } = useSelector((state) => state);
 
   const handleInput = (field, value) => {
@@ -26,13 +30,47 @@ const Canvas3 = () => {
     reader.readAsDataURL(file);
   };
 
+  const handleButton = (index) => {
+    dispatch(buttonClick(index));
+  };
+  const handleVideo = async (event) => {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      dispatch(videoChange('canvas1', e.target.result));
+    };
+    reader.readAsDataURL(file);
+  };
+  const handleMobile = (event) => {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      dispatch(mobileChange('canvas1', e.target.result)); 
+    };
+    reader.readAsDataURL(file);
+  };
+  // Извлекаем значение align из состояния
+  const alignClass = createQuiz.data.canvas3.aling;
+
+  // Формируем классы для div
+  const canvasClass = alignClass === 'canvas-center' ? 'canvas-center' : 'canvas ' + alignClass;
+
   return (
     <>
       <div id="canvas3">
-        <div className="canvas">
-          <input type="file" onChange={handleImage} style={{ display: 'none' }} className='logoImgs'/>
-          <button onClick={() => document.querySelector('.logoImgs').click()}></button>
-          <div className="img" style={{ backgroundImage: `url(${createQuiz.data.canvas3.img})` }}></div>
+        <div className={canvasClass}>
+              <input type="file" className='mobileImg' accept='image/*' onChange={handleMobile} style={{ display: 'none' }} />
+              {video ? <input type="file" accept="video/*" onChange={handleVideo} style={{ display: 'none' }} className='logoImgs'/> : <input type="file" accept="image/*" onChange={handleImage} style={{ display: 'none' }} className='logoImgs'/>}
+              <button onClick={() => document.querySelector('.logoImgs').click()} className='first'></button>
+              <button onClick={() => document.querySelector('.mobileImg').click()} className='second'><img src={mobile} alt="#" /></button>
+            {createQuiz.data.canvas3.video ? (
+              <video loop autoPlay muted className="img">
+                <source src={createQuiz.data.canvas1.video} type="video/mp4" />
+                Ваш браузер не поддерживает видео.
+              </video>
+            ) : (
+              <div className="img" style={{ backgroundImage: `url(${createQuiz.data.canvas3.img})` }}></div>
+            )}
           <div className="right">
             <h1 contentEditable="true" suppressContentEditableWarning={true} data-name="title" onBlur={(e) => handleInput('title', e.currentTarget.textContent)}>{createQuiz.data.canvas3.title}</h1>
             <h3 contentEditable="true" suppressContentEditableWarning={true} data-name="subtitle" onBlur={(e) => handleInput('subtitle', e.currentTarget.textContent)}>{createQuiz.data.canvas3.subtitle}</h3>
@@ -62,30 +100,11 @@ const Canvas3 = () => {
             <button onClick={() => console.log('Отправить')}>Отправить</button>
           </div>
         </div>
-        <div className="instrumens">
-          <div className="background">
-            <p>Фон</p>
-            <div>
-              <button className='active'>Изображение</button>
-              <button>Видео</button>
-            </div>
-          </div>
-          <div className="design">
-            <p>Дизайн</p>
-            <div>Стандартная</div>
-          </div>
-          <div className="align">
-            <p>Выравнивание</p>
-            <div>
-              <button className='active'></button>
-              <button></button>
-            </div>
-          </div>                
-        </div> 
+        <Instrument3 /> 
       </div>  
       <div className="start">
         <p><img src={close} alt="#" />Отключить стартовую страницу</p>
-        <p>Настроить вопросы<img src={arrow} alt="#" /></p>
+        <p onClick={() => handleButton(1)}>Настроить вопросы<img src={arrow} alt="#" /></p>
       </div>        
     </>
   );

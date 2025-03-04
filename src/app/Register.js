@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { LOGIN } from '../middleware';
+import { REGISTER } from '../middleware';
 import logo from './img/leftbar/logo.svg';
 import './style.scss';
 
-const Auth = () => {
+const Register = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isAuth = useSelector((state) => state.isAuth);
   const [dataForm, setDataForm] = useState({
     email: '',
     password: '',
+    password_confirmation: '',
     name: 'user1'
   });
 
@@ -24,6 +25,12 @@ const Auth = () => {
         ...prevState,
         [name]: value
       };
+
+      // Если изменяется поле password, дублируем его значение в password2
+      if (name === 'password') {
+        newState.password_confirmation = value;
+      }
+
       return newState;
     });
   };
@@ -32,7 +39,7 @@ const Auth = () => {
     e.preventDefault(); // предотвращаем перезагрузку страницы
     // Здесь вы можете выполнить dispatch('LOGIN') с данными из dataForm
     console.log('Данные для входа:', dataForm);
-    dispatch(LOGIN(dataForm)); // Раскомментируйте и используйте ваш dispatch
+    dispatch(REGISTER(dataForm)); // Раскомментируйте и используйте ваш dispatch
   };
   useEffect(() => {
     if (isAuth) {
@@ -65,10 +72,19 @@ const Auth = () => {
                 onChange={handleChange} 
                 required 
               />
-              <button type="submit">Вход</button>
+              <input 
+                type="password" 
+                name="password2" 
+                placeholder="Повторите пароль" 
+                className="form" 
+                value={dataForm.password_confirmation} 
+                onChange={handleChange} 
+                required 
+              />
+              <button type="submit">Зарегистрироваться</button>
               <a href="#" onClick={() => handleClick('/user')}>Я забыл(а) пароль</a>
           </form>
-          <p>Нет аккаунта? <a href="#" onClick={() => handleClick('/reg')}>Зарегистрироваться</a></p>
+          <p>Нет аккаунта? <a href="#">Зарегистрироваться</a></p>
           <p className="polit">Нажимая на кнопку, вы соглашаетесь <a href="#">с политикой конфиденциальности и политикой использования <wbr/>персональных данных</a></p>
         </div>
       </div>
@@ -76,4 +92,4 @@ const Auth = () => {
   )
 }
 
-export default Auth;
+export default Register;

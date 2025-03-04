@@ -1,5 +1,5 @@
 import { createReducer } from "@reduxjs/toolkit";
-
+const expires = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toUTCString();
 const initialState = {
     type: '',
     createQuiz: {
@@ -8,6 +8,17 @@ const initialState = {
         currentQuestionIndex: 0,
         countQuestions: 0,
         data: {
+            title: 'Заголовок страницы',   
+            isvideo1: false,
+            isvideo2: false,              
+            theme: {
+                backgroundColor: '',
+                textColor: '',
+                buttonColor: '',
+                buttonTextColor: '',
+                font: '',
+                buttonStyle: ''
+            },
             canvas1: {
                 title: 'Введите заголовок формы',
                 subtitle: 'Дополнительный текст-описание',
@@ -16,7 +27,11 @@ const initialState = {
                 name: 'ООО «Название компании»',
                 description: 'Название или слоган компании',
                 tel: '+7 (900) 000-00-00',
-                button: 'Начать'
+                button: 'Начать',
+                video: null,
+                mobile: null,
+                aling: 'canvas',
+                isActive: true
             },
             canvas2: [
             ],
@@ -26,14 +41,18 @@ const initialState = {
                 img: null,
                 name: 'Иван',
                 email: 'Mail@example.com',
-                phone: '+7 (900) 000-00-00'
+                phone: '+7 (900) 000-00-00',
+                video: null,
+                aling: 'canvas'
             },
-            title: ''         
         }
-
     },
     quiz: {},
-    quizes: []
+    quizes: [],
+    login: '',
+    isAuth: false,
+    balance: 0,
+    Token: ''
 };
 
 const RootReducer = createReducer(initialState, builder => {
@@ -46,6 +65,9 @@ const RootReducer = createReducer(initialState, builder => {
         const { canvas, field, value } = action.payload;
         state.createQuiz.data[canvas][field] = value;
     })
+    .addCase('CHANGE_TITLE', (state, action) => {
+        state.createQuiz.data.title = action.payload; // Обновляем заголовок
+    })
     .addCase('HANDLEBUTTONBLUR', (state, action) => {
         const { canvas, field, value } = action.payload;
         state.createQuiz.data[canvas][field] = value;
@@ -57,12 +79,47 @@ const RootReducer = createReducer(initialState, builder => {
     .addCase('HANDLEIMAGECHANGE', (state, action) => {
         console.log('img');
         const { canvas, file } = action.payload;
+        if (canvas === 'canvas1') {
+            state.createQuiz.data.isvideo1 = false;
+        }
+        if (canvas === 'canvas3') {
+            state.createQuiz.data.isvideo2 = false;
+        }
+        state.createQuiz.data[canvas].video = null;
         state.createQuiz.data[canvas].img = file; // Убедитесь, что file - это URL изображения
+    })
+    .addCase('HANDLEMOBILECHANGE', (state, action) => {
+        console.log('mobile');
+        const { canvas, file } = action.payload;
+        state.createQuiz.data[canvas].mobile = file; // Убедитесь, что file - это URL изображения
     })
     .addCase('HANDLEIMAGE2CHANGE', (state, action) => {
         console.log('logo');
         const { canvas, file } = action.payload;
         state.createQuiz.data[canvas].logo = file; // Убедитесь, что file - это URL изображения
+    })
+    .addCase('HANDLEVIDEOCHANGE', (state, action) => {
+        console.log('video');
+        const { canvas, file } = action.payload;
+        state.createQuiz.data[canvas].video = file; // Убедитесь, что file - это URL изображения
+    })
+    .addCase('RESETBACKGROUND', (state, action) => {
+        console.log('RESETBACKGROUND');
+        console.log(state.createQuiz.isvideo1);
+        console.log(state.createQuiz.isvideo2); 
+        const canvas = action.payload;
+        if (canvas === 'canvas1' && state.createQuiz.data.isvideo1 === false) {
+            state.createQuiz.data.isvideo1 = true;
+        } else {
+            state.createQuiz.data.isvideo1 = false;
+        }
+        if (canvas === 'canvas3' && state.createQuiz.data.isvideo2 === false) {
+            state.createQuiz.data.isvideo2 = true;
+        } else {
+            state.createQuiz.data.isvideo2 = false;
+        }
+        state.createQuiz.data[canvas].video = null;
+        state.createQuiz.data[canvas].img = null;
     })
     .addCase('HANDLESETCURRENTSECTION', (state, action) => {
         state.createQuiz.currentSection = action.payload;
@@ -101,8 +158,8 @@ const RootReducer = createReducer(initialState, builder => {
         } else {
             state.createQuiz.currentQuestionIndex += action.payload; // Увеличиваем или уменьшаем индекс
         }
-        console.log(state.createQuiz.currentQuestionIndex);
-
+        const currentIndex = state.createQuiz.currentQuestionIndex;
+        state.createQuiz.currentQuestion = state.createQuiz.data.canvas2[currentIndex].name;
     })
     .addCase('REMOVEQUESTION', (state, action) => {
         const { index } = action.payload;
@@ -112,6 +169,51 @@ const RootReducer = createReducer(initialState, builder => {
     .addCase('CLEAR_CANVAS2', (state) => {
         state.createQuiz.data.canvas2 = []; // Очищаем canvas2
         state.createQuiz.currentQuestionIndex = 0; // Сбрасываем индекс текущего вопроса
+        state.createQuiz.data.title = 'Заголовок страницы';
+    })
+    .addCase('TURNOFFCANVAS1', (state) => {
+        state.createQuiz.data.canvas1.isActive = false;
+        state.createQuiz.data.canvas1.video = null;
+        state.createQuiz.data.canvas1.img = null;
+        state.createQuiz.data.canvas1.logo = null;
+        state.createQuiz.data.canvas1.mobile = null;
+    })
+    .addCase('TURNONCANVAS1', (state) => {
+        state.createQuiz.data.canvas1.isActive = true;
+    })
+    .addCase('SET_ALIGN', (state, action) => {
+        state.createQuiz.data.canvas1.aling = action.payload; // Обновляем значение align
+    })
+    .addCase('SET_ALIGN3', (state, action) => {
+        state.createQuiz.data.canvas3.aling = action.payload; // Обновляем значение align
+    })
+
+    .addCase('LOGIN_SUCCESS', (state, action) => {
+        state.login = 'ok';
+        state.isAuth = true;
+        console.log('SUCCESS', action);
+        state.Token = action.payload.data.accessToken;
+        console.log(state.Token);
+        document.cookie = `access_token=${state.Token}; expires=${expires}; path=/; secure; HttpOnly; SameSite=Strict`;
+    })
+    .addCase('LOGIN_ERROR', (state) => {
+        state.login = 'error';
+        console.log('ERROR');
+    })
+    .addCase('LOGIN_FAILED', (state) => {
+        state.login = 'no';
+        console.log('NO');
+    })
+    .addCase('LOGOUT', (state) => {
+        state.isAuth = false;
+        state.login = 'no';
+        state.Token = '';
+        const cookies = document.cookie.split("; ");
+        for (let cookie of cookies) {
+            const eqPos = cookie.indexOf("=");
+            const name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+            document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; secure; HttpOnly; SameSite=Strict`;
+        }
     })
 });
 

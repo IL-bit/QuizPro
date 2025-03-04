@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import './App.scss';
 import Auth from './Auth.js';
 import Start from './lk/start/Start.js';
@@ -25,39 +26,42 @@ import Install from './constructor/install/Install.js';
 import Setting from './constructor/settings/Settings.js';
 import Referal from './lk/referal/Referal.js';
 import Integrations from './constructor/integ/Integrations.js';
+import PrivateRoute from './PrivateRoute.js';
+import Register from './Register.js';
+
 function App() {
+  const isAuthenticated = useSelector((state) => state.isAuth); // Логика проверки авторизации
   return (
-    <>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Auth />} />
-          <Route path="/user" element={<Start />} />
-          <Route path="/user/rates" element={<User />} />
-          <Route path="/user/referal" element={<Referal />} />
-          <Route path="/user/applications" element={<Application />} />
-          <Route path="/user/applications/answer" element={<Answer />} />          
-          <Route path="/user/notifications" element={<Notifications />} />
-          <Route path="/user/base" element={<Base />} />
-          <Route path="/user/base/advert" element={<Advert />} />
-          <Route path="/user/base/analytics" element={<Analytics />} />
-          <Route path="/user/base/content" element={<Content />} />
-          <Route path="/user/base/integrations/sites" element={<IntegSites />} />
-          <Route path="/user/base/integrations/servises" element={<IntegServ />} />
-          <Route path="/user/base/payment" element={<Payment />} />
-          <Route path="/user/base/settings" element={<Settings />} />
-          <Route path="/user/quiz/conversion" element={<Conversion />} />
-          <Route path="/user/profile" element={<Profile />} />
-          <Route path="/user/balance" element={<Balance />} />
-          <Route path="/user/deposits" element={<Deposits />} />
-          <Route path="/user/writeoff" element={<WriteOff />} />
-          <Route path="/user/createquizes" element={<CreateQuizes />} />
-          <Route path="/user/createquiz/new" element={<CreateNew />} />
-          <Route path="/user/quiz/install" element={<Install />} />
-          <Route path="/user/quiz/settings" element={<Setting />} />
-          <Route path="/user/quiz/integrations" element={<Integrations />} />
-        </Routes>
-      </BrowserRouter>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Auth />} />
+        <Route path="/reg" element={<Register />} />
+        <Route path="/user" element={<PrivateRoute element={<Start />} isAuthenticated={isAuthenticated} />} />
+        <Route path="/user/rates" element={<PrivateRoute element={<User  />} isAuthenticated={isAuthenticated} />} />
+        <Route path="/user/referal" element={<PrivateRoute element={<Referal />} isAuthenticated={isAuthenticated} />} />
+        <Route path="/user/applications" element={<PrivateRoute element={<Application />} isAuthenticated={isAuthenticated} />} />
+        <Route path="/user/applications/answer" element={<PrivateRoute element={<Answer />} isAuthenticated={isAuthenticated} />} />
+        <Route path="/user/notifications" element={<PrivateRoute element={<Notifications />} isAuthenticated={isAuthenticated} />} />
+        <Route path="/user/base" element={<PrivateRoute element={<Base />} isAuthenticated={isAuthenticated} />} />
+        <Route path="/user/base/advert" element={<PrivateRoute element={<Advert />} isAuthenticated={isAuthenticated} />} />
+        <Route path="/user/base/analytics" element={<PrivateRoute element={<Analytics />} isAuthenticated={isAuthenticated} />} />
+        <Route path="/user/base/content" element={<PrivateRoute element={<Content />} isAuthenticated={isAuthenticated} />} />
+        <Route path="/user/base/integrations/sites" element={<PrivateRoute element={<IntegSites />} isAuthenticated={isAuthenticated} />} />
+        <Route path="/user/base/integrations/servises" element={<PrivateRoute element={<IntegServ />} isAuthenticated={isAuthenticated} />} />
+        <Route path="/user/base/payment" element={<PrivateRoute element={<Payment />} isAuthenticated={isAuthenticated} />} />
+        <Route path="/user/base/settings" element={<PrivateRoute element={<Settings />} isAuthenticated={isAuthenticated} />} />
+        <Route path="/user/quiz/conversion" element={<PrivateRoute element={<Conversion />} isAuthenticated={isAuthenticated} />} />
+        <Route path="/user/profile" element={<PrivateRoute element={<Profile />} isAuthenticated={isAuthenticated} />} />
+        <Route path="/user/balance" element={<PrivateRoute element={<Balance />} isAuthenticated={isAuthenticated} />} />
+        <Route path="/user/deposits" element={<PrivateRoute element={<Deposits />} isAuthenticated={isAuthenticated} />} />
+        <Route path="/user/writeoff" element={<PrivateRoute element={<WriteOff />} isAuthenticated={isAuthenticated} />} />
+        <Route path="/user/createquizes" element={<PrivateRoute element={<CreateQuizes />} isAuthenticated={isAuthenticated} />} />
+        <Route path="/user/createquiz/new" element={<PrivateRoute element={<CreateNew />} isAuthenticated={isAuthenticated} />} />
+        <Route path="/user/quiz/install" element={<PrivateRoute element={<Install />} isAuthenticated={isAuthenticated} />} />
+        <Route path="/user/quiz/settings" element={<PrivateRoute element={<Setting />} isAuthenticated={isAuthenticated} />} />
+        <Route path="/user/quiz/integrations" element={<PrivateRoute element={<Integrations />} isAuthenticated={isAuthenticated} />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

@@ -31,13 +31,14 @@
             text-align: center;
             color: #fff;
             margin-bottom: 17px;
-            ::placeholder {
-                font-weight: 300;
-                font-size: 18px;
-                text-align: center;
-                color: #fff;
-            }
+
         } 
+        >input::placeholder {
+            font-weight: 300;
+            font-size: 18px;
+            text-align: center;
+            color: #fff;
+        }
         > button {
             border: 1px solid #1d2a33;
             border-radius: 18px;

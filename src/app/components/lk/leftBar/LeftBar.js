@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { logOut } from '../../../../actions';
 import './style.scss';
 import Logo from '../../../img/leftbar/logo.svg';
 import Arrow from '../../../img/leftbar/arrow.svg';
@@ -14,6 +16,7 @@ import PopUp from '../pop-up/PopUp';
 
 const LeftBar = () => {
   const navigate = useNavigate();   
+  const dispatch = useDispatch();
   const handleClick = (route) => {
     navigate(route);
   };
@@ -35,6 +38,9 @@ const LeftBar = () => {
         document.removeEventListener('click', handleDocumentClick);
       };
     }, []);
+    const handleLogOut = () => {
+      dispatch(logOut());
+    }
   return (
     <div id="LeftBarLk">
         <div className="head">
@@ -69,7 +75,7 @@ const LeftBar = () => {
             <button onClick={() => handleClick('/user')}>Мои квизы</button>    
             <a href="#"><img src={Support} alt="#" />Написать в поддержку</a>     
           </div>
-          <a href="#"><img src={Logout} alt="#" />Сменить аккаунт</a>
+          <a href="#" onClick={() => handleLogOut()}><img src={Logout} alt="#" />Сменить аккаунт</a>
         </nav>
         <div className="refer">
           <p>Партнёрская программа</p>
