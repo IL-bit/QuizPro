@@ -29,6 +29,9 @@ import Integrations from './constructor/integ/Integrations.js';
 import PrivateRoute from './PrivateRoute.js';
 import Register from './Register.js';
 import PrevievQuizPc from './constructor/previevQuizPc/PrevievQuizPc.js';
+import Forgot from './Forgot.js';
+import Reset from './Reset.js';
+import Design from './constructor/design/Design.js';
 
 function App() {
   const isAuthenticated = useSelector((state) => state.isAuth); // Логика проверки авторизации
@@ -37,6 +40,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Auth />} />
         <Route path="/reg" element={<Register />} />
+        <Route path="/forgot" element={<Forgot />} />
+        <Route path="/reset/*" element={<Reset />} />
         <Route path="/user" element={<PrivateRoute element={<Start />} isAuthenticated={isAuthenticated} />} />
         <Route path="/user/rates" element={<PrivateRoute element={<User  />} isAuthenticated={isAuthenticated} />} />
         <Route path="/user/referal" element={<PrivateRoute element={<Referal />} isAuthenticated={isAuthenticated} />} />
@@ -62,6 +67,7 @@ function App() {
         <Route path="/user/quiz/install" element={<PrivateRoute element={<Install />} isAuthenticated={isAuthenticated} />} />
         <Route path="/user/quiz/settings" element={<PrivateRoute element={<Setting />} isAuthenticated={isAuthenticated} />} />
         <Route path="/user/quiz/integrations" element={<PrivateRoute element={<Integrations />} isAuthenticated={isAuthenticated} />} />
+        <Route path="/user/quiz/design" element={<PrivateRoute element={<Design />} isAuthenticated={isAuthenticated} />} />
       </Routes>
     </BrowserRouter>
   );

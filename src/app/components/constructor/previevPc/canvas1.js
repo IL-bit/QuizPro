@@ -2,7 +2,7 @@ import React from 'react';
 import './canvas1.scss';
 import { useSelector } from 'react-redux';
 
-const Canvas1 = () => {  
+const Canvas1 = ({ handleButtonClick }) => {  
     const { createQuiz } = useSelector((state) => state);
     const alignClass = createQuiz.data.canvas1.aling;
     const canvasClass = alignClass === 'canvas-center' ? 'canvas-center' : 'canvas ' + alignClass;
@@ -24,7 +24,7 @@ const Canvas1 = () => {
             </div>
             <h1>{createQuiz.data.canvas1.title}</h1>
             <h3>{createQuiz.data.canvas1.subtitle}</h3>
-            <button>{createQuiz.data.canvas1.button}</button>
+            <button onClick={() => handleButtonClick('canvas2')}>{createQuiz.data.canvas1.button}</button>
             <a href="http://qzpro.ru">Создано в <span>QZ.pro</span></a>
             <p>{createQuiz.data.canvas1.tel}</p>
             <p>{createQuiz.data.canvas1.name}</p>

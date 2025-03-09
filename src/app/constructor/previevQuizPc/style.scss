@@ -27,16 +27,10 @@
         }
     }
 }
-.white-theme {
+.light-theme {
     >div {
         background: #fff;
-        p {
-            color: #1d2a33;
-        }
-        h1 {
-            color: #1d2a33;
-        }
-        h3 {
+        p, h1, h3 {
             color: #1d2a33;
         }
         .right {
@@ -50,8 +44,77 @@
                 span {
                     color: #105efe;
                 }
-            }        
+            }  
+            .inputs {
+                input {
+                    border: 0.85px solid #6a8496;  
+                    color: #fff;
+                }   
+                input::placeholder {
+                    color: #6a8496;
+                }                 
+            }                         
         }
 
+    }
+}
+.dark-theme {
+    >div {
+        background: #141c23;
+        p, h1, h3 {
+            color: #fff;
+        }
+        .right {
+            >button {
+                background: #105efe;
+                color: #fff;
+            }    
+            a {
+                color: #fff;
+                text-decoration-color: #105efe;
+                span {
+                    color: #105efe;
+                }
+            }  
+            .inputs {
+                input {
+                    border: 0.85px solid #fff;
+                    color: #fff;
+                }
+                input::placeholder {
+                    color: #fff;
+                }
+            }      
+        }
+    }
+}
+.quiz-theme {
+    >div {
+        background: #1153fe;
+        p, h1, h3 {
+            color: #fff;
+        }
+        .right {
+            >button {
+                background: #ff6210;
+                color: #fff;
+            }    
+            a {
+                color: #fff;
+                text-decoration-color: #ff6210;
+                span {
+                    color: #ff6210;
+                }
+            }   
+            .inputs {
+                input {
+                    border: 0.85px solid #fff;
+                    color: #fff;
+                }
+                input::placeholder {
+                    color: #fff;
+                }
+            }         
+        }
     }
 }

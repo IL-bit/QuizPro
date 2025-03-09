@@ -17,7 +17,8 @@ const initialState = {
                 buttonColor: '',
                 buttonTextColor: '',
                 font: '',
-                buttonStyle: ''
+                buttonStyle: '',
+                theme: 'dark'
             },
             canvas1: {
                 title: 'Введите заголовок формы',
@@ -57,6 +58,7 @@ const initialState = {
 
 const RootReducer = createReducer(initialState, builder => {
     builder 
+    /* Конструктор */
     .addCase('HANDLEBUTTONCLICK', (state, action) => {
         state.createQuiz.currentSection = action.payload;
     })
@@ -159,7 +161,15 @@ const RootReducer = createReducer(initialState, builder => {
             state.createQuiz.currentQuestionIndex += action.payload; // Увеличиваем или уменьшаем индекс
         }
         const currentIndex = state.createQuiz.currentQuestionIndex;
-        state.createQuiz.currentQuestion = state.createQuiz.data.canvas2[currentIndex].name;
+        if (state.createQuiz.data.canvas2[currentIndex] && state.createQuiz.data.canvas2[currentIndex].name) {
+            state.createQuiz.currentQuestion = state.createQuiz.data.canvas2[currentIndex].name;
+        } else {
+            if (currentIndex > 0) {
+                state.createQuiz.currentQuestion = state.createQuiz.data.canvas2[currentIndex - 1].name;
+            } else {
+                state.createQuiz.currentQuestion = null;
+            }
+        }
     })
     .addCase('REMOVEQUESTION', (state, action) => {
         const { index } = action.payload;
@@ -187,7 +197,10 @@ const RootReducer = createReducer(initialState, builder => {
     .addCase('SET_ALIGN3', (state, action) => {
         state.createQuiz.data.canvas3.aling = action.payload; // Обновляем значение align
     })
-
+    .addCase('CHANGETHEME', (state, action) => {
+        state.createQuiz.data.theme.theme = action.payload; 
+    })
+    /* ЛК */
     .addCase('LOGIN_SUCCESS', (state, action) => {
         state.login = 'ok';
         state.isAuth = true;

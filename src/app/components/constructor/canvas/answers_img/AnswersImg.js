@@ -164,7 +164,6 @@ const AnswersImg = () => {
             reader.readAsDataURL(file); // Читаем файл как Data URL (Base64)
         }
     };
-
     return (
         <div className="type">
             <div>

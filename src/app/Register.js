@@ -25,21 +25,14 @@ const Register = () => {
         ...prevState,
         [name]: value
       };
-
-      // Если изменяется поле password, дублируем его значение в password2
-      if (name === 'password') {
-        newState.password_confirmation = value;
-      }
-
       return newState;
     });
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault(); // предотвращаем перезагрузку страницы
-    // Здесь вы можете выполнить dispatch('LOGIN') с данными из dataForm
+    e.preventDefault();
     console.log('Данные для входа:', dataForm);
-    dispatch(REGISTER(dataForm)); // Раскомментируйте и используйте ваш dispatch
+    dispatch(REGISTER(dataForm));
   };
   useEffect(() => {
     if (isAuth) {
@@ -52,7 +45,7 @@ const Register = () => {
         <div className="col-xxl-4 mx-auto text-center" id='auth'>
           <div id="blur"></div>
           <img src={logo} alt="#" className='img'/>
-          <h2>Войти</h2>
+          <h2>Зарегистрироваться</h2>
           <form onSubmit={handleSubmit}>
               <input 
                 type="email" 
@@ -74,7 +67,7 @@ const Register = () => {
               />
               <input 
                 type="password" 
-                name="password2" 
+                name="password_confirmation" 
                 placeholder="Повторите пароль" 
                 className="form" 
                 value={dataForm.password_confirmation} 
@@ -82,9 +75,9 @@ const Register = () => {
                 required 
               />
               <button type="submit">Зарегистрироваться</button>
-              <a href="#" onClick={() => handleClick('/user')}>Я забыл(а) пароль</a>
+              <a href="#" onClick={() => handleClick('/forgot')}>Я забыл(а) пароль</a>
           </form>
-          <p>Нет аккаунта? <a href="#">Зарегистрироваться</a></p>
+          <p>Есть аккаунт? <a href="#" onClick={() => handleClick('/')}>Войти</a></p>
           <p className="polit">Нажимая на кнопку, вы соглашаетесь <a href="#">с политикой конфиденциальности и политикой использования <wbr/>персональных данных</a></p>
         </div>
       </div>

@@ -51,3 +51,71 @@ export const LOGIN = (formData) => async (dispatch) => {
         console.error("Error occurred:", error); 
     }
 };
+export const FORGOT = (formData) => async () => { 
+    try {
+        const response = await fetch(`${url}/api/forgot`, {
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
+        });
+        console.log(JSON.stringify(formData));
+        if (!response.ok) {
+            console.error('Fetch failed with status:', response.status); 
+            return;
+        }
+        const data = await response.json();
+
+        console.log('ok')
+
+    } catch (error) {       
+        console.error("Error occurred:", error); 
+    }
+};
+export const RESET = (formData) => async () => { 
+    try {
+        const response = await fetch(`${url}/api/reset`, {
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
+        });
+        console.log(JSON.stringify(formData));
+        if (!response.ok) {
+            console.error('Fetch failed with status:', response.status); 
+            return;
+        }
+        const data = await response.json();
+
+        console.log('ok')
+
+    } catch (error) {       
+        console.error("Error occurred:", error); 
+    }
+};
+export const BALANCE = (token) => async () => { 
+    try {
+        const response = await fetch(`${url}/api/balance`, {
+            method: 'GET',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        });
+        if (!response.ok) {
+            console.error('Fetch failed with status:', response.status); 
+            return;
+        }
+        const data = await response.json();
+
+        console.log('ok')
+
+    } catch (error) {       
+        console.error("Error occurred:", error); 
+    }
+};

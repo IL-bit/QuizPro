@@ -104,8 +104,8 @@ const Answers = () => {
     };
 
     const handleDeleteQuestion = () => {
-        dispatch(removeQuestion(index)); // Удаляем вопрос
-        dispatch(changeQuestion(-1)); // Переходим к предыдущему вопросу
+        dispatch(removeQuestion(index)); // Удаляем вопрос        
+        dispatch(changeQuestion(-1)); // Переходим к предыдущему вопросу        
     };
 
     const handleDragStart = (e, idx) => {

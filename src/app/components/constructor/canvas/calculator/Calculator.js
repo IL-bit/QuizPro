@@ -63,7 +63,6 @@ const Calculator = () => {
             dispatch(changeQuestion(1));
         }
     };
-
     return (
         <div className="type">
             <div>

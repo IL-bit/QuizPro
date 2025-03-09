@@ -46,7 +46,7 @@ const LeftBar = () => {
         <p>Расширения</p>
         <img src={arrow2} alt="#" />
       </div>
-      <div className="design">
+      <div className="design" onClick={() => handleClick('/user/quiz/design')}>
         <img src={design} alt="#" />
         <p>Дизайн</p>
         <img src={arrow2} alt="#" />

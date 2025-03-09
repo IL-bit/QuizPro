@@ -185,6 +185,7 @@ const AnswersAndImg = () => {
                         >
                             <p contentEditable="true" spellcheck="false" suppressContentEditableWarning={true} onBlur={(e) => handleAnswerChange(e, idx)}>{answer.text}</p>
                             <input 
+                                accept='image/*'
                                 type="file" 
                                 onChange={(e) => handleImageChange(e, idx)} 
                                 style={{ display: 'none' }} 

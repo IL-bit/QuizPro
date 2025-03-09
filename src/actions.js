@@ -50,3 +50,4 @@ export const setAlign3 = (alignValue) => ({
   payload: alignValue,
 });
 export const logOut = createAction('LOGOUT');
+export const changeTheme = createAction('CHANGETHEME', (theme) => ({payload: theme}));
