@@ -4,33 +4,44 @@ import { useSelector } from 'react-redux';
 
 const Canvas1 = ({ handleButtonClick }) => {  
     const { createQuiz } = useSelector((state) => state);
+    const theme = createQuiz.data.theme.theme;
     const alignClass = createQuiz.data.canvas1.aling;
-    const canvasClass = alignClass === 'canvas-center' ? 'canvas-center' : 'canvas ' + alignClass;
+    const canvasClass = alignClass === 'canvas-center' ? 'canvas-center' : 'canvas1 ' + alignClass;
 
-  return (
-    <div className={canvasClass}>
-        {createQuiz.data.canvas1.video ? (
-            <video loop autoPlay muted className="img">
-                <source src={createQuiz.data.canvas1.video} type="video/mp4" />
-                Ваш браузер не поддерживает видео.
-            </video>
-        ) : (
-        <div className="img" style={{ backgroundImage: `url(${createQuiz.data.canvas1.img})` }}></div>
-        )}
-        <div className="right">
-            <div className="logo">
-                <button style={{ backgroundImage: `url(${createQuiz.data.canvas1.logo})`  }}></button>
-                <p>{createQuiz.data.canvas1.description}</p>                        
+    // Determine colors based on the theme
+    const backgroundColor = theme === 'user' ? createQuiz.data.theme.backgroundColor : ''; 
+    const textColor = theme === 'user' ? createQuiz.data.theme.textColor : ''; 
+    const buttonColor = theme === 'user' ? createQuiz.data.theme.buttonColor : ''; 
+    const buttonTextColor = theme === 'user' ? createQuiz.data.theme.buttonTextColor : ''; 
+
+    const logoStyle = createQuiz.data.canvas1.logo ? { background: `url(${createQuiz.data.canvas1.logo})` } : { backgroundColor: 'rgba(66, 87, 102, 0.52)' };
+
+    return (
+        <div className={canvasClass} style={{ backgroundColor }}>
+            {createQuiz.data.canvas1.video ? (
+                <video loop autoPlay muted className="img">
+                    <source src={createQuiz.data.canvas1.video} type="video/mp4" />
+                    Ваш браузер не поддерживает видео.
+                </video>
+            ) : (
+                <div className="img" style={{ background: `url(${createQuiz.data.canvas1.img})` }}></div>
+            )}
+            <div className="right">
+                <div className="logo">
+                    <button style={logoStyle}></button>
+                    <p style={{ color: textColor }}>{createQuiz.data.canvas1.description}</p>                        
+                </div>
+                <h1 style={{ color: textColor }}>{createQuiz.data.canvas1.title}</h1>
+                <h3 style={{ color: textColor }}>{createQuiz.data.canvas1.subtitle}</h3>
+                <button onClick={() => handleButtonClick('canvas2')} style={{ backgroundColor: buttonColor, color: buttonTextColor }}>
+                    {createQuiz.data.canvas1.button}
+                </button>
+                <a href="http://qzpro.ru" style={{ color: textColor, textDecorationColor: buttonColor }}>Создано в <span style={{ color: buttonColor }}>QZ.pro</span></a>
+                <p style={{ color: textColor }}>{createQuiz.data.canvas1.tel}</p>
+                <p style={{ color: textColor }}>{createQuiz.data.canvas1.name}</p>
             </div>
-            <h1>{createQuiz.data.canvas1.title}</h1>
-            <h3>{createQuiz.data.canvas1.subtitle}</h3>
-            <button onClick={() => handleButtonClick('canvas2')}>{createQuiz.data.canvas1.button}</button>
-            <a href="http://qzpro.ru">Создано в <span>QZ.pro</span></a>
-            <p>{createQuiz.data.canvas1.tel}</p>
-            <p>{createQuiz.data.canvas1.name}</p>
         </div>
-    </div>
-  )
+    );
 }
 
 export default Canvas1;

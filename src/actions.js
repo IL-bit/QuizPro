@@ -49,5 +49,13 @@ export const setAlign3 = (alignValue) => ({
   type: 'SET_ALIGN3',
   payload: alignValue,
 });
+export const changeBackgroundColor = createAction('CHANGEBACKGROUNDCOLOR', (color) => ({payload: color}));
+export const changeTextColor = createAction('CHANGETEXTCOLOR', (color) => ({payload: color}));
+export const changeButtonColor = createAction('CHANGEBUTTONCOLOR', (color) => ({payload: color}));
+export const changeButtonTextColor = createAction('CHANGEBUTTONTEXTCOLOR', (color) => ({payload: color}));
+export const changeFont = createAction('CHANGEFONT', (font) => ({payload: font}));
+export const changeButtonStyle = createAction('CHANGEBUTTONSTYLE', (style) => ({payload: style}));
+
+// Лк
 export const logOut = createAction('LOGOUT');
 export const changeTheme = createAction('CHANGETHEME', (theme) => ({payload: theme}));

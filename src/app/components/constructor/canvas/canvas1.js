@@ -11,6 +11,7 @@ import arrow2 from '../../../img/Constructor/create/arrow_turnOffCanvas1.svg';
 import bg1 from '../../../img/Constructor/create/bg_turnOff.svg';
 import bg2 from '../../../img/Constructor/create/bg2_turnOff.svg';
 import mobile from '../../../img/Constructor/create/mobile.svg';
+import pc from '../../../img/Constructor/create/pc.svg';
 
 const Canvas1 = () => {
   const dispatch = useDispatch();
@@ -87,7 +88,7 @@ const Canvas1 = () => {
             <div className={canvasClass}>
               <input type="file" className='mobileImg' accept='image/*' onChange={handleMobile} style={{ display: 'none' }} />
               {video ? <input type="file" accept="video/*" onChange={handleVideo} style={{ display: 'none' }} className='logoImgs'/> : <input type="file" accept="image/*" onChange={handleImage} style={{ display: 'none' }} className='logoImgs'/>}
-              <button onClick={() => document.querySelector('.logoImgs').click()} className='first'></button>
+              <button onClick={() => document.querySelector('.logoImgs').click()} className='first'><img src={pc} alt="#" /></button>
               <button onClick={() => document.querySelector('.mobileImg').click()} className='second'><img src={mobile} alt="#" /></button>
               {createQuiz.data.canvas1.video ? (
                 <video loop autoPlay muted className="img">

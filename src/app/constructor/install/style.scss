@@ -138,6 +138,18 @@
                     right: 15px;
                 }
             }
+            >:nth-child(1) {
+                box-shadow: inset -70px -32px 62px -53px #108bfe;
+                background: #141e27;
+            }
+            >:nth-child(2) {
+                box-shadow: inset -70px -32px 62px -53px #10bffe;
+                background: #141e27;
+            }
+            >:nth-child(3) {
+                box-shadow: inset -70px -32px 71px -62px #ff004f;
+                background: #141e27;
+            }
         }
     }
     >.code {

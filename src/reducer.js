@@ -12,12 +12,12 @@ const initialState = {
             isvideo1: false,
             isvideo2: false,              
             theme: {
-                backgroundColor: '',
-                textColor: '',
-                buttonColor: '',
-                buttonTextColor: '',
+                backgroundColor: '#425766',
+                textColor: '#FFFFFF',
+                buttonColor: '#105EFE',
+                buttonTextColor: '#FFFFFF',
                 font: '',
-                buttonStyle: '',
+                buttonStyle: 'style1',
                 theme: 'dark'
             },
             canvas1: {
@@ -88,7 +88,7 @@ const RootReducer = createReducer(initialState, builder => {
             state.createQuiz.data.isvideo2 = false;
         }
         state.createQuiz.data[canvas].video = null;
-        state.createQuiz.data[canvas].img = file; // Убедитесь, что file - это URL изображения
+        state.createQuiz.data[canvas].img = file; 
     })
     .addCase('HANDLEMOBILECHANGE', (state, action) => {
         console.log('mobile');
@@ -199,6 +199,29 @@ const RootReducer = createReducer(initialState, builder => {
     })
     .addCase('CHANGETHEME', (state, action) => {
         state.createQuiz.data.theme.theme = action.payload; 
+    })
+    .addCase('CHANGEBACKGROUNDCOLOR', (state, action) => {
+        state.createQuiz.data.theme.theme = 'user';
+        state.createQuiz.data.theme.backgroundColor = action.payload;
+    })
+    .addCase('CHANGETEXTCOLOR', (state, action) => {
+        state.createQuiz.data.theme.theme = 'user';
+        state.createQuiz.data.theme.textColor = action.payload;
+    })
+    .addCase('CHANGEBUTTONCOLOR', (state, action) => {
+        state.createQuiz.data.theme.theme = 'user';
+        state.createQuiz.data.theme.buttonColor = action.payload;
+    })
+    .addCase('CHANGEBUTTONTEXTCOLOR', (state, action) => {
+        state.createQuiz.data.theme.theme = 'user';
+        state.createQuiz.data.theme.buttonTextColor = action.payload;
+    })
+    .addCase('CHANGEFONT', (state, action) => {
+        state.createQuiz.data.theme.theme = 'user';
+        state.createQuiz.data.theme.font = action.payload;
+    })
+    .addCase('CHANGEBUTTONSTYLE', (state, action) => {
+        state.createQuiz.data.theme.buttonStyle = action.payload;
     })
     /* ЛК */
     .addCase('LOGIN_SUCCESS', (state, action) => {

@@ -10,31 +10,35 @@ import align_arrow_closed from '../../../../img/Constructor/create/align_arrow_c
 const Instrument3 = () => {
     const dispatch = useDispatch();
     const isvideo = useSelector((state) => state.createQuiz.data.isvideo2);
-    const [activeIndex, setActiveIndex] = useState(2); // Устанавливаем индекс по умолчанию на 2 (Стандратная)
-    const [activeBackgroundIndex, setActiveBackgroundIndex] = useState(0);
-    const [modalClass, setModalClass] = useState('close'); // Состояние для управления классом модального окна
-    const [activeItem, setActiveItem] = useState({ img: align_standart, text: 'Стандратная', align: 'canvas' }); // Устанавливаем активный элемент по умолчанию
-    const [activeButtonIndex, setActiveButtonIndex] = useState(0); // Состояние для хранения индекса активной кнопки
-    const modalRef = useRef(null); // Реф для модального окна
+    const canvasAlign = useSelector((state) => state.createQuiz.data.canvas3.aling); 
 
     const items = [
         { img: align_background, text: 'Фоновая картинка', align: 'background-left' },
         { img: align_standart, text: 'Стандратная', align: 'canvas' },
-    ];
+    ];    
+
+    const [activeIndex, setActiveIndex] = useState(2); // Устанавливаем индекс по умолчанию на 2 (Стандратная)
+    const [activeBackgroundIndex, setActiveBackgroundIndex] = useState(0);
+    const [modalClass, setModalClass] = useState('close'); // Состояние для управления классом модального окна
+    const [activeItem, setActiveItem] = useState(items[1]); // Убираем начальное значение
+    const [activeButtonIndex, setActiveButtonIndex] = useState(0); // Состояние для хранения индекса активной кнопки
+    const modalRef = useRef(null); // Реф для модального окна
+
+
     const handleVideoChange = (index) => {
         setActiveBackgroundIndex(index);
-        dispatch(resetBackground('canvas3', index));
+        dispatch(resetBackground('canvas3'));
     };
+
     const handleAlignClick = (align, index) => {
-        dispatch(setAlign3(align)); // Диспатчим действие с новым значением align
-        setActiveIndex(index); // Устанавливаем активный индекс
-        setActiveItem(items[index]); // Устанавливаем активный элемент
-        setActiveButtonIndex(0); // Устанавливаем activeButtonIndex в 0
+        dispatch(setAlign3(align)); 
+        setActiveIndex(index); 
+        setActiveButtonIndex(0); 
     };
 
     const handleClickOutside = (event) => {
         if (modalRef.current && !modalRef.current.contains(event.target)) {
-            setModalClass('close'); // Устанавливаем класс close
+            setModalClass('close'); 
         }
     };
 
@@ -42,21 +46,65 @@ const Instrument3 = () => {
         if (isvideo) {
             setActiveBackgroundIndex(1);
         }
-        // Добавляем обработчик события клика
         document.addEventListener('mousedown', handleClickOutside);
         return () => {
-            // Убираем обработчик события при размонтировании компонента
             document.removeEventListener('mousedown', handleClickOutside);
         };
-    }, []);
+    }, [isvideo]);
+
+    useEffect(() => {
+        console.log('canvasAlign изменился:', canvasAlign);
+        // Устанавливаем activeIndex в зависимости от canvasAlign
+        switch (canvasAlign) {
+            case 'background-left':
+                console.log('background-left');
+                setActiveIndex(0);
+                setActiveItem(items[0]);
+                setActiveButtonIndex(0);
+                break;
+
+            case 'background-center':
+                console.log('background-center');
+                setActiveIndex(0);
+                setActiveItem(items[0]);
+                setActiveButtonIndex(1);
+                break;
+
+            case 'background-right':
+                console.log('background-right');
+                setActiveIndex(0);
+                setActiveItem(items[0]);
+                setActiveButtonIndex(2);
+                break;
+
+            case 'canvas':
+                console.log('canvas');
+                setActiveIndex(1);
+                setActiveItem(items[1]);
+                setActiveButtonIndex(0);
+                break;
+            default:
+                console.log('default');
+                setActiveIndex(1); // Значение по умолчанию
+                setActiveItem(items[1]);
+                setActiveButtonIndex(1);
+        }
+    }, [canvasAlign]); // Зависимость от canvasAlign
+
+    useEffect(() => {
+        // Обновляем activeItem в зависимости от activeIndex
+        if (activeIndex !== null && activeIndex >= 0 && activeIndex < items.length) {
+            setActiveItem(items[activeIndex]);
+        }
+    }, [activeIndex]); // Зависимость от activeIndex
 
     const toggleModal = () => {
-        setModalClass(modalClass === 'open' ? 'close' : 'open'); // Переключаем класс модального окна
+        setModalClass(modalClass === 'open' ? 'close' : 'open'); 
     };
 
     const handleButtonClick = (index, align) => {
         setActiveButtonIndex(index);
-        dispatch(setAlign3(align)); // Устанавливаем активный индекс кнопки
+        dispatch(setAlign3(align)); 
     };
     const modalStyle = {
         height: '100px'

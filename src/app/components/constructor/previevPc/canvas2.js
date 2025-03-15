@@ -4,16 +4,28 @@ import { useSelector } from 'react-redux';
 import arrow_back from '../../../img/Constructor/previev/arrow_back.svg';
 import arrow_next from '../../../img/Constructor/previev/arrow_next.svg';
 
-const Canvas2 = () => {
+const Canvas2 = ({ handleButtonClick }) => {
   const rangeInputRef = useRef(null);
   const rangeDivRef = useRef(null);
   const { createQuiz } = useSelector((state) => state);
+  const theme = createQuiz.data.theme.theme; // Get the current theme
+  const button = createQuiz.data.theme.buttonStyle; // Get the current theme
   const [currentIndex, setCurrentIndex] = useState(0);
   const [totalQuestions, setTotalQuestions] = useState(createQuiz.data.canvas2.length);
+
+  // Determine colors based on the theme
+  const backgroundColor = theme === 'user' ? createQuiz.data.theme.backgroundColor : ''; 
+  const textColor = theme === 'user' ? createQuiz.data.theme.textColor : ''; 
+  const buttonColor = theme === 'user' ? createQuiz.data.theme.buttonColor : ''; 
+  const buttonTextColor = theme === 'user' ? createQuiz.data.theme.buttonTextColor : ''; 
+  const buttonStyle = button === 'style1' || button === 'style2' ? createQuiz.data.theme.buttonColor : ''; 
+  console.log(buttonStyle);
 
   const handleNextClick = () => {
     if (currentIndex < totalQuestions - 1) {
       setCurrentIndex(currentIndex + 1);
+    } else {
+      handleButtonClick('canvas3');
     }
   };
 
@@ -27,7 +39,7 @@ const Canvas2 = () => {
     if (totalQuestions === 0) {
       return 0;
     }
-    return Math.round((currentIndex / (totalQuestions - 1)) * 100);
+    return Math.round((currentIndex / totalQuestions) * 100);
   };
 
   useEffect(() => {
@@ -39,13 +51,13 @@ const Canvas2 = () => {
       const updateDivWidth = () => {
         const value = rangeInput.value;
         const max = rangeInput.max;
-        const width = (value / (max / 100)) ; // ширина до положения ползунка
+        const width = (value / (max / 100)); // Width to the slider position
         rangeDiv.style.width = `${width}%`;
         rangeDiv.style.left = '0';
       };
   
       rangeInput.addEventListener('input', updateDivWidth);
-      updateDivWidth(); // Установить начальную ширину
+      updateDivWidth(); // Set initial width
   
       countInput.addEventListener('input', () => {
         const value = countInput.value;
@@ -58,7 +70,6 @@ const Canvas2 = () => {
         } else {
           countInput.value = '';
         }
-        console.log(value);
       });
   
       return () => {
@@ -66,26 +77,26 @@ const Canvas2 = () => {
         countInput.removeEventListener('input', () => {});
       };
     }
-  }, [createQuiz.data.canvas2[currentIndex].name === 'Calculator']);
+  }, [createQuiz.data.canvas2[currentIndex].name]);
 
   return (
-    <div className='canvas2'>
-      <h1>{createQuiz.data.title}</h1>
+    <div className='canvas2' style={{ backgroundColor }}>
+      <h1 style={{ color: textColor }}>{createQuiz.data.title}</h1>
       {createQuiz.data.canvas2.length > 0 && (
         <>
-          <h3>{createQuiz.data.canvas2[currentIndex].question}</h3>
+          <h3 style={{ color: textColor }}>{createQuiz.data.canvas2[currentIndex].question}</h3>
           {createQuiz.data.canvas2[currentIndex].name === 'Answers' ? (
             <div className="answers">
               {createQuiz.data.canvas2[currentIndex].answers.map((answer, answerIndex) => (
                 <div className="item" key={answerIndex}>
-                  <button></button>
-                  <p>{answer}</p>
+                  <button style={{ backgroundColor: buttonColor, color: buttonTextColor }}></button>
+                  <p style={{ color: textColor }}>{answer}</p>
                 </div>
               ))}
             </div>
           ) : (
             <div className="calc">
-              <input type="text" id='count'/>
+              <input type="text" id='count' style={{ borderColor: buttonColor }} />
               <div className="range">
                 <div ref={rangeDivRef}><div></div></div>
                 <input
@@ -98,19 +109,23 @@ const Canvas2 = () => {
                 />
               </div>
               <div className="text">
-                <p>{createQuiz.data.canvas2[currentIndex].min}</p>
-                <p>{createQuiz.data.canvas2[currentIndex].max}</p>
+                <p style={{ color: textColor }}>{createQuiz.data.canvas2[currentIndex].min}</p>
+                <p style={{ color: textColor }}>{createQuiz.data.canvas2[currentIndex].max}</p>
               </div>
             </div>
           )}
         </>
       )}
       <div className="progress">
-        <p>Готово: <span>{calculateProgress()}%</span></p>
-        <div className='prog'><div style={{ width: `${calculateProgress()}%` }}></div></div>
-        <a href="http://qzpro.ru">Создано в <span>QZ.pro</span></a>
-        <button onClick={handleBackClick}><img src={arrow_back} alt="#" /></button>
-        <button onClick={handleNextClick}>Далее <img src={arrow_next} alt="#" /></button>
+        <p style={{ color: textColor }}>Готово: <span style={{ color: buttonColor }}>{calculateProgress()}%</span></p>
+        <div className='prog'><div style={{ width: `${calculateProgress()}%`, background: buttonColor }}></div></div>
+        <a href="http://qzpro.ru" style={{ color: textColor, textDecorationColor: buttonColor }}>Создано в <span style={{ color: buttonColor }}>QZ.pro</span></a>
+        <button onClick={handleBackClick} style={{ color: buttonTextColor, border: `0.85px solid ${buttonColor}` }}>
+          <img src={arrow_back} alt="#" />
+        </button>
+        <button onClick={handleNextClick} style={{ backgroundColor: buttonStyle, color: buttonTextColor, border: `0.85px solid ${buttonColor}` }}>
+          Далее <img src={arrow_next} alt="#" />
+        </button>
       </div>
     </div>
   );

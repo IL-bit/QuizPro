@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './style.scss';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -10,7 +10,9 @@ import close from '../../img/Constructor/create/close.svg';
 const PrevievQuizPc = () => {
   const navigate = useNavigate();
   const canvas2 = useSelector((state) => state.createQuiz.data.canvas2);
+  const isCanvas1 = useSelector((state) => state.createQuiz.data.canvas1.isActive);
   const theme = useSelector(state => state.createQuiz.data.theme.theme);
+  const buttonStyle = useSelector(state => state.createQuiz.data.theme.buttonStyle);
   const handleClick = (route) => {
     navigate(route);
   };
@@ -25,17 +27,24 @@ const PrevievQuizPc = () => {
       setCurrentCanvas(canvas);
     }
   };
+  useEffect(() => {
+    if (isCanvas1) {
+      setCurrentCanvas('canvas1');
+    } else {
+      handleButtonClick('canvas2');
+    }
+  }, []);
   return (
     <div className="container" id='previevQuizPc'>
         <div className="row">
             <div className="col-12 ">
                 <button className='close' onClick={() => handleClick('/user/createquiz/new')}><img src={close} alt="#" /></button>
-                <div className={`previev ${theme}-theme `}>
+                <div className={`previev ${theme}-theme ${buttonStyle}`}>
                   {currentCanvas === 'canvas1' && (
                     <Canvas1 handleButtonClick={handleButtonClick} />
                   )}
                   {currentCanvas === 'canvas2' && (
-                    <Canvas2 />
+                    <Canvas2 handleButtonClick={handleButtonClick} />
                   )}
                   {currentCanvas === 'canvas3' && (
                     <Canvas3 />

@@ -9,11 +9,12 @@ import mobile from '../../../img/Constructor/create/mobile.svg';
 import user from '../../../img/Constructor/create/user2.svg';
 import letter from '../../../img/Constructor/create/Letter.svg';
 import phone from '../../../img/Constructor/create/Phone2.svg';
+import pc from '../../../img/Constructor/create/pc.svg';
 
 
 const Canvas3 = () => {
   const dispatch = useDispatch();
-  const video = useSelector((state) => state.createQuiz.isvideo1);
+  const video = useSelector((state) => state.createQuiz.data.isvideo2);
   const { createQuiz } = useSelector((state) => state);
 
   const handleInput = (field, value) => {
@@ -40,7 +41,7 @@ const Canvas3 = () => {
     const file = event.target.files[0];
     const reader = new FileReader();
     reader.onload = (e) => {
-      dispatch(videoChange('canvas1', e.target.result));
+      dispatch(videoChange('canvas3', e.target.result));
     };
     reader.readAsDataURL(file);
   };
@@ -48,7 +49,7 @@ const Canvas3 = () => {
     const file = event.target.files[0];
     const reader = new FileReader();
     reader.onload = (e) => {
-      dispatch(mobileChange('canvas1', e.target.result)); 
+      dispatch(mobileChange('canvas3', e.target.result)); 
     };
     reader.readAsDataURL(file);
   };
@@ -64,11 +65,11 @@ const Canvas3 = () => {
         <div className={canvasClass}>
               <input type="file" className='mobileImg' accept='image/*' onChange={handleMobile} style={{ display: 'none' }} />
               {video ? <input type="file" accept="video/*" onChange={handleVideo} style={{ display: 'none' }} className='logoImgs'/> : <input type="file" accept="image/*" onChange={handleImage} style={{ display: 'none' }} className='logoImgs'/>}
-              <button onClick={() => document.querySelector('.logoImgs').click()} className='first'></button>
+              <button onClick={() => document.querySelector('.logoImgs').click()} className='first'><img src={pc} alt="#" /></button>
               <button onClick={() => document.querySelector('.mobileImg').click()} className='second'><img src={mobile} alt="#" /></button>
             {createQuiz.data.canvas3.video ? (
               <video loop autoPlay muted className="img">
-                <source src={createQuiz.data.canvas1.video} type="video/mp4" />
+                <source src={createQuiz.data.canvas3.video} type="video/mp4" />
                 Ваш браузер не поддерживает видео.
               </video>
             ) : (

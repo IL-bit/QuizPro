@@ -11,31 +11,35 @@ import align_arrow_closed from '../../../../img/Constructor/create/align_arrow_c
 const Instrument = () => {
     const dispatch = useDispatch();
     const isvideo = useSelector((state) => state.createQuiz.data.isvideo1);
-    const [activeIndex, setActiveIndex] = useState(2); // Устанавливаем индекс по умолчанию на 2 (Стандратная)
-    const [activeBackgroundIndex, setActiveBackgroundIndex] = useState(0);
-    const [modalClass, setModalClass] = useState('close'); // Состояние для управления классом модального окна
-    const [activeItem, setActiveItem] = useState({ img: align_standart, text: 'Стандратная', align: 'canvas' }); // Устанавливаем активный элемент по умолчанию
-    const [activeButtonIndex, setActiveButtonIndex] = useState(0); // Состояние для хранения индекса активной кнопки
-    const modalRef = useRef(null); // Реф для модального окна
+    const canvasAlign = useSelector((state) => state.createQuiz.data.canvas1.aling); 
+
     const items = [
         { img: align_center, text: 'По центру', align: 'canvas-center' },
         { img: align_background, text: 'Фоновая картинка', align: 'background-left' },
         { img: align_standart, text: 'Стандратная', align: 'canvas' },
     ];
+
+    const [activeIndex, setActiveIndex] = useState(2); // Убираем начальное значение
+    const [activeBackgroundIndex, setActiveBackgroundIndex] = useState(0);
+    const [modalClass, setModalClass] = useState('close'); 
+    const [activeItem, setActiveItem] = useState(items[2]); // Убираем начальное значение
+    const [activeButtonIndex, setActiveButtonIndex] = useState(0); 
+    const modalRef = useRef(null); 
+
     const handleVideoChange = (index) => {
         setActiveBackgroundIndex(index);
         dispatch(resetBackground('canvas1'));
     };
+
     const handleAlignClick = (align, index) => {
-        dispatch(setAlign(align)); // Диспатчим действие с новым значением align
-        setActiveIndex(index); // Устанавливаем активный индекс
-        setActiveItem(items[index]); // Устанавливаем активный элемент
-        setActiveButtonIndex(0); // Устанавливаем activeButtonIndex в 0
+        dispatch(setAlign(align)); 
+        setActiveIndex(index); 
+        setActiveButtonIndex(0); 
     };
 
     const handleClickOutside = (event) => {
         if (modalRef.current && !modalRef.current.contains(event.target)) {
-            setModalClass('close'); // Устанавливаем класс close
+            setModalClass('close'); 
         }
     };
 
@@ -43,21 +47,70 @@ const Instrument = () => {
         if (isvideo) {
             setActiveBackgroundIndex(1);
         }
-        // Добавляем обработчик события клика
         document.addEventListener('mousedown', handleClickOutside);
         return () => {
-            // Убираем обработчик события при размонтировании компонента
             document.removeEventListener('mousedown', handleClickOutside);
         };
-    }, []);
+    }, [isvideo]);
+
+    useEffect(() => {
+        console.log('canvasAlign изменился:', canvasAlign);
+        // Устанавливаем activeIndex в зависимости от canvasAlign
+        switch (canvasAlign) {
+            case 'canvas-center':
+                console.log('canvas-center');
+                setActiveIndex(0);
+                setActiveItem(items[0]);
+                break;
+            case 'background-left':
+                console.log('background-left');
+                setActiveIndex(1);
+                setActiveItem(items[1]);
+                setActiveButtonIndex(0);
+                break;
+
+            case 'background-center':
+                console.log('background-center');
+                setActiveIndex(1);
+                setActiveItem(items[1]);
+                setActiveButtonIndex(1);
+                break;
+
+            case 'background-right':
+                console.log('background-right');
+                setActiveIndex(1);
+                setActiveItem(items[1]);
+                setActiveButtonIndex(2);
+                break;
+
+            case 'canvas':
+                console.log('canvas');
+                setActiveIndex(2);
+                setActiveItem(items[2]);
+                setActiveButtonIndex(0);
+                break;
+            default:
+                console.log('default');
+                setActiveIndex(2); // Значение по умолчанию
+                setActiveItem(items[2]);
+                setActiveButtonIndex(1);
+        }
+    }, [canvasAlign]); // Зависимость от canvasAlign
+
+    useEffect(() => {
+        // Обновляем activeItem в зависимости от activeIndex
+        if (activeIndex !== null && activeIndex >= 0 && activeIndex < items.length) {
+            setActiveItem(items[activeIndex]);
+        }
+    }, [activeIndex]); // Зависимость от activeIndex
 
     const toggleModal = () => {
-        setModalClass(modalClass === 'open' ? 'close' : 'open'); // Переключаем класс модального окна
+        setModalClass(modalClass === 'open' ? 'close' : 'open'); 
     };
 
     const handleButtonClick = (index, align) => {
         setActiveButtonIndex(index);
-        dispatch(setAlign(align)); // Устанавливаем активный индекс кнопки
+        dispatch(setAlign(align)); 
     };
 
     return (
@@ -77,7 +130,7 @@ const Instrument = () => {
                 <p>Дизайн</p>
                 <div onClick={toggleModal}>
                     <img src={activeItem.img || "#"} alt={activeItem.text || "#"} />
-                    <span>{activeItem.text || "Выберите выравнивание"}</span> {/* Отображаем текст активного элемента */}
+                    <span>{activeItem.text || "Выберите выравнивание"}</span> 
                     <img 
                         src={modalClass === 'open' ? align_arrow_open : align_arrow_closed} 
                         alt="#" 
@@ -96,7 +149,7 @@ const Instrument = () => {
                     ))}
                 </div>
             </div>
-            {activeItem.align === 'background-left' ? ( // Условный рендеринг для .align-3
+            {activeItem.align === 'background-left' ? ( 
                 <div className="align-3">
                     <p>Выравнивание</p>
                     <div>
@@ -117,7 +170,7 @@ const Instrument = () => {
                         </button>
                     </div>
                 </div>
-            ) : activeItem.align === 'canvas' ? ( // Условный рендеринг для .align
+            ) : activeItem.align === 'canvas' ? ( 
                 <div className="align">
                     <p>Выравнивание</p>
                     <div>
@@ -133,7 +186,7 @@ const Instrument = () => {
                         </button>
                     </div>
                 </div>
-            ) : null} {/* Если align равен 'canvas-center', ничего не отображаем */}
+            ) : null} {}
         </div> 
     );
 }
