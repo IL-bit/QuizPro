@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <button id="buttonQuiz">Пройти квиз</button>
+    <div id="Quiz"> <!-- Initially hidden -->
+
+    </div>
+    <script>
+        const imgs = {
+            next: '',
+            back: ''
+        }
+        document.addEventListener('DOMContentLoaded', () => {
+            const buttonQuiz = document.querySelector('#buttonQuiz');
+            const quiz = document.querySelector('#Quiz');
+            let currentCanvas = 2;
+            let currentIndex = 0;
+            const data = {
+                title: 'Заголовок страницы',   
+                isvideo1: false,
+                isvideo2: false,              
+                theme: {
+                    backgroundColor: '#000',
+                    textColor: '#FFFFFF',
+                    buttonColor: '#000',
+                    buttonTextColor: '#FFFFFF',
+                    font: '',
+                    buttonStyle: 'style4',
+                    theme: 'dark-theme' // Change this to 'user' or 'dark-theme' as needed
+                },
+                canvas1: {
+                    title: 'Введите заголовок формы',
+                    subtitle: 'Дополнительный текст-описание',
+                    img: null,
+                    logo: null,
+                    name: 'ООО «Название компании»',
+                    description: 'Название или слоган компании',
+                    tel: '+7 (900) 000-00-00',
+                    button: 'Начать',
+                    video: null,
+                    mobile: null,
+                    aling: 'background-center',
+                    isActive: true
+                },
+                canvas2: [
+                    {
+                        name: 'Answers',
+                        question: 'Впишите заголовок вопроса',
+                        answers: ['1', '2', '3']
+                    },
+                    {
+                        name: 'Answers',
+                        question: 'Впишите заголовок вопроса',
+                        answers: ['1', '2', '3']
+                    },
+                    {
+                        name: 'Answers',
+                        question: 'Впишите заголовок вопроса',
+                        answers: ['1', '2', '3']
+                    }
+                ],
+                canvas3: {
+                    title: 'Введите заголовок формы',
+                    subtitle: 'Дополнительный текст-описание',
+                    img: null,
+                    name: 'Иван',
+                    email: 'Mail@example.com',
+                    phone: '+7 (900) 000-00-00',
+                    video: null,
+                    aling: 'background-center'
+                }
+            };
+            const answers = [
+                {
+                    question: '',
+                    answers: {
+                        1: false,
+                        2: false,
+                        3: false
+                    }
+                },
+            ];
+            quiz.innerHTML = `
+                <div>
+                    <img src="#" alt="#" id="CloseQuiz">
+                    <div id="canvas" class="${data.theme.buttonStyle}">
+                    </div>
+                </div>
+            `;            
+            const closeQuiz = document.querySelector('#CloseQuiz');
+            const canvas = document.querySelector('#canvas');
+            const backgroundColor = data.theme.backgroundColor;
+            const textColor = data.theme.textColor;
+            const buttonColor = data.theme.buttonColor;
+            const buttonTextColor = data.theme.buttonTextColor;
+
+            buttonQuiz.addEventListener('click', () => {
+                quiz.style.display = 'block'; 
+                quiz.classList.add(data.theme.theme);
+            });
+
+            closeQuiz.addEventListener('click', () => {
+                quiz.style.display = 'none'; 
+            });
+            
+            const renderAnswers = () => {
+                const questionData = data.canvas2[currentIndex];
+                canvas.innerHTML = `
+                    <div class="canvas2">
+                        <h3>${questionData.question}</h3>
+                        <div class="answers">
+                            ${questionData.answers.map((answer, index) => `
+                                <div class="item">
+                                    <button></button>
+                                    <p>${answer}</p>
+                                </div>
+                            `).join('')}
+                        </div>
+
+                        <div class="progress">
+                            <p>Готово: <span></span></p>
+                            <div class='prog'><div></div></div>
+                            <a href="http://qzpro.ru">Создано в <span>QZ.pro</span></a>
+                            <button><img src={arrow_back} alt="#" /></button>
+                            <button>Далее <img src={arrow_next} alt="#" /></button>
+                        </div>
+                    </div>
+                `;
+
+                // Обработчики событий для кнопок
+                // document.getElementById('backButton').addEventListener('click', () => {
+                //     if (currentIndex > 0) {
+                //         currentIndex--;
+                //         renderQuestion();
+                //     }
+                // });
+
+                // document.getElementById('nextButton').addEventListener('click', () => {
+                //     if (currentIndex < data.canvas2.length - 1) {
+                //         currentIndex++;
+                //         renderQuestion();
+                //     } else {
+                //         // Здесь можно добавить логику для завершения опроса
+                //         alert('Опрос завершен!');
+                //     }
+                // });
+            };
+
+            if (data.canvas1.isActive && currentCanvas === 1) {
+                canvas.innerHTML = ``;
+                const logoStyle = data.canvas1.logo ? `background: url(${data.canvas1.logo});` : 'background-color: rgba(66, 87, 102, 0.52);';
+                const alignClass = data.canvas1.aling;
+                const canvasClass = alignClass === 'canvas-center' ? 'canvas-center' : 'canvas1 ' + alignClass;
+                if (data.theme.theme === 'user') {
+                    canvas.innerHTML = `
+                        <div class="${canvasClass}" style="background-color: ${backgroundColor};">
+                            ${data.canvas1.video ? `
+                                <video loop autoPlay muted class="img">
+                                    <source src="${data.canvas1.video}" type="video/mp4" />
+                                    Ваш браузер не поддерживает видео.
+                                </video>
+                            ` : `
+                                <div class="img" style="background: url(${data.canvas1.img});"></div>
+                            `}
+                            <div class="right">
+                                <div class="logo">
+                                    <button style="${logoStyle}"></button>
+                                    <p style="color: ${textColor};">${data.canvas1.description}</p>                        
+                                </div>
+                                <h1 style="color: ${textColor};">${data.canvas1.title}</h1>
+                                <h3 style="color: ${textColor};">${data.canvas1.subtitle}</h3>
+                                <button style="background-color: ${buttonColor}; color: ${buttonTextColor};">
+                                    ${data.canvas1.button}
+                                </button>
+                                <a href="http://qzpro.ru" style="color: ${textColor}; text-decoration-color: ${buttonColor};">
+                                    Создано в <span style="color: ${buttonColor};">QZ.pro</span>
+                                </a>
+                                <p style="color: ${textColor};">${data.canvas1.tel}</p>
+                                <p style="color: ${textColor};">${data.canvas1.name}</p>
+                            </div>
+                        </div>
+                    `;                    
+                } else {
+                    canvas.innerHTML = `
+                        <div class="${canvasClass}">
+                            ${data.canvas1.video ? `
+                                <video loop autoPlay muted class="img">
+                                    <source src="${data.canvas1.video}" type="video/mp4" />
+                                    Ваш браузер не поддерживает видео.
+                                </video>
+                            ` : `
+                                <div class="img" style="background: url(${data.canvas1.img});"></div>
+                            `}
+                            <div class="right">
+                                <div class="logo">
+                                    <button style="${logoStyle}"></button>
+                                    <p>${data.canvas1.description}</p>                        
+                                </div>
+                                <h1>${data.canvas1.title}</h1>
+                                <h3>${data.canvas1.subtitle}</h3>
+                                <button>
+                                    ${data.canvas1.button}
+                                </button>
+                                <a href="http://qzpro.ru">
+                                    Создано в <span>QZ.pro</span>
+                                </a>
+                                <p>${data.canvas1.tel}</p>
+                                <p>${data.canvas1.name}</p>
+                            </div>
+                        </div>
+                    `;
+                }
+            }
+            if (currentCanvas === 2) {
+                renderAnswers();
+
+
+            }
+            if (currentCanvas === 3) {
+                canvas.innerHTML = ``; // Clear previous content
+                const backgroundColor = data.theme.backgroundColor;
+                const textColor = data.theme.textColor;
+                const buttonColor = data.theme.buttonColor;
+                const buttonTextColor = data.theme.buttonTextColor;
+                if (data.theme.theme === 'user') {
+                    canvas.innerHTML = `
+                        <div class="canvas3 ${data.canvas3.aling}" style="background-color: ${backgroundColor}; ">
+                            ${data.canvas3.video ? `
+                                <video loop autoPlay muted class="img">
+                                    <source src="${data.canvas3.video}" type="video/mp4" />
+                                    Ваш браузер не поддерживает видео.
+                                </video>
+                            ` : `
+                                <div class="img" style="background-image: url(${data.canvas3.img});"></div>
+                            `}
+                            <div class="right">
+                                <h1 style="color: ${textColor};">${data.canvas3.title}</h1>
+                                <h3 style="color: ${textColor};">${data.canvas3.subtitle}</h3>
+                                <div class="inputs">
+                                    ${data.canvas3.name ? `
+                                        <div class="name">
+                                            <p style="color: ${textColor};">Имя*</p>
+                                            <input type="text" placeholder='Иван' style="border-color: ${buttonColor};" />
+                                            <img src="user.svg" alt="#" />
+                                        </div>
+                                    ` : ''}
+                                    ${data.canvas3.email ? `
+                                        <div class="email">
+                                            <p style="color: ${textColor};">Email*</p>
+                                            <input type="text" placeholder='Mail@example.com' style="border-color: ${buttonColor};" />
+                                            <img src="letter.svg" alt="#" />
+                                        </div>
+                                    ` : ''}
+                                    ${data.canvas3.phone ? `
+                                        <div class="phone">
+                                            <p style="color: ${textColor};">Телефон*</p>
+                                            <input type="text" placeholder='+7 (900) 000-00-00' style="border-color: ${buttonColor};" />
+                                            <img src="phone.svg" alt="#" />
+                                        </div>
+                                    ` : ''}
+                                </div>
+                                <button style="background-color: ${buttonColor}; color: ${buttonTextColor};">Отправить</button>
+                            </div>
+                        </div>
+                    `;                    
+                } else {
+                    canvas.innerHTML = `
+                        <div class="canvas3 ${data.canvas3.aling}">
+                            ${data.canvas3.video ? `
+                                <video loop autoPlay muted class="img">
+                                    <source src="${data.canvas3.video}" type="video/mp4" />
+                                    Ваш браузер не поддерживает видео.
+                                </video>
+                            ` : `
+                                <div class="img" style="background-image: url(${data.canvas3.img});"></div>
+                            `}
+                            <div class="right">
+                                <h1>${data.canvas3.title}</h1>
+                                <h3>${data.canvas3.subtitle}</h3>
+                                <div class="inputs">
+                                    ${data.canvas3.name ? `
+                                        <div class="name">
+                                            <p>Имя*</p>
+                                            <input type="text" placeholder='Иван'/>
+                                            <img src="user.svg" alt="#" />
+                                        </div>
+                                    ` : ''}
+                                    ${data.canvas3.email ? `
+                                        <div class="email">
+                                            <p>Email*</p>
+                                            <input type="text" placeholder='Mail@example.com'/>
+                                            <img src="letter.svg" alt="#" />
+                                        </div>
+                                    ` : ''}
+                                    ${data.canvas3.phone ? `
+                                        <div class="phone">
+                                            <p>Телефон*</p>
+                                            <input type="text" placeholder='+7 (900) 000-00-00'/>
+                                            <img src="phone.svg" alt="#" />
+                                        </div>
+                                    ` : ''}
+                                </div>
+                                <button>Отправить</button>
+                            </div>
+                        </div>
+                    `;  
+                }
+
+            } 
+        });
+    </script>
+</body>
+</html>
