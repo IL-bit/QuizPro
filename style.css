@@ -173,6 +173,7 @@
                 border: none;
                 border-radius: 100%;
                 background: #d3dbe1;
+                cursor: pointer;
             }
             button.active {
                 background: #105efe;
@@ -301,7 +302,6 @@
         border-radius: 18px;
         background: #ebebeb;
         div {
-            width: 12%;
             height: 100%;
             border-radius: 18px;
             background: #105efe;
@@ -328,7 +328,7 @@
         height: 78px;
         font-weight: 400;
         font-size: 20px;
-        color: #fff;
+        cursor: pointer;
         img {
             margin-left: 13px;
         }
@@ -339,6 +339,7 @@
         right: 200px;
         width: 78px;
         height: 78px;
+        cursor: pointer;
     }
 }
 #Quiz > div > #canvas > .canvas3 {
@@ -769,8 +770,8 @@
                 position: relative !important;
             }
             img {
-                left: 25px !important;
-                bottom: 14px !important;
+                left: 14px !important;
+                bottom: 18px !important;
             }
         }
         >button {
@@ -787,110 +788,6 @@
 
 
 
-
-#Quiz.light-theme {
-    >div {
-        background: #0f181e;
-    }
-    .canvas1, .canvas2, .canvas3, .canvas-center {
-        background: #fff;
-        p, h1, h3 {
-            color: #1d2a33;
-        }
-        .right {
-            >button {
-                background: #105efe;
-                color: #fff;
-            }    
-            a {
-                color: #1d2a33;
-                text-decoration-color: #105efe;
-                span {
-                    color: #105efe;
-                }
-            }  
-            .inputs {
-                input {
-                    border: 0.85px solid #6a8496;  
-                    color: #fff;
-                }   
-                input::placeholder {
-                    color: #6a8496;
-                }                 
-            }                         
-        }
-
-    }
-}
-#Quiz.dark-theme {
-    >div {
-        background: #fff;
-    }
-    .canvas1, .canvas2, .canvas3, .canvas-center {
-        background: #141c23;
-        p, h1, h3 {
-            color: #fff;
-        }
-        a {
-            color: #fff;
-        }
-        .right {
-            >button {
-                background: #105efe;
-                color: #fff;
-            }    
-            a {
-                color: #fff;
-                text-decoration-color: #105efe;
-                span {
-                    color: #105efe;
-                }
-            }  
-            .inputs {
-                input {
-                    border: 0.85px solid #fff;
-                    color: #fff;
-                }
-                input::placeholder {
-                    color: #fff;
-                }
-            }      
-        }
-    }
-}
-#Quiz.quiz-theme {
-    >div {
-        background: #0f181e;
-    }
-    .canvas1, .canvas2, .canvas3, .canvas-center {
-        background: #1153fe;
-        p, h1, h3 {
-            color: #fff;
-        }
-        .right {
-            >button {
-                background: #ff6210;
-                color: #fff;
-            }    
-            a {
-                color: #fff;
-                text-decoration-color: #ff6210;
-                span {
-                    color: #ff6210;
-                }
-            }   
-            .inputs {
-                input {
-                    border: 0.85px solid #fff;
-                    color: #fff;
-                }
-                input::placeholder {
-                    color: #fff;
-                }
-            }         
-        }
-    }
-}
 #canvas.style1 {
     >.canvas2 {
         >.progress {
@@ -953,6 +850,123 @@
                 border: 1.34px solid #6a8496;
                 background: none;
                 border-radius: 3px;
+            }
+        }
+    }
+}
+#Quiz.light-theme {
+    >div {
+        background: #0f181e;
+    }
+    .canvas1, .canvas2, .canvas3, .canvas-center {
+        background: #fff;
+        p, h1, h3 {
+            color: #1d2a33;
+        }
+        .right {
+            >button {
+                background: #105efe;
+                color: #fff;
+            }    
+            a {
+                color: #1d2a33;
+                text-decoration-color: #105efe;
+                span {
+                    color: #105efe;
+                }
+            }  
+            .inputs {
+                input {
+                    border: 0.85px solid #6a8496;  
+                    color: #fff;
+                }   
+                input::placeholder {
+                    color: #6a8496;
+                }                 
+            }                         
+        }
+        >.progress {
+            button {
+                color: #0f181e;
+            }
+        }
+    }
+}
+#Quiz.dark-theme {
+    >div {
+        background: #fff;
+    }
+    .canvas1, .canvas2, .canvas3, .canvas-center {
+        background: #141c23;
+        p, h1, h3 {
+            color: #fff;
+        }
+        a {
+            color: #fff;
+        }
+        .right {
+            >button {
+                background: #105efe;
+                color: #fff;
+            }    
+            a {
+                color: #fff;
+                text-decoration-color: #105efe;
+                span {
+                    color: #105efe;
+                }
+            }  
+            .inputs {
+                input {
+                    border: 0.85px solid #fff;
+                    color: #fff;
+                }
+                input::placeholder {
+                    color: #fff;
+                }
+            }      
+        }
+        >.progress {
+            button {
+                color: #fff;
+            }
+        }
+    }
+}
+#Quiz.quiz-theme {
+    >div {
+        background: #0f181e;
+    }
+    .canvas1, .canvas2, .canvas3, .canvas-center {
+        background: #1153fe;
+        p, h1, h3 {
+            color: #fff;
+        }
+        .right {
+            >button {
+                background: #ff6210;
+                color: #fff;
+            }    
+            a {
+                color: #fff;
+                text-decoration-color: #ff6210;
+                span {
+                    color: #ff6210;
+                }
+            }   
+            .inputs {
+                input {
+                    border: 0.85px solid #fff;
+                    color: #fff;
+                }
+                input::placeholder {
+                    color: #fff;
+                }
+            }         
+        }
+        >.progress {
+            button {
+                color: #fff;
             }
         }
     }
