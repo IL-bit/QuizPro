@@ -42,7 +42,7 @@ const Auth = () => {
   return (
     <div className="container">
       <div className="row">
-        <div className="col-xxl-4 mx-auto text-center" id='auth'>
+        <div className="col-xxl-4 mx-auto text-center col-xl-4 col-lg-4 col-12" id='auth'>
           <div id="blur"></div>
           <img src={logo} alt="#" className='img'/>
           <h2>Войти</h2>
