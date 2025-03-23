@@ -166,3 +166,42 @@
         }
     }
 }
+@media (min-width: 1200px) and (max-width: 1399px) {
+    .whistory {
+        border: 0.81px solid rgba(66, 87, 102, 0.1);
+        border-radius: 16px;
+        height: 65px;
+        >.id {
+            border-radius: 28px;
+            width: 58px;
+            height: 21px;
+            left: 20px;
+            font-weight: 500;
+            font-size: 12px;
+            color: #fff;
+        }
+        >.date {
+            left: 170px;
+            font-weight: 300;
+            font-size: 12px;
+            color: #fff;
+        }
+        >.money {
+            left: 600px;
+            font-weight: 600;
+            font-size: 12px;
+            color: #fff;
+        }
+        >.trash {
+            right: 21px;
+            width: 14px;
+            height: 16px;
+            bottom: 23px;
+            img {
+                width: 14px;
+                height: 16px;
+                margin-top: -10px;
+            }
+        }
+    }
+}

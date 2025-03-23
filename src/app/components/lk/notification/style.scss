@@ -6,6 +6,7 @@
     background: #141e27;
     padding: 16px 24px 26px 24px;
     position: relative;
+    margin-bottom: 10px;
     >h4 {
         font-weight: 600;
         font-size: 18px;
@@ -30,5 +31,35 @@
         font-size: 16px;
         line-height: 140%;
         color: #667d8d;
+    }
+}
+@media (min-width: 1200px) and (max-width: 1399px) {
+    .notification {
+        border: 0.86px solid rgba(66, 87, 102, 0.1);
+        border-radius: 17px;
+        height: 201px;
+        margin-bottom: 8px;
+        >h4 {
+            font-weight: 600;
+            font-size: 15px;
+            color: #fff;
+            img {
+                width: 51px;
+                height: 51px;
+                margin-right: 15px;
+            }
+        }
+        >p {
+            font-weight: 400;
+            font-size: 13px;
+        }
+        >.date {
+            font-weight: 300;
+            font-size: 13px;
+            line-height: 140%;
+            color: #667d8d;
+            left: 20px;
+            bottom: 17px;
+        }
     }
 }

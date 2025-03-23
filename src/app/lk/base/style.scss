@@ -119,3 +119,94 @@
         }
     }
 }
+@media (min-width: 1200px) and (max-width: 1399px) {
+    #base {
+        border: 0.80px solid #1d2a33;
+        border-radius: 20px;
+        height: 813px;
+        padding: 24px 20px 0 12px;
+        >h2 {
+            font-weight: 500;
+            font-size: 20px;
+            color: #fff;
+            margin-left: 31px;
+            margin-bottom: 29px;
+        }
+        >.content {
+            border: 0.80px solid rgba(66, 87, 102, 0.38);
+            border-radius: 16px;
+            height: 719px;
+            padding: 9px;
+            padding-bottom: 471px;
+            gap: 12px;
+            >.item {
+                border: 0.80px solid rgba(66, 87, 102, 0.1);
+                border-radius: 16px;
+                height: 110px;
+                img {
+                    margin-top: 15px;
+                    width: 19px;
+                    height: 19px;
+                }
+                h5 {
+                    margin-top: 23px;
+                    margin-bottom: 4px;
+                    font-weight: 500;
+                    font-size: 12px;
+                    text-align: center;
+                    color: #fff;
+                }
+                p {
+                    font-weight: 500;
+                    font-size: 9px;
+                    color: #6f8ca6;
+                }
+            }
+        }
+    }
+    #page {
+        border: 0.80px solid #1d2a33;
+        border-radius: 20px;
+        height: 813px;
+        padding: 24px 20px 0 12px;
+        >h2 {
+            font-weight: 500;
+            font-size: 20px;
+            color: #fff;
+            margin-left: 31px;
+            margin-bottom: 29px;
+        }
+        >button {
+            width: 26px;
+            height: 37px;
+            right: 43px;
+            top: 20px;
+        }
+        >.content {
+            border: 0.80px solid rgba(66, 87, 102, 0.38);
+            border-radius: 16px;
+            height: 716px;
+            margin-top: 29px;
+            padding-top: 19px;
+            >h3 {
+                font-weight: 500;
+                font-size: 16px;
+                color: #fff;
+                width: 316px;
+            }
+            >p {
+                font-weight: 500;
+                font-size: 9px;
+                color: #6f8ca6;
+                top: 21px;
+                right: 19px;
+            }
+            >.items {
+                border-top: 0.80px solid rgba(66, 87, 102, 0.38);
+                border-radius: 16px;
+                height: 655px;
+                padding: 19px;
+            }
+        }
+    }
+}
