@@ -89,7 +89,9 @@
             }
         } 
         button:nth-child(4) {
-            border: 1px solid #105efe;
+            border: 0.81px solid #105efe;
+            box-shadow: inset 7px 10px 13px 0 rgba(16, 94, 254, 0.25);
+            background: #141e27;
         }  
     }
     input[type="checkbox"].check {
@@ -141,6 +143,93 @@
         img {
             margin-left: -6px;
             margin-top: -2px;
+        }
+    }
+}
+@media (min-width: 1200px) and (max-width: 1399px) {
+    .quiz_small {
+        height: 111px;
+        margin-bottom: 7px;
+        padding-left: 19px;
+        padding-top: 18px;
+        .quiz_small_head {
+            p {
+                width: 21px;
+                height: 14px;
+                font-weight: 500;
+                font-size: 7px;
+                color: #fff;
+                margin-top: 1px;
+            }
+            h5 {
+                margin-left: 14px;
+                font-weight: 500;
+                font-size: 14px;
+                color: #fff;
+            }
+            button {
+                width: 8px;
+                height: 8px;
+                margin-top: 6px;
+                margin-left: 9px;
+                padding: 0;
+                img {
+                    width: 8px;
+                    height: 8px;
+                    margin-top: 0;
+                    margin-top: -19px;
+                }
+            }
+        }
+        .quiz_small_btns {
+            width: 536px;
+            height: 46px;
+            button {
+                width: 134px;
+                height: 46px;
+                font-weight: 400;
+                font-size: 12px;
+                color: #425766;
+                img {
+                    width: 16px;
+                    height: 16px;
+                    margin-right: 4px;
+                }
+
+            }
+            :nth-child(2) {
+                width: 109px;
+            }
+            button:nth-child(1) {
+                .count {
+                    height: 18px;
+                    width: 18px;
+                    font-weight: 700;
+                    font-size: 8px;
+                    margin-left: 28px;
+                }
+            }
+        }
+        input[type="checkbox"].check, input[type="checkbox"].check:checked::after, input[type="checkbox"].check:checked::before {
+            width: 22px !important;
+            height: 22px !important;
+        }
+        input[type="checkbox"].check {
+            top: 8px;
+            right: 8px;
+        }
+        .delete {
+            width: 19px;
+            height: 19px;
+            bottom: 11px;
+            right: 9px;
+            padding: 0;
+            img {
+                width: 19px;
+                height: 19px;  
+                margin: 0;
+                margin-top: -7px;   
+            }
         }
     }
 }

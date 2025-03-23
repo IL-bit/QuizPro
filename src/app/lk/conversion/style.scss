@@ -1,12 +1,13 @@
 #conversion {
     width: 100%;
-    height: calc(100vh - 50px);
-    max-height: 902px;
+    height: 902px;
     border: 1px solid #1d2a33;
     border-radius: 25px;
     background: #0f181e;
     padding: 31px 15px 0px 15px;
     position: relative;
+    box-shadow: inset 27px -39px 78px -79px #105efe;
+    background: #0f181e;
     >.head {
         position: relative;
         width: 100%;
@@ -213,6 +214,7 @@
         bottom: 37px;
         top: auto;
         display: flex;
+        align-items: center;
         p {
             font-weight: 300;
             font-size: 14px;
@@ -230,12 +232,185 @@
             width: 105px;
             height: 49px;
             display: flex;
+            align-items: center;
             justify-content: space-between;
             margin-left: auto;
             margin-right: 0;
             position: relative;
             top: 50%;
             transform: translateY(-50%);
+        }
+    }
+}
+@media (min-width: 1200px) and (max-width: 1399px) {
+    #conversion {
+        border: 0.81px solid #1d2a33;
+        border-radius: 20px;
+        height: 812px;
+        padding: 24px 12px 0px 12px;
+        >.head {
+            margin-bottom: 29px;
+            h2 {
+                font-weight: 500;
+                font-size: 21px;
+                color: #fff;
+                margin-left: 31px;
+            }
+            .count {
+                border-radius: 18px;
+                width: 21px;
+                height: 14px;
+                font-weight: 500;
+                font-size: 7px;
+                color: #fff;
+                top: 7px;
+                right: 156px;
+            }
+            .name {
+                font-weight: 500;
+                font-size: 14px;
+                color: #fff;
+                top: 5px;
+                right: 36px;
+            }
+        }
+        >.charts {
+            margin-bottom: 11px;
+            .chart {
+                border: 0.81px solid rgba(66, 87, 102, 0.38);
+                border-radius: 16px;
+                height: 172px;
+                max-width: 249px;
+                padding-top: 6px;
+                padding-left: 30px;
+                p {
+                    font-weight: 300;
+                    font-size: 13px;
+                    line-height: 35px; 
+                    color: #fff;
+                    margin-bottom: 0;
+                }
+                h5 {
+                    font-weight: 500;
+                    font-size: 19px;
+                    color: #fff;
+                }
+            }
+        }
+        >.start {
+            border: 0.81px solid rgba(66, 87, 102, 0.38);
+            border-radius: 16px;
+            height: 106px;
+            padding: 8px 23px 0 23px;
+            margin-bottom: 15px;
+            p {
+                font-weight: 300;
+                font-size: 13px;
+                line-height: 35px; 
+                color: #fff;
+            }
+            h5 {
+                font-weight: 600;
+                font-size: 16px;
+                line-height: 43px; 
+                color: #fff;
+            }
+            >.progress {
+                border-radius: 15px;
+                height: 6px;
+                div {
+                    border-radius: 15px;
+                    height: 6px;
+                }
+            }
+        }
+        >.questions {
+            margin-bottom: 15px;
+            .item {
+                border: 0.81px solid rgba(66, 87, 102, 0.38);
+                border-radius: 16px;
+                max-width: 135px;
+                height: 106px;
+                padding: 7px 23px 0 23px;
+                p {
+                    font-weight: 300;
+                    font-size: 13px;
+                    line-height: 35px; 
+                    color: #fff;
+                    margin-bottom: 4px;
+                }
+                >.progress {
+                    border-radius: 15px;
+                    height: 6px;
+                    margin-bottom: 1px;
+                    div {
+                        border-radius: 15px;
+                        height: 6px;
+                    }
+                }
+                h6 {
+                    font-weight: 600;
+                    font-size: 16px;
+                    line-height: 43px; 
+                    color: #fff;
+                }
+            }
+        }
+        >.form {
+            border: 0.81px solid rgba(66, 87, 102, 0.38);
+            border-radius: 16px;
+            height: 106px;
+            padding: 7px 23px 0 23px;
+            p {
+                font-weight: 300;
+                font-size: 13px;
+                line-height: 35px; 
+                color: #fff;
+                margin-bottom: 5px;
+            }
+            h5 {
+                margin-bottom: 1px;
+                font-weight: 600;
+                font-size: 16px;
+                line-height: 43px; 
+                color: #fff;
+            }
+            >.progress {
+                border-radius: 15px;
+                height: 6px;
+                div {
+                    border-radius: 15px;
+                    height: 6px;
+                }
+            }
+        }
+        >.footer {
+            width: 442px;
+            height: 58px;
+            left: 26px;
+            bottom: 13px;
+            p {
+                font-weight: 300;
+                font-size: 13px;
+                line-height: 23px; 
+                color: #738b9c;
+                span {
+                    font-weight: 600;
+                    line-height: 23px; 
+                }
+            }
+            >.imgs {
+                width: 85px;
+                height: 58px;
+                img {
+                    width: 39px;
+                    height: 39px;
+                }
+            }
+            >img {
+                height: 51px;
+                width: 51px;
+            }
         }
     }
 }

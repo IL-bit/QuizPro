@@ -17,6 +17,7 @@ const CreateQuiz = () => {
         <div className="row">
             <div className="col-xxl-3">
                 <LeftBar />
+                
             </div>
             <div className="col-xxl-9">
                 <div id="create_quiz">

@@ -8,10 +8,10 @@ const Profile = () => {
   return (
     <div className="container">
         <div className="row">
-            <div className="col-xxl-3">
+            <div className="col-xxl-3 col-xl-3">
                 <LeftBar />
             </div>
-            <div className="col-xxl-9">
+            <div className="col-xxl-9 col-xl-9">
                 <div id="profile">
                     <div className="head">
                         <h2>Профиль</h2>
