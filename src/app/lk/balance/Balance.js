@@ -4,7 +4,6 @@ import './style.scss';
 import LeftBar from '../../components/lk/leftBar/LeftBar';
 import folder1 from '../../img/balance/folder1.svg';
 import folder2 from '../../img/balance/folder2.svg';
-import youmoney from '../../img/balance/yumoney.svg';
 
 const Balance = () => {
     const navigate = useNavigate();   
@@ -14,10 +13,10 @@ const Balance = () => {
   return (
     <div className="container">
         <div className="row">
-            <div className="col-xxl-3 col-xl-3">
+            <div className="col-xxl-3">
                 <LeftBar />
             </div>
-            <div className="col-xxl-9 col-xl-9">
+            <div className="col-xxl-9">
                 <div id="balance">
                     <h2>Пополнение баланса</h2>
                     <div className="promo">
@@ -32,9 +31,7 @@ const Balance = () => {
                     </div>
                     <div className="methods">
                         <h5>Способы пополнения</h5>
-
                         <div>
-                            <img src={youmoney} alt="f"/>                            
                             <div>Картой</div>
                             <div className="active">СБП</div>
                             <div>Qr-code</div>

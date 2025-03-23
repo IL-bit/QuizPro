@@ -6,7 +6,6 @@
     background: #0f181e;
     position: relative;
     padding: 17px 26px 39px 15px;
-    margin-bottom: 25px;    
     >.answers {
         border: 1px solid rgba(66, 87, 102, 0.38);
         border-radius: 20px;
@@ -78,94 +77,12 @@
                 }
             }
         }
-        
-    }
-    >.results, >.someInfo {
-        border: 1px solid rgba(66, 87, 102, 0.38);
-        border-radius: 20px;
-        width: 100%;
-        height: auto;
-        background: #0f181e;
-        margin-top: 9px;
-        padding: 26px 29px 26px 29px;
-        h2 {
-            margin: 0;
-            margin-bottom: 24px;
-            font-weight: 500;
-            font-size: 26px;
-            color: #fff;
-        }
-        >div {
-            border: 1px solid rgba(66, 87, 102, 0.38);
-            border-radius: 20px;
-            width: 100%;
-            height: 101px;
-            background: #151e26;
-            padding: 0px 15px 0px 57px;
-            margin-bottom: 9px;
-            display: flex;
-            align-items: center;
-            font-weight: 300;
-            font-size: 18px;
-            line-height: 140%;
-            color: #667d8d;
-            >div {
-                margin-left: auto;
-                margin-right: 0;
-                border: 1px solid rgba(66, 87, 102, 0.38);
-                border-radius: 20px;
-                width: 645px;
-                height: 72px;
-                display: flex;
-                align-items: center;
-                font-weight: 300;
-                font-size: 18px;
-                line-height: 140%;
-                color: #fff;
-                padding-left: 34px;
-            }
-        }
-        p {
-            margin-top: 22px;
-            margin-left: 58px;
-            margin-bottom: 15px;
-            font-weight: 300;
-            font-size: 18px;
-            line-height: 140%;
-            color: #fff;
-        }
-    }
-    >.someInfo {
-        >:nth-child(2) {
-            div {
-                box-shadow: inset 0 -44px 57px -36px #105efe;
-                background: #151e26;
-            }
-        }
-        >:nth-child(3) {
-            div {
-                box-shadow: inset 0 -44px 57px -36px #6df882;
-                background: #151e26;
-            }
-        }
-        >:nth-child(5) {
-            div {
-                box-shadow: inset 0 -44px 57px -36px #d5d5d5;
-                background: #151e26;
-            }
-        }
-        >:nth-child(6) {
-            div {
-                box-shadow: inset 0 -44px 57px -36px #c0c0c0;
-                background: #151e26;
-            }
-        }
     }
     >.footer {
         width: 100%;
         padding-top: 22px;
-        padding-left: 30px;
-        padding-right: 30px;
+        padding-left: 45px;
+        padding-right: 45px;
         position: relative;
         >.id_answer {
             width: 100%;
@@ -188,6 +105,7 @@
                 border: 1px solid rgba(66, 87, 102, 0.38);
                 border-radius: 20px;
                 height: 72px;
+                background: #151e26;
                 padding-left: 34px;
                 display: flex;
                 align-items: center;
@@ -195,8 +113,6 @@
                 font-size: 18px;
                 line-height: 140%;
                 color: #fff;
-                box-shadow: inset 0 -44px 57px -36px #692e4d;
-                background: #151e26;
             }
         }
         >.actions {
@@ -221,7 +137,7 @@
         >button {
             position: absolute;
             left: auto;
-            right: 30px;
+            right: 45px;
             top: auto;
             bottom: 0;
             border: 1px solid rgba(66, 87, 102, 0.38);
@@ -233,154 +149,6 @@
             font-size: 18px;
             line-height: 140%;
             color: #fff;
-            box-shadow: inset 0 -25px 102px -52px #ff0004;
-            background: #151e26;
-        }
-    }
-}
-@media (min-width: 1200px) and (max-width: 1399px) {
-    #answer {
-        border: 0.82px solid #1d2a33;
-        border-radius: 21px;
-        height: auto;
-        padding: 14px 21px 32px 14px;
-        margin-bottom: 0;
-        >.answers {
-            border: 0.82px solid rgba(66, 87, 102, 0.38);
-            border-radius: 16px;
-            padding-top: 20px;
-            padding-bottom: 21px;
-            h2 {
-                margin-bottom: 18px;
-                margin-left: 26px;
-                font-weight: 500;
-                font-size: 21px;
-                color: #fff;
-            }
-            >.info {
-                padding: 16px 25px 24px 25px;
-                border-top: 0.82px solid rgba(66, 87, 102, 0.38);
-                border-radius: 16px;
-                p {
-                    font-weight: 300;
-                    font-size: 14px;
-                    line-height: 30px;
-                    margin-bottom: 22px;
-                }
-            }
-            >.answer {
-                border-top: 0.82px solid rgba(66, 87, 102, 0.38);
-                border-radius: 16px;
-                padding: 16px 25px 0px 25px;
-                >div {
-                    border: 0.82px solid rgba(66, 87, 102, 0.38);
-                    border-radius: 16px;
-                    padding: 30px 38px 32px 47px;
-                    p {
-                        font-weight: 300;
-                        font-size: 14px;
-                        line-height: 140%;
-                        margin-bottom: 20px;
-                    }
-                }
-            }
-        }
-        >.results, >.someInfo {
-            border-top: 0.82px solid rgba(66, 87, 102, 0.38);
-            border-radius: 16px;
-            padding: 21px 23px 24px 23px;
-            h2 {
-                font-weight: 500;
-                font-size: 21px;
-                color: #fff;
-                margin-bottom: 17px;
-            }
-            >div {
-                border: 0.82px solid rgba(66, 87, 102, 0.38);
-                border-radius: 16px;
-                height: 83px;
-                padding: 0 12px 0 47px;
-                margin-bottom: 7px;
-                font-weight: 300;
-                font-size: 14px;
-                line-height: 140%;
-                color: #667d8d;
-                >div {
-                    border: 0.82px solid rgba(66, 87, 102, 0.38);
-                    border-radius: 16px;
-                    width: 531px;
-                    height: 59px;
-                    padding-left: 28px;
-                    font-weight: 300;
-                    font-size: 14px;
-                    line-height: 140%;
-                    color: #fff;
-                }
-            }
-            p {
-                font-weight: 300;
-                font-size: 14px;
-                line-height: 140%;
-                color: #fff;
-                margin-left: 47px;
-                margin-top: 17px;
-                margin-bottom: 11px;
-            }
-        }
-        >.footer {
-            padding: 18px 24px 19px 24px;
-            >.id_answer {
-                border: 0.82px solid rgba(66, 87, 102, 0.38);
-                border-radius: 16px;
-                height: 83px;
-                padding: 0 12px 0 47px;
-                font-weight: 300;
-                font-size: 14px;
-                line-height: 140%;
-                color: #667d8d;
-                >div {
-                    border: 0.82px solid rgba(66, 87, 102, 0.38);
-                    border-radius: 16px;
-                    width: 531px;
-                    height: 59px;
-                    padding-left: 28px;
-                    font-weight: 300;
-                    font-size: 14px;
-                    line-height: 140%;
-                    color: #fff;
-                }
-            }
-            >.actions {
-                width: 403px;
-                height: 21px;
-                margin-top: 39px;
-                p {
-                    font-weight: 300;
-                    font-size: 14px;
-                    line-height: 140%;
-                    color: #fff;
-                    img {
-                        width: 16px;
-                        height: 16px;
-                    }
-                }
-                >:nth-child(1) {
-                    img {
-                        width: 15px;
-                    }
-                }
-            }
-            >button {
-                border: 0.82px solid rgba(66, 87, 102, 0.38);
-                border-radius: 16px;
-                width: 227px;
-                height: 59px;
-                font-weight: 300;
-                font-size: 14px;
-                line-height: 140%;
-                color: #fff;
-                right: 25px;
-            }
         }
     }
 }

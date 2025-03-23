@@ -1,6 +1,7 @@
 #balance {
     width: 100%;
-    height: 902px;
+    height: calc(100vh - 50px);
+    max-height: 902px;
     border: 1px solid #1d2a33;
     border-radius: 25px;
     background: #0f181e;
@@ -99,15 +100,12 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding-left: 26px;
+            padding-left: 223px;
             padding-right: 10px;
-            box-shadow: inset 0 69px 62px -51px #105efe;
-            background: #0f181e;
-            img {
-                width: 132px;
-                height: 32px;
-                margin-right: 65px;
-            }
+            background: url(../../img/balance/yumoney.svg);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
             >div {
                 border: 1px solid rgba(66, 87, 102, 0.38);
                 border-radius: 20px;
@@ -141,12 +139,11 @@
             position: absolute;
             top: auto;
             left: auto;
-            bottom: 71px;
+            bottom: 51px;
             right: 60px;
             font-weight: 500;
             font-size: 16px;
             color: #fff;
-            margin: 0;
         }
     }
     >.history {
@@ -164,135 +161,6 @@
             img {
                 margin-right: 8px;
                 margin-top: -7px;
-            }
-        }
-    }
-}
-@media (min-width: 1200px) and (max-width: 1399px) {
-    #balance {
-        border: 0.81px solid #1d2a33;
-        border-radius: 20px;
-        height: 816px;
-        padding-top: 25px;
-        h2 {
-            margin-left: 43px;
-            margin-bottom: 38px;
-            font-weight: 500;
-            font-size: 21px;
-            color: #fff;
-        }
-        >.promo, >.summa {
-            height: 67px;
-            padding-left: 43px;
-            border: none;
-            border-top: 0.81px solid #1d2a33;
-            border-radius: 20px;
-            h5 {
-                font-weight: 500;
-                font-size: 13px;
-                color: #fff;
-                margin-right: 45px;
-            }
-            input {
-                border: 0.81px solid #1d2a33;
-                border-radius: 24px;
-                width: 198px;
-                height: 47px;
-                font-weight: 400;
-                font-size: 13px;
-                color: #fff;
-                margin-right: 6px;
-                ::placeholder {
-                    font-weight: 400;
-                    font-size: 13px;
-                    color: #425766;
-                }
-            }
-            button {
-                border: 0.81px solid #1d2a33;
-                border-radius: 24px;
-                width: 130px;
-                height: 47px;
-                font-weight: 400;
-                font-size: 13px;
-                color: #fff;
-            }
-            p {
-                font-weight: 500;
-                font-size: 13px;
-                color: #fff;
-            }
-        }
-        >.summa {
-            h5 {
-                margin-right: 63px;
-            }
-            input {
-                margin-right: 16px;
-            }
-        }
-        >.methods {
-            border: none;
-            border-top: 0.81px solid #1d2a33;
-            border-bottom: 0.81px solid #1d2a33;
-            border-radius: 20px;
-            height: 242px;
-            padding-top: 21px;
-            padding-left: 43px;
-            padding-right: 48px;
-            h5 {
-                font-weight: 500;
-                font-size: 13px;
-                color: #fff;
-                margin-bottom: 19px;
-            }
-            >div {
-                border: 0.81px solid rgba(66, 87, 102, 0.38);
-                border-radius: 16px;
-                height: 66px;
-                padding-left: 23px;
-                padding-right: 8px;
-                img {
-                    width: 107px;
-                    height: 26px;
-                    margin-right: 53px;
-                }
-                >div {
-                    border: 0.81px solid rgba(66, 87, 102, 0.38);
-                    border-radius: 16px;
-                    width: 169px;
-                    height: 55px;
-                    font-weight: 700;
-                    font-size: 13px;
-                }
-            }
-            button {
-                border-radius: 15px;
-                width: 285px;
-                height: 66px;
-                font-weight: 500;
-                font-size: 14px;
-                color: #fff;
-            }
-            p {
-                right: 48px;
-                bottom: 57px;
-            }
-        }
-        >.history {
-            margin-top: 28px;
-            margin-left: 43px;
-            width: 312px;
-            p {
-                font-weight: 500;
-                font-size: 13px;
-                color: #fff;
-                img {
-                    width: 16px;
-                    height: 16px;
-                    margin-top: -5px;
-                    margin-right: 5px;
-                }
             }
         }
     }

@@ -12,10 +12,10 @@ const IntegSites = () => {
   return (
     <div className="container">
         <div className="row">
-            <div className="col-xxl-3 col-xl-3">
+            <div className="col-xxl-3">
                 <LeftBar />
             </div>
-            <div className="col-xxl-9 col-xl-9">
+            <div className="col-xxl-9">
                 <div id="page">
                     <h2>Интеграция с сайтом</h2>
                     <button onClick={() => handleClick('/user/base')}></button>

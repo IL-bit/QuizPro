@@ -6,16 +6,14 @@ const Notifications = () => {
   return (
     <div className="container">
       <div className="row">
-        <div className="col-xxl-3 col-xl-3">
+        <div className="col-xxl-3">
           <LeftBar />
         </div>
-        <div className="col-xxl-9 col-xl-9">
+        <div className="col-xxl-9">
           <div id="notification">
               <h2>Уведомления</h2>
               <div className="count">1</div>
               <div className="notification_content">
-                <Notification />
-                <Notification />
                 <Notification />
               </div>
           </div>        
