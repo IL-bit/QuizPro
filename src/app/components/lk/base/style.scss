@@ -120,3 +120,35 @@
         }
     }
 }
+@media (min-width: 992px) and (max-width: 1399px) {
+    .article-item {
+        border: 0.68px solid rgba(66, 87, 102, 0.1);
+        border-radius: 14px;
+        height: 88px;
+        padding: 13px;
+        margin-bottom: 4px;
+        >h5 {
+            font-weight: 500;
+            font-size: 13px;
+            color: #fff;
+        }
+        >p {
+            font-weight: 300;
+            font-size: 10px;
+            line-height: 140%;
+            color: #667d8d;
+            margin-top: 11px;
+            width: 400px;
+        }
+        button {
+            border-radius: 12px;
+            width: 94px;
+            height: 34px;
+            font-weight: 300;
+            font-size: 10px;
+            color: #fff;
+            right: 13px;
+            bottom: 13px;
+        }
+    }
+}

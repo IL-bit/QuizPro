@@ -494,3 +494,228 @@
         }
     }
 }
+@media (min-width: 992px) and (max-width: 1199px) {
+    #application {
+        border: 0.68px solid #1d2a33;
+        border-radius: 17px;
+        height: 687px;
+        padding: 16px 17px 0px 9px;
+        >h2 {
+            margin-top: 5px;
+            margin-left: 27px;
+            width: 29px;
+            font-weight: 500;
+            font-size: 21px;
+            color: #fff;
+        }
+        >.all {
+            border-radius: 16px;
+            width: 43px;
+            height: 32px;
+            margin: 0;
+            top: 16px;
+            left: 116px;
+            font-weight: 500;
+            font-size: 9px;
+            color: #fff;
+        }
+        >.new {
+            border-radius: 16px;
+            width: 94px;
+            height: 32px;
+            margin: 0;
+            top: 16px;
+            left: 163px;
+            gap: 8px;
+            font-weight: 300;
+            font-size: 9px;
+            color: #fff;
+            padding-left: 6px;
+            div {
+                border-radius: 16px;
+                width: 40px;
+                height: 27px;
+                font-weight: 500;
+                font-size: 9px;
+                color: #6df882;
+            }
+        }
+        >button {
+            font-weight: 300;
+            font-size: 9px;
+            color: #fff;
+            padding: 0;
+            img {
+                width: 16px;
+                height: 16px;
+                margin-right: 4px;
+            }
+        }
+        >:nth-child(4) {
+            top: 25px;
+            width: 63px;
+            height: 16px;
+            right: 126px;
+        }
+        >:nth-child(5) {
+            top: 26px;
+            width: 56px;
+            height: 13px;
+            right: 41px;
+            img {
+                width: 13px;
+                height: 13px;
+            }
+        }
+        >.content {
+            border: 0.68px solid rgba(66, 87, 102, 0.38);
+            border-radius: 14px;
+            height: 607px;
+            margin-top: 23px;
+            >.filters {
+                height: 56px;
+                padding-left: 25px;
+                padding-right: 241px;
+                div {
+                    border-radius: 5px;
+                    height: 32px;
+                    font-weight: 300;
+                    font-size: 9px;
+                    color: #fff;
+                    padding-left: 8px;
+                    padding-right: 7px;                    
+                    img {
+                        width: 5px;
+                        height: 3px;
+                    }
+                }
+                >:nth-child(1) {
+                    width: 107px;
+                }
+                >:nth-child(2) {
+                    width: 75px;
+                }
+                >:nth-child(3) {
+                    width: 75px;
+                }
+                >:nth-child(4) {
+                    width: 107px;
+                }
+                p {
+                    font-weight: 300;
+                    font-size: 9px;
+                    color: #fff;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    right: 24px;
+                    img {
+                        width: 7px;
+                        height: 8px;
+                        margin-right: 2px;
+                    }
+                }
+            }
+            >.items {
+                border: none;
+                border-top: 0.68px solid rgba(66, 87, 102, 0.38);
+                border-radius: 14px;
+                height: 550px;
+                padding: 15px 9px 0px 9px;
+                >.name {
+                    height: 12px;
+                    margin-bottom: 11px;
+                    p {
+                        font-weight: 300;
+                        font-size: 9px;
+                        color: #425766;
+                    }
+                    >:nth-child(1) {
+                        width: 43px;
+                        margin-left: 17px;
+                    }
+                    >:nth-child(2) {
+                        width: 21px;
+                        margin-left: 28px;
+                    }
+                    >:nth-child(3) {
+                        width: 21px;
+                        margin-left: 110px;
+                    }
+                    >:nth-child(4) {
+                        width: 42px;
+                        margin-left: 158px;
+                    }
+                }
+                >.item {
+                    border: 0.68px solid rgba(66, 87, 102, 0.1);
+                    border-radius: 14px;
+                    height: 84px;
+                    margin-bottom: 7px;
+                    padding: 0;
+                    padding-left: 16px;
+                    padding-right: 12px;
+                    >.number {
+                        border-radius: 24px;
+                        width: 28px;
+                        height: 18px;
+                        font-weight: 500;
+                        font-size: 10px;
+                        color: #fff;
+                    }
+                    >.date {
+                        font-weight: 300;
+                        font-size: 9px;
+                        color: #fff;
+                        margin-left: 43px;
+                    }
+                    >.name {
+                        font-weight: 300;
+                        font-size: 9px;
+                        color: #fff;
+                        margin-left: 47px;
+                        img {
+                            width: 13px;
+                            height: 13px;
+                            margin-right: 4px;
+                        }
+                    }
+                    >ul {
+                        margin-left: 75px;
+                        li {
+                            font-weight: 300;
+                            font-size: 9px;
+                            color: #fff;
+                            img {
+                                width: 6px;
+                                height: 6px;
+                                margin-right: 5px;
+                            }
+                        }
+                    }
+                    >.look {
+                        width: 12px;
+                        height: 12px;
+                        top: 12px;
+                        right: 14px;
+                        img {
+                            width: 12px;
+                            height: 12px; 
+                            margin-top: -13px;      
+                        }
+                    }
+                    >.delete {
+                        width: 16px;
+                        height: 16px;
+                        right: 13px;
+                        bottom: 12px;
+                        img {
+                            width: 16px;
+                            height: 16px;
+                            margin-top: -9px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

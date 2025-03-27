@@ -63,3 +63,34 @@
         }
     }
 }
+@media (min-width: 992px) and (max-width: 1199px) {
+    .notification {
+        border: 0.73px solid rgba(66, 87, 102, 0.1);
+        border-radius: 15px;
+        height: 177px;
+        margin-bottom: 4px;
+        padding: 11px 17px;
+        >h4 {
+            font-weight: 600;
+            font-size: 13px;
+            color: #fff;
+            img {
+                width: 45px;
+                height: 45px;
+                margin-right: 14px;
+            }
+        }
+        >p {
+            font-weight: 400;
+            font-size: 11px;
+        }
+        >.date {
+            font-weight: 300;
+            font-size: 11px;
+            line-height: 140%;
+            color: #667d8d;
+            left: 20px;
+            bottom: 16px;
+        }
+    }
+}

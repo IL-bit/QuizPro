@@ -384,3 +384,155 @@
         }
     }
 }
+@media (min-width: 992px) and (max-width: 1199px) {
+    #answer {
+        border: 0.68px solid #1d2a33;
+        border-radius: 17px;
+        height: auto;
+        padding: 11px 17px 27px 10px;
+        margin-bottom: 0;
+        >.answers {
+            border: 0.68px solid rgba(66, 87, 102, 0.38);
+            border-radius: 14px;
+            padding-top: 17px;
+            padding-bottom: 17px;
+            h2 {
+                margin-bottom: 14px;
+                margin-left: 21px;
+                font-weight: 500;
+                font-size: 17px;
+                color: #fff;
+            }
+            >.info {
+                padding: 13px 21px 20px 21px;
+                border-top: 0.68px solid rgba(66, 87, 102, 0.38);
+                border-radius: 14px;
+                p {
+                    font-weight: 300;
+                    font-size: 12px;
+                    line-height: 25px; 
+                    color: #425766;
+                    margin-bottom: 18px;
+                }
+            }
+            >.answer {
+                padding: 13px 21px 0px 21px;
+                border-top: 0.68px solid rgba(66, 87, 102, 0.38);
+                border-radius: 14px;
+                >div {
+                    border: 0.82px solid rgba(66, 87, 102, 0.38);
+                    border-radius: 16px;
+                    padding: 25px 31px 27px 38px;
+                    p {
+                        font-weight: 300;
+                        font-size: 12px;
+                        line-height: 140%;
+                        color: #667d8d;
+                        margin-bottom: 16px;
+                    }
+                }
+            }
+        }
+        >.results, >.someInfo {
+            border-top: 0.82px solid rgba(66, 87, 102, 0.38);
+            border-radius: 16px;
+            padding: 18px 21px 19px 21px;
+            margin-top: 6px;
+            h2 {
+                font-weight: 500;
+                font-size: 17px;
+                color: #fff;
+                margin-bottom: 13px;
+            }
+            >div {
+                border: 0.68px solid rgba(66, 87, 102, 0.38);
+                border-radius: 14px;
+                height: 69px;
+                padding: 0 10px 0 38px;
+                margin-bottom: 7px;
+                font-weight: 300;
+                font-size: 12px;
+                line-height: 140%;
+                color: #667d8d;
+                >div {
+                    border: 0.68px solid rgba(66, 87, 102, 0.38);
+                    border-radius: 14px;
+                    width: 441px;
+                    height: 49px;
+                    padding-left: 22px;
+                    font-weight: 300;
+                    font-size: 12px;
+                    line-height: 140%;
+                    color: #fff;
+                }
+            }
+            p {
+                font-weight: 300;
+                font-size: 12px;
+                line-height: 140%;
+                color: #fff;
+                margin-left: 38px;
+                margin-top: 15px;
+                margin-bottom: 10px;
+            }
+        }
+        >.footer {
+            padding: 15px 21px 27px 21px;
+            >.id_answer {
+                border: 0.68px solid rgba(66, 87, 102, 0.38);
+                border-radius: 14px;
+                height: 69px;
+                padding: 0 10px 0 38px;
+                font-weight: 300;
+                font-size: 12px;
+                line-height: 140%;
+                color: #667d8d;
+                >div {
+                    border: 0.68px solid rgba(66, 87, 102, 0.38);
+                    border-radius: 14px;
+                    width: 441px;
+                    height: 49px;
+                    padding-left: 22px;
+                    font-weight: 300;
+                    font-size: 12px;
+                    line-height: 140%;
+                    color: #fff;
+                }
+            }
+            >.actions {
+                width: 335px;
+                height: 17px;
+                margin-top: 31px;
+                p {
+                    font-weight: 300;
+                    font-size: 12px;
+                    line-height: 140%;
+                    color: #fff;
+                    img {
+                        width: 13px;
+                        height: 13px;
+                        margin-right: 7px;
+                        margin-top: -3px;
+                    }
+                }
+                >:nth-child(1) {
+                    img {
+                        width: 12px;
+                    }
+                }
+            }
+            >button {
+                border: 0.68px solid rgba(66, 87, 102, 0.38);
+                border-radius: 14px;
+                width: 188px;
+                height: 49px;
+                font-weight: 300;
+                font-size: 12px; 
+                line-height: 140%;
+                color: #fff;
+                right: 21px;
+                bottom: 10px;
+            }
+        }
+    }
+}

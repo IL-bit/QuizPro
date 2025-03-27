@@ -8,10 +8,10 @@ const Answer = () => {
   return (
     <div className="container">
         <div className="row">
-            <div className="col-xxl-3 col-xl-3">
+            <div className="col-xxl-3 col-xl-3 col-lg-3">
                 <LeftBar />
             </div>
-            <div className="col-xxl-9 col-xl-9">
+            <div className="col-xxl-9 col-xl-9 col-lg-9">
                 <div id="answer">
                     <div className="answers">
                         <h2>Ответы клиента</h2>

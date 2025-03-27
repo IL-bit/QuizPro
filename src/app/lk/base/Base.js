@@ -5,7 +5,7 @@ import cursor from '../../img/base/cursor.svg';
 import integrations from '../../img/base/integrations.svg';
 import folder from '../../img/base/folder.svg';
 import services from '../../img/base/services.svg';
-import advert from '../../img/base/advert.svg';
+import advert from '../../img/base/at.svg';
 import pip from '../../img/base/pip.svg';
 import './style.scss';
 import { useNavigate } from 'react-router-dom';
@@ -19,10 +19,10 @@ const Base = () => {
   return (
     <div className="container">
         <div className="row">
-            <div className="col-xxl-3 col-xl-3">
+            <div className="col-xxl-3 col-xl-3 col-lg-3">
                 <LeftBar />
             </div>
-            <div className="col-xxl-9 col-xl-9">
+            <div className="col-xxl-9 col-xl-9 col-lg-9">
                 <div id="base">
                     <h2>База знаний</h2>
                     <div className="content">

@@ -92,7 +92,61 @@
                 background: #141e27;
             }
             >:nth-child(2) {
+                border: 0.68px solid #748d9e !important;
                 box-shadow: inset -23px 4px 29px -26px rgba(255, 255, 255, 0.89);
+                background: #141e27;
+            }
+        }
+    }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+    #Quizes {
+        border: 0.68px solid #1d2a33;
+        border-radius: 17px;
+        height: 687px;
+        padding-top: 13px;
+        .head {
+            h2 {
+                font-weight: 500;
+                font-size: 17px;
+                color: #fff;
+                margin-top: 7px;
+                margin-left: 37px;   
+                width: 147px;             
+            }
+            input {
+                border: 0.68px solid #1d2a33;
+                border-radius: 20px;
+                width: 134px;
+                height: 39px;
+                margin-left: 29px;
+            }
+            button {
+                font-weight: 400;
+                font-size: 8px;
+                color: #fff;
+                height: 16px;
+                width: 165px;
+                margin-top: 12px;
+                margin-right: 35px;
+                img {
+                    width: 16px;
+                    height: 16px;
+                }
+            }
+        }
+        .content {
+            margin-top: 14px;
+            border: 0.68px solid rgba(66, 87, 102, 0.38);
+            border-radius: 14px;
+            height: 605px;
+            padding: 10px 8px;
+            >:nth-child(1) {
+                box-shadow: inset -14px -12px 41px -22px rgba(255, 58, 58, 0.89);
+                background: #141e27;
+            }
+            >:nth-child(2) {
+                box-shadow: inset -19px 3px 25px -22px rgba(255, 255, 255, 0.89);
                 background: #141e27;
             }
         }

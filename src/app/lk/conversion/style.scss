@@ -414,3 +414,180 @@
         }
     }
 }
+@media (min-width: 992px) and (max-width: 1199px) {
+    #conversion {
+        border: 0.68px solid #1d2a33;
+        border-radius: 17px;
+        height: 687px;
+        padding: 21px 10px 0px 10px;
+        >.head {
+            margin-bottom: 24px;
+            h2 {
+                font-weight: 500;
+                font-size: 17px;
+                color: #fff;
+                margin-left: 27px;
+            }
+            .count {
+                border-radius: 16px;
+                width: 18px;
+                height: 12px;
+                font-weight: 500;
+                font-size: 6px;
+                color: #fff;
+                top: 6px;
+                right: 143px;
+            }
+            .name {
+                font-weight: 500;
+                font-size: 12px;
+                color: #fff;
+                top: 3px;
+                right: 40px;
+            }
+        }
+        >.charts {
+            margin-bottom: 9px;
+            .chart {
+                border: 0.68px solid rgba(66, 87, 102, 0.38);
+                border-radius: 14px;
+                height: 145px;
+                max-width: 210px;
+                padding-top: 5px;
+                padding-left: 26px;
+                p {
+                    font-weight: 300;
+                    font-size: 11px;
+                    line-height: 263%;
+                    color: #fff;
+                    margin-bottom: 0;
+                }
+                h5 {
+                    font-weight: 500;
+                    font-size: 16px;
+                    color: #fff;
+                }
+            }
+        }
+        >.start {
+            border: 0.68px solid rgba(66, 87, 102, 0.38);
+            border-radius: 14px;
+            height: 90px;
+            padding: 7px 20px 0 20px;
+            margin-bottom: 12px;
+            p {
+                font-weight: 300;
+                font-size: 11px;
+                line-height: 263%;
+                color: #fff;
+                margin-bottom: 4px;
+            }
+            h5 {
+                font-weight: 600;
+                font-size: 13px;
+                line-height: 263%;
+                color: #fff;
+            }
+            >.progress {
+                border-radius: 12px;
+                height: 5px;
+                margin-bottom: 1px;
+                div {
+                    border-radius: 12px;
+                    height: 5px;
+                }
+            }
+        }
+        >.questions {
+            margin-bottom: 12px;
+            .item {
+                border: 0.68px solid rgba(66, 87, 102, 0.38);
+                border-radius: 14px;
+                max-width: 114px;
+                height: 90px;
+                padding: 7px 20px 0 20px;
+                p {
+                    font-weight: 300;
+                    font-size: 11px;
+                    line-height: 263%;
+                    color: #fff;
+                    margin-bottom: 4px;
+                }
+                >.progress {
+                    border-radius: 12px;
+                    height: 5px;
+                    margin-bottom: 1px;
+                    div {
+                        border-radius: 12px;
+                        height: 5px;
+                    }
+                }
+                h6 {
+                    font-weight: 600;
+                    font-size: 13px;
+                    line-height: 263%;
+                    color: #fff;
+                }
+            }
+        }
+        >.form {
+            border: 0.68px solid rgba(66, 87, 102, 0.38);
+            border-radius: 14px;
+            height: 90px;
+            padding: 7px 20px 0 20px;
+            p {
+                font-weight: 300;
+                font-size: 11px;
+                line-height: 263%;
+                color: #fff;
+                margin-bottom: 5px;
+            }
+            h5 {
+                font-weight: 600;
+                font-size: 13px;
+                line-height: 263%;
+                color: #fff;
+            }
+            >.progress {
+                border-radius: 12px;
+                height: 5px;
+                margin-bottom: 1px;
+                div {
+                    border-radius: 12px;
+                    height: 5px;
+                }
+            }
+        }
+        >.footer {
+            width: 374px;
+            height: 48px;
+            left: 22px;
+            bottom: 12px;
+            p {
+                font-weight: 300;
+                font-size: 11px;
+                line-height: 18px;
+                color: #738b9c;
+                margin-left: 13px;
+                span {
+                    font-weight: 600;
+                    line-height: 18px; 
+                }
+            }
+            >.imgs {
+                width: 71px;
+                height: 33px;
+                top: 0;
+                transform: translateY(0);
+                img {
+                    width: 33px;
+                    height: 33px;
+                }
+            }
+            >img {
+                height: 43px;
+                width: 43px;
+            }
+        }
+    }
+}
