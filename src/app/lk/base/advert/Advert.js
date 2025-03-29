@@ -12,10 +12,10 @@ const Advert = () => {
   return (
     <div className="container">
         <div className="row">
-            <div className="col-xxl-3 col-xl-3 col-lg-3">
+            <div className="col-xxl-3 col-xl-3 col-lg-3 col-12">
                 <LeftBar />
             </div>
-            <div className="col-xxl-9 col-xl-9 col-lg-9">
+            <div className="col-xxl-9 col-xl-9 col-lg-9 col-12">
                 <div id="page">
                     <h2>Реклама</h2>
                     <button onClick={() => handleClick('/user/base')}></button>

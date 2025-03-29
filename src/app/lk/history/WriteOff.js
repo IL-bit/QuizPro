@@ -7,10 +7,10 @@ const WriteOff = () => {
   return (
     <div className="container">
         <div className="row">
-            <div className="col-xxl-3 col-xl-3 col-lg-3">
+            <div className="col-xxl-3 col-xl-3 col-lg-3 col-12">
                 <LeftBar />
             </div>
-            <div className="col-xxl-9 col-xl-9 col-lg-9">
+            <div className="col-xxl-9 col-xl-9 col-lg-9 col-12">
                 <div id="write_off">
                     <h2>История списаний</h2>
                     <div className="history">

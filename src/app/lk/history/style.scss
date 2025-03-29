@@ -435,3 +435,28 @@
         }
     }
 }
+@media (max-width: 576px) {
+    #write_off {
+        height: auto;
+        border: 1px solid #1d2a33;
+        border-radius: 25px;
+        width: 100%;
+        padding: 25px 0 15px;
+        h2 {
+            font-weight: 500;
+            font-size: 20px;
+            color: #fff;
+            margin-left: 14px;
+        }
+        >.history {
+            margin-top: 25px;
+            padding: 19px 14px 0;
+            >.filt {
+                display: none;
+            }
+            >.items {
+                padding: 0;
+            }
+        }
+    }
+}

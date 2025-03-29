@@ -152,3 +152,35 @@
         }
     }
 }
+@media (max-width: 576px) {
+    .article-item {
+        width: 100%;    
+        height: auto;
+        padding: 19px;
+        padding-bottom: 90px;
+        >h5 {
+            font-weight: 500;
+            font-size: 18px;
+            color: #fff;
+        }
+        >p {
+            font-weight: 300;
+            font-size: 14px;
+            line-height: 140%;
+            color: #667d8d;
+            width: 70%;
+        }
+        >button {
+            border-radius: 18px;
+            width: 141px;
+            height: 51px;
+            background: #425766;
+            font-weight: 300;
+            font-size: 15px;
+            color: #fff;
+            right: auto;
+            left: 19px;
+
+        }
+    }
+}

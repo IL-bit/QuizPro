@@ -94,3 +94,44 @@
         }
     }
 }
+@media (max-width: 576px) {
+    .notification {
+        border: 1px solid rgba(66, 87, 102, 0.1);
+        border-radius: 20px;
+        height: auto;
+        margin-bottom: 9px;
+        padding: 10px;
+        padding-bottom: 53px;
+        >h4 {
+            font-weight: 600;
+            font-size: 14px;
+            color: #fff;
+            margin: 0;
+            padding-left: 60px;
+            padding-top: 5px;
+            position: relative;
+            height: 45px;
+            img {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 45px;
+                height: 45px;
+            }
+        }
+        >p {
+            font-weight: 400;
+            font-size: 12px;
+            color: #fff;
+            margin-top: 20px;
+        }
+        >.date {
+            font-weight: 300;
+            font-size: 14px;
+            line-height: 140%;
+            color: #667d8d;
+            left: 10px;
+            bottom: 13px;
+        }
+    }
+}

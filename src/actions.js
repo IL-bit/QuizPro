@@ -58,4 +58,5 @@ export const changeButtonStyle = createAction('CHANGEBUTTONSTYLE', (style) => ({
 
 // Лк
 export const logOut = createAction('LOGOUT');
+export const islog = createAction('ISLOG');
 export const changeTheme = createAction('CHANGETHEME', (theme) => ({payload: theme}));

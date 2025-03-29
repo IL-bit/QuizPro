@@ -323,3 +323,145 @@
         }
     }
 }
+@media (max-width: 576px) {
+    .quiz_small {
+        border: 1px solid rgba(66, 87, 102, 0.1);
+        border-radius: 20px;
+        height: auto;
+        margin-bottom: 10px;
+        padding-left: 9px;
+        padding-top: 14px;
+        padding-right: 0px;
+        padding-bottom: 46px;
+        .quiz_small_head {
+            p {
+                border-radius: 23px;
+                width: 27px;
+                height: 18px;
+                font-weight: 500;
+                font-size: 9px;
+                color: #fff;
+                margin-left: 5px;
+                padding-top: 2px;
+                margin-bottom: 0;
+            }
+            h5 {
+                font-weight: 500;
+                font-size: 18px;
+                color: #fff;
+                margin-left: 12px;
+
+            }
+            button {
+                margin-left: 11px;                
+                img {
+                    width: 10px;
+                    height: 10px;
+                }                
+            }
+        }
+        .quiz_small_btns {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: flex-start;
+            flex-direction: row;
+            gap: 10px;
+            width: 100%;
+            height: auto;
+            margin-top: 20px;
+            button {
+                border: 1px solid #1d2a33;
+                border-radius: 18px;
+                width: 153px;
+                height: 58px;
+                font-weight: 400;
+                font-size: 14px;
+                color: #425766;
+                img {
+                    width: 17px;
+                    height: 17px;
+                    margin-right: 9px;
+                }
+            }
+            >:nth-child(2) {
+                width: 124px;
+            }
+            button:nth-child(1) {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                .count {
+                    width: 23px;
+                    height: 23px; 
+                    border-radius: 100%;
+                    background: #6df882;   
+                    margin-left: 28px;       
+                    font-weight: 700;
+                    font-size: 10px;
+                    color: #244529;  
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }            
+                img {
+                    margin-top: 0;
+                }
+            } 
+        }
+        input[type="checkbox"].check {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            width: 20px;
+            height: 20px;
+            background-color: transparent;
+            border: 1px solid #354754;
+            border-radius: 9999px; 
+            position: absolute;
+            top: 15px;
+            left: auto;
+            right: 9px;
+            cursor: pointer;
+        }
+        input[type="checkbox"].check:checked::before {
+            content: '';
+            width: 20px;
+            height: 20px;
+            background-color: #ffffff; 
+            border-radius: 9999px; 
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        input[type="checkbox"].check:checked::after {
+            content: '';
+            font-weight: bold;
+            color: #1f2937;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1.25rem;
+        }
+        .delete {
+            position: absolute;
+            bottom: 12px;
+            left: auto;
+            top: auto;
+            right: 10px;
+            width: 20px;
+            height: 20px;
+            border: none;
+            background: none;
+            padding: 0;
+            img {
+                margin: 0;
+                width: 20px;
+                height: 20px;
+                margin-top: -5px;
+            }
+        }
+    }
+}

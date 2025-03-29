@@ -166,6 +166,12 @@
         }
     }
 }
+.mobile {
+    display: none;
+}
+.pc {
+    display: block;
+}
 @media (min-width: 1200px) and (max-width: 1399px) {
     .whistory {
         border: 0.81px solid rgba(66, 87, 102, 0.1);
@@ -361,4 +367,85 @@
             }
         }
     }
+}
+@media (max-width: 576px) {
+    .mobile {
+        display: block;
+    }
+    .pc {
+        display: none;
+    }
+    .whistory.mobile {
+        width: 100%;
+        border: 1px solid rgba(66, 87, 102, 0.1);
+        border-radius: 20px;
+        height: 145px;
+        display: flex;
+        padding-top: 0;
+        padding-left: 14px;
+        padding-right: 64px;
+        .left {
+            width: 110px;
+            padding-top: 17px;
+            p {
+                font-weight: 300;
+                font-size: 14px;
+                color: #425766;
+                margin: 0;
+            }
+            >:nth-child(1) {
+                margin-bottom: 23px;
+            }
+            >:nth-child(2) {
+                margin-bottom: 20px;
+            }
+        }
+        .rigth {
+            width: calc(100% - 110px);
+            position: relative;
+            .id {
+                border-radius: 34px;
+                width: 72px;
+                height: 27px;
+                font-weight: 500;
+                font-size: 14px;
+                color: #fff;
+                margin-top: 14px;
+                margin-left: auto;
+                margin-right: 0;
+                background: #1f2c38;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .date {
+                text-align: end;
+                margin-top: 20px;
+                font-weight: 300;
+                font-size: 14px;
+                color: #fff;
+            }
+            .money {
+                font-weight: 600;
+                font-size: 14px;
+                color: #fff;
+                right: 0;
+                bottom: 21px;
+                top: auto;
+                left: auto;
+                transform: translateY(0)
+            }
+        }
+        .trash {
+            top: 17px;
+            right: 16px;
+            width: 18px;
+            height: 20px;
+            img {
+                width: 18px;
+                height: 20px;
+            }
+        }
+    }
+
 }

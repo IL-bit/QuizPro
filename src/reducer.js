@@ -1,4 +1,5 @@
 import { createReducer } from "@reduxjs/toolkit";
+import Cookies from 'js-cookie';
 const expires = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toUTCString();
 const initialState = {
     type: '',
@@ -225,12 +226,24 @@ const RootReducer = createReducer(initialState, builder => {
     })
     /* ЛК */
     .addCase('LOGIN_SUCCESS', (state, action) => {
-        state.login = 'ok';
-        state.isAuth = true;
-        console.log('SUCCESS', action);
-        state.Token = action.payload.data.accessToken;
-        console.log(state.Token);
-        document.cookie = `access_token=${state.Token}; expires=${expires}; path=/; secure; HttpOnly; SameSite=Strict`;
+        console.log('LOGIN_SUCCESS action triggered'); // Для отладки
+        console.log('Access Token:', action.payload.data.accessToken); // Для отладки
+
+        if (action.payload.data.accessToken) {
+            state.Token = action.payload.data.accessToken; 
+            localStorage.setItem('access_token', state.Token); // Сохраняем токен в localStorage
+
+            // Сохраняем время сохранения токена
+            const expirationTime = Date.now() + 3 * 24 * 60 * 60 * 1000; // 3 дня в миллисекундах
+            localStorage.setItem('token_expiration', expirationTime);
+
+            state.login = 'ok';
+            state.isAuth = true;
+            console.log('SUCCESS', action);
+            console.log('Token saved to localStorage:', state.Token);
+        } else {
+            console.error('No access token found in action payload');
+        }
     })
     .addCase('LOGIN_ERROR', (state) => {
         state.login = 'error';
@@ -249,6 +262,26 @@ const RootReducer = createReducer(initialState, builder => {
             const eqPos = cookie.indexOf("=");
             const name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
             document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; secure; HttpOnly; SameSite=Strict`;
+        }
+    })
+    .addCase('ISLOG', (state) => {
+        const isLog = localStorage.getItem('access_token');
+        const expirationTime = localStorage.getItem('token_expiration');
+
+        if (isLog && expirationTime) {
+            if (Date.now() > expirationTime) {
+                // Если срок действия токена истек, удаляем его
+                localStorage.removeItem('access_token');
+                localStorage.removeItem('token_expiration');
+                state.isAuth = false; // Обновляем состояние аутентификации
+                console.log('Token expired and removed from localStorage');
+            } else {
+                state.Token = isLog; 
+                state.login = 'ok';
+                state.isAuth = true; // Токен действителен
+            }
+        } else {
+            state.isAuth = false; // Токен отсутствует
         }
     })
 });

@@ -1,5 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import React, { useEffect } from 'react';
+import { islog } from '../actions.js';
 import './App.scss';
 import Auth from './Auth.js';
 import Start from './lk/start/Start.js';
@@ -34,9 +36,14 @@ import Reset from './Reset.js';
 import Design from './constructor/design/Design.js';
 
 function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(islog());
+  }, []);  
   const isAuthenticated = useSelector((state) => state.isAuth); 
   const today = new Date(); 
   const targetDate = new Date(2025, 3, 15);
+
   if (today > targetDate) {
     return (
       <>
