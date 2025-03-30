@@ -18,7 +18,7 @@
         border-top: 1px solid #1d2a33;
         border-radius: 25px;
         background: #0f181e;
-        >.filt {
+        .filt {
             width: 100%;
             display: flex;
             padding-top: 21px;
@@ -42,7 +42,7 @@
                 margin-left: 153px;
             }
         }
-        >.items {
+        .items {
             width: 100%;
             padding-left: 17px;
             padding-right: 17px;
@@ -457,6 +457,129 @@
             >.items {
                 padding: 0;
             }
+        }
+    }
+    #deposits {
+        border: 1px solid #1d2a33;
+        border-radius: 25px;
+        width: 100%;
+        height: auto;
+        padding: 25px 0 21px;
+    
+        h2 {
+            margin-left: 14px;
+            margin-bottom: 25px;
+            font-weight: 500;
+            font-size: 20px;
+            color: #fff;
+        }
+    
+        > .history {
+            margin: 0;
+            padding-left: 14px;
+            padding-right: 14px;
+            >div {
+                width: 100%;
+                height: 100%;
+                padding-bottom: 30px;                
+                overflow-x: auto;             
+                > .filt {
+                    padding-top: 22px;
+                    margin-bottom: 15px;
+                    width: 722px; 
+                    p {
+                        font-weight: 300;
+                        font-size: 14px;
+                        color: #425766;
+                    }
+                    > :nth-child(1) {
+                        margin-left: 37px;
+                    }
+                    > :nth-child(2) {
+                        margin-left: 65px;
+                    }
+                    > :nth-child(3) {
+                        margin-left: 154px;
+                    }
+                    > :nth-child(4) {
+                        margin-left: 83px;
+                    }
+                }
+        
+                > .items {
+                    display: inline-block; // Позволяем элементам располагаться в строку
+                    padding-left: 0;
+                    padding-right: 0;
+        
+                    > .item {
+                        border: 1px solid rgba(66, 87, 102, 0.1);
+                        border-radius: 20px;
+                        width: 722px;
+                        height: 80px;
+                        display: inline-block; // Элементы располагаются в строку
+                        margin-right: 10px; // Отступ между элементами
+        
+                        > .id {
+                            margin-left: 24px;
+                            border-radius: 34px;
+                            width: 41px;
+                            height: 27px;
+                            font-weight: 500;
+                            font-size: 14px;
+                            color: #fff;
+                            position: relative;
+                            top: 50%;
+                            transform: translateY(-50%);
+                        }
+                        > .date {
+                            left: 149px;
+                            font-weight: 300;
+                            font-size: 14px;
+                            color: #fff;
+                        }
+                        > .money {
+                            left: 334px;
+                            font-weight: 600;
+                            font-size: 14px;
+                            color: #fff;
+                        }
+                        > :nth-child(4) {
+                            border-radius: 20px;
+                            width: 121px;
+                            height: 37px;
+                            font-weight: 500;
+                            font-size: 12px;
+                            left: 488px;
+                        }
+                        > .trash {
+                            right: 26px;
+                        }
+                    }
+                }    
+                &::-webkit-scrollbar {
+                    padding-left: 14px;
+                    padding-right: 14px;
+                    height: 6px;
+                }
+
+                &::-webkit-scrollbar-track {
+                    padding-left: 14px;
+                    padding-right: 14px;
+                    background: #141e27;
+                    border-radius: 20px; 
+                }
+
+                &::-webkit-scrollbar-thumb {
+                    background: #fff; 
+                    border-radius: 20px; 
+                }
+
+                &::-webkit-scrollbar-thumb:hover {
+                    background: #fff; 
+                }                            
+            }
+
+
         }
     }
 }

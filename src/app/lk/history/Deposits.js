@@ -17,7 +17,7 @@ const Deposits = () => {
             <div className="col-xxl-9 col-xl-9 col-lg-9 col-12">
                 <div id="deposits">
                     <h2>История платежей</h2>
-                    <div className="history">
+                    <div className="history pc">
                         <div className="filt">
                             <p>№ / #ID</p>
                             <p>Дата</p>
@@ -30,6 +30,23 @@ const Deposits = () => {
                             <Derror />
                             <Drefund />
                             <Dreferal />
+                        </div>
+                    </div>
+                    <div className="history mobile">
+                        <div>
+                            <div className="filt">
+                                <p>№ / #ID</p>
+                                <p>Дата</p>
+                                <p>Стоимость</p>
+                                <p>Статус</p>                            
+                            </div>
+                            <div className="items">
+                                <Dprocess />
+                                <Dpaid />
+                                <Derror />
+                                <Drefund />
+                                <Dreferal />
+                            </div>
                         </div>
                     </div>
                 </div>
