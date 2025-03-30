@@ -975,7 +975,14 @@
                         }
                     }
                 }
+                >.item.mobile {
+                    display: flex;
+                } 
+                >.item.pc {
+                    display: none;
+                }                 
             }
+
         }
     }
 }
