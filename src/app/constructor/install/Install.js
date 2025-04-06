@@ -11,10 +11,10 @@ const Install = () => {
   return (
     <div className="container">
         <div className="row">
-            <div className="col-xxl-3">
+            <div className="col-xxl-3 col-xl-3 col-lg-3 col-12">
                 <LeftBar />
             </div>
-            <div className="col-xxl-9">
+            <div className="col-xxl-9 col-xl-9 col-lg-9 col-12">
                 <div id="install">
                     <div className="head">
                         <h2>Прямая ссылка на квиз</h2>
@@ -28,19 +28,19 @@ const Install = () => {
                         <div className="items">
                             <div className="item">
                                 <h6>ВКонтакте</h6>
-                                <p>Поставить ссылку-виджет в сообществе</p>
+                                <p>Поставить ссылку-виджет<br/>в сообществе</p>
                                 <button>Подключить</button>
                                 <img src={vk} alt="#" />
                             </div>
                             <div className="item">
                                 <h6>Telegram</h6>
-                                <p>Открывать по ссылке в телеграм-боте</p>
+                                <p>Открывать по ссылке в<br/>телеграм-боте</p>
                                 <button>Подключить</button>
                                 <img src={tg} alt="#" />
                             </div>
                             <div className="item">
                                 <h6>Tik Tok</h6>
-                                <p>Поставить ссылку в шапку профиля</p>
+                                <p>Поставить ссылку в шапку<br/>профиля</p>
                                 <button>Подключить</button>
                                 <img src={tt} alt="#" />
                             </div>

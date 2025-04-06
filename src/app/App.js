@@ -34,13 +34,16 @@ import PrevievQuizPc from './constructor/previevQuizPc/PrevievQuizPc.js';
 import Forgot from './Forgot.js';
 import Reset from './Reset.js';
 import Design from './constructor/design/Design.js';
+import Plugins from './constructor/plugins/Plugins.js';
+import StartAd from './constructor/startad/StartAd.js';
 
 function App() {
   const dispatch = useDispatch();
+  const isAuthenticated = useSelector((state) => state.isAuth);   
   useEffect(() => {
     dispatch(islog());
-  }, []);  
-  const isAuthenticated = useSelector((state) => state.isAuth); 
+  }, [isAuthenticated]);  
+
   const today = new Date(); 
   const targetDate = new Date(2025, 3, 15);
 
@@ -84,6 +87,8 @@ function App() {
           <Route path="/user/quiz/settings" element={<PrivateRoute element={<Setting />} isAuthenticated={isAuthenticated} />} />
           <Route path="/user/quiz/integrations" element={<PrivateRoute element={<Integrations />} isAuthenticated={isAuthenticated} />} />
           <Route path="/user/quiz/design" element={<PrivateRoute element={<Design />} isAuthenticated={isAuthenticated} />} />
+          <Route path="/user/quiz/plugins" element={<PrivateRoute element={<Plugins />} isAuthenticated={isAuthenticated} />} />
+          <Route path="/user/quiz/startadvert" element={<PrivateRoute element={<StartAd />} isAuthenticated={isAuthenticated} />} />
         </Routes>
       </BrowserRouter>
     );    

@@ -46,6 +46,16 @@ const Deposits = () => {
                                 <Derror />
                                 <Drefund />
                                 <Dreferal />
+                                <Dprocess />
+                                <Dpaid />
+                                <Derror />
+                                <Drefund />
+                                <Dreferal />
+                                <Dprocess />
+                                <Dpaid />
+                                <Derror />
+                                <Drefund />
+                                <Dreferal />
                             </div>
                         </div>
                     </div>

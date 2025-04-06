@@ -15,48 +15,51 @@ const CreateQuiz = () => {
   return (
     <div className="container">
         <div className="row">
-            <div className="col-xxl-3">
+            <div className="col-xxl-3 col-xl-3 col-lg-3 col-12">
                 <LeftBar />
                 
             </div>
-            <div className="col-xxl-9">
+            <div className="col-xxl-9 col-xl-9 col-lg-9 col-12">
                 <div id="create_quiz">
                     <h2>Создать квиз</h2>
                     <div className="search">Поиск по шаблонам</div>
-                    <div className="patterns">
-                        <div className="new_patterns">
-                            <New />
-                            <Shop />
-                            <Opros />
-                            <Calculator />
-                            <Soon />
-                            <Soon />
-                        </div>
-                        <div className="ready_patterns">
-                            <h2>Готовые шаблоны по нишам</h2>
-                            <div className="items">
-                                <Pattern />
-                                <Pattern />
-                                <Pattern />
-                                <Pattern />
-                                <Pattern />
-                                <Pattern />
-                                <Pattern />
-                                <Pattern />
-                                <Pattern />
-                                <Pattern />
-                                <Pattern />
+                    <div className="scrollbar">
+                        <div className="patterns">
+                            <div className="new_patterns">
+                                <New />
+                                <Shop />
+                                <Opros />
+                                <Calculator />
+                                <Soon />
+                                <Soon />
                             </div>
-                        </div>
-                        <div className="footer">
-                            <img src={logo} alt="#" />
-                            <p><span>Хотели бы больше заявок?</span><br/>Задайте вопрос в чате нашему маркетологу</p>
-                            <div className="imgs">
-                                <img src={vk} alt="#" />
-                                <img src={tg} alt="#" />
+                            <div className="ready_patterns">
+                                <h2>Готовые шаблоны по нишам</h2>
+                                <div className="items">
+                                    <Pattern />
+                                    <Pattern />
+                                    <Pattern />
+                                    <Pattern />
+                                    <Pattern />
+                                    <Pattern />
+                                    <Pattern />
+                                    <Pattern />
+                                    <Pattern />
+                                    <Pattern />
+                                    <Pattern />
+                                </div>
                             </div>
-                        </div>
+                            <div className="footer">
+                                <img src={logo} alt="#" />
+                                <p><span>Сложности с выбором?</span><br/>Задайте вопрос в чате нашему маркетологу</p>
+                                <div className="imgs">
+                                    <img src={vk} alt="#" />
+                                    <img src={tg} alt="#" />
+                                </div>
+                            </div>
+                        </div>                          
                     </div>
+                      
                 </div>
             </div>
         </div>

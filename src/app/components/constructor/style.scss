@@ -1,7 +1,6 @@
 #constructor {
     width: 100%;
-    height: calc(100vh - 50px);
-    max-height: 902px;
+    height: 902px;
     border: 1px solid #1d2a33;
     border-radius: 25px;
     background: #0f181e;
@@ -69,6 +68,33 @@
                     margin-left: 10px;
                     margin-right: 0;
                 }
+            }
+        }
+    }
+}
+@media (min-width: 1200px) and (max-width: 1399px) {
+    #constructor {
+        border: 0.81px solid #1d2a33;
+        border-radius: 20px;
+        height: 837px;
+        padding: 11px 12px;
+        >button {
+            border: 0.81px solid #1d2a33;
+            border-radius: 13px;
+            width: 171px;
+            height: 47px;
+        }
+        >:nth-child(2), >:nth-child(3) {
+            margin-left: 6px;
+            width: 145px;            
+        }
+        >.body {
+            width: calc(100% - 12px - 12px);
+            bottom: 11px;
+            border: 0.81px solid #1d2a33;
+            border-radius: 20px;
+            >.start {
+                
             }
         }
     }
