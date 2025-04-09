@@ -32,17 +32,17 @@
         height: 92px;
         background: #fff;
         display: flex;
+        align-items: center;
         position: absolute;
         top: 336px;
         left: 60px;
+        padding-left: 15px;
         img {
             width: 57px;
             height: 52px;
-            margin-left: 15px;
-            margin-top: 20px;
         }
         p {
-            margin-top: 18px;
+            margin: 0;
             margin-left: 22px;
             margin-bottom: 0;
         }
@@ -102,7 +102,78 @@
         display: block;
     }
 }
-@media (max-width: 375px) {
+@media (min-width: 992px) and (max-width: 1399px) {
+    #step4 {
+        border-radius: 32px;
+        width: 980px;
+        height: 517px;
+        margin-top: 9px;
+        padding: 42px 32px 42px 50px;
+        h3 {
+            font-weight: 700;
+            font-size: 26px;
+            letter-spacing: -0.02em;
+            color: #1a1c20;
+        }
+        p {
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 140%;
+            letter-spacing: -0.03em;
+            color: #1a1c20;
+            margin-top: 25px;
+        }
+        .crm, .bots, .pay {
+            border-radius: 16px;
+            width: 191px;
+            height: 76px;
+            padding-left: 12px;
+            left: 50px;
+            top: 279px;
+            img {
+                width: 47px;
+                height: 42px;
+            }
+            p {
+                margin-left: 17px;
+            }
+        }
+        .bots {
+            width: 250px;
+            left: 254px;
+        }
+        .pay {
+            width: 205px;
+            top: 363px;
+        }
+        button {
+            border-radius: 76px;
+            width: 247px;
+            height: 64px;
+            font-weight: 700;
+            font-size: 12px;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+            text-align: center;
+            color: #fff;
+            margin-top: 294px;
+        }
+        .icon {
+            width: 82px;
+            height: 95px;
+            top: 65px;
+            left: 473px;
+        }
+        .screen {
+            border-radius: 32px;
+            width: 412px;
+            height: 426px;
+            top: 36px;
+            right: 32px;
+        }
+    }
+}
+@media (max-width: 576px) {
     #step4 {
         width: 304px;
         height: 709px;

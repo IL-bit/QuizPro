@@ -1,10 +1,11 @@
 import './section1.scss';
 import { togglePopup } from '../../../actions';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useRef } from 'react';
 
 const Section1 = () => {
     const dispatch = useDispatch();
+    const isAuth = useSelector((state) => state.isAuth);
     const typingTextElement = useRef(null);
     const easyElement = useRef(null);
     const text = "за 5 минут"; 
@@ -49,7 +50,7 @@ const Section1 = () => {
                 <div id="easy" ref={easyElement}></div>
                 <h3 className="pc">Тестируйте маркетинговые квизы <b>без абонентской платы.<br />Платите по факту - </b>за теплые и целевые заявки</h3>
                 <h3 className="mob">Тестируйте маркетинговые квизы<br /><b>без абонентской платы.<br /><br />Платите по факту - </b>за теплые<br />и целевые заявки</h3>
-                <button aria-label="Попробовать бесплатно" onClick={() => handleToggle('log_in')}>попробовать бесплатно</button>
+                <button aria-label="Попробовать бесплатно" onClick={() => {isAuth ? window.location.href = 'http://qzpro.ru:90': handleToggle('log_in')}}>попробовать бесплатно</button>
             </div>
         </section>
     )

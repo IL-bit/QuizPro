@@ -1,7 +1,6 @@
 #second_section {
     position: relative;
     z-index: 2;
-
     .video {
         width: 100%;
         max-width: 1186px; 
@@ -12,15 +11,15 @@
         border-radius: 39px;    
         background-color: #fff;   
         margin-top: 68px;
-        padding: 18px 22px 18px 22px;
+        padding: 18px 22px;
+        z-index: 5;
         video {
             width: 100%;
             height: 100%;
-            border: 6px solid linear(90deg, #FFFFFF 0%, #E4E4E4 100%);
+            border: 6px solid #E4E4E4;
             border-radius: 39px;
         }
     }
-
     .items {
         display: flex;
         justify-content: space-between;
@@ -30,7 +29,6 @@
         left: 50%;
         transform: translateX(-50%);
         margin-top: 13px;
-
         article {
             width: 30%;
             height: 327px;
@@ -39,7 +37,7 @@
             background: #fff;
             padding-top: 41px;
             text-align: center; 
-
+            z-index: 5;
             h3 {
                 font-weight: 400;
                 font-size: 20px;
@@ -51,7 +49,6 @@
                     font-weight: 700;
                 }
             }
-
             .img {            
                 background-repeat: no-repeat;
                 background-size: cover;
@@ -84,8 +81,47 @@
         display: none;
     }
 }
-
-@media (max-width: 375px) {
+@media (min-width: 992px) and (max-width: 1399px) {
+    #second_section {
+        .video {
+            margin-top: 55px;
+            border-radius: 32px;
+            max-width: 980px;
+            height: 463px;
+            padding: 14px 17px;
+            video {
+                border-radius: 32px;
+            }
+        }
+        .items {
+            max-width: 980px;
+            height: 315px;
+            margin-top: 11px;
+            article {
+                border-radius: 32px;
+                width: 317px;
+                height: 270px;
+                box-shadow: 0 -250px 413px 0 rgba(0, 0, 0, 0.17);
+                background: #fff;
+                padding-top: 33px;                
+                h3 {
+                    font-size: 16px;
+                    line-height: 140%;
+                    letter-spacing: -0.03em;
+                    text-align: center;
+                    color: #1a1c20;
+                }
+                .img {
+                    margin-top: 37px;
+                    border-radius: 32px;
+                    width: 276px;
+                    height: 198px;
+                }
+            }
+        }
+    }
+}
+@media (max-width: 576px) {
     #second_section {
         .video {
             width: 309px;

@@ -86,7 +86,49 @@
         display: block;
     }
 }
-@media (max-width: 375px) {
+@media (min-width: 992px) and (max-width: 1399px) {
+    #third_section {
+        padding-top: 104px;
+        h2 {
+            font-weight: 400;
+            font-size: 36px;
+            letter-spacing: -0.02em;
+            text-align: center;
+            color: #1a1c20;
+        }
+        .items {
+            max-width: 980px;
+            height: 383px;
+            margin-top: 48px;
+            .item {
+                border-radius: 32px;
+                width: 317px;
+                height: 305px;
+                box-shadow: 0 -250px 413px 0 rgba(0, 0, 0, 0.12);
+                background: #fff;
+                .icon {
+                    width: 29px;
+                    height: 29px;
+                    margin-top: 23px;
+                }
+                h3 {
+                    font-size: 16px;
+                    line-height: 140%;
+                    letter-spacing: -0.03em;
+                    text-align: center;
+                    color: #1a1c20;
+                    margin-top: 19px;
+                }
+                div {
+                    width: 276px;
+                    height: 198px;
+                    top: 185px;
+                }
+            }
+        }
+    }
+}
+@media (max-width: 576px) {
     #third_section {
         padding-top: 99px;
         h2 {

@@ -1,3 +1,6 @@
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { islog } from '../actions';
 import './App.scss';
 import Header from "./components/header/header";
 import Section1 from "./components/section1/section1";
@@ -14,6 +17,13 @@ import Section11 from "./components/section11/section11";
 import Section12 from './components/section12/section12';
 import Footer from './components/footer/footer';
 function App() {
+  const dispatch = useDispatch();
+  const isAuth = useSelector((state) => state.isAuth);
+  useEffect(() => {
+    if (!isAuth) {
+      dispatch(islog());
+    }
+  }, [isAuth]);
   return (
     <>
       <div className="container p-3">
@@ -29,15 +39,15 @@ function App() {
           <Section8/>
           <Section12/>
           <Section9/>
-          <Section10/>
-          <Section11/>
+          {/* <Section10/> */}
+          {/* <Section11/> */}
           <div id="bg1"></div>
           <div id="bg2"></div>
           <div id="bg3"></div>
           <div id="bg4"></div>
-          <div id="bg5"></div>
+          {/* <div id="bg5"></div> */}
         </main>
-        <Footer/>
+        {/* <Footer/> */}
         <div id="bg"></div>       
       </div>
     </>

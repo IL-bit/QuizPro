@@ -109,6 +109,7 @@
                 position: absolute;
                 top: 82px;
                 left: 259px;
+                margin: 0;
             }
         }   
     }
@@ -119,7 +120,100 @@
         display: none;
     }
 }
-@media (max-width: 375px) {
+@media (min-width: 992px) and (max-width: 1399px) {
+    #eighth_section {
+        margin-top: 73px;
+        .chat {
+            margin-top: 8px;
+            .message {
+                border-radius: 32px;
+                width: 329px;
+                padding-top: 24px;
+                padding-left: 21px;
+                padding-bottom: 24px;
+                margin-bottom: 15px;
+                p {
+                    margin-left: 21px;
+                    font-weight: 400;
+                    font-size: 11px;
+                    line-height: 140%;
+                    letter-spacing: -0.03em;
+                    color: #1a1c20;
+                }
+                img {
+                    width: 47px;
+                    height: 47px;
+                }
+            }
+            >:nth-child(4) {
+                p {
+                    margin-top: 7px;
+                }
+            }
+        }
+        .left {
+            h2 {
+                font-weight: 700;
+                font-size: 36px;
+                letter-spacing: -0.02em;
+                color: #1a1c20;
+            }
+            p {
+                font-weight: 400;
+                font-size: 23px;
+                line-height: 140%;
+                letter-spacing: -0.03em;
+                color: #1a1c20;
+                margin-top: 24px;
+            }
+            .market {
+                margin-top: 16px;
+                img {
+                    width: 71px;
+                    height: 64px;
+                    top: 24px;
+                    left: 3px;
+                }
+                .photo {
+                    border-radius: 74px;
+                    width: 129px;
+                    height: 129px;
+                    box-shadow: 0 83px 66px 0 rgba(0, 0, 0, 0.07);
+                    background: #fff, rgba(0, 0, 0, 0.12);
+                    transform: rotate(-7deg);
+                    margin-top: 14px;
+                    margin-left: 42px;
+                }
+                span {
+                    left: 180px;
+                    font-weight: 400;
+                    font-size: 28px;
+                    line-height: 127%;
+                    color: #105efe;
+                }
+                h5 {
+                    font-weight: 700;
+                    font-size: 14px;
+                    line-height: 140%;
+                    letter-spacing: -0.03em;
+                    color: #1a1c20;
+                    top: 15px;
+                    left: 214px;
+                }
+                p {
+                    left: 214px;
+                    top: 68px;
+                    font-weight: 400;
+                    font-size: 13px;
+                    line-height: 140%;
+                    letter-spacing: -0.03em;
+                    color: #1a1c20;
+                }
+            }
+        }
+    }
+}
+@media (max-width: 576px) {
     #eighth_section {
         margin-top: 64px;
         .mob {

@@ -7,10 +7,10 @@ const Section8 = () => {
     const appConfig = window.appConfig;
     return(
         <section className="row" id="eighth_section" aria-labelledby="section8-title">
-            <div className="col-xxl-6 offset-xxl-1 pc">
+            <div className="col-xxl-6 col-xl-6 col-lg-6 offset-1 pc">
                 <div className="left">
                     <h2 id="section8-title"><b>Ваш личный маркетолог</b><br />всегда на связи</h2>
-                    <p>К примеру, <span>ваш квиз приносит мало<br />заявок,</span> и вы не понимаете, как это исправить.</p>
+                    <p>К примеру, <span>ваш квиз приносит мало<br />заявок,</span> и вы не понимаете, как это<br/>исправить.</p>
                     <div className="market">
                         <img src={logoSvg} alt="Логотип маркетолога" />
                         <div className="photo" aria-hidden="true"></div>
@@ -20,7 +20,7 @@ const Section8 = () => {
                     </div>
                 </div>
             </div>
-            <div className="col-xxl-4 pc">
+            <div className="col-xxl-4 col-xl-4 col-lg-4 pc">
                 <div className="chat" aria-labelledby="chat-title">
                     <h3 id="chat-title" className="visually-hidden">Чат с маркетологом</h3>
                     <div className="message" aria-label="Сообщение от пользователя">

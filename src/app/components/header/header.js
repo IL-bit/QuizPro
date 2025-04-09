@@ -1,13 +1,18 @@
 import './header.scss';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { togglePopup } from '../../../actions';
 import Menu from '../menu/menu';
 import logoSvg from '../img/logo.svg';
 
 const Header = () => {
+    const isAuth = useSelector((state) => state.isAuth)
     const dispatch = useDispatch();
     const handleToggle = (menu) => {
-        dispatch(togglePopup(menu));
+        if (isAuth) {
+            dispatch(togglePopup('auth'));
+        } else {
+            dispatch(togglePopup(menu));
+        }
     };
     const handleScroll = (item) => {
         const element = document.getElementById(item);
@@ -31,16 +36,16 @@ const Header = () => {
                             <li onClick={() => handleScroll('fifth_section')}>Маркетологам</li>
                         </ul>
                     </nav>
-                    <button className="create" title="Создать новый квиз" onClick={() => handleToggle('log_in')}>Создать квиз</button>                
+                    <button className="create" title="Создать новый квиз"  onClick={() => {isAuth ? window.location.href = 'http://qzpro.ru:90': handleToggle('log_in')}}>Создать квиз</button>                
                 </div>
                 <div className="col-xxl-3 col-xl-3 col-lg-3 col-2">
                     <div className="buttons">
-                        <button title="Регистрация на платформе" onClick={() => handleToggle('regist')}>Регистрация</button>
-                        <button title="Создать новый квиз" onClick={() => handleToggle('log_in')}>Создать квиз</button>
+                        <button title="Регистрация на платформе" onClick={() => {isAuth ? handleToggle('auth') : handleToggle('regist')}}>{isAuth ? 'Вы авторизованы' : 'Регистрация'}</button>
+                        <button title="Создать новый квиз"    onClick={() => {isAuth ? window.location.href = 'http://qzpro.ru:90': handleToggle('log_in')}}>Создать квиз</button>
                     </div>                               
                 </div>
                 <div className="col-xxl-1 col-xl-1 col-lg-1 text-end pc">
-                    <button className="burger" title="Меню" onClick={() => handleToggle('log_in')}></button>
+                    <button className="burger" title="Меню" onClick={() => {isAuth ? handleToggle('auth') : handleToggle('log_in')}}></button>
                 </div>
                 <div className="col-1 text-end mob">
                     <button className="burger" title="Меню" onClick={() => handleToggle('burger')}></button>

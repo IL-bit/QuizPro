@@ -9,7 +9,7 @@
         color: #1a1c20;
         margin-bottom: 48px;
     }
-    .col-xxl-4 {
+    >div {
         .price {
             border: 1.44px solid rgba(66, 87, 102, 0.1);
             border-radius: 29px;
@@ -90,7 +90,7 @@
                     text-align: center;
                     color: #1d2a33;
                     margin-bottom: -14px;
-                    display: block
+                    display: block;
                 }
                 .offset {
                     font-family: "Inter Tight", sans-serif;
@@ -186,19 +186,133 @@
                 }           
             }
         }
-        .price-1 {
+        >.price-1 {
+            box-shadow: inset 0 39px 62px -51px #2e4254;
             .name {
                 background: #2e4254;
             }
         }
-        .price-2 {
+        >.price-2 {
+            box-shadow: inset 0 69px 62px -51px #105efe;
             .name {
                 background: #105efe;
             }
         }
-        .price-3 {
+        >.price-3 {
+            box-shadow: inset 0 69px 62px -51px #f5af4d;
             .name {
                 background: #f5af4d;
+            }
+        }
+            
+    }
+}
+@media (min-width: 992px) and (max-width: 1399px) {
+    #twelvth_section {
+        margin-top: 90px;
+        h2 {
+            font-weight: 400;
+            font-size: 36px;
+            letter-spacing: -0.02em;
+            text-align: center;
+            color: #1a1c20;
+            margin-bottom: 38px;
+        }
+        >div {
+            .price {
+                border: 1.19px solid rgba(66, 87, 102, 0.1);
+                border-radius: 24px;
+                height: 941px;
+                .name {
+                    border-radius: 26px;
+                    width: 175px;
+                    height: 51px;
+                    font-weight: 500;
+                    font-size: 19px;
+                    color: #fff;
+                    margin-top: 23px;
+                }
+                h4 {
+                    font-weight: 500;
+                    font-size: 16px;
+                    text-align: center;
+                    color: #1d2a33;
+                    margin-top: 28px;
+                }
+                .limit {
+                    margin-top: 40px;
+                    >:nth-child(1) {
+                        font-weight: 500;
+                        font-size: 16px;
+                        text-align: center;
+                        color: #105efe;
+                        margin-top: 0;                        
+                    }
+                    >:nth-child(2) {
+                        font-weight: 500;
+                        font-size: 19px;
+                        text-align: center;
+                        color: #1d2a33;
+                        border-radius: 23px;
+                        width: 142px;
+                        height: 46px;
+                        margin-top: 7px;
+                    }
+
+                }
+                .bg_limit {
+                    top: 162px;
+                }
+                h3 {
+                    font-weight: 300;
+                    font-size: 19px;
+                    text-align: center;
+                    color: #105efe;
+                    margin-top: 32px;
+                    span {
+                        margin-top: 3px;
+                    }
+                }
+                .description {
+                    margin-top: 28px;
+                    font-size: 16px;
+                    text-align: center;
+                    span {
+                        font-size: 16px;
+                        text-align: center;
+                        margin-bottom: -16px;
+                    }
+                    .offset {
+                        font-size: 16px;
+                        text-align: center;
+                        margin-bottom: -18px;
+                    }
+                }
+                .description_price {
+                    bottom: 127px;
+                    width: 257px;
+                    h5 {
+                        font-weight: 400;
+                        font-size: 16px;
+                        text-align: center;
+                        color: #105efe;
+                        margin-bottom: 15px;
+                    }
+                    p {
+                        font-size: 16px;
+                        text-align: center;
+                        color: #6f8696;
+                    }
+                }
+                button {
+                    border-radius: 21px;
+                    width: 198px;
+                    height: 77px;
+                    font-weight: 500;
+                    font-size: 21px;
+                    color: #fff;
+                    bottom: 27px;
+                }
             }
         }
     }

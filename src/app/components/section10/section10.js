@@ -1,6 +1,6 @@
 import './section10.scss';
 import { togglePopup } from '../../../actions';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import div_1 from '../img/div_1_tenth.png';
 import div_2 from '../img/div_2_tenth.png';
 import div_3 from '../img/div_3_tenth.png';
@@ -10,6 +10,7 @@ import div_6 from '../img/div_6_tenth.png';
 
 const Section10 = () => {
     const dispatch = useDispatch();
+    const isAuth = useSelector((state) => state.isAuth);
     const handleToggle = (menu) => {     
         dispatch(togglePopup(menu));
     };
@@ -46,7 +47,7 @@ const Section10 = () => {
                         <h5 id="card-title-6"><strong>Удобные варианты оплаты</strong><br />для клиентов</h5>
                     </article>
                 </div>
-                <button title="Попробовать бесплатно" aria-label="Попробовать бесплатно" onClick={() => handleToggle('log_in')}>попробовать бесплатно</button>
+                <button title="Попробовать бесплатно" aria-label="Попробовать бесплатно" onClick={() => {isAuth ? window.location.href = 'http://qzpro.ru:90': handleToggle('log_in')}}>попробовать бесплатно</button>
             </div>
         </section>
     )

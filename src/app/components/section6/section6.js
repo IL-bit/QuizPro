@@ -3,7 +3,7 @@ import './section6.scss';
 const Section6 = () => {
     return(
         <section className="row" id="sixth_section" aria-labelledby="sixth_section_title">
-            <div className="col-xxl-7 offset-xxl-5 col-12 offset-0">
+            <div className="col-xxl-7 col-xl-7 col-lg-7 offset-xxl-5 offset-xl-5 offset-lg-5 col-12 offset-0">
                 <h2 id="sixth_section_title" className="pc">
                     Смотрите, какие вопросы <b>понижают<br />конверсию квиза</b> и интерес клиентов
                 </h2>

@@ -96,7 +96,27 @@
         bottom: -130px;
     }
 }
-@media (max-width: 375px) {
+@media (min-width: 992px) and (max-width: 1399px) {
+    #ninth_section {
+        margin-top: 82px;
+        h2 {
+            font-weight: 400;
+            font-size: 36px;
+            letter-spacing: -0.02em;
+            color: #1a1c20;
+        }
+        h4 {
+            font-weight: 250;
+font-size: 23px;
+
+// line-height: 34px; 
+line-height: 140%;
+letter-spacing: -0.03em;
+color: #1a1c20;
+        }
+    }
+}
+@media (max-width: 576px) {
     #ninth_section {
         margin-top: 55px;
         .pc {

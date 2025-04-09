@@ -1,12 +1,13 @@
 import './step4.scss';
 import { togglePopup } from '../../../../../actions';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import crm from '../../../img/crm.svg';
 import bots from '../../../img/bots.svg';
 import pay from '../../../img/pay.svg';
 
 const Step4 = () => {
     const dispatch = useDispatch();
+    const isAuth = useSelector((state) => state.isAuth);
     const handleToggle = (menu) => {     
         dispatch(togglePopup(menu));
     };
@@ -39,7 +40,7 @@ const Step4 = () => {
             </div>
             <div className="icon" aria-hidden="true"></div>
             <div className="screen" aria-hidden="true"></div>
-            <button aria-label="Попробовать бесплатно" onClick={() => handleToggle('log_in')}>попробовать бесплатно</button>
+            <button aria-label="Попробовать бесплатно" onClick={() => {isAuth ? window.location.href = 'http://qzpro.ru:90': handleToggle('log_in')}}>попробовать бесплатно</button>
         </article>
     )
 }

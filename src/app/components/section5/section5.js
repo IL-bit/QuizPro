@@ -12,9 +12,9 @@ import div_func_6 from '../img/div_func_6.png';
 
 
 const Section5 = () => {
-    
+    const dispatch = useDispatch();    
     const activeButton = useSelector((state) => state.button);
-    const dispatch = useDispatch();
+    const isAuth = useSelector((state) => state.isAuth);
     const handleToggle = (menu) => {     
         dispatch(togglePopup(menu));
     };
@@ -95,7 +95,7 @@ const Section5 = () => {
                     </button>                   
                 </article>
 
-                <div className="more_funct" onClick={() => handleToggle('log_in')}>
+                <div className="more_funct" onClick={() => {isAuth ? window.location.href = 'http://qzpro.ru:90': handleToggle('log_in')}}>
                     <p><span>+15</span> удобных функций</p>
                 </div>
             </div>

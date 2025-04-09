@@ -1,6 +1,6 @@
 import './section7.scss';
 import { togglePopup } from '../../../actions';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import React, { useState, useRef } from 'react';
 import swipeSvg from '../img/swipe.svg';
 import logoSvg from '../img/logo2.svg';
@@ -8,8 +8,9 @@ import cursor from '../img/cursor.svg';
 import cursor2 from '../img/cursor_mob.svg';
 
 const Section7 = () => {
+    const dispatch = useDispatch();    
     const appData = window.appData;
-    const dispatch = useDispatch();
+    const isAuth = useSelector((state) => state.isAuth);
     const handleToggle = (menu) => {     
         dispatch(togglePopup(menu));
     };
@@ -79,7 +80,7 @@ const Section7 = () => {
                                 <img src="#" alt="Изображение квиза" />
                                 <h5>{item.name}</h5>
                                 <a href="#" title="Смотреть квиз" aria-label="Смотреть квиз">Смотреть квиз</a>
-                                <button title="Попробовать бесплатно" aria-label="Попробовать бесплатно" onClick={() => handleToggle('log_in')}>попробовать бесплатно</button>
+                                <button title="Попробовать бесплатно" aria-label="Попробовать бесплатно" onClick={() => {isAuth ? window.location.href = 'http://qzpro.ru:90': handleToggle('log_in')}}>попробовать бесплатно</button>
                             </div>
                         ))}
                     </div>
@@ -91,7 +92,7 @@ const Section7 = () => {
                                 <img src="#" alt="Изображение квиза" />
                                 <h5>{item.name}</h5>
                                 <a href="#" title="Смотреть квиз" aria-label="Смотреть квиз">Смотреть квиз</a>
-                                <button title="Попробовать бесплатно" aria-label="Попробовать бесплатно" onClick={() => handleToggle('log_in')}>попробовать бесплатно</button>
+                                <button title="Попробовать бесплатно" aria-label="Попробовать бесплатно" onClick={() => {isAuth ? window.location.href = 'http://qzpro.ru:90': handleToggle('log_in')}}>попробовать бесплатно</button>
                             </div>
                         ))}
                     </div>
@@ -111,7 +112,7 @@ const Section7 = () => {
                                         <img src="#" alt="Изображение квиза" />
                                         <h5>{item.name}</h5>
                                         <a href="#" title="Смотреть квиз" aria-label="Смотреть квиз">Смотреть квиз</a>
-                                        <button title="Попробовать бесплатно" aria-label="Попробовать бесплатно" onClick={() => handleToggle('log_in')}>попробовать бесплатно</button>
+                                        <button title="Попробовать бесплатно" aria-label="Попробовать бесплатно" onClick={() => {isAuth ? window.location.href = 'http://qzpro.ru:90': handleToggle('log_in')}}>попробовать бесплатно</button>
                                     </div>
                                 ))}
                             </div>
@@ -129,11 +130,11 @@ const Section7 = () => {
                     </div>
                 </div>
 
-                <div className="more_funct" id="pc" onClick={() => handleToggle('log_in')}>
+                <div className="more_funct" id="pc" onClick={() => {isAuth ? window.location.href = 'http://qzpro.ru:90': handleToggle('log_in')}}>
                     <img src={cursor} alt="Иконка курсора"/>
                     <p>Смотреть больше квизов</p>
                 </div>
-                <div className="more_funct" id="mob" onClick={() => handleToggle('log_in')}>
+                <div className="more_funct" id="mob" onClick={() => {isAuth ? window.location.href = 'http://qzpro.ru:90': handleToggle('log_in')}}>
                     <img src={cursor2} alt="Иконка курсора"/>
                     <p>Смотреть больше квизов</p>
                 </div>

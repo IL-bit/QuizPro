@@ -75,7 +75,53 @@
         display: none;
     }
 }
-@media (max-width: 375px) {
+@media (min-width: 992px) and (max-width: 1399px) {
+    #header {
+        padding-top: 19px;
+        .logo {
+            width: 47px;
+            height: 41px;
+            margin-top: 6px;
+        }
+        nav {
+            height: 18px;
+            margin-top: 15px;
+            ul {
+                li {
+                    font-weight: 400;
+                    font-size: 14px;
+                    letter-spacing: -0.02em;
+                    color: #1a1c20;
+                }
+            }
+        }
+        .buttons {
+            button {
+                width: 118px;
+                height: 47px;
+            }
+            >:nth-child(1) {
+                border: 0.83px solid rgba(0, 0, 0, 0.1);
+                border-radius: 30px;
+                font-weight: 400;
+                font-size: 11px;
+                letter-spacing: -0.02em;
+                color: rgba(26, 28, 32, 0.44);
+            }
+            >:nth-child(2) {
+                border-radius: 32px;
+                font-weight: 400;
+                font-size: 11px;
+                letter-spacing: -0.02em;
+                color: #fff;
+            }
+        }
+        .burger {
+            margin-top: 12px;
+        }
+    }
+}
+@media (max-width: 576px) {
     #header {
         padding-top: 15px;
         .logo {

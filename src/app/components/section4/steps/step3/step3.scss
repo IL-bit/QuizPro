@@ -88,7 +88,64 @@
         display: block;
     }
 }
-@media (max-width: 375px) {
+@media (min-width: 992px) and (max-width: 1399px) {
+    #step3 {
+        border-radius: 32px;
+        width: 980px;
+        height: 460px;
+        margin-top: 9px;
+        padding: 42px 32px 42px 50px;
+        h3 {
+            font-weight: 700;
+            font-size: 26px;
+            letter-spacing: -0.02em;
+            color: #1a1c20;
+        }
+        p {
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 140%;
+            letter-spacing: -0.03em;
+            color: #1a1c20;
+            margin-top: 25px;
+
+        }
+        .left, .right {
+            font-weight: 400;
+            font-size: 13px;
+            line-height: 140%;
+            letter-spacing: -0.03em;
+            color: #1a1c20;
+            top: 172px;
+            span {
+                border-radius: 17px;
+                width: 147px;
+                height: 19px;
+            }
+        }
+        .left {
+            left: 50px;
+        }
+        .right {
+            left: 269px;
+        }
+        
+        .icon {
+            width: 82px;
+            height: 95px;
+            top: 65px;
+            left: 473px;
+        }
+        .screen {
+            border-radius: 32px;
+            width: 412px;
+            height: 387px;
+            top: 36px;
+            right: 32px;
+        }
+    }
+}
+@media (max-width: 576px) {
     #step3 {
         width: 304px;
         height: 647px;

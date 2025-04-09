@@ -36,7 +36,8 @@
             img {
                 background: none;
                 position: absolute;
-                top: 40px;
+                top: 50%;
+                transform: translateY(-50%);
                 left: 25px;
             }
         }
@@ -66,13 +67,16 @@
         transform: translateX(-50%);
         margin-top: 63px;
         cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         p {
-            margin-top: 20px;
             font-weight: 400;
             font-size: 24px;
             line-height: 140%;
             letter-spacing: -0.03em;
             color: #1a1c20;
+            margin: 0;
             span {
                 border-radius: 20px;
                 width: 60px;
@@ -94,7 +98,58 @@
         display: none;
     }
 }
-@media (max-width: 375px) {
+@media (min-width: 992px) and (max-width: 1399px) {
+    #fifth_section  {
+        padding-top: 130px;
+        h2 {
+            font-size: 36px;
+            letter-spacing: -0.02em;
+            text-align: center;
+            color: #1a1c20;
+        }
+        .list {
+            margin-top: 46px;
+            width: 980px;
+            .list_item {
+                border-radius: 16px;
+                width: 499px;
+                height: 76px;
+                padding-left: 56px;
+                font-weight: 400;
+                font-size: 19px;
+                line-height: 140%;
+                letter-spacing: -0.03em;
+                img {
+                    left: 21px;
+                }
+            }
+            .img_list {
+                border-radius: 32px;
+                width: 453px;
+                height: 498px;
+            }
+        }
+        .more_funct {
+            width: 980px;
+            height: 64px;
+            border-top: 0.83px solid rgba(16, 18, 16, 0.16);
+            border-bottom: 0.83px solid rgba(16, 18, 16, 0.16);
+            margin-top: 52px;
+            p {
+                font-weight: 400;
+                font-size: 19px;
+                line-height: 140%;
+                letter-spacing: -0.03em;
+                span {
+                    border-radius: 17px;
+                    width: 49px;
+                    height: 28px;
+                }
+            }
+        }
+    }
+}
+@media (max-width: 576px) {
     #fifth_section {
         padding-top: 85px;
         h2 {

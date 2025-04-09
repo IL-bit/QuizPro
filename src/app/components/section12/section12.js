@@ -1,11 +1,18 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { togglePopup } from '../../../actions';
 import './section12.scss';
 
 const Section12 = () => {
+    const dispatch = useDispatch();
+    const isAuth = useSelector((state) => state.isAuth);
+    const handleToggle = (menu) => {     
+        dispatch(togglePopup(menu));
+    };
   return (
     <section id="twelvth_section" className='row'>
         <h2>Тарифы</h2>
-        <div className="col-xxl-4 col-12 text-center">
+        <div className="col-xxl-4 col-xl-4 col-lg-4 col-12 text-center">
             <div className="price price-1">
                 <div className="name">Бесплатный</div>
                 <h4>Тестирование сервиса<br/>для новых пользователей</h4>
@@ -20,10 +27,10 @@ const Section12 = () => {
                     <h5>Стоимость:</h5>
                     <p><span>0 ₽.</span></p>
                 </div>
-                <button>Подключить</button>
+                <button onClick={() => {isAuth ? window.location.href = 'http://qzpro.ru:90': handleToggle('log_in')}}>Подключить</button>
             </div>
         </div>
-        <div className="col-xxl-4 col-12 text-center">
+        <div className="col-xxl-4 col-xl-4 col-lg-4 col-12 text-center">
             <div className="price price-2">
                 <div className="name">Оптимальный<span>HOT</span></div>
                 <h4>Подходит для малого бизнеса<br/>с небольшими объёмами заявок</h4>
@@ -38,10 +45,10 @@ const Section12 = () => {
                     <h5>Стоимость:</h5>
                     <p><span>15 ₽/лид до 150 заявок</span><br/>20 ₽/лид при превышении лимита</p>
                 </div>
-                <button>Подключить</button>
+                <button onClick={() => {isAuth ? window.location.href = 'http://qzpro.ru:90': handleToggle('log_in')}}>Подключить</button>
             </div>
         </div>
-        <div className="col-xxl-4 col-12 text-center">
+        <div className="col-xxl-4 col-xl-4 col-lg-4 col-12 text-center">
             <div className="price price-3">
                 <div className="name">Премиум</div>
                 <h4>Для профессионального использования<br/>и больших объёмов заявок</h4>
@@ -56,7 +63,7 @@ const Section12 = () => {
                     <h5>Стоимость:</h5>
                     <p><span>150–300 заявок: 10 ₽/лид</span><br/>301–500 заявок: 8,5 ₽/лид<br/>501–1 000 заявок: 7 ₽/лид<br/>1 001+ заявок: 5 ₽/лид</p>
                 </div>
-               <button>Подключить</button>                
+               <button onClick={() => {isAuth ? window.location.href = 'http://qzpro.ru:90': handleToggle('log_in')}}>Подключить</button>                
             </div>
         </div>
     </section>

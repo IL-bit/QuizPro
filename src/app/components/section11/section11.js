@@ -1,8 +1,12 @@
 import './section11.scss';
 import React, { useState, useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { togglePopup } from '../../../actions';
 import swipeSvg from '../img/swipe.svg';
 
 const Section11 = () => {
+    const dispatch = useDispatch();
+    const isAuth = useSelector((state) => state.isAuth);
     const [currentIndex, setCurrentIndex] = useState(0);
     const sliderRef = useRef(null);
     let startX = 0;
@@ -53,6 +57,9 @@ const Section11 = () => {
     const handleIndicatorClick = (index) => {
         setCurrentIndex(index);
     };
+    const handleToggle = (menu) => {     
+        dispatch(togglePopup(menu));
+    };
     return(
         <section className="row" id="eleventh_section" aria-labelledby="section11-title">
             <div className="col-xxl-12 col-xl-12 col-lg-12 col-12">
@@ -63,19 +70,19 @@ const Section11 = () => {
                             <img src="#" alt="Быстрый опросник" />
                             <h5 id="card-title-1"><b>Быстрый опросник</b></h5>
                             <p>Один из самых эффективных<br />способов стабильно<br />получать заявки</p>
-                            <button title="Смотреть квиз" aria-label="Смотреть квиз Быстрый опросник">Смотреть квиз</button>
+                            <button title="Смотреть квиз" aria-label="Смотреть квиз Быстрый опросник" onClick={() => {isAuth ? window.location.href = 'http://qzpro.ru:90': handleToggle('log_in')}}>Смотреть квиз</button>
                         </article>
                         <article className="card" aria-labelledby="card-title-2">
                             <img src="#" alt="Страница о компании" />
                             <h5 id="card-title-2"><b>Страница о компании</b></h5>
                             <p>Мини-сайт с информацией<br />о вашем бизнесе и квиз<br />в одном месте</p>
-                            <button title="Смотреть квиз" aria-label="Смотреть квиз Страница о компании">Смотреть квиз</button>
+                            <button title="Смотреть квиз" aria-label="Смотреть квиз Страница о компании" onClick={() => {isAuth ? window.location.href = 'http://qzpro.ru:90': handleToggle('log_in')}}>Смотреть квиз</button>
                         </article>
                         <article className="card" aria-labelledby="card-title-3">
                             <img src="#" alt="Магазин" />
                             <h5 id="card-title-3"><b>Магазин</b></h5>
                             <p>Поможет подобрать клиенту нужный<br />товар или предложить несколько<br />вариантов</p>
-                            <button title="Смотреть квиз" aria-label="Смотреть квиз Магазин">Смотреть квиз</button>
+                            <button title="Смотреть квиз" aria-label="Смотреть квиз Магазин" onClick={() => {isAuth ? window.location.href = 'http://qzpro.ru:90': handleToggle('log_in')}}>Смотреть квиз</button>
                         </article>
                     </div>
                     <div className="cards">
@@ -83,13 +90,13 @@ const Section11 = () => {
                             <img src="#" alt="Калькулятор" />
                             <h5 id="card-title-4"><b>Калькулятор</b></h5>
                             <p>Соберёт контакты, рассчитает<br />стоимость и создаст чат<br />с вашим менеджером</p>
-                            <button title="Смотреть квиз" aria-label="Смотреть квиз Калькулятор">Смотреть квиз</button>
+                            <button title="Смотреть квиз" aria-label="Смотреть квиз Калькулятор" onClick={() => {isAuth ? window.location.href = 'http://qzpro.ru:90': handleToggle('log_in')}}>Смотреть квиз</button>
                         </article>
                         <article className="card" aria-labelledby="card-title-5">
                             <img src="#" alt="Видео-консультант" />
                             <h5 id="card-title-5"><b>Видео-консультант</b></h5>
                             <p>Живое общение с клиентом<br />и ответы на самые частые вопросы</p>
-                            <button title="Смотреть квиз" aria-label="Смотреть квиз Видео-консультант">Смотреть квиз</button>
+                            <button title="Смотреть квиз" aria-label="Смотреть квиз Видео-консультант" onClick={() => {isAuth ? window.location.href = 'http://qzpro.ru:90': handleToggle('log_in')}}>Смотреть квиз</button>
                         </article>
                         <article className="card" aria-labelledby="card-title-6">
                             <img src="#" alt="Что-то новое" />
