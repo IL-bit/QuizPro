@@ -12,7 +12,7 @@ const Section9 = () => {
     };
     return(
         <section className="row" id="ninth_section" aria-labelledby="section9-title">
-            <div className="col-xxl-6 col-xl-6 col-lg-6 pc">
+            <div className="col-xxl-6 col-xl-5 col-lg-6 offset-xxl-0 offset-xl-1 offset-lg-0 pc">
                 <h2 id="section9-title">Внедряйте <span>Quiz Pro</span> своим<br />клиентам <strong>и зарабатывайте</strong></h2>
                 <h4>Идеально для продюсеров,<br />СММщиков, маркетологов <strong>и вообще<br />всех фрилансеров</strong></h4>
                 <div className="first">
@@ -24,7 +24,7 @@ const Section9 = () => {
                     <p>Чем больше проектов и заявок,<br />тем больше вы зарабатываете</p>
                 </div>
             </div>
-            <div className="col-xxl-5 col-xl-5 col-lg-5 offset-1 pc">
+            <div className="col-xxl-5 col-xl-5 col-lg-6 offset-xxl-1 offset-xl-0 offset-lg-0 pc">
                 <div className="right" aria-hidden="true"></div>
                 <button title="Попробовать бесплатно" aria-label="Попробовать Quiz Pro бесплатно" onClick={() => {isAuth ? window.location.href = 'http://qzpro.ru:90': handleToggle('log_in')}}>попробовать бесплатно</button>
             </div>

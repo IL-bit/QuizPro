@@ -39,15 +39,15 @@ function App() {
           <Section8/>
           <Section12/>
           <Section9/>
-          {/* <Section10/> */}
-          {/* <Section11/> */}
+          <Section10/>
+          <Section11/>
           <div id="bg1"></div>
           <div id="bg2"></div>
           <div id="bg3"></div>
           <div id="bg4"></div>
-          {/* <div id="bg5"></div> */}
+          <div id="bg5"></div>
         </main>
-        {/* <Footer/> */}
+        <Footer/>
         <div id="bg"></div>       
       </div>
     </>

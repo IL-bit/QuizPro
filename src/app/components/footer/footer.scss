@@ -1,5 +1,5 @@
 #footer {
-    margin-top: 94px;
+    margin-top: 48px;
     hr {
         width: 1204px;
         position: relative;
@@ -8,13 +8,12 @@
         background: rgba(16, 18, 16, 0.16);
     }
     .col-xxl-3 {
-        display: flex;
+        display: flex !important;
+        align-items: center;
         img {
             width: 126px;
             height: 110px;
             margin-left: -75px;
-            margin-top: 41px;
-            display: flex;
         }
         #footer-title {
             font-family: "Inter Tight", sans-serif;
@@ -22,8 +21,8 @@
             font-size: 18px;
             letter-spacing: -0.02em;
             color: #1a1c20;
-            margin-left: 96px;
-            margin-top: -82px;
+            margin: 0;
+            margin-left: 46px;
         }
         a {
             font-family: "Inter Tight", sans-serif;
@@ -33,29 +32,27 @@
             text-decoration: underline;
             text-decoration-skip-ink: none;
             color: #1a1c20;
+            margin: 0;
             margin-left: 19px;
-            margin-top: 28px;
         }
     }
     .col-xxl-5 {
-        padding-top: 80px;
-        :nth-child(1) {
+        display: flex !important;
+        align-items: center;
+        justify-content: space-around;
+        gap: 94px;
+        a {
             font-family: "Inter Tight", sans-serif;
             font-weight: 400;
             font-size: 18px;
-            letter-spacing: -0.02em;
-            color: #105efe;
-            margin-left: 74px;
+            letter-spacing: -0.02em; 
             text-decoration: none;
         }
+        :nth-child(1) {
+            color: #105efe;
+        }
         :nth-child(2) {
-            font-family: "Inter Tight", sans-serif;
-            font-weight: 400;
-            font-size: 18px;
-            letter-spacing: -0.02em;
             color: #000;
-            margin-left: 94px;
-            text-decoration: none;
         }
     }
     .col-xxl-2 {
@@ -63,6 +60,7 @@
         padding-left: 23px;
         .vk, .tg {
             display: flex;
+            align-items: center;
             margin-bottom: 25px;
             img {
                 width: 57px;
@@ -74,8 +72,8 @@
                 line-height: 140%;
                 letter-spacing: -0.03em;
                 color: #1a1c20;
+                margin: 0;
                 margin-left: 22px;
-                margin-top: 12px;
             }
         }
     }
@@ -86,7 +84,65 @@
         display: none;
     }
 }
-@media (max-width: 375px) {
+@media (min-width: 992px) and (max-width: 1399px) {
+    #footer {
+        margin-top: 38px;
+        hr {
+            width: 980px;
+        }
+        .col-xxl-3 {
+            img {
+                margin-left: -34px;
+                width: 104px;
+                height: 91px;                
+            }
+            #footer-title {
+                font-weight: 400;
+                font-size: 14px;
+                letter-spacing: -0.02em;
+                color: #1a1c20;
+                margin-left: 37px;
+            }
+            a {
+                font-weight: 400;
+                font-size: 14px;
+                letter-spacing: -0.02em;
+                text-decoration: underline;
+                text-decoration-skip-ink: none;
+                color: #1a1c20;
+                margin-left: 14px;
+            }
+        }
+        .col-xxl-5 {
+            gap: 78px;
+            a {
+                font-weight: 400;
+                font-size: 14px;
+                letter-spacing: -0.02em;
+            }
+        }
+        .col-xxl-2 {
+            padding: 0;
+            padding-top: 26px;
+            .vk, .tg {
+                margin-bottom: 21px;
+                img {
+                    width: 47px;
+                    height: 42px;
+                }
+                p {
+                    margin-left: 18px;
+                    font-weight: 400;
+                    font-size: 16px;
+                    line-height: 140%;
+                    letter-spacing: -0.03em;
+                    color: #1a1c20;
+                }
+            }
+        }
+    }
+}
+@media (max-width: 576px) {
     #footer {
         position: relative;
         z-index: 2;

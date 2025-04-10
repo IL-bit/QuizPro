@@ -32,7 +32,6 @@
                 border-radius: 39px;
                 width: 340px;
                 height: 218px;
-                background: #ededed;
                 position: relative;
                 left: 50%;
                 transform: translateX(-50%);
@@ -88,6 +87,64 @@
     }
     .mob {
         display: none;
+    }
+}
+@media (min-width: 992px) and (max-width: 1399px) {
+    #eleventh_section {
+        margin-top: 202px;
+        h2 {
+            font-size: 36px;
+            letter-spacing: -0.02em;
+            text-align: center;
+            color: #1a1c20;
+            margin-bottom: 41px;
+        }
+        .cards {
+            width: 980px;
+            height: 435px;
+            margin-bottom: 23px;
+            .card {
+                border-radius: 32px;
+                width: 317px;
+                height: 435px;
+                box-shadow: 0 83px 66px 0 rgba(0, 0, 0, 0.07);
+                background: #fff;
+                img {
+                    border-radius: 32px;
+                    width: 281px;
+                    height: 180px;
+                    margin-top: 20px;
+                }
+                h5 {
+                    font-weight: 700;
+                    font-size: 14px;
+                    line-height: 120%;
+                    letter-spacing: -0.03em;
+                    text-align: center;
+                    color: #1a1c20;
+                    margin-top: 28px;
+                }
+                p {
+                    font-weight: 400;
+                    font-size: 13px;
+                    line-height: 120%;
+                    letter-spacing: -0.03em;
+                    text-align: center;
+                    color: #1a1c20;
+                    margin-top: 18px;
+                }
+                button {
+                    border-radius: 32px;
+                    width: 118px;
+                    height: 47px;
+                    font-weight: 400;
+                    font-size: 11px;
+                    letter-spacing: -0.02em;
+                    color: #fff;
+                    bottom: 34px;
+                }
+            }
+        }
     }
 }
 @media (max-width: 576px) {

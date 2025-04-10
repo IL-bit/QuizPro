@@ -15,15 +15,15 @@ const Footer = () => {
     return(
         <footer className="row" id="footer" aria-labelledby="footer-title">
             <hr className="pc"/>
-            <div className="col-xxl-3 col-xl-3 col-lg-3 offset-1 pc">
+            <div className="col-xxl-3 col-xl-3 col-lg-3 offset-xxl-1 offset-xl-1 offset-lg-1 pc">
                 <img src={logo} alt="Логотип компании" />
                 <p id="footer-title">Квиз-сайты<br />для бизнеса</p>
             </div>
-            <div className="col-xxl-5 col-xl-5 col-lg-5 pc">
+            <div className="col-xxl-5 col-xl-4 col-lg-5 pc">
                 <a href={`mailto:${appConfig.email}`} title="Написать на почту">{appConfig.email}</a>
                 <a href={`tel:${appConfig.tel}`} title="Позвонить">{appConfig.tel}</a>
             </div>
-            <div className="col-xxl-2 col-xl-2 col-lg-2 pc">
+            <div className="col-xxl-2 col-xl-2 col-lg-2 offset-xxl-0 offset-xl-1 offset-lg-0 pc">
                 <div className="vk" aria-label="ВКонтакте" onClick={handleVkClick} style={{ cursor: 'pointer' }}>
                     <img src={vk} alt="Иконка ВКонтакте" />
                     <p>ВКонтакте</p>

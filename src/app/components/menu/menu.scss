@@ -500,6 +500,15 @@
 #overview.hide {
     display: none;
 }
+@media (min-width: 992px) and (max-width: 1399px) {
+    #menu {
+        width: 65vw;
+    }
+    #menu.hide {
+        right: -65vw;
+        box-shadow: none;
+    }
+}
 @media (max-width: 576px) {
     #menu {
         width: calc(100vw - 30px);

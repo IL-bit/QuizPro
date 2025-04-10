@@ -77,6 +77,56 @@
         margin-top: 44px;
     }
 }
+@media (min-width: 992px) and (max-width: 1399px) {
+    #tenth_section {
+        margin-top: 234px;
+        h2 {
+            font-weight: 700;
+            font-size: 36px;
+            letter-spacing: -0.02em;
+            text-align: center;
+            color: #fff;
+            margin-bottom: 59px;
+        }
+        .cards {
+            width: 980px;
+            height: 319px;
+            margin-bottom: 13px;            
+            .card {
+                border-radius: 32px;
+                width: 317px;
+                height: 319px;
+                box-shadow: 0 83px 66px 0 rgba(0, 0, 0, 0.07);
+                background: #fff;
+                img {
+                    width: 281px;
+                    height: 180px;
+                    margin-top: 21px;
+                }
+                h5 {
+                    font-size: 14px;
+                    line-height: 120%;
+                    letter-spacing: -0.03em;
+                    text-align: center;
+                    color: #1a1c20;
+                    margin-top: 37px;
+                }
+            }
+        }
+        button {
+            border-radius: 76px;
+            width: 247px;
+            height: 64px;
+            font-weight: 700;
+            font-size: 12px;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+            text-align: center;
+            color: #fff;
+            margin-top: 36px;
+        }
+    }
+}
 @media (max-width: 576px) {
     #tenth_section {
         margin-top: 148px;
