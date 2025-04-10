@@ -206,7 +206,8 @@
                     border-radius: 31px;
                     width: 300px;
                     height: 322px;
-                    margin-top: 48px;
+                    margin-top: 0;
+                    top: 82px;
                     left: 50%;
                     transform: translateX(-50%);
                     background: #fff;
@@ -215,13 +216,13 @@
             :nth-child(2).show {     
                 height: 465px;
                 .img_list {
-                    margin-top: 80px;
+                    margin-top: 40px;
                 }                    
             }
             :nth-child(4).show {     
                 height: 465px;
                 .img_list {
-                    margin-top: 80px;
+                    margin-top: 40px;
                 }                    
             }
         }

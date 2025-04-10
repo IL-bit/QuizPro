@@ -2,7 +2,6 @@
     margin: 0;
     padding: 0;
 }
-
 .container {
     padding-top: 0 !important;
     main {
@@ -41,9 +40,7 @@
         #bg5 {
             background: url(./components/img/bg5.png);
             height: 1003px;
-            top: auto;
-            bottom: 1672px;
-            left: 50%;
+            top: 11088px;
         }
     }  
 }
@@ -51,6 +48,9 @@
     .container {
         main {
             #bg1, #bg2, #bg3, #bg4, #bg5 {
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: center;
                 min-width: 1190px;
                 width: 1190px;
                 height: 706px;
@@ -80,6 +80,9 @@
     .container {
         main {
             #bg1, #bg2, #bg3, #bg4, #bg5 {
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: center;
                 min-width: 982px;
                 width: 982px;
                 height: 706px;
@@ -113,7 +116,12 @@
             position: relative;
             #bg1, #bg2, #bg3, #bg4, #bg5 {
                 background: url(./components/img/bg1_mobile.png);
-                width: 345px;
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: center;
+                min-width: 300px;
+                width: 95vw;
+                max-width: 576px;
                 height: 398px;
                 top: 15px;
                 left: 50%;
@@ -121,28 +129,41 @@
             }
             #bg2 {
                 background: url(./components/img/bg2_mobile.png);
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: center;
                 height: 682px;
                 top: 465px;
             }
             #bg3 {
                 background: url(./components/img/bg3_mobile.png);
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: center;
                 height: 705px;
-                top: 7470px;
+                top: 7250px;
             }
             #bg4 {
                 display: none;
             }
             #bg5 {
-                background: url(./components/img/bg5_mobile.png);
+                background: url(./components/img/bg5_mobile.png);                
+                background-repeat: no-repeat !important;
+                background-size: cover !important;
+                background-position: center !important;
                 height: 705px;
-                top: auto;
-                bottom: 2450px;
+                top: 13450px;
             }
             
         }
         #bg {
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
             border-radius: 31px;
-            width: 304px;
+            min-width: 300px;
+            width: 95vw;
+            max-width: 576px;
             height: 621px;
             background: #f2f3f5;
             position: absolute;
