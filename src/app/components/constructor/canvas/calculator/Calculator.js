@@ -63,8 +63,23 @@ const Calculator = () => {
             dispatch(changeQuestion(1));
         }
     };
+    const styleType = () => {
+        const style = {
+            height: ''
+        };
+        if (window.innerWidth >= 1200 && window.innerWidth < 1400) {
+            style.height = '533px';
+        } else if (window.innerWidth >= 992 && window.innerWidth < 1200) {
+        style.height = '443px';
+        } else {
+        style.height = '573px';
+        }
+    
+        return style;
+    };
+    const style = styleType();
     return (
-        <div className="type">
+        <div className="type" style={style}>
             <div>
                 <div id="calculator">
                     <div className="head">

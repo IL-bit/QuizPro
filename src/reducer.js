@@ -32,6 +32,7 @@ const initialState = {
                 button: 'Начать',
                 video: null,
                 mobile: null,
+                mobileVideo: null,
                 aling: 'canvas',
                 isActive: true
             },

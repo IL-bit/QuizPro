@@ -168,7 +168,7 @@ const AnswersAndImg = () => {
     return (
         <div className="type">
             <div>
-                <div id="answersImg">
+                <div id="AnswersAndImg">
                     <div className="head">
                         <img src={answer3} alt="#" />
                         <h4 contentEditable="true" spellcheck="false" suppressContentEditableWarning={true} onBlur={(e) => handleInput(e.currentTarget.textContent)}>{data.question}</h4>
@@ -211,7 +211,7 @@ const AnswersAndImg = () => {
                     <button className={index === 0 ? 'disactive' : ''} onClick={handlePreviousQuestion}></button>
                     <button className={index === canvas2.length - 1 ? 'disactive' : ''} onClick={handleNextQuestion}></button>
                 </div>
-                <div onClick={handleIncrement} style={{display: count === 10 ? 'none' : 'flex'}}><img src={plus} alt="#" /></div>            
+                <div onClick={handleIncrement} style={{display: count === 10 ? 'none' : 'flex'}} className='add'><img src={plus} alt="#" /></div>            
             </div>
         </div>
     );

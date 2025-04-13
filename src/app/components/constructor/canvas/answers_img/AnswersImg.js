@@ -209,7 +209,7 @@ const AnswersImg = () => {
                     <button className={index === 0 ? 'disactive' : ''} onClick={handlePreviousQuestion}></button>
                     <button className={index === canvas2.length - 1 ? 'disactive' : ''} onClick={handleNextQuestion}></button>
                 </div>
-                <div onClick={handleIncrement} style={{display: count === 10 ? 'none' : 'flex'}}><img src={plus} alt="#" /></div>            
+                <div onClick={handleIncrement} style={{display: count === 10 ? 'none' : 'flex'}} className='add'><img src={plus} alt="#" /></div>            
             </div>
         </div>
     );

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import './style.scss';
 import logo from '../../../img/Constructor/leftbar/logo.svg';
 import pen from '../../../img/Constructor/leftbar/pen.svg';
@@ -18,6 +19,7 @@ import PopUp from '../../lk/pop-up/PopUp';
 
 const LeftBar = () => {
   const navigate = useNavigate();   
+  const balance = useSelector((state) => state.balance);
   const [isModalActive, setIsModalActive] = useState(false);
   const [isPopupVisible, setIsPopupVisible] = useState(false);
   const handleClick = (route) => {
@@ -92,7 +94,7 @@ const LeftBar = () => {
           <img src={eye} alt="#" />
           <p>Предпросмотр</p>
           <button onClick={() => handleClick('/user/createquizes/previev/pc')}></button>
-          <button></button>
+          <button onClick={() => handleClick('/user/createquizes/previev/mob')}></button>
         </div>
         <button className="publish">Опубликовать</button>
       </div>  
@@ -102,7 +104,7 @@ const LeftBar = () => {
           <img src={logo} alt="#" />
           <div className='balance'>
             <p><img src={Balance} alt="#" />Баланс</p>
-            <button onClick={() => handleClick('/user/balance')}><img src={Balance2} alt="#" /><p>1.234 ₽</p></button>
+            <button onClick={() => handleClick('/user/balance')}><img src={Balance2} alt="#" /><p>{balance} ₽</p></button>
           </div>
           <div className="account" onClick={handleAccountClick}>
             <button className="base">D</button>
@@ -154,7 +156,7 @@ const LeftBar = () => {
           <img src={eye} alt="#" />
           <p>Предпросмотр</p>
           <button onClick={() => handleClick('/user/createquizes/previev/pc')}></button>
-          <button></button>
+          <button onClick={() => handleClick('/user/createquizes/previev/mob')}></button>
         </div>
         <button className="publish">Опубликовать</button>
       </div>

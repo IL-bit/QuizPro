@@ -36,6 +36,7 @@ import Reset from './Reset.js';
 import Design from './constructor/design/Design.js';
 import Plugins from './constructor/plugins/Plugins.js';
 import StartAd from './constructor/startad/StartAd.js';
+import PrevievQuizMob from './constructor/previevQuizMob/PrevievQuizMob.js';
 
 function App() {
   const dispatch = useDispatch();
@@ -45,7 +46,7 @@ function App() {
   }, [isAuthenticated]);  
 
   const today = new Date(); 
-  const targetDate = new Date(2025, 3, 15);
+  const targetDate = new Date(2025, 3, 30);
 
   if (today > targetDate) {
     return (
@@ -82,6 +83,7 @@ function App() {
           <Route path="/user/writeoff" element={<PrivateRoute element={<WriteOff />} isAuthenticated={isAuthenticated} />} />
           <Route path="/user/createquizes" element={<PrivateRoute element={<CreateQuizes />} isAuthenticated={isAuthenticated} />} />
           <Route path="/user/createquizes/previev/pc" element={<PrivateRoute element={<PrevievQuizPc />} isAuthenticated={isAuthenticated} />} />
+          <Route path="/user/createquizes/previev/mob" element={<PrivateRoute element={<PrevievQuizMob />} isAuthenticated={isAuthenticated} />} />
           <Route path="/user/createquiz/new" element={<PrivateRoute element={<CreateNew />} isAuthenticated={isAuthenticated} />} />
           <Route path="/user/quiz/install" element={<PrivateRoute element={<Install />} isAuthenticated={isAuthenticated} />} />
           <Route path="/user/quiz/settings" element={<PrivateRoute element={<Setting />} isAuthenticated={isAuthenticated} />} />

@@ -73,11 +73,11 @@
                         font-weight: 300;
                         font-size: 16px;
                         color: #fff;
-                    }
-                    >input::placeholder {
+                        &::placeholder {
                         font-weight: 300;
                         font-size: 16px;
                         color: #fff;
+                        }
                     }
                     >div {
                         width: 10px;
@@ -112,11 +112,11 @@
                     font-weight: 300;
                     font-size: 16px;
                     color: #fff;
-                }
-                >input::placeholder {
-                    font-weight: 300;
-                    font-size: 16px;
-                    color: #fff;
+                    &::placeholder {
+                        font-weight: 300;
+                        font-size: 16px;
+                        color: #fff;
+                    }
                 }
             }
             >.step {
@@ -177,4 +177,308 @@
         }        
     }
   
+}
+@media (min-width: 1200px) and (max-width: 1399px) {
+    .type {
+        >div {
+            #calculator {
+                border: 0.81px solid #1d2a33;
+                border-radius: 20px;
+                height: 422px;
+                >.head {
+                    height: 62px;
+                    padding-left: 24px;
+                    padding-right: 13px;
+                    border-bottom: 0.81px solid #1d2a33;
+                    >img {
+                        margin-right: 11px;
+                        width: 13px;
+                        height: 15px;
+                    }
+                    >h4 {
+                        font-weight: 400;
+                        font-size: 13px;
+                        color: #fff;
+                    }
+                    >.index {
+                        width: 25px;
+                        height: 25px;
+                        font-weight: 400;
+                        font-size: 13px;
+                        color: #fff;
+                    }
+                }
+                >.range {
+                    border-bottom: 0.81px solid #1d2a33;
+                    height: 118px;
+                    padding-left: 24px;
+                    padding-top: 19px;
+                    p {
+                        font-weight: 300;
+                        font-size: 13px;
+                        color: #8ea6b7;
+                        margin-bottom: 16px;
+                    }
+                    >div {
+                        width: 553px;
+                        >input {
+                            border: 0.81px solid #1d2a33;
+                            border-radius: 15px;
+                            width: 257px;
+                            height: 49px;
+                            padding-left: 15px;
+                            font-weight: 300;
+                            font-size: 13px;
+                            color: #fff;
+                            &::placeholder {
+                                font-weight: 300;
+                                font-size: 13px;
+                                color: #fff;
+                            }
+                        }
+                        >div {
+                            width: 8px;
+                            height: 1px;
+                        }
+                    }
+                }
+                >.init_value, >.step {
+                    padding-left: 24px;
+                    height: 82px;
+                    border-bottom: 0.81px solid #1d2a33;
+                    p {
+                        font-weight: 300;
+                        font-size: 13px;
+                        color: #8ea6b7;
+                        margin-right: 28px;
+                    }
+                    input {
+                        border: 0.81px solid #1d2a33;
+                        border-radius: 15px;
+                        width: 399px;
+                        height: 49px;
+                        font-weight: 300;
+                        font-size: 13px;
+                        padding-left: 18px;
+                        color: #fff;
+                        &::placeholder {
+                            font-weight: 300;
+                            font-size: 13px;
+                            color: #fff;
+                        }
+                    }
+                }
+                >.step {
+                    border: none;
+                }
+                >:nth-last-child(1) {
+                    font-weight: 300;
+                    font-size: 13px;
+                    color: #fff;
+                    bottom: 18px;
+                    right: 21px;
+                    img {
+                        margin-right: 6px;
+                        width: 8px;
+                        height: 8px;
+                    }
+                }  
+ 
+            }
+            >:nth-last-child(1).plus {
+                width: 59px !important;
+                height: 59px !important;
+                margin-top: 15px !important;
+                img {
+                    width: 27px;
+                    height: 27px;
+                }
+            }             
+        }
+    }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+    .type {
+        >div {
+            #calculator {
+                height: 355px;
+                border: 0.68px solid #1d2a33;
+                border-radius: 17px;
+                >.head {
+                    height: 52px;
+                    padding-left: 20px;
+                    padding-right: 12px;
+                    border-bottom: 0.68px solid #1d2a33;
+                    >img {
+                        width: 11px;
+                        height: 12px;
+                        margin-right: 10px;
+                    }
+                    >h4 {
+                        font-weight: 400;
+                        font-size: 10px;
+                        color: #fff;
+                    }
+                    >.index {
+                        width: 21px;
+                        height: 21px;
+                        font-weight: 400;
+                        font-size: 10px;
+                        color: #fff;
+                    }
+                }
+                >.range {
+                    border-bottom: 0.68px solid #1d2a33;
+                    height: 99px;
+                    padding-left: 20px;
+                    padding-top: 16px;
+                    p {
+                        font-weight: 300;
+                        font-size: 10px;
+                        color: #8ea6b7;
+                        margin-bottom: 14px;
+                    }
+                    >div {
+                        width: 466px;
+                        >input {
+                            border: 0.68px solid #1d2a33;
+                            border-radius: 12px;
+                            width: 216px;
+                            height: 41px;
+                            padding-left: 12px;
+                            font-weight: 300;
+                            font-size: 10px;
+                            color: #fff;
+                            &::placeholder {
+                                font-weight: 300;
+                                font-size: 10px;
+                                color: #fff;
+                            }
+                        }
+                        >div {
+                            width: 6px;
+                            height: 1px;
+                        }
+                    }
+                }
+                >.init_value, >.step {
+                    padding-left: 20px;
+                    height: 69px;
+                    border-bottom: 0.68px solid #1d2a33;
+                    p {
+                        font-weight: 300;
+                        font-size: 10px;
+                        color: #8ea6b7;
+                        margin-right: 23px;
+                    }
+                    input {
+                        border: 0.68px solid #1d2a33;
+                        border-radius: 12px;
+                        width: 335px;
+                        height: 41px;
+                        font-weight: 300;
+                        font-size: 10px;
+                        color: #fff;
+                        &::placeholder {
+                            font-weight: 300;
+                            font-size: 10px;
+                            color: #fff;
+                        }
+                    }
+                }
+                >.step {
+                    border: none;
+                }
+                >:nth-last-child(1) {
+                    bottom: 16px;
+                    right: 18px;
+                    font-weight: 300;
+                    font-size: 10px;
+                    color: #fff;
+                    img {
+                        margin-right: 5px;
+                        width: 7px;
+                        height: 7px;
+                    }
+                }  
+  
+            }
+            >:nth-last-child(1).plus {
+                width: 47px !important;
+                height: 47px !important;
+                margin-top: 10px !important;
+                img {
+                    width: 23px;
+                    height: 23px;
+                }
+            }            
+        }
+    }
+}
+@media (max-width: 576px) {
+    .type {
+        height: auto;
+        >div {
+            #calculator {
+                height: 498px;
+                >.head {
+                    padding-left: 14px;
+                    padding-right: 14px;
+                    height: 52px;
+                    >img {
+                        width: 17px;
+                        height: 18px;
+                        margin-right: 14px;
+                    }
+                }
+                >.range {
+                    height: 169px;
+                    padding-top: 18px;
+                    padding-left: 14px;
+                    padding-right: 14px;
+                    p {
+                        margin-bottom: 31px;
+                    }
+                    >div {
+                        width: 100%;
+                        gap: 22px;
+                        >input {
+                            width: 100%;
+                        }
+                    }
+                }
+                >.init_value, >.step {
+                    height: 101px;
+                    padding-left: 14px;
+                    padding-right: 14px;
+                    p {
+                        margin: 0;
+                    }
+                    input {
+                        border: 1px solid #1d2a33;
+                        border-radius: 18px;
+                        width: 130px;
+                        height: 61px;
+                        margin-left: auto;
+                        margin-right: 0;
+                    }
+                }
+                >.step {
+                    border: none;
+                }
+            }
+            >.plus {
+                width: 47px !important;
+                height: 47px !important;
+                margin-top: 25px;
+                img {
+                    width: 23px;
+                    height: 23px;
+                }
+            }
+            .btns {
+                bottom: 8px !important;
+            }
+        }
+    }
 }

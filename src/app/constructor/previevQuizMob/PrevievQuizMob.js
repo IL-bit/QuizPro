@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import './style.scss';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import Canvas1 from '../../components/constructor/previevPc/canvas1';
-import Canvas2 from '../../components/constructor/previevPc/canvas2';
-import Canvas3 from '../../components/constructor/previevPc/canvas3';
+import Canvas1 from '../../components/constructor/previevMob/canvas1';
+import Canvas2 from '../../components/constructor/previevMob/canvas2';
+import Canvas3 from '../../components/constructor/previevMob/canvas3';
 import close from '../../img/Constructor/create/close.svg';
 
 const PrevievQuizPc = () => {
@@ -35,9 +35,9 @@ const PrevievQuizPc = () => {
     }
   }, []);
   return (
-    <div className="container" id='previevQuizPc'>
+    <div className="container" id='previevQuizMob'>
         <div className="row">
-            <div className="col-xxl-12 col-xl-12 col-lg-12">
+            <div className="col-12">
                 <button className='close' onClick={() => handleClick('/user/createquiz/new')}><img src={close} alt="#" /></button>
                 <div className={`previev ${theme}-theme ${buttonStyle}`}>
                   {currentCanvas === 'canvas1' && (

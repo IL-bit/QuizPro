@@ -145,7 +145,7 @@ const Answers = () => {
                     {answers.map((answer, idx) => (
                         <div 
                             key={answer.id} 
-                            className="answer" 
+                            className="answer"
                             draggable 
                             onDragStart={(e) => handleDragStart(e, idx)} 
                             onDragOver={handleDragOver} 
@@ -163,11 +163,11 @@ const Answers = () => {
                     <p onClick={addAnswer} style={{ display: answers.length > 4 ? 'none' : 'block' }}>Добавить ответ</p>
                     <p className="delete" onClick={handleDeleteQuestion}><img src={close} alt="#" />Удалить этот вопрос</p>
                 </div>
-                <div className="btns">
+                <div className="btnsa">
                     <button className={index === 0 ? 'disactive' : ''} onClick={handlePreviousQuestion}></button>
                     <button className={index === canvas2.length - 1 ? 'disactive' : ''} onClick={handleNextQuestion}></button>
                 </div>
-                <div onClick={handleIncrement} style={{display: count === 10 ? 'none' : 'flex'}}><img src={plus} alt="#" /></div>            
+                <div onClick={handleIncrement} style={{display: count === 10 ? 'none' : 'flex'}} className='add'><img src={plus} alt="#" /></div>            
             </div>
         </div>
     );

@@ -1,5 +1,5 @@
 #previevQuizPc {
-    .col-12 {
+    .col-xxl-12 {
         border: 1px solid #1d2a33;
         border-radius: 25px;
         width: 100%;
@@ -184,6 +184,79 @@
                 border: 1.34px solid #6a8496;
                 background: none;
                 border-radius: 3px;
+            }
+        }
+    }
+}
+@media (min-width: 1200px) and (max-width: 1399px) {
+    #previevQuizPc {
+        .col-xxl-12 {
+            border: 0.91px solid #1d2a33;
+            border-radius: 23px;
+            height: 688px; 
+            position: relative;
+            padding: 56px 34px 55px;
+            >.close {
+                position: absolute;
+                right: 18px;
+                top: 17px;
+                height: 16px;
+                width: 16px;
+                background: none;
+                border: none;
+                padding: 0;
+                img {
+                    height: 16px;
+                    width: 16px;
+                    margin-top: -7px;
+                }
+            }
+            >.previev {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+    #previevQuizPc {
+        .col-xxl-12 {
+            border: 0.75px solid #1d2a33;
+            border-radius: 19px;
+            height: 572px;
+            position: relative;
+            padding: 46px 28px;
+            >.close {
+                position: absolute;
+                right: 15px;
+                top: 14px;
+                height: 13px;
+                width: 13px;
+                background: none;
+                border: none;
+                padding: 0;
+                img {
+                    height: 13px;
+                    width: 13px;
+                    margin-top: -7px;
+                }
+            }
+            >.previev {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+}
+@media (max-width: 576px) {
+    #previevQuizPc {
+        .col-xxl-12 {
+            overflow-x: auto;
+            >.previev {
+                width: 1024px;
+            }
+            >.close {
+                position: fixed;
             }
         }
     }

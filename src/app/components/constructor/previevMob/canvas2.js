@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import './canvas2.scss';
+import './style.scss';
 import { useSelector } from 'react-redux';
 import arrow_back from '../../../img/Constructor/previev/arrow_back.svg';
 import arrow_next from '../../../img/Constructor/previev/arrow_next.svg';
@@ -144,9 +144,9 @@ const Canvas2 = ({ handleButtonClick }) => {
         );
       default: return null
     }
-  }
+  };
   return (
-    <div className='canvas2' style={{ backgroundColor }}>
+    <div id='canvas2Mob' style={{ backgroundColor }}>
       <h1 style={{ color: textColor }}>{createQuiz.data.title}</h1>
       {createQuiz.data.canvas2.length > 0 ? renderQuiz() : null}
       <div className="progress">

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { logOut } from '../../../../actions';
 import './style.scss';
 import Logo from '../../../img/leftbar/logo.svg';
@@ -17,6 +17,7 @@ import PopUp from '../pop-up/PopUp';
 const LeftBar = () => {
   const navigate = useNavigate();   
   const dispatch = useDispatch();
+  const balance = useSelector((state) => state.balance);
   const [isModalActive, setIsModalActive] = useState(false);
   const handleClick = (route) => {
     navigate(route);
@@ -56,7 +57,7 @@ const LeftBar = () => {
             <img src={Logo} alt="#" />
             <div className='balance'>
               <p><img src={Balance} alt="#" />Баланс</p>
-              <button onClick={() => handleClick('/user/balance')}><img src={Balance2} alt="#" /><p>1.234 ₽</p></button>
+              <button onClick={() => handleClick('/user/balance')}><img src={Balance2} alt="#" /><p>{balance} ₽</p></button>
             </div>
             <div className="account" onClick={handleAccountClick}>
               <button className="base">D</button>
@@ -97,7 +98,7 @@ const LeftBar = () => {
           <img src={Logo} alt="#" />
           <div className='balance'>
             <p><img src={Balance} alt="#" />Баланс</p>
-            <button onClick={() => handleClick('/user/balance')}><img src={Balance2} alt="#" /><p>1.234 ₽</p></button>
+            <button onClick={() => handleClick('/user/balance')}><img src={Balance2} alt="#" /><p>{balance} ₽</p></button>
           </div>
           <div className="account" onClick={handleAccountClick}>
             <button className="base">D</button>
