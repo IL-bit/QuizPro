@@ -9,10 +9,10 @@ const Canvas1 = ({ handleButtonClick }) => {
     const canvasClass = alignClass === 'canvas-center' ? 'canvas-center' : 'canvas1 ' + alignClass;
 
     // Determine colors based on the theme
-    const backgroundColor = theme === 'user' ? createQuiz.data.theme.backgroundColor : ''; 
-    const textColor = theme === 'user' ? createQuiz.data.theme.textColor : ''; 
-    const buttonColor = theme === 'user' ? createQuiz.data.theme.buttonColor : ''; 
-    const buttonTextColor = theme === 'user' ? createQuiz.data.theme.buttonTextColor : ''; 
+    const backgroundColor = theme === 'user' ? createQuiz.data.theme.background_color : ''; 
+    const textColor = theme === 'user' ? createQuiz.data.theme.text_color : ''; 
+    const buttonColor = theme === 'user' ? createQuiz.data.theme.button_color : ''; 
+    const buttonTextColor = theme === 'user' ? createQuiz.data.theme.button_text_color : ''; 
 
     const logoStyle = createQuiz.data.canvas1.logo ? { background: `url(${createQuiz.data.canvas1.logo})` } : { backgroundColor: 'rgba(66, 87, 102, 0.52)' };
 

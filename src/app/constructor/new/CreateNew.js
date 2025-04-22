@@ -1,8 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { QUIZ } from '../../../middleware';
 import LeftBar from '../../components/constructor/leftbar/LeftBar';
 import Constructor from '../../components/constructor/Constructor';
 
 const CreateNew = () => {
+  const dispatch = useDispatch();
+  const isData = useSelector((state) => state.createQuiz.isData);
+  const currentQuizID = useSelector((state) => state.createQuiz.currentQuizID);
+  useEffect(() => {
+    if (!isData) {
+      dispatch(QUIZ(currentQuizID));
+    }
+  })
   return (
     <div className="container">
         <div className="row">
@@ -10,11 +20,13 @@ const CreateNew = () => {
               <LeftBar />
             </div>
             <div className="col-xxl-9 col-xl-9 col-lg-9 col-12">
-              <Constructor />
+              {isData ? <Constructor /> : null}
+              
             </div>
         </div>
     </div>
   )
 }
+
 
 export default CreateNew;

@@ -10,9 +10,9 @@ import close from '../../img/Constructor/create/close.svg';
 const PrevievQuizPc = () => {
   const navigate = useNavigate();
   const canvas2 = useSelector((state) => state.createQuiz.data.canvas2);
-  const isCanvas1 = useSelector((state) => state.createQuiz.data.canvas1.isActive);
+  const isCanvas1 = useSelector((state) => state.createQuiz.data.canvas1.is_active);
   const theme = useSelector(state => state.createQuiz.data.theme.theme);
-  const buttonStyle = useSelector(state => state.createQuiz.data.theme.buttonStyle);
+  const buttonStyle = useSelector(state => state.createQuiz.data.theme.button_style);
   const handleClick = (route) => {
     navigate(route);
   };

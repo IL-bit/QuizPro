@@ -116,7 +116,11 @@
                     height: 13px;
                 }
             }
+            &.mobile {
+                display: none;
+            }
         }
+
     }
 }
 @media (min-width: 1200px) and (max-width: 1399px) {
@@ -400,12 +404,12 @@
                         height: 13px;
                     }
                 }
-            }
-            >.mobile {
-                display: flex;
-            }
-            >.pc {
-                display: none;
+                &.mobile {
+                    display: flex;
+                }
+                &.pc {
+                    display: none;
+                }
             }
         }
     }

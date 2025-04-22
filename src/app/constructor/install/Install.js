@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import './style.scss';
 import LeftBar from '../../components/constructor/leftbar/LeftBar';
 import copy from '../../img/Constructor/create/copy.svg';
@@ -8,6 +9,7 @@ import tg from '../../img/Constructor/create/tg.svg';
 
 
 const Install = () => {
+  const currentQuizID = useSelector((state) => state.createQuiz.currentQuizID);
   return (
     <div className="container">
         <div className="row">
@@ -20,7 +22,7 @@ const Install = () => {
                         <h2>Прямая ссылка на квиз</h2>
                         <div className="status">Не опубликовано</div>
                         <div className="link">
-                            <div>https://qzpro.me/6762ed89a4633e00266f65ba<button>Копировать<img src={copy} alt="#" /></button></div>
+                            <div>https://qzpro.ru/quiz/{currentQuizID}<button>Копировать<img src={copy} alt="#" /></button></div>
                         </div>
                     </div>
                     <div className="social">

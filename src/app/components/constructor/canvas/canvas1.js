@@ -17,13 +17,8 @@ const Canvas1 = () => {
   const dispatch = useDispatch();
   const video = useSelector((state) => state.createQuiz.data.isvideo1);
   const { createQuiz } = useSelector((state) => state);
-  
-  useEffect(() => {
-    console.log(createQuiz);
-  }, [createQuiz]);
 
   const handleInput = (field, value) => {
-    console.log(`Field: ${field}, Value: ${value}`);
     dispatch(inputChange('canvas1', field, value));
   };
 
@@ -83,7 +78,7 @@ const Canvas1 = () => {
   return (
     <>
       <div id="canvas1">
-        {createQuiz.data.canvas1.isActive ? (
+        {createQuiz.data.canvas1.is_active ? (
           <>
             <div className={canvasClass}>
               <input type="file" className='mobileImg' accept='image/*' onChange={handleMobile} style={{ display: 'none' }} />

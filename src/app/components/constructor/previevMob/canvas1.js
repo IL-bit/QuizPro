@@ -16,7 +16,7 @@ const Canvas1 = ({ handleButtonClick }) => {
 
     return (
         <div id='canvas1Mob' style={{ backgroundColor }}>
-            {createQuiz.data.canvas1.mobileVideo ? (
+            {createQuiz.data.canvas1.mobile_video ? (
                 <video loop autoPlay muted className="img">
                     <source src={createQuiz.data.canvas1.video} type="video/mp4" />
                     Ваш браузер не поддерживает видео.

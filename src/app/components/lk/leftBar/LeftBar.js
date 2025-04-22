@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logOut } from '../../../../actions';
+import { LOGOUT } from '../../../../middleware';
 import './style.scss';
 import Logo from '../../../img/leftbar/logo.svg';
 import Arrow from '../../../img/leftbar/arrow.svg';
@@ -18,7 +19,11 @@ const LeftBar = () => {
   const navigate = useNavigate();   
   const dispatch = useDispatch();
   const balance = useSelector((state) => state.balance);
+  const rate = useSelector((state) => state.rate);
+  const token = useSelector((state) => state.Token);
+  const application = useSelector((state) => state.applications);
   const [isModalActive, setIsModalActive] = useState(false);
+  let count = 0;
   const handleClick = (route) => {
     navigate(route);
   };
@@ -41,7 +46,8 @@ const LeftBar = () => {
     };
   }, []);
   const handleLogOut = () => {
-    dispatch(logOut());
+    dispatch(LOGOUT(token));
+    // dispatch(logOut());
   };
   const handleOpenModal = () => {
     setIsModalActive(true);
@@ -50,6 +56,21 @@ const LeftBar = () => {
   const handleCloseModal = () => {
     setIsModalActive(false);
   };
+  const handleRate = () => {
+    if (rate === 'Бесплатный') {
+      return 'base';
+    } else if (rate === 'Оптимальный') {
+      return 'optim';
+    } else if (rate === 'Премиум') {
+      return 'prem';
+    };
+  };
+  const handleCountApplic = () => {
+    count = application.length;
+  };
+  useEffect(() => {
+    handleCountApplic();
+  }, [application]); // Вызываем при изменении application
   return (
     <>
       <div id="LeftBarLk" className='pc'>
@@ -57,10 +78,10 @@ const LeftBar = () => {
             <img src={Logo} alt="#" />
             <div className='balance'>
               <p><img src={Balance} alt="#" />Баланс</p>
-              <button onClick={() => handleClick('/user/balance')}><img src={Balance2} alt="#" /><p>{balance} ₽</p></button>
+              <button onClick={() => handleClick('/user/balance')}><img src={Balance2} alt="#" /><p className={balance < 0 ? 'minus' : ''}>{balance} ₽</p></button>
             </div>
             <div className="account" onClick={handleAccountClick}>
-              <button className="base">D</button>
+              <button className={handleRate()}>D</button>
               <div className="new">1</div>
               {isPopupVisible && <PopUp />}
             </div>
@@ -68,14 +89,14 @@ const LeftBar = () => {
           <div className="applications" onClick={() => handleClick('/user/applications')}>
               <img src={applications} alt="#" />
               <p>Все заявки</p>
-              <div className="count">22</div>
+              <div className="count">{count}</div>
           </div>
           <div className="rate" onClick={() => handleClick('/user/rates')}>
               <img src={Rate} alt="#" />
               <p>Тариф</p>
-              <div className="rates activ">Base</div>
-              <div className="rates">Optim</div>
-              <div className="rates">Prem</div>
+              <div className={`rates ${rate === 'Бесплатный' ? 'activ' : ''}`}>Base</div>
+              <div className={`rates ${rate === 'Оптимальный' ? 'activ' : ''}`}>Optim</div>
+              <div className={`rates ${rate === 'Премиум' ? 'activ' : ''}`}>Prem</div>
               <div className="plus">+</div>
           </div>
           <nav>
@@ -112,14 +133,14 @@ const LeftBar = () => {
         <div className="applications" onClick={() => handleClick('/user/applications')}>
           <img src={applications} alt="#" />
           <p>Все заявки</p>
-          <div className="count">22</div>
+          <div className="count">{count}</div>
         </div>
         <div className="rate" onClick={() => handleClick('/user/rates')}>
           <img src={Rate} alt="#" />
           <p>Тариф</p>
-          <div className="rates activ">Base</div>
-          <div className="rates">Optim</div>
-          <div className="rates">Prem</div>
+          <div className={`rates ${rate === 'Бесплатный' ? 'activ' : ''}`}>Base</div>
+          <div className={`rates ${rate === 'Оптимальный' ? 'activ' : ''}`}>Optim</div>
+          <div className={`rates ${rate === 'Премиум' ? 'activ' : ''}`}>Prem</div>
           <div className="plus">+</div>
         </div>
         <nav>

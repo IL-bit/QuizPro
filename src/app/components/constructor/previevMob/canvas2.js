@@ -14,12 +14,11 @@ const Canvas2 = ({ handleButtonClick }) => {
   const [totalQuestions, setTotalQuestions] = useState(createQuiz.data.canvas2.length);
 
   // Determine colors based on the theme
-  const backgroundColor = theme === 'user' ? createQuiz.data.theme.backgroundColor : ''; 
-  const textColor = theme === 'user' ? createQuiz.data.theme.textColor : ''; 
-  const buttonColor = theme === 'user' ? createQuiz.data.theme.buttonColor : ''; 
-  const buttonTextColor = theme === 'user' ? createQuiz.data.theme.buttonTextColor : ''; 
-  const buttonStyle = button === 'style1' || button === 'style2' ? createQuiz.data.theme.buttonColor : ''; 
-  console.log(buttonStyle);
+  const backgroundColor = theme === 'user' ? createQuiz.data.theme.background_color : ''; 
+  const textColor = theme === 'user' ? createQuiz.data.theme.text_color : ''; 
+  const buttonColor = theme === 'user' ? createQuiz.data.theme.button_color : ''; 
+  const buttonTextColor = theme === 'user' ? createQuiz.data.theme.button_text_color : ''; 
+  const buttonStyle = button === 'style1' || button === 'style2' ? createQuiz.data.theme.button_color : ''; 
 
   const handleNextClick = () => {
     if (currentIndex < totalQuestions - 1) {

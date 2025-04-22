@@ -13,7 +13,7 @@ const Register = () => {
     email: '',
     password: '',
     password_confirmation: '',
-    name: 'user1'
+    name: ''
   });
 
   const handleClick = (route) => { navigate(route); }; 
@@ -32,6 +32,7 @@ const Register = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Данные для входа:', dataForm);
+    localStorage.setItem('login', dataForm.email);
     dispatch(REGISTER(dataForm));
   };
   useEffect(() => {
@@ -53,6 +54,15 @@ const Register = () => {
                 placeholder="Введите почту" 
                 className="form" 
                 value={dataForm.email} 
+                onChange={handleChange} 
+                required 
+              />
+              <input 
+                type="text" 
+                name="name" 
+                placeholder="Введите имя" 
+                className="form" 
+                value={dataForm.name} 
                 onChange={handleChange} 
                 required 
               />

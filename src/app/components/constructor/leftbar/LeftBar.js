@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, use } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { TURNONQUIZ } from '../../../../middleware';
 import './style.scss';
 import logo from '../../../img/Constructor/leftbar/logo.svg';
 import pen from '../../../img/Constructor/leftbar/pen.svg';
@@ -19,7 +20,10 @@ import PopUp from '../../lk/pop-up/PopUp';
 
 const LeftBar = () => {
   const navigate = useNavigate();   
+  const dispatch = useDispatch();
   const balance = useSelector((state) => state.balance);
+  const currentQuizID = useSelector((state) => state.createQuiz.currentQuizID);
+  const token = useSelector((state) => state.Token);
   const [isModalActive, setIsModalActive] = useState(false);
   const [isPopupVisible, setIsPopupVisible] = useState(false);
   const handleClick = (route) => {
@@ -46,46 +50,49 @@ const LeftBar = () => {
       document.removeEventListener('click', handleDocumentClick);
     };
   }, []);
+  const handleOn = () => {
+    dispatch(TURNONQUIZ(token, currentQuizID));
+  };
   return (
     <>
       <div id="LeftBarConstr">
         <div className="head">
           <img src={logo} alt="#" />
-          <button onClick={() => handleClick('/user/createquizes')}></button>
+          <button onClick={() => handleClick('/user')}></button>
         </div>
         <nav>
-          <div className="edit" onClick={() => handleClick('/user/createquiz/new')}>
+          <div className="edit" onClick={() => handleClick(`/user/quiz/${currentQuizID}`)}>
             <img src={pen} alt="#" />
             <p>Редактор</p>
             <img src={arrow1} alt="#"/>
           </div>
-          <div className="install" onClick={() => handleClick('/user/quiz/install')}>
+          <div className="install" onClick={() => handleClick(`/user/quiz/${currentQuizID}/install`)}>
             <img src={install} alt="#" />
             <p>Установка</p>
             <img src={arrow2} alt="#"/>
           </div>
-          <div className="advert" onClick={() => handleClick('/user/quiz/startadvert')}>
+          <div className="advert" onClick={() => handleClick(`/user/quiz/${currentQuizID}/startadvert`)}>
             <img src={at} alt="#" />
             <p>Запуск рекламы</p>
             <img src={arrow2} alt="#"/>
           </div>        
         </nav>
-        <div className="extensions" onClick={() => handleClick('/user/quiz/plugins')}>
+        <div className="extensions" onClick={() => handleClick(`/user/quiz/${currentQuizID}/plugins`)}>
           <img src={extend} alt="#" />
           <p>Расширения</p>
           <img src={arrow2} alt="#" />
         </div>
-        <div className="design" onClick={() => handleClick('/user/quiz/design')}>
+        <div className="design" onClick={() => handleClick(`/user/quiz/${currentQuizID}/design`)}>
           <img src={design} alt="#" />
           <p>Дизайн</p>
           <img src={arrow2} alt="#" />
         </div>
-        <div className="integrations" onClick={() => handleClick('/user/quiz/integrations')}>
+        <div className="integrations" onClick={() => handleClick(`/user/quiz/${currentQuizID}/integrations`)}>
           <img src={integ} alt="#" />
           <p>Интеграции</p>
           <img src={arrow2} alt="#" />
         </div>
-        <div className="settings" onClick={() => handleClick('/user/quiz/settings')}>
+        <div className="settings" onClick={() => handleClick(`/user/quiz/${currentQuizID}/settings`)}>
           <img src={settings} alt="#" />
           <p>Настройки</p>
           <img src={arrow2} alt="#" />
@@ -93,10 +100,10 @@ const LeftBar = () => {
         <div className="prev">
           <img src={eye} alt="#" />
           <p>Предпросмотр</p>
-          <button onClick={() => handleClick('/user/createquizes/previev/pc')}></button>
-          <button onClick={() => handleClick('/user/createquizes/previev/mob')}></button>
+          <button onClick={() => handleClick(`/user/quiz/${currentQuizID}/previev/pc`)}></button>
+          <button onClick={() => handleClick(`/user/quiz/${currentQuizID}/previev/mob`)}></button>
         </div>
-        <button className="publish">Опубликовать</button>
+        <button className="publish" onClick={() => handleOn()}>Опубликовать</button>
       </div>  
       <div id="LeftBarConstrMobile">
         <div className="head">
@@ -116,38 +123,38 @@ const LeftBar = () => {
       <div id="modalConstr" className={isModalActive ? 'active' : ''}>
         <div className="close" onClick={handleCloseModal}></div>
         <nav>
-          <div className="edit" onClick={() => handleClick('/user/createquiz/new')}>
+          <div className="edit" onClick={() => handleClick(`/user/quiz/${currentQuizID}`)}>
             <img src={pen} alt="#" />
             <p>Редактор</p>
             <img src={arrow1} alt="#"/>
           </div>
-          <div className="install" onClick={() => handleClick('/user/quiz/install')}>
+          <div className="install" onClick={() => handleClick(`/user/quiz/${currentQuizID}/install`)}>
             <img src={install} alt="#" />
             <p>Установка</p>
             <img src={arrow2} alt="#"/>
           </div>
-          <div className="advert" onClick={() => handleClick('/user/quiz/startadvert')}>
+          <div className="advert" onClick={() => handleClick(`/user/quiz/${currentQuizID}/startadvert`)}>
             <img src={at} alt="#" />
             <p>Запуск рекламы</p>
             <img src={arrow2} alt="#"/>
           </div>        
         </nav>
-        <div className="extensions" onClick={() => handleClick('/user/quiz/plugins')}>
+        <div className="extensions" onClick={() => handleClick(`/user/quiz/${currentQuizID}/plugins`)}>
           <img src={extend} alt="#" />
           <p>Расширения</p>
           <img src={arrow2} alt="#" />
         </div>
-        <div className="design" onClick={() => handleClick('/user/quiz/design')}>
+        <div className="design" onClick={() => handleClick(`/user/quiz/${currentQuizID}/design`)}>
           <img src={design} alt="#" />
           <p>Дизайн</p>
           <img src={arrow2} alt="#" />
         </div>
-        <div className="integrations" onClick={() => handleClick('/user/quiz/integrations')}>
+        <div className="integrations" onClick={() => handleClick(`/user/quiz/${currentQuizID}/integrations`)}>
           <img src={integ} alt="#" />
           <p>Интеграции</p>
           <img src={arrow2} alt="#" />
         </div>
-        <div className="settings" onClick={() => handleClick('/user/quiz/settings')}>
+        <div className="settings" onClick={() => handleClick(`/user/quiz/${currentQuizID}/settings`)}>
           <img src={settings} alt="#" />
           <p>Настройки</p>
           <img src={arrow2} alt="#" />
@@ -155,10 +162,10 @@ const LeftBar = () => {
         <div className="prev">
           <img src={eye} alt="#" />
           <p>Предпросмотр</p>
-          <button onClick={() => handleClick('/user/createquizes/previev/pc')}></button>
-          <button onClick={() => handleClick('/user/createquizes/previev/mob')}></button>
+          <button onClick={() => handleClick(`/user/quiz/${currentQuizID}/previev/pc`)}></button>
+          <button onClick={() => handleClick(`/user/quiz/${currentQuizID}/previev/mob`)}></button>
         </div>
-        <button className="publish">Опубликовать</button>
+        <button className="publish" onClick={() => handleOn()}>Опубликовать</button>
       </div>
       <div id="modal_bg" className={isModalActive ? 'active' : ''}></div>
     </>

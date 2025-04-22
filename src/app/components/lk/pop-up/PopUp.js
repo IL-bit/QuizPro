@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import person from '../../../img/popup/person.svg';
 import Logout from '../../../img/popup/logout.svg';
@@ -6,15 +7,45 @@ import './style.scss';
 
 const PopUp = () => {
     const navigate = useNavigate();   
+    const rates = useSelector((state) => state.rate);
+    const application = useSelector((state) => state.applications);
     const handleClick = (route) => {
       navigate(route);
     };
-    const data = {
-        count: 5,
-        rate: 'Бесплатный',
+    const [data, setData] = useState({
+        count: application.length,
+        rate: rates,
         min: 0,
-        max: 10
+        max: 0
+    });
+    const [score, setScore] = useState(0);
+
+    const handleMax = () => {
+        let max = 0;
+        if (rates === 'Бесплатный') {
+            max = 10;
+        } else if (rates === 'Оптимальный') {
+            max = 150;
+        } else if (rates === 'Премиум') {
+            max = 300;
+        }
+        return max;
     };
+
+    const handleScore = (max) => {
+        const calculatedScore = (data.count * 100) / max;
+        setScore(calculatedScore);
+    };
+
+    useEffect(() => {
+        const max = handleMax();
+        setData((prevData) => ({
+            ...prevData,
+            count: application.length,
+            max: max
+        }));
+        handleScore(max);
+    }, [application, rates])
   return (
     <div id='pop_up'>
         <div className="head">
@@ -27,7 +58,7 @@ const PopUp = () => {
             <div className="progress_bar">
                 <p>{data.min}</p>
                 <p>{data.max}</p>
-                <div><span>{data.count}</span></div>
+                <div style={{ width: `${score}%`}}><span>{data.count}</span></div>
             </div>
         </div>
         <h4>Помощь</h4>

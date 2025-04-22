@@ -12,10 +12,10 @@ const Canvas3 = () => {
     const canvasClass = 'canvas3 ' + alignClass;
 
     // Determine colors based on the theme
-    const backgroundColor = theme === 'user' ? createQuiz.data.theme.backgroundColor : ''; 
-    const textColor = theme === 'user' ? createQuiz.data.theme.textColor : ''; 
-    const buttonColor = theme === 'user' ? createQuiz.data.theme.buttonColor : ''; 
-    const buttonTextColor = theme === 'user' ? createQuiz.data.theme.buttonTextColor : ''; 
+    const backgroundColor = theme === 'user' ? createQuiz.data.theme.background_color : ''; 
+    const textColor = theme === 'user' ? createQuiz.data.theme.text_color : ''; 
+    const buttonColor = theme === 'user' ? createQuiz.data.theme.button_color : ''; 
+    const buttonTextColor = theme === 'user' ? createQuiz.data.theme.button_text_color : ''; 
 
     return (
         <div className={canvasClass} style={{ backgroundColor }}>

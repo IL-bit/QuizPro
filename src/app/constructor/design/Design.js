@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeTheme, changeBackgroundColor, changeTextColor, changeButtonColor, changeButtonTextColor, changeFont, changeButtonStyle } from '../../../actions';
+import { PUTQUIZ } from '../../../middleware';
 import { HexColorPicker } from "react-colorful";
 import './style.scss';
 import LeftBar from '../../components/constructor/leftbar/LeftBar';
@@ -9,17 +10,19 @@ import dark from '../../img/Constructor/design/dark-theme.svg';
 import quiz from '../../img/Constructor/design/quiz-theme.svg';
 import down from '../../img/Constructor/design/down.svg';
 
-
-
 const Design = () => {
   const dispatch = useDispatch();
+  const { createQuiz } = useSelector((state) => state);
+  const data = useSelector((state) => state.createQuiz.data);
+  const currentQuizID = useSelector((state) => state.createQuiz.currentQuizID);
+  const token = useSelector((state) => state.Token);
   const theme = useSelector(state => state.createQuiz.data.theme.theme);
-  const buttonStyle = useSelector(state => state.createQuiz.data.theme.buttonStyle);
+  const buttonStyle = useSelector(state => state.createQuiz.data.theme.button_style);
 
-  const backgroundColor = useSelector(state => state.createQuiz.data.theme.backgroundColor);
-  const textColor = useSelector(state => state.createQuiz.data.theme.textColor);
-  const buttonColor = useSelector(state => state.createQuiz.data.theme.buttonColor);
-  const buttonTextColor = useSelector(state => state.createQuiz.data.theme.buttonTextColor);
+  const backgroundColor = useSelector(state => state.createQuiz.data.theme.background_color);
+  const textColor = useSelector(state => state.createQuiz.data.theme.text_color);
+  const buttonColor = useSelector(state => state.createQuiz.data.theme.button_color);
+  const buttonTextColor = useSelector(state => state.createQuiz.data.theme.button_text_color);
 
   const [activeItem, setActiveItem] = useState(theme);
   const [activeButtonStyle, setActiveButtonStyle] = useState(buttonStyle);
@@ -61,6 +64,9 @@ const Design = () => {
     setButtonTextColor(color);
     dispatch(changeButtonTextColor(color)); 
   };
+  useEffect(() => {
+    dispatch(PUTQUIZ(currentQuizID, token, data));
+  }, [createQuiz.data.theme]);
 
   return (
     <div className="container">
@@ -95,7 +101,7 @@ const Design = () => {
                 <div className="colors">
                   <p>Цвет фона</p>
                   <div className="color">
-                    <button style={{ background: BackgroundColor }} onClick={() => toggleColorPicker('background')}></button>
+                    <button style={{ background: backgroundColor }} onClick={() => toggleColorPicker('background')}></button>
                     <img src={down} alt="#" className={activeColorPicker === 'background' ? 'active' : ''}/>
                   </div>
                   {activeColorPicker === 'background' && (

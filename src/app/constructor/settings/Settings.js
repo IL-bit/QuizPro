@@ -1,4 +1,8 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { DELETEQUIZ, TURNOFFQUIZ, TURNONQUIZ } from '../../../middleware';
+import { useNavigate } from 'react-router';
+import { noQuizes } from '../../../actions';
 import './style.scss';
 import LeftBar from '../../components/constructor/leftbar/LeftBar';
 import trash from '../../img/Constructor/settings/trash.svg';
@@ -7,6 +11,18 @@ import copy from '../../img/Constructor/settings/copy.svg';
 import route from '../../img/Constructor/settings/route.svg';
 
 const Settings = () => {
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const quizID = useSelector(state => state.createQuiz.currentQuizID);
+    const token = useSelector((state) => state.Token);
+    const handleDelete = () => {
+        dispatch(noQuizes());
+        dispatch(DELETEQUIZ(quizID, token));        
+        navigate('/user');
+    };
+    const handleOff = () => {
+        dispatch(TURNOFFQUIZ(token, quizID));
+    }
   return (
     <div className="container">
         <div className="row">
@@ -16,9 +32,9 @@ const Settings = () => {
             <div className="col-xxl-9 col-xl-9 col-lg-9 col-12">
                 <div id="settings">
                     <h2>Настройки</h2>
-                    <p>Удалить квиз<img src={trash} alt="#" /></p>
+                    <p onClick={() => handleDelete()}>Удалить квиз<img src={trash} alt="#" /></p>
                     <div className="turn_off">
-                        <button>Отключить квиз</button>
+                        <button onClick={() => handleOff()}>Отключить квиз</button>
                     </div>
                     <div className="get_access">
                         <p><img src={route} alt="#" />Выдать доступ другому пользователю</p>

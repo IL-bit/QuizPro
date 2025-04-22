@@ -9,10 +9,10 @@ const Auth = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isAuth = useSelector((state) => state.isAuth);
+  const isAdmin = useSelector((state) => state.isAdmin);
   const [dataForm, setDataForm] = useState({
     email: '',
-    password: '',
-    name: 'user1'
+    password: ''
   });
 
   const handleClick = (route) => { navigate(route); }; 
@@ -29,14 +29,19 @@ const Auth = () => {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault(); // предотвращаем перезагрузку страницы
-    // Здесь вы можете выполнить dispatch('LOGIN') с данными из dataForm
-    console.log('Данные для входа:', dataForm);
-    dispatch(LOGIN(dataForm)); // Раскомментируйте и используйте ваш dispatch
+    e.preventDefault();
+    console.log('Данные для входа:', dataForm); 
+    if (!isAuth) {
+      dispatch(LOGIN(dataForm));      
+    }
+
   };
   useEffect(() => {
     if (isAuth) {
       navigate('/user');
+    }
+    if (isAdmin) {
+      navigate('/admin/statist');
     }
   });
   return (

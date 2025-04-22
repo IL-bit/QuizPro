@@ -1,6 +1,4 @@
 import { createReducer } from "@reduxjs/toolkit";
-import Cookies from 'js-cookie';
-const expires = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toUTCString();
 const initialState = {
     type: '',
     createQuiz: {
@@ -8,6 +6,8 @@ const initialState = {
         currentQuestion: null,
         currentQuestionIndex: 0,
         countQuestions: 0,
+        currentQuizID: 0,
+        isData: false,
         data: {
             title: 'Заголовок страницы',   
             isvideo1: false,
@@ -19,7 +19,7 @@ const initialState = {
                 buttonTextColor: '#FFFFFF',
                 font: '',
                 buttonStyle: 'style1',
-                theme: 'dark'
+                theme: 'light'
             },
             canvas1: {
                 title: 'Введите заголовок формы',
@@ -34,7 +34,7 @@ const initialState = {
                 mobile: null,
                 mobileVideo: null,
                 aling: 'canvas',
-                isActive: true
+                is_active: true
             },
             canvas2: [
             ],
@@ -47,15 +47,54 @@ const initialState = {
                 phone: '+7 (900) 000-00-00',
                 video: null,
                 aling: 'canvas'
-            },
+            }
         }
     },
-    quiz: {},
+    quiz: {
+        currentSection: 0,
+        currentQuestion: null,
+        currentQuestionIndex: 0,
+        countQuestions: 0,
+        currentQuizID: 0,
+        isQuiz: false,
+        data: {}
+    },
     quizes: [],
+    isQuizes: true,
+    isApplications: false,
+    applications: [],
+    profile: {},
     login: '',
-    isAuth: false,
-    balance: 0,
-    Token: ''
+    email: '',
+    isAuth: true,
+    isAdmin: false,    
+    isProfile: false,
+    balance: -1,
+    Token: '',
+    rate: '',
+    admin: {
+        statistic: {},
+        filters: {
+            from: {
+                year: 2025,
+                month: 1,
+                day: 1
+            },
+            to: {
+                year: 2025,
+                month: 4,
+                day: 1
+            }
+        },
+        users: [],
+        blockedUsers: [],
+        currentUser: {},
+        deposits: [],
+        bannedWords: [],
+        isUser: false,
+        isUsers: false,
+        isBlocked: false
+    }
 };
 
 const RootReducer = createReducer(initialState, builder => {
@@ -65,12 +104,11 @@ const RootReducer = createReducer(initialState, builder => {
         state.createQuiz.currentSection = action.payload;
     })
     .addCase('HANDLEINPUTCHANGE', (state, action) => {
-        console.log(action.payload);
         const { canvas, field, value } = action.payload;
         state.createQuiz.data[canvas][field] = value;
     })
     .addCase('CHANGE_TITLE', (state, action) => {
-        state.createQuiz.data.title = action.payload; // Обновляем заголовок
+        state.createQuiz.data.title = action.payload; 
     })
     .addCase('HANDLEBUTTONBLUR', (state, action) => {
         const { canvas, field, value } = action.payload;
@@ -81,7 +119,6 @@ const RootReducer = createReducer(initialState, builder => {
         state.createQuiz.data[canvas][field] = null;
     })
     .addCase('HANDLEIMAGECHANGE', (state, action) => {
-        console.log('img');
         const { canvas, file } = action.payload;
         if (canvas === 'canvas1') {
             state.createQuiz.data.isvideo1 = false;
@@ -93,22 +130,18 @@ const RootReducer = createReducer(initialState, builder => {
         state.createQuiz.data[canvas].img = file; 
     })
     .addCase('HANDLEMOBILECHANGE', (state, action) => {
-        console.log('mobile');
         const { canvas, file } = action.payload;
-        state.createQuiz.data[canvas].mobile = file; // Убедитесь, что file - это URL изображения
+        state.createQuiz.data[canvas].mobile = file; 
     })
     .addCase('HANDLEIMAGE2CHANGE', (state, action) => {
-        console.log('logo');
         const { canvas, file } = action.payload;
-        state.createQuiz.data[canvas].logo = file; // Убедитесь, что file - это URL изображения
+        state.createQuiz.data[canvas].logo = file; 
     })
     .addCase('HANDLEVIDEOCHANGE', (state, action) => {
-        console.log('video');
         const { canvas, file } = action.payload;
-        state.createQuiz.data[canvas].video = file; // Убедитесь, что file - это URL изображения
+        state.createQuiz.data[canvas].video = file; 
     })
     .addCase('RESETBACKGROUND', (state, action) => {
-        console.log('RESETBACKGROUND');
         console.log(state.createQuiz.isvideo1);
         console.log(state.createQuiz.isvideo2); 
         const canvas = action.payload;
@@ -130,11 +163,9 @@ const RootReducer = createReducer(initialState, builder => {
     })
     .addCase('ADDQUESTION', (state, action) => {
         state.createQuiz.data.canvas2.push(action.payload);
-
         if (state.createQuiz.currentQuestionIndex === 9) {
             state.createQuiz.countQuestions = 10;
         }
-        console.log(initialState);
     })
     .addCase('HANDLESETCURRENTQUESTION', (state, action) => {
         state.createQuiz.currentQuestion = action.payload;
@@ -149,34 +180,31 @@ const RootReducer = createReducer(initialState, builder => {
     .addCase('UPDATEQUESTION', (state, action) => {
         const { index, newQuestionData } = action.payload;
         state.createQuiz.data.canvas2[index] = {
-            ...state.createQuiz.data.canvas2[index], // Сохраняем остальные поля
-            ...newQuestionData // Обновляем только нужные поля
+            ...state.createQuiz.data.canvas2[index], 
+            ...newQuestionData 
         };
     })
     .addCase('CHANGEQUESTION', (state, action) => {
-        if (state.createQuiz.currentQuestionIndex === 0) {
-            state.createQuiz.currentQuestionIndex = 1;
+        if (state.createQuiz.currentQuestionIndex === 0 && action.payload < 0) {
+            state.createQuiz.currentQuestionIndex = 0;
         } else if (state.createQuiz.currentQuestionIndex === 9) {
             state.createQuiz.countQuestions = 10;
             state.createQuiz.currentQuestionIndex = 8;
         } else {
-            state.createQuiz.currentQuestionIndex += action.payload; // Увеличиваем или уменьшаем индекс
+            state.createQuiz.currentQuestionIndex += action.payload; 
         }
         const currentIndex = state.createQuiz.currentQuestionIndex;
         if (state.createQuiz.data.canvas2[currentIndex] && state.createQuiz.data.canvas2[currentIndex].name) {
             state.createQuiz.currentQuestion = state.createQuiz.data.canvas2[currentIndex].name;
+        } else if (currentIndex >= 1) {
+            state.createQuiz.currentQuestion = state.createQuiz.data.canvas2[currentIndex - 1].name;            
         } else {
-            if (currentIndex > 0) {
-                state.createQuiz.currentQuestion = state.createQuiz.data.canvas2[currentIndex - 1].name;
-            } else {
-                state.createQuiz.currentQuestion = null;
-            }
+            state.createQuiz.currentQuestion = null;
         }
     })
     .addCase('REMOVEQUESTION', (state, action) => {
-        const { index } = action.payload;
-        state.createQuiz.data.canvas2.splice(index, 1); // Удаляем вопрос по индексу
-        state.createQuiz.currentQuestion = null; // Устанавливаем currentQuestion в null
+        state.createQuiz.data.canvas2.splice(action.payload, 1);
+        state.createQuiz.currentQuestion = null; 
     })
     .addCase('CLEAR_CANVAS2', (state) => {
         state.createQuiz.data.canvas2 = []; // Очищаем canvas2
@@ -227,23 +255,25 @@ const RootReducer = createReducer(initialState, builder => {
     })
     /* ЛК */
     .addCase('LOGIN_SUCCESS', (state, action) => {
-        console.log('LOGIN_SUCCESS action triggered'); // Для отладки
-        console.log('Access Token:', action.payload.data.accessToken); // Для отладки
-
-        if (action.payload.data.accessToken) {
+        console.log('LOGIN_SUCCESS action triggered');
+        console.log('Access Token:', action.payload.data.accessToken); 
+        if (action.payload.data.isAdmin) {
+            state.isAdmin = true;
             state.Token = action.payload.data.accessToken; 
-            localStorage.setItem('access_token', state.Token); // Сохраняем токен в localStorage
-
-            // Сохраняем время сохранения токена
-            const expirationTime = Date.now() + 3 * 24 * 60 * 60 * 1000; // 3 дня в миллисекундах
-            localStorage.setItem('token_expiration', expirationTime);
-
-            state.login = 'ok';
-            state.isAuth = true;
-            console.log('SUCCESS', action);
-            console.log('Token saved to localStorage:', state.Token);
         } else {
-            console.error('No access token found in action payload');
+            if (action.payload.data.accessToken) {
+                state.Token = action.payload.data.accessToken; 
+                localStorage.setItem('access_token', state.Token); 
+                const expirationTime = Date.now() + 3 * 24 * 60 * 60 * 1000; 
+                localStorage.setItem('token_expiration', expirationTime);
+
+                state.login = 'ok';
+                state.isAuth = true;
+                console.log('SUCCESS', action);
+                console.log('Token saved to localStorage:', state.Token);
+            } else {
+                console.error('No access token found in action payload');
+            }            
         }
     })
     .addCase('LOGIN_ERROR', (state) => {
@@ -255,6 +285,9 @@ const RootReducer = createReducer(initialState, builder => {
         console.log('NO');
     })
     .addCase('LOGOUT', (state) => {
+        console.log('LOGOUT');
+        localStorage.removeItem('access_token');
+        localStorage.removeItem('token_expiration');
         state.isAuth = false;
         state.login = 'no';
         state.Token = '';
@@ -264,6 +297,7 @@ const RootReducer = createReducer(initialState, builder => {
             const name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
             document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; secure; HttpOnly; SameSite=Strict`;
         }
+
     })
     .addCase('ISLOG', (state) => {
         const isLog = localStorage.getItem('access_token');
@@ -284,6 +318,108 @@ const RootReducer = createReducer(initialState, builder => {
         } else {
             state.isAuth = false; // Токен отсутствует
         }
+    })
+    .addCase('SET_BALANCE', (state, action) => {
+        state.balance = action.payload;
+    })
+    .addCase('SET_RATE', (state, action) => {
+        if (action.payload === 1) {
+            state.rate = 'Бесплатный';
+        } else if (action.payload === 2) {
+            state.rate = 'Оптимальный';
+        } else if (action.payload === 3) {
+            state.rate = 'Премиум';
+        }
+    })
+    .addCase('SET_QUIZES', (state, action) => {
+        state.quizes = action.payload;
+    })
+    .addCase('SET_APPLICATIONS', (state, action) => {
+        state.isApplications = true;
+        state.applications = action.payload;
+    })
+    .addCase('NO_APPLICATIONS', (state, action) => {
+        state.isApplications = false;
+    })
+    .addCase('SET_PROFILE', (state, action) => {
+        state.isProfile = true;
+        state.profile = action.payload;
+    })
+    .addCase('REFRESH_SUCCESS', (state, action) => {
+        state.Token = localStorage.getItem('access_token');
+        state.login = 'ok';
+        state.email = localStorage.getItem('login');
+        state.isAuth = true;        
+    })
+    .addCase('REFRESH_ERROR', (state) => {
+        state.login = 'error';
+        console.log('ERROR');
+    })
+    .addCase('ISQUIZES', (state) => {
+        state.isQuizes = false;        
+    })
+    .addCase('NOQUIZES', (state) => {
+        state.isQuizes = true;
+    })
+    .addCase('SET_CURRENT_QUIZ', (state, action) => {
+        console.log(action.payload);
+        state.createQuiz.currentQuizID = action.payload;
+    })
+    .addCase('SET_CURRENT_QUIZ2', (state, action) => {
+        state.quiz.currentQuizID = action.payload;    
+    })
+    .addCase('SET_QUIZ', (state, action) => {
+        console.log(action.payload);
+        state.createQuiz.isData = true;
+        state.createQuiz.data = action.payload;
+    })
+    .addCase('SET_QUIZ2', (state, action) => {
+        console.log(action.payload);
+        state.quiz.data = action.payload;
+    })
+
+    /* admin */
+    .addCase('SET_STATIST', (state, action) => {
+        console.log(action.payload);
+        state.admin.statistic = action.payload;
+    })
+    .addCase('SET_USERS', (state, action) => {
+        console.log(action.payload);
+        state.admin.users = action.payload;
+    })
+    .addCase('SET_USER', (state, action) => {
+        console.log(action.payload);
+        state.admin.currentUser = action.payload;
+    })
+    .addCase('SET_DEPOSITS', (state, action) => {
+        console.log(action.payload);
+        state.admin.deposits = action.payload;
+    })
+    .addCase('SET_BANNEDWORDS', (state, action) => {
+        console.log(action.payload);
+        state.admin.bannedWords = action.payload;
+    })
+    .addCase('SET_BANNEDUSERS', (state, action) => {
+        console.log(action.payload);
+        state.admin.blockedUsers = action.payload;
+    })
+    .addCase('IS_USERS', (state) => {
+        state.admin.isUsers = true;
+    })
+    .addCase('IS_USES', (state) => {
+        state.admin.isUser = true;
+    })
+    .addCase('NO_USERS', (state) => {
+        state.admin.isUsers = false;
+    })
+    .addCase('NO_USES', (state) => {
+        state.admin.isUser = false;
+    })
+    .addCase('NO_BANNED', (state) => {
+        state.admin.isBlocked = false;
+    })
+    .addCase('IS_BANNED', (state) => {
+        state.admin.isBlocked = true;
     })
 });
 

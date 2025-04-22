@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import React, { useEffect } from 'react';
+import { REFRESH } from '../middleware.js';
 import { islog } from '../actions.js';
 import './App.scss';
 import Auth from './Auth.js';
@@ -37,65 +38,90 @@ import Design from './constructor/design/Design.js';
 import Plugins from './constructor/plugins/Plugins.js';
 import StartAd from './constructor/startad/StartAd.js';
 import PrevievQuizMob from './constructor/previevQuizMob/PrevievQuizMob.js';
+import QUIZ from './QUIZ.js';
+
+/* admin */
+import Users from './admin/pages/Users';
+import BlockedUsers from './admin/pages/BlockedUsers';
+import UserAdmin from './admin/pages/User';
+import Statist from './admin/pages/Statist';
+import Deposit from './admin/pages/Deposit';
+import WriteOffAdmin from './admin/pages/WriteOff';
+import WriteOffError from './admin/pages/WriteOffError';
+import BannedWords from './admin/pages/BannedWords';
+
 
 function App() {
   const dispatch = useDispatch();
-  const isAuthenticated = useSelector((state) => state.isAuth);   
+  const isAuthenticated = useSelector((state) => state.isAuth);    
+  const isAdmin = useSelector((state) => state.isAdmin);    
+  const currentQuiz = useSelector((state) => state.createQuiz.currentQuizID);  
+  const token = localStorage.getItem('access_token');
+  const email = localStorage.getItem('login');
   useEffect(() => {
     dispatch(islog());
+    // dispatch(REFRESH(token, email));
   }, [isAuthenticated]);  
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Auth />} />
+        <Route path="/reg" element={<Register />} />
+        <Route path="/forgot" element={<Forgot />} />
+        <Route path="/reset/:resetId" element={<Reset />} />
+        <Route path="/quiz/:quizId" element={<QUIZ />} />
 
-  const today = new Date(); 
-  const targetDate = new Date(2025, 3, 30);
 
-  if (today > targetDate) {
-    return (
-      <>
-        <h1 id='money_for_project'>К сожалению разработчики этого сайта не получили свои деньги и по этому сайт не будет работать пока: Илья(frontend) не получит 103к, а Миша(backend) не получит 80к</h1>
-      </>
-    )
-  } else {
-    return (
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Auth />} />
-          <Route path="/reg" element={<Register />} />
-          <Route path="/forgot" element={<Forgot />} />
-          <Route path="/reset/*" element={<Reset />} />
-          <Route path="/user" element={<PrivateRoute element={<Start />} isAuthenticated={isAuthenticated} />} />
-          <Route path="/user/rates" element={<PrivateRoute element={<User  />} isAuthenticated={isAuthenticated} />} />
-          <Route path="/user/referal" element={<PrivateRoute element={<Referal />} isAuthenticated={isAuthenticated} />} />
-          <Route path="/user/applications" element={<PrivateRoute element={<Application />} isAuthenticated={isAuthenticated} />} />
-          <Route path="/user/applications/answer" element={<PrivateRoute element={<Answer />} isAuthenticated={isAuthenticated} />} />
-          <Route path="/user/notifications" element={<PrivateRoute element={<Notifications />} isAuthenticated={isAuthenticated} />} />
-          <Route path="/user/base" element={<PrivateRoute element={<Base />} isAuthenticated={isAuthenticated} />} />
-          <Route path="/user/base/advert" element={<PrivateRoute element={<Advert />} isAuthenticated={isAuthenticated} />} />
-          <Route path="/user/base/analytics" element={<PrivateRoute element={<Analytics />} isAuthenticated={isAuthenticated} />} />
-          <Route path="/user/base/content" element={<PrivateRoute element={<Content />} isAuthenticated={isAuthenticated} />} />
-          <Route path="/user/base/integrations/sites" element={<PrivateRoute element={<IntegSites />} isAuthenticated={isAuthenticated} />} />
-          <Route path="/user/base/integrations/servises" element={<PrivateRoute element={<IntegServ />} isAuthenticated={isAuthenticated} />} />
-          <Route path="/user/base/payment" element={<PrivateRoute element={<Payment />} isAuthenticated={isAuthenticated} />} />
-          <Route path="/user/base/settings" element={<PrivateRoute element={<Settings />} isAuthenticated={isAuthenticated} />} />
-          <Route path="/user/quiz/conversion" element={<PrivateRoute element={<Conversion />} isAuthenticated={isAuthenticated} />} />
-          <Route path="/user/profile" element={<PrivateRoute element={<Profile />} isAuthenticated={isAuthenticated} />} />
-          <Route path="/user/balance" element={<PrivateRoute element={<Balance />} isAuthenticated={isAuthenticated} />} />
-          <Route path="/user/deposits" element={<PrivateRoute element={<Deposits />} isAuthenticated={isAuthenticated} />} />
-          <Route path="/user/writeoff" element={<PrivateRoute element={<WriteOff />} isAuthenticated={isAuthenticated} />} />
-          <Route path="/user/createquizes" element={<PrivateRoute element={<CreateQuizes />} isAuthenticated={isAuthenticated} />} />
-          <Route path="/user/createquizes/previev/pc" element={<PrivateRoute element={<PrevievQuizPc />} isAuthenticated={isAuthenticated} />} />
-          <Route path="/user/createquizes/previev/mob" element={<PrivateRoute element={<PrevievQuizMob />} isAuthenticated={isAuthenticated} />} />
-          <Route path="/user/createquiz/new" element={<PrivateRoute element={<CreateNew />} isAuthenticated={isAuthenticated} />} />
-          <Route path="/user/quiz/install" element={<PrivateRoute element={<Install />} isAuthenticated={isAuthenticated} />} />
-          <Route path="/user/quiz/settings" element={<PrivateRoute element={<Setting />} isAuthenticated={isAuthenticated} />} />
-          <Route path="/user/quiz/integrations" element={<PrivateRoute element={<Integrations />} isAuthenticated={isAuthenticated} />} />
-          <Route path="/user/quiz/design" element={<PrivateRoute element={<Design />} isAuthenticated={isAuthenticated} />} />
-          <Route path="/user/quiz/plugins" element={<PrivateRoute element={<Plugins />} isAuthenticated={isAuthenticated} />} />
-          <Route path="/user/quiz/startadvert" element={<PrivateRoute element={<StartAd />} isAuthenticated={isAuthenticated} />} />
-        </Routes>
-      </BrowserRouter>
-    );    
-  }
+        <Route path="/user" element={<PrivateRoute element={<Start />} isAuthenticated={isAuthenticated} />} />
+        <Route path="/user/rates" element={<PrivateRoute element={<User  />} isAuthenticated={isAuthenticated} />} />
+        <Route path="/user/referal" element={<PrivateRoute element={<Referal />} isAuthenticated={isAuthenticated} />} />
+        
+        <Route path="/user/applications" element={<PrivateRoute element={<Application />} isAuthenticated={isAuthenticated} />} />
+        <Route path="/user/applications/answer/:answerID" element={<PrivateRoute element={<Answer />} isAuthenticated={isAuthenticated} />} />
 
+        <Route path="/user/notifications" element={<PrivateRoute element={<Notifications />} isAuthenticated={isAuthenticated} />} />
+        <Route path="/user/base" element={<PrivateRoute element={<Base />} isAuthenticated={isAuthenticated} />} />
+        <Route path="/user/base/advert" element={<PrivateRoute element={<Advert />} isAuthenticated={isAuthenticated} />} />
+        <Route path="/user/base/analytics" element={<PrivateRoute element={<Analytics />} isAuthenticated={isAuthenticated} />} />
+        <Route path="/user/base/content" element={<PrivateRoute element={<Content />} isAuthenticated={isAuthenticated} />} />
+        <Route path="/user/base/integrations/sites" element={<PrivateRoute element={<IntegSites />} isAuthenticated={isAuthenticated} />} />
+        <Route path="/user/base/integrations/servises" element={<PrivateRoute element={<IntegServ />} isAuthenticated={isAuthenticated} />} />
+        <Route path="/user/base/payment" element={<PrivateRoute element={<Payment />} isAuthenticated={isAuthenticated} />} />
+        <Route path="/user/base/settings" element={<PrivateRoute element={<Settings />} isAuthenticated={isAuthenticated} />} />
+
+        <Route path="/user/profile" element={<PrivateRoute element={<Profile />} isAuthenticated={isAuthenticated} />} />
+        <Route path="/user/balance" element={<PrivateRoute element={<Balance />} isAuthenticated={isAuthenticated} />} />
+        <Route path="/user/deposits" element={<PrivateRoute element={<Deposits />} isAuthenticated={isAuthenticated} />} />
+        <Route path="/user/writeoff" element={<PrivateRoute element={<WriteOff />} isAuthenticated={isAuthenticated} />} />
+        <Route path="/user/createquizes" element={<PrivateRoute element={<CreateQuizes />} isAuthenticated={isAuthenticated} />} />
+
+        <Route path={`/user/quiz/${currentQuiz}`} element={<PrivateRoute element={<CreateNew />} isAuthenticated={isAuthenticated} />} />    
+
+        <Route path={`/user/quiz/${currentQuiz}/conversion`} element={<PrivateRoute element={<Conversion />} isAuthenticated={isAuthenticated} />} />
+
+        <Route path={`/user/quiz/${currentQuiz}/previev/pc`} element={<PrivateRoute element={<PrevievQuizPc />} isAuthenticated={isAuthenticated} />} />
+        <Route path={`/user/quiz/${currentQuiz}/previev/mob`} element={<PrivateRoute element={<PrevievQuizMob />} isAuthenticated={isAuthenticated} />} />
+        <Route path={`/user/quiz/${currentQuiz}/install`} element={<PrivateRoute element={<Install />} isAuthenticated={isAuthenticated} />} />
+        <Route path={`/user/quiz/${currentQuiz}/settings`} element={<PrivateRoute element={<Setting />} isAuthenticated={isAuthenticated} />} />
+        <Route path={`/user/quiz/${currentQuiz}/integrations`} element={<PrivateRoute element={<Integrations />} isAuthenticated={isAuthenticated} />} />
+        <Route path={`/user/quiz/${currentQuiz}/design`} element={<PrivateRoute element={<Design />} isAuthenticated={isAuthenticated} />} />
+        <Route path={`/user/quiz/${currentQuiz}/plugins`} element={<PrivateRoute element={<Plugins />} isAuthenticated={isAuthenticated} />} />
+        <Route path={`/user/quiz/${currentQuiz}/startadvert`} element={<PrivateRoute element={<StartAd />} isAuthenticated={isAuthenticated} />} />
+
+
+
+        {/* admin */}
+        <Route path="/admin/users" element={<PrivateRoute element={<Users />} isAuthenticated={isAdmin} />} />
+        <Route path="/admin/user/:userID" element={<PrivateRoute element={<UserAdmin />} isAuthenticated={isAdmin} />} />
+        <Route path="/admin/statist" element={<PrivateRoute element={<Statist />} isAuthenticated={isAdmin} />} />  
+        <Route path="/admin/deposits" element={<PrivateRoute element={<Deposit />} isAuthenticated={isAdmin} />} />
+        <Route path="/admin/bannedUsers" element={<PrivateRoute element={<BlockedUsers />} isAuthenticated={isAdmin} />} />
+        <Route path="/admin/writeOff" element={<PrivateRoute element={<WriteOffAdmin />} isAuthenticated={isAdmin} />} />    
+        <Route path="/admin/writeOffError" element={<PrivateRoute element={<WriteOffError />} isAuthenticated={isAdmin} />} />   
+        <Route path="/admin/bannedWodrs" element={<PrivateRoute element={<BannedWords />} isAuthenticated={isAdmin} />} /> 
+      </Routes>
+    </BrowserRouter>
+  );    
 }
 
 export default App;

@@ -1,0 +1,267 @@
+#previevQuizPc {
+    .col-xxl-12 {
+        border: 1px solid #1d2a33;
+        border-radius: 25px;
+        width: 100%;
+        height: 902px;   
+        position: relative;
+        padding: 94px 61px 134px 73px;
+        background: #fff;
+        >.close {
+            position: absolute;
+            right: 22px;
+            top: 24px;
+            height: 18px;
+            width: 18px;
+            background: none;
+            border: none;
+            padding: 0;
+            img {
+                height: 18px;
+                width: 18px;
+                margin-top: -7px;
+            }
+        }
+        >.previev {
+            width: 100%;
+            height: 100%;
+        }
+        &.light, &.quiz {
+            background: #0f181e;
+        }
+    }
+}
+.light-theme {
+    >div {
+        background: #fff;
+        p, h1, h3 {
+            color: #1d2a33;
+        }
+        .right {
+            >button {
+                background: #105efe;
+                color: #fff;
+            }    
+            a {
+                color: #1d2a33;
+                text-decoration-color: #105efe;
+                span {
+                    color: #105efe;
+                }
+            }  
+            .inputs {
+                input {
+                    border: 0.85px solid #6a8496;  
+                    color: #fff;
+                }   
+                input::placeholder {
+                    color: #6a8496;
+                }                 
+            }                         
+        }
+
+    }
+}
+.dark-theme {
+    >div {
+        background: #141c23;
+        p, h1, h3 {
+            color: #fff;
+        }
+        a {
+            color: #fff;
+        }
+        .right {
+            >button {
+                background: #105efe;
+                color: #fff;
+            }    
+            a {
+                color: #fff;
+                text-decoration-color: #105efe;
+                span {
+                    color: #105efe;
+                }
+            }  
+            .inputs {
+                input {
+                    border: 0.85px solid #fff;
+                    color: #fff;
+                }
+                input::placeholder {
+                    color: #fff;
+                }
+            }      
+        }
+    }
+}
+.quiz-theme {
+    >div {
+        background: #1153fe;
+        p, h1, h3 {
+            color: #fff;
+        }
+        .right {
+            >button {
+                background: #ff6210;
+                color: #fff;
+            }    
+            a {
+                color: #fff;
+                text-decoration-color: #ff6210;
+                span {
+                    color: #ff6210;
+                }
+            }   
+            .inputs {
+                input {
+                    border: 0.85px solid #fff;
+                    color: #fff;
+                }
+                input::placeholder {
+                    color: #fff;
+                }
+            }         
+        }
+    }
+}
+.style1 {
+    
+    >.canvas2 {
+        >.progress {
+            >:nth-last-child(1) {
+                border: none;
+                border-radius: 39px;
+                background: #105efe;
+            }
+            >:nth-last-child(2) {
+                border: 1.34px solid #6a8496;
+                background: none;
+                border-radius: 39px;
+            }
+        }
+    }
+}
+.style2 {
+    >.canvas2 {
+        >.progress {
+            >:nth-last-child(1) {
+                border: none;
+                border-radius: 3px;
+                background: #105efe;
+            }
+            >:nth-last-child(2) {
+                border: 1.34px solid #6a8496;
+                background: none;
+                border-radius: 3px;
+            }
+        }
+    }
+}
+.style3 {
+    >.canvas2 {
+        >.progress {
+            >:nth-last-child(1) {
+                border: none;
+                border: 0.60px solid #105efe;
+                background: none;
+                border-radius: 39px;
+            }
+            >:nth-last-child(2) {
+                border: 1.34px solid #6a8496;
+                background: none;
+                border-radius: 39px;
+            }
+        }
+    }
+}
+.style4 {
+    >.canvas2 {
+        >.progress {
+            >:nth-last-child(1) {
+                border: none;
+                border: 0.60px solid #105efe;
+                background: none;
+                border-radius: 3px;
+            }
+            >:nth-last-child(2) {
+                border: 1.34px solid #6a8496;
+                background: none;
+                border-radius: 3px;
+            }
+        }
+    }
+}
+@media (min-width: 1200px) and (max-width: 1399px) {
+    #previevQuizPc {
+        .col-xxl-12 {
+            border: 0.91px solid #1d2a33;
+            border-radius: 23px;
+            height: 688px; 
+            position: relative;
+            padding: 56px 34px 55px;
+            >.close {
+                position: absolute;
+                right: 18px;
+                top: 17px;
+                height: 16px;
+                width: 16px;
+                background: none;
+                border: none;
+                padding: 0;
+                img {
+                    height: 16px;
+                    width: 16px;
+                    margin-top: -7px;
+                }
+            }
+            >.previev {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+    #previevQuizPc {
+        .col-xxl-12 {
+            border: 0.75px solid #1d2a33;
+            border-radius: 19px;
+            height: 572px;
+            position: relative;
+            padding: 46px 28px;
+            >.close {
+                position: absolute;
+                right: 15px;
+                top: 14px;
+                height: 13px;
+                width: 13px;
+                background: none;
+                border: none;
+                padding: 0;
+                img {
+                    height: 13px;
+                    width: 13px;
+                    margin-top: -7px;
+                }
+            }
+            >.previev {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+}
+@media (max-width: 576px) {
+    #previevQuizPc {
+        .col-xxl-12 {
+            overflow-x: auto;
+            >.previev {
+                width: 1024px;
+            }
+            >.close {
+                position: fixed;
+            }
+        }
+    }
+}

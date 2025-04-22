@@ -5,6 +5,9 @@ body {
 .row {
     padding-top: 25px;
 }
+.row.admin {
+    padding-top: 0 !important;
+}
 #money_for_project {
     color: #fff;
     text-align: center;

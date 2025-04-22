@@ -11,6 +11,7 @@ import close from '../../../../img/Constructor/create/close.svg';
 const Answers = () => {
     const dispatch = useDispatch();
     const index = useSelector((state) => state.createQuiz.currentQuestionIndex);
+    console.log(index);
     const count = useSelector((state) => state.createQuiz.countQuestions);
     const canvas2 = useSelector((state) => state.createQuiz.data.canvas2);
     

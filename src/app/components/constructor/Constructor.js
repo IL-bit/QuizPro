@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { buttonClick } from '../../../actions.js';
+import { PUTQUIZ } from '../../../middleware.js';
 import './style.scss';
 import Canvas1 from './canvas/canvas1';
 import Canvas2 from './canvas/canvas2';
@@ -11,10 +12,9 @@ const Constructor = () => {
   const [bodyHeight, setBodyHeight] = useState('auto'); // Начальная высота  
   const [constHeight, setConstHeight] = useState('837px'); // Начальная высота
   const { createQuiz } = useSelector((state) => state);
-  useEffect(() => {
-    console.log(createQuiz);
-  }, [createQuiz]);
-
+  const data = useSelector((state) => state.createQuiz.data);
+  const currentQuizID = useSelector((state) => state.createQuiz.currentQuizID);
+  const token = useSelector((state) => state.Token);
   const handleButton = (index) => {
     dispatch(buttonClick(index));
   };
@@ -45,7 +45,9 @@ const Constructor = () => {
     }
   };
 
-
+  useEffect(() => {
+    dispatch(PUTQUIZ(currentQuizID, token, data))
+  }, [createQuiz.currentSection]);
   return (
     <div id="constructor">
       <button className={createQuiz.currentSection === 0 ? 'activ' : ''} onClick={() => handleButton(0)}>Стартовая страница</button>

@@ -1,10 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { PROFILE } from '../../../middleware';
 import LeftBar from '../../components/lk/leftBar/LeftBar';
 import './style.scss';
 import money from '../../img/profile/money.svg';
 import copy from '../../img/profile/copy.svg';
 
 const Profile = () => {
+    const dispatch = useDispatch();
+    const profile = useSelector((state) => state.profile);
+    const balance = useSelector((state) => state.balance);
+    const token = useSelector((state) => state.Token);
+    const id = useSelector((state) => state.id);
+    const isProfile = useSelector((state) => state.isProfile);
+    useEffect(() => {
+        if (!isProfile) {
+            dispatch(PROFILE(token, id));            
+        }
+    })
   return (
     <div className="container">
         <div className="row">
@@ -16,31 +29,32 @@ const Profile = () => {
                     <div className="head">
                         <h2>Профиль</h2>
                         <p><img src={money} alt="#" />Текущий баланс</p>
-                        <div className="balance">1.234</div>
+                        <div className="balance">{balance} ₽</div>
                         <button>Пополнить</button>
                         <button>Вывести</button>
                     </div>
                     <div className="email">
                         <h6>Email</h6>
-                        <div>email@email.com</div>
+                        <input type="text" placeholder={profile.email}/>
                     </div>
                     <div className="password">
                         <h6>Пароль</h6>
-                        <div>1234АВавыа344</div>
+                        <input type="text" placeholder={profile.password}/>
                     </div>
                     <div className="name">
                         <h6>Ваше имя</h6>
-                        <div>Матвей</div>
+                        <input type="text" placeholder={profile.name}/>
+                        
                     </div>
                     <div className="phone">
                         <h6>Телефон</h6>
-                        <div>Отсутствует</div>
+                        <input type="text" placeholder={profile.phone}/>
                         <button>Сохранить измненения</button>
                         <p>Не сохранять изменения</p>
                     </div>    
                     <div className="tg_notification">
                         <p><span>Уведомлять меня в Telegram</span><br/>чтобы знать, когда заканчиваются заявки или тариф</p>
-                        <div>t.me....</div>
+                        <input type="text" placeholder='@tg....'/>
                     </div>                      
                     <div className="referal">
                         <p>Пригласите новых пользователей<br/>с помощью вашей уникальной ссылки:</p>
