@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { useDispatch, useSelector } from 'react-redux';
-import { togglePopup, closePopup } from '../redux/actions';
+import { togglePopup, closePopup, logIn } from '../redux/actions';
 import closeSvg from '../img/menu_close.svg';
 import logoSvg from '../img/logo.svg';
 
@@ -16,7 +16,7 @@ const Menu = () => {
         register: { email: '', password: '', password2: '', name: '' },
         forgot: { email: '' }
     });
-    const url = 'http://qzpro.ru';
+    const url = 'http://qzpro.ru:8000';
     const REGISTER = async (formData) => { 
         try {
             const response = await fetch(`${url}/api/register`, {
@@ -35,7 +35,7 @@ const Menu = () => {
             const data = await response.json();
             if (data.success === true) {
                 console.log('REGISTER_SUCCESS');
-                dispatch(log_in(data)); 
+                dispatch(logIn(data)); 
             } else {
                 console.log('REGISTER_FAIL');
             }
@@ -61,7 +61,7 @@ const Menu = () => {
             const data = await response.json();
             if (data.success === true) {
                 console.log('LOGIN_SUCCESS');
-                dispatch(log_in(data)); 
+                dispatch(logIn(data)); 
             } else {
                 console.log('LOGIN_FAIL');
             }
