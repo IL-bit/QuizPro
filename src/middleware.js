@@ -1,5 +1,5 @@
 import { setQuizes, setBalance, setProfile, setQuiz, setCurrentQuiz, noQuizes, logOut, isQuizes, setQuiz2, setApllications, noApplications, setStatist, setUsers, setUser, setDeposits, setBannedWords, setBannedUsers, isUser, isUsers, noUser, noUsers, isBlocked, noBlocked, setRate } from './actions'; 
-const url = 'http://qzpro.ru';
+const url = 'http://qzpro.ru:8000';
 
 export const REGISTER = (formData) => async (dispatch) => { 
     try {

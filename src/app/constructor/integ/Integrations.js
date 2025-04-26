@@ -29,7 +29,7 @@ const Integrations = () => {
                         </div>
                     </div>                 
                     <div className={`amo ${indexButton === 2 ? 'active' : ''}`}>
-                        <button onClick={() => changeIndex(2)}></button>
+                        <button></button>
                         <p>Интеграция с AmoCRM<img src={amo} alt="#" /></p>
                         <div className="info">
                             <button className='top'><img src={info} alt="#" />Инструкция</button>
@@ -45,7 +45,7 @@ const Integrations = () => {
                         </div>
                     </div>                       
                     <div className={`bitrix ${indexButton === 3 ? 'active' : ''}`}>
-                        <button onClick={() => changeIndex(3)}></button>
+                        <button></button>
                         <p>Интеграция с Bitrix<img src={bitrix} alt="#" /></p>
                         <div className="info">
                             <div>Домен<input type="text" placeholder='on'/></div>

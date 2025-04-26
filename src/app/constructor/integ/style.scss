@@ -377,6 +377,11 @@
             }
         }
     }
+    >.bitrix, >.amo {
+        >button, >p, >.info {
+            opacity: 0.3 !important;
+        }
+    }
 }
 @media (min-width: 1200px) and (max-width: 1399px) {
     #integ {

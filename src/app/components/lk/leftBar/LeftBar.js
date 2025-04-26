@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { logOut } from '../../../../actions';
+import { logOut, setLk } from '../../../../actions';
 import { LOGOUT } from '../../../../middleware';
 import './style.scss';
 import Logo from '../../../img/leftbar/logo.svg';
@@ -22,13 +22,15 @@ const LeftBar = () => {
   const rate = useSelector((state) => state.rate);
   const token = useSelector((state) => state.Token);
   const application = useSelector((state) => state.applications);
+  const quizes = useSelector((state) => state.quizes);
   const [isModalActive, setIsModalActive] = useState(false);
+  const [isPopupVisible, setIsPopupVisible] = useState(false);  
+  const isActive = useSelector((state) => state.leftbarLk);
   let count = 0;
-  const handleClick = (route) => {
+  const handleClick = (route, id) => {
     navigate(route);
+    dispatch(setLk(id))
   };
-  const [isPopupVisible, setIsPopupVisible] = useState(false);
-
   const handleAccountClick = () => {
     setIsPopupVisible(true);
   };
@@ -65,12 +67,6 @@ const LeftBar = () => {
       return 'prem';
     };
   };
-  const handleCountApplic = () => {
-    count = application.length;
-  };
-  useEffect(() => {
-    handleCountApplic();
-  }, [application]); // Вызываем при изменении application
   return (
     <>
       <div id="LeftBarLk" className='pc'>
@@ -89,7 +85,7 @@ const LeftBar = () => {
           <div className="applications" onClick={() => handleClick('/user/applications')}>
               <img src={applications} alt="#" />
               <p>Все заявки</p>
-              <div className="count">{count}</div>
+              <div className="count">{application.length}</div>
           </div>
           <div className="rate" onClick={() => handleClick('/user/rates')}>
               <img src={Rate} alt="#" />
@@ -101,9 +97,9 @@ const LeftBar = () => {
           </div>
           <nav>
             <div className="btns">
-              <button onClick={() => handleClick('/user/createquizes')}>Создать квиз <img src={Arrow} alt="#" /></button>
-              <button>Недавние <img src={Arrow2} alt="#" /></button>
-              <button onClick={() => handleClick('/user')}>Мои квизы</button>    
+              <button onClick={() => handleClick('/user/createquizes', 1)} className={isActive === 1 ? 'active' : ''}>Создать квиз <img src={isActive === 1 ? Arrow : Arrow2} alt="#" /></button>
+              <button onClick={() => handleClick('/user', 2)} className={isActive === 2 ? 'active' : ''}>Недавние <img src={isActive === 2 ? Arrow : Arrow2} alt="#" /></button>
+              <button>Мои квизы<div>{quizes.length}</div></button>    
               <a href="#"><img src={Support} alt="#" />Написать в поддержку</a>     
             </div>
             <a href="#" onClick={() => handleLogOut()}><img src={Logout} alt="#" />Сменить аккаунт</a>
@@ -145,9 +141,9 @@ const LeftBar = () => {
         </div>
         <nav>
           <div className="btns">
-            <button onClick={() => handleClick('/user/createquizes')}>Создать квиз <img src={Arrow} alt="#" /></button>
-            <button>Недавние <img src={Arrow2} alt="#" /></button>
-            <button onClick={() => handleClick('/user')}>Мои квизы</button>    
+            <button onClick={() => handleClick('/user/createquizes', 1)} className={isActive === 1 ? 'active' : ''}>Создать квиз <img src={isActive === 1 ? Arrow : Arrow2} alt="#" /></button>
+            <button onClick={() => handleClick('/user', 2)} className={isActive === 2 ? 'active' : ''}>Недавние <img src={isActive === 2 ? Arrow : Arrow2} alt="#" /></button>
+            <button>Мои квизы<div>{quizes.length}</div></button> 
             <a href="#"><img src={Support} alt="#" />Написать в поддержку</a>     
           </div>
           <a href="#" onClick={() => handleLogOut()}><img src={Logout} alt="#" />Сменить аккаунт</a>

@@ -236,24 +236,31 @@
                 font-weight: 300;
                 font-size: 18px;
                 color: #fff;
-                background: #0f181e;
-                
-            }       
-            :nth-child(1) {
-                background: #105efe;
-                border: none;
-                font-weight: 500;
-            }
-            :nth-child(2) {
-                border: 1px solid #1d2a33;
-                background: #0f181e;
+                border: 1px solid #1d2a33 !important;
+                background: #0f181e !important;
                 img {
                     background: none;
+                }                
+                &.active {
+                    background: #105efe !important;
+                    border: none !important;
+                    font-weight: 500 !important;                    
                 }
-            }
-            :nth-child(3) {
-                border: 1px solid #1d2a33;
-            }
+                >div {
+                    border-radius: 17px;
+                    width: 45px;
+                    height: 34px;
+                    background: #141e27;
+                    font-weight: 500;
+                    font-size: 14px;
+                    color: #fff;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-left: auto;
+                    margin-right: -10px;
+                }
+            }       
             a {
                 width: 222px;
                 text-decoration: none;
@@ -462,9 +469,15 @@
                         width: 14px;
                         height: 11px;
                     }
-                }
-                >:nth-child(1) {
-                    font-weight: 500;
+                    >div {
+                        border-radius: 14px;
+                        width: 36px;
+                        height: 27px;
+                        background: #141e27;
+                        font-weight: 500;
+                        font-size: 11px;
+                        color: #fff;
+                    }
                 }
                 a {
                     font-weight: 300;
@@ -656,6 +669,15 @@
                     img {
                         height: 9px;
                         width: 12px;
+                    }
+                    >div {
+                        border-radius: 12px;
+                        width: 30px;
+                        height: 23px;
+                        background: #141e27;
+                        font-weight: 500;
+                        font-size: 9px;
+                        color: #fff;
                     }
                 }
                 a {
@@ -962,24 +984,28 @@
                     font-weight: 300;
                     font-size: 18px;
                     color: #fff;
-                    background: #0f181e;
-                    
-                }       
-                >:nth-child(1) {
-                    background: #105efe;
-                    border: none;
-                    font-weight: 500;
-                }
-                >:nth-child(2) {
-                    border: 1px solid #1d2a33;
-                    background: #0f181e;
-                    >img {
-                        background: none;
+                    background: #0f181e !important;
+                    border: 1px solid #1d2a33 !important;                    
+                    &.active {
+                        background: #105efe !important;
+                        border: none !important;
+                        font-weight: 500 !important;                        
                     }
-                }
-                >:nth-child(3) {
-                    border: 1px solid #1d2a33;
-                }
+                    >div {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        margin-left: auto;
+                        margin-right: -10px;
+                        border-radius: 17px;
+                        width: 45px;
+                        height: 34px;
+                        background: #141e27;
+                        font-weight: 500;
+                        font-size: 14px;
+                        color: #fff;
+                    }
+                }       
                 a {
                     width: 222px;
                     text-decoration: none;

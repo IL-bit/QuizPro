@@ -72,6 +72,8 @@ const initialState = {
     balance: -1,
     Token: '',
     rate: '',
+    leftbarLk: 2,
+    leftbar: 1,
     admin: {
         statistic: {},
         filters: {
@@ -376,6 +378,12 @@ const RootReducer = createReducer(initialState, builder => {
     .addCase('SET_QUIZ2', (state, action) => {
         console.log(action.payload);
         state.quiz.data = action.payload;
+    })
+    .addCase('SET_LEFTBAR', (state, action) => {
+        state.leftbarLk = action.payload;
+    })
+    .addCase('SET_LEFTBAR2', (state, action) => {
+        state.leftbar = action.payload;
     })
 
     /* admin */

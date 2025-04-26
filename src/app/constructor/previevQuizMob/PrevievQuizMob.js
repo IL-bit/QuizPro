@@ -13,6 +13,7 @@ const PrevievQuizPc = () => {
   const isCanvas1 = useSelector((state) => state.createQuiz.data.canvas1.is_active);
   const theme = useSelector(state => state.createQuiz.data.theme.theme);
   const buttonStyle = useSelector(state => state.createQuiz.data.theme.button_style);
+  const quizID = useSelector(state => state.createQuiz.currentQuizID);
   const handleClick = (route) => {
     navigate(route);
   };
@@ -38,7 +39,7 @@ const PrevievQuizPc = () => {
     <div className="container" id='previevQuizMob'>
         <div className="row">
             <div className="col-12">
-                <button className='close' onClick={() => handleClick('/user/createquiz/new')}><img src={close} alt="#" /></button>
+                <button className='close' onClick={() => handleClick(`/user/quiz/${quizID}`)}><img src={close} alt="#" /></button>
                 <div className={`previev ${theme}-theme ${buttonStyle}`}>
                   {currentCanvas === 'canvas1' && (
                     <Canvas1 handleButtonClick={handleButtonClick} />

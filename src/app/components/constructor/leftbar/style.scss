@@ -34,9 +34,9 @@
         >.edit, >.install, >.advert {
             width: 100%;
             height: 82px;
-            border: none;
             border-radius: 18px;
-            background: #105efe;
+            border: 1px solid #1d2a33;
+            background: none;
             margin-bottom: 6px;
             display: flex;
             align-items: center;
@@ -46,7 +46,7 @@
             p {
                 margin: 0;
                 margin-left: 17px;
-                font-weight: 500;
+                font-weight: 300;
                 font-size: 18px;
                 color: #fff;
             }
@@ -54,14 +54,14 @@
                 margin-left: auto;
                 margin-right: 0;
             }
-        }  
-        >.install, >.advert {
-            border: 1px solid #1d2a33;
-            background: none;
-            p {
-                font-weight: 300;
+            &.active {
+                border: none;
+                background: #105efe;   
+                p {
+                    font-weight: 500;                    
+                }             
             }
-        }
+        }  
     }
     >.extensions, >.design, >.integrations, >.settings {
         border: none;

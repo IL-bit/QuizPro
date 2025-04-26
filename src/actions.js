@@ -64,6 +64,14 @@ export const noQuizes = createAction('NOQUIZES');
 export const noApplications = createAction('NO_APPLICATIONS');
 export const setCurrentQuiz = createAction('SET_CURRENT_QUIZ', (id) => ({payload: id}));
 export const setCurrentQuiz2 = createAction('SET_CURRENT_QUIZ2', (id) => ({payload: id}));
+export const setLk2 = (id) => ({
+  type: 'SET_LEFTBAR2',
+  payload: id
+});
+export const setLk = (id) => ({
+  type: 'SET_LEFTBAR',
+  payload: id
+});
 export const setQuizes = (quizes) => ({
   type: 'SET_QUIZES',
   payload: quizes

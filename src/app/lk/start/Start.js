@@ -12,7 +12,6 @@ const Start = () => {
   const isQuiz = useSelector((state) => state.isQuizes);
   const isApplications = useSelector((state) => state.isApplications);
   useEffect(() => {
-    console.log(token);
     if (isQuiz) {   
       dispatch(BALANCE(token));      
       dispatch(QUIZESALL(token));      

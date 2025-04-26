@@ -11,7 +11,7 @@ const PrevievQuizPc = () => {
   const canvas2 = useSelector((state) => state.quiz.data.canvas2);
   const isCanvas1 = useSelector((state) => state.quiz.data.canvas1.is_active);
   const theme = useSelector(state => state.quiz.data.theme.theme);
-  const buttonStyle = useSelector(state => state.quiz.data.theme.buttonStyle);
+  const buttonStyle = useSelector(state => state.quiz.data.theme.button_style);
   const quizID = useSelector(state => state.quiz.currentQuizID);
   const [currentCanvas, setCurrentCanvas] = useState('canvas1');
 

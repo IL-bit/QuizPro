@@ -2,6 +2,7 @@ import React, { useState, useEffect, use } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { TURNONQUIZ } from '../../../../middleware';
+import { setLk2 } from '../../../../actions';
 import './style.scss';
 import logo from '../../../img/Constructor/leftbar/logo.svg';
 import pen from '../../../img/Constructor/leftbar/pen.svg';
@@ -26,8 +27,10 @@ const LeftBar = () => {
   const token = useSelector((state) => state.Token);
   const [isModalActive, setIsModalActive] = useState(false);
   const [isPopupVisible, setIsPopupVisible] = useState(false);
-  const handleClick = (route) => {
+  const isActive = useSelector((state) => state.leftbar);
+  const handleClick = (route, id) => {
     navigate(route);
+    dispatch(setLk2(id))
   };
   const handleAccountClick = () => {
     setIsPopupVisible(true);
@@ -61,41 +64,41 @@ const LeftBar = () => {
           <button onClick={() => handleClick('/user')}></button>
         </div>
         <nav>
-          <div className="edit" onClick={() => handleClick(`/user/quiz/${currentQuizID}`)}>
+          <div className={`edit ${isActive === 1 ? 'active' : ''}`} onClick={() => handleClick(`/user/quiz/${currentQuizID}`, 1)}>
             <img src={pen} alt="#" />
             <p>Редактор</p>
-            <img src={arrow1} alt="#"/>
+            <img src={isActive === 1 ? arrow1 : arrow2} alt="#"/>
           </div>
-          <div className="install" onClick={() => handleClick(`/user/quiz/${currentQuizID}/install`)}>
+          <div className={`install ${isActive === 2 ? 'active' : ''}`} onClick={() => handleClick(`/user/quiz/${currentQuizID}/install`, 2)}>
             <img src={install} alt="#" />
             <p>Установка</p>
-            <img src={arrow2} alt="#"/>
+            <img src={isActive === 2 ? arrow1 : arrow2} alt="#"/>
           </div>
-          <div className="advert" onClick={() => handleClick(`/user/quiz/${currentQuizID}/startadvert`)}>
+          <div className={`advert ${isActive === 3 ? 'active' : ''}`} onClick={() => handleClick(`/user/quiz/${currentQuizID}/startadvert`, 3)}>
             <img src={at} alt="#" />
             <p>Запуск рекламы</p>
-            <img src={arrow2} alt="#"/>
+            <img src={isActive === 3 ? arrow1 : arrow2} alt="#"/>
           </div>        
         </nav>
-        <div className="extensions" onClick={() => handleClick(`/user/quiz/${currentQuizID}/plugins`)}>
+        <div className={`extensions ${isActive === 4 ? 'active' : ''}`} onClick={() => handleClick(`/user/quiz/${currentQuizID}/plugins`, 4)}>
           <img src={extend} alt="#" />
           <p>Расширения</p>
-          <img src={arrow2} alt="#" />
+          <img src={isActive === 4 ? arrow1 : arrow2} alt="#"/>
         </div>
-        <div className="design" onClick={() => handleClick(`/user/quiz/${currentQuizID}/design`)}>
+        <div className={`design ${isActive === 5 ? 'active' : ''}`} onClick={() => handleClick(`/user/quiz/${currentQuizID}/design`, 5)}>
           <img src={design} alt="#" />
           <p>Дизайн</p>
-          <img src={arrow2} alt="#" />
+          <img src={isActive === 5 ? arrow1 : arrow2} alt="#"/>
         </div>
-        <div className="integrations" onClick={() => handleClick(`/user/quiz/${currentQuizID}/integrations`)}>
+        <div className={`integrations ${isActive === 6 ? 'active' : ''}`} onClick={() => handleClick(`/user/quiz/${currentQuizID}/integrations`, 6)}>
           <img src={integ} alt="#" />
           <p>Интеграции</p>
-          <img src={arrow2} alt="#" />
+          <img src={isActive === 6 ? arrow1 : arrow2} alt="#"/>
         </div>
-        <div className="settings" onClick={() => handleClick(`/user/quiz/${currentQuizID}/settings`)}>
+        <div className={`settings ${isActive === 7 ? 'active' : ''}`} onClick={() => handleClick(`/user/quiz/${currentQuizID}/settings`, 7)}>
           <img src={settings} alt="#" />
           <p>Настройки</p>
-          <img src={arrow2} alt="#" />
+          <img src={isActive === 7 ? arrow1 : arrow2} alt="#"/>
         </div>
         <div className="prev">
           <img src={eye} alt="#" />

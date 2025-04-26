@@ -319,10 +319,13 @@
                     padding: 0;
                     margin-top: -4px;
                 }
+                &.mobile {
+                    display: none !important;
+                }
+                &.pc {
+                    display: flex !important;
+                }
             }  
-            .item.mobile {
-                display: none;
-            }       
         }
        
     }
@@ -935,10 +938,10 @@
                 >.name {
                     display: none;
                 }
-                >.pc {
+                .pc {
                     display: none;
                 }
-                >.mobile {
+                .mobile {
                     display: block;
                     display: flex;
                     padding: 0;
@@ -1058,12 +1061,14 @@
                         }
                     }
                 }
-                >.item.mobile {
-                    display: flex;
-                } 
-                >.item.pc {
-                    display: none;
-                }                 
+                .item {
+                    &.pc {
+                        display: none !important;
+                    }
+                    &.mobile {
+                        display: flex !important;
+                    }
+                }
             }
 
         }
