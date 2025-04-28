@@ -2,7 +2,7 @@ import React, { useState, useEffect, use } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { TURNONQUIZ } from '../../../../middleware';
-import { setLk2 } from '../../../../actions';
+import { setLk2, setLk } from '../../../../actions';
 import './style.scss';
 import logo from '../../../img/Constructor/leftbar/logo.svg';
 import pen from '../../../img/Constructor/leftbar/pen.svg';
@@ -29,8 +29,8 @@ const LeftBar = () => {
   const [isPopupVisible, setIsPopupVisible] = useState(false);
   const isActive = useSelector((state) => state.leftbar);
   const handleClick = (route, id) => {
-    navigate(route);
-    dispatch(setLk2(id))
+    navigate(route); 
+    dispatch(setLk2(id));
   };
   const handleAccountClick = () => {
     setIsPopupVisible(true);
@@ -43,9 +43,12 @@ const LeftBar = () => {
   const handleOpenModal = () => {
     setIsModalActive(true);
   };
-
+  const handleBack = () => {
+    dispatch(setLk(2));   
+    navigate('/user');  
+  }
   const handleCloseModal = () => {
-    setIsModalActive(false);
+    setIsModalActive(false);  
   };
   useEffect(() => {
     document.addEventListener('click', handleDocumentClick);
@@ -111,7 +114,7 @@ const LeftBar = () => {
       <div id="LeftBarConstrMobile">
         <div className="head">
           <button className="burger" onClick={handleOpenModal}></button>
-          <img src={logo} alt="#" />
+          <img src={logo} alt="#" onClick={() => handleBack()}/>
           <div className='balance'>
             <p><img src={Balance} alt="#" />Баланс</p>
             <button onClick={() => handleClick('/user/balance')}><img src={Balance2} alt="#" /><p>{balance} ₽</p></button>
@@ -124,40 +127,40 @@ const LeftBar = () => {
         </div>
       </div> 
       <div id="modalConstr" className={isModalActive ? 'active' : ''}>
-        <div className="close" onClick={handleCloseModal}></div>
+        <div className="close" onClick={() => handleCloseModal()}></div>
         <nav>
-          <div className="edit" onClick={() => handleClick(`/user/quiz/${currentQuizID}`)}>
+          <div className={`edit ${isActive === 1 ? 'active' : ''}`} onClick={() => handleClick(`/user/quiz/${currentQuizID}`, 1)}>
             <img src={pen} alt="#" />
             <p>Редактор</p>
-            <img src={arrow1} alt="#"/>
+            <img src={isActive === 1 ? arrow1 : arrow2} alt="#"/>
           </div>
-          <div className="install" onClick={() => handleClick(`/user/quiz/${currentQuizID}/install`)}>
+          <div className={`install ${isActive === 2 ? 'active' : ''}`} onClick={() => handleClick(`/user/quiz/${currentQuizID}/install`, 2)}>
             <img src={install} alt="#" />
             <p>Установка</p>
-            <img src={arrow2} alt="#"/>
+            <img src={isActive === 2 ? arrow1 : arrow2} alt="#"/>
           </div>
-          <div className="advert" onClick={() => handleClick(`/user/quiz/${currentQuizID}/startadvert`)}>
+          <div className={`advert ${isActive === 3 ? 'active' : ''}`} onClick={() => handleClick(`/user/quiz/${currentQuizID}/startadvert`, 3)}>
             <img src={at} alt="#" />
             <p>Запуск рекламы</p>
-            <img src={arrow2} alt="#"/>
-          </div>        
+            <img src={isActive === 3 ? arrow1 : arrow2} alt="#"/>
+          </div>         
         </nav>
-        <div className="extensions" onClick={() => handleClick(`/user/quiz/${currentQuizID}/plugins`)}>
+        <div className={`extensions ${isActive === 4 ? 'active' : ''}`} onClick={() => handleClick(`/user/quiz/${currentQuizID}/plugins`, 4)}>
           <img src={extend} alt="#" />
           <p>Расширения</p>
           <img src={arrow2} alt="#" />
         </div>
-        <div className="design" onClick={() => handleClick(`/user/quiz/${currentQuizID}/design`)}>
+        <div className={`design ${isActive === 5 ? 'active' : ''}`} onClick={() => handleClick(`/user/quiz/${currentQuizID}/design`, 5)}>
           <img src={design} alt="#" />
           <p>Дизайн</p>
           <img src={arrow2} alt="#" />
         </div>
-        <div className="integrations" onClick={() => handleClick(`/user/quiz/${currentQuizID}/integrations`)}>
+        <div className={`integrations ${isActive === 6 ? 'active' : ''}`} onClick={() => handleClick(`/user/quiz/${currentQuizID}/integrations`, 6)}>
           <img src={integ} alt="#" />
           <p>Интеграции</p>
           <img src={arrow2} alt="#" />
         </div>
-        <div className="settings" onClick={() => handleClick(`/user/quiz/${currentQuizID}/settings`)}>
+        <div className={`settings ${isActive === 7 ? 'active' : ''}`} onClick={() => handleClick(`/user/quiz/${currentQuizID}/settings`, 7)}>
           <img src={settings} alt="#" />
           <p>Настройки</p>
           <img src={arrow2} alt="#" />

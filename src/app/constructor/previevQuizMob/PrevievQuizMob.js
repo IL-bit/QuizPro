@@ -39,7 +39,7 @@ const PrevievQuizPc = () => {
     <div className="container" id='previevQuizMob'>
         <div className="row">
             <div className="col-12">
-                <button className='close' onClick={() => handleClick(`/user/quiz/${quizID}`)}><img src={close} alt="#" /></button>
+                <button className='close' onClick={() => handleClick(`/user`)}><img src={close} alt="#" /></button>
                 <div className={`previev ${theme}-theme ${buttonStyle}`}>
                   {currentCanvas === 'canvas1' && (
                     <Canvas1 handleButtonClick={handleButtonClick} />
