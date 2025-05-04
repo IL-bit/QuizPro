@@ -172,6 +172,9 @@
             color: #fff;
             cursor: pointer;
         }
+        >:nth-child(4), >:nth-child(5) {
+            opacity: 0.2;
+        }
     }
     >.bottom {
         padding-left: 42px;

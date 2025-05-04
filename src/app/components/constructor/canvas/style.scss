@@ -555,6 +555,16 @@
             >.inputs {
                 left: auto !important;
                 right: 43px !important;
+                .name, .email, .phone {
+                    >div {
+                        left: auto;
+                        right: 0;
+                    }
+                    >button {
+                        left: 0;
+                        right: auto;
+                    }
+                }
             }
             p {
                 left: auto;
@@ -622,6 +632,17 @@
             >.inputs {
                 left: auto;
                 right: 43px;
+                .name, .email, .phone {
+                    >div {
+                        left: auto;
+                        right: 0;
+                    }
+                    >button {
+                        left: 0;
+                        right: auto;
+                    }
+                }
+            
             }
             p {
                 left: auto;
@@ -677,6 +698,7 @@
         width: 100%;
         height: 80px;
         padding-left: 31px;
+        padding-right: 31px;
         display: flex;
         align-items: center;
         border: none;
@@ -689,6 +711,22 @@
         }
         >img {
             margin-left: 9px;
+        }
+        >.type_button {
+            display: none;
+            margin-right: 0;
+            margin-left: auto;
+            width: 33px;
+            height: 46px;
+            border: none;
+            transform: rotate(180deg);
+            background: url(../../../img/Constructor/create/arrow2.svg);
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            &.active {
+                display: block;
+            }
         }
     }
     >.canvas {

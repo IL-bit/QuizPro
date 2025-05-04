@@ -1,12 +1,21 @@
 import React from 'react';
+import { useNavigate } from 'react-router';
+import { useDispatch } from 'react-redux';
+import { setCurrenBase } from '../../../../actions';
 import './style.scss';
 
-const ArticleSmall = () => {
+const ArticleSmall = ({data, current}) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const handleClick = () => {
+    dispatch(setCurrenBase(current));
+    navigate(`/user/base/${current}`);
+  };
   return (
     <div className="article-item">
-        <h5>Тарифы заявок</h5>
-        <p>В этой статье расскажем о тарифах для новых пользователей квиза, которые помогут вам выбрать оптимальное решение для вашего бизнеса</p>
-        <button>Читать</button>
+        <h5>{data.title}</h5>
+        <p>{data.text}</p>
+        <button onClick={() => handleClick()}>Читать</button>
     </div>
   )
 }

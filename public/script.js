@@ -61,111 +61,111 @@ document.addEventListener('DOMContentLoaded', () => {
             const answersquiz = document.querySelector('#answers_for_quiz');
             const questionData = data.canvas2[currentIndex];
             switch (questionData.name) {
-case 'Answers':
-answersquiz.innerHTML = `
-    <h3>${questionData.question}</h3>
-    <div class='answers'>
-        ${questionData.answers.map((answer, index) => `
-            <div class='item'>
-                <button data-index='${index}' class='answerButton'></button>
-                <p>${answer}</p>
-            </div>
-        `).join('')}
-    </div>
-`;
-break;
+                case 'Answers':
+                    answersquiz.innerHTML = `
+                        <h3>${questionData.question}</h3>
+                        <div class='answers'>
+                            ${questionData.answers.map((answer, index) => `
+                                <div class='item'>
+                                    <button data-index='${index}' class='answerButton'></button>
+                                    <p>${answer}</p>
+                                </div>
+                            `).join('')}
+                        </div>
+                    `;
+                    break;
 
-case 'Calculator':
-answersquiz.innerHTML = `
-    <h3>${questionData.question}</h3>
-    <div class='calc'>                 
-        <input type='text' id='count' placeholder='${questionData.min}' />
-        <div class='range'>
-            <div id='rangeValue' style='width: 50%'><div></div></div>
-            <input type='range' id='range' min='${questionData.min}' max='${questionData.max}' step='${questionData.step}' value='${questionData.first}'/>
-        </div>
-        <div class='text'>
-            <p>${questionData.min}</p>
-            <p>${questionData.max}</p>
-        </div>                                    
-    </div>
-`;
+                case 'Calculator':
+                    answersquiz.innerHTML = `
+                        <h3>${questionData.question}</h3>
+                        <div class='calc'>                 
+                            <input type='text' id='count' placeholder='${questionData.min}' />
+                            <div class='range'>
+                                <div id='rangeValue' style='width: 50%'><div></div></div>
+                                <input type='range' id='range' min='${questionData.min}' max='${questionData.max}' step='${questionData.step}' value='${questionData.first}'/>
+                            </div>
+                            <div class='text'>
+                                <p>${questionData.min}</p>
+                                <p>${questionData.max}</p>
+                            </div>                                    
+                        </div>
+                    `;
 
-const rangeInput = document.getElementById('range');
-const rangeValueDiv = document.getElementById('rangeValue');
-const countInput = document.getElementById('count');
+                    const rangeInput = document.getElementById('range');
+                    const rangeValueDiv = document.getElementById('rangeValue');
+                    const countInput = document.getElementById('count');
 
-const updateDivWidth = () => {
-    const min = parseInt(rangeInput.min);
-    const max = parseInt(rangeInput.max);
-    const value = parseInt(rangeInput.value);
-    const percentage = ((value - min) / (max - min)) * 100;
-    rangeValueDiv.style.width = percentage + '%';
-    countInput.value = value; 
-};
+                    const updateDivWidth = () => {
+                        const min = parseInt(rangeInput.min);
+                        const max = parseInt(rangeInput.max);
+                        const value = parseInt(rangeInput.value);
+                        const percentage = ((value - min) / (max - min)) * 100;
+                        rangeValueDiv.style.width = percentage + '%';
+                        countInput.value = value; 
+                    };
 
-rangeInput.addEventListener('input', () => {
-    updateDivWidth();
-});
+                    rangeInput.addEventListener('input', () => {
+                        updateDivWidth();
+                    });
 
-countInput.addEventListener('input', () => {
-    const value = countInput.value;
-    const min = parseInt(rangeInput.min);
-    const max = parseInt(rangeInput.max);
-    if (!isNaN(value)) {
-        if (value >= min && value <= max) {
-            rangeInput.value = value; 
-        } else {
-            rangeInput.value = value < min ? min : max;
-        }
-        updateDivWidth(); 
-    }
-});
+                    countInput.addEventListener('input', () => {
+                        const value = countInput.value;
+                        const min = parseInt(rangeInput.min);
+                        const max = parseInt(rangeInput.max);
+                        if (!isNaN(value)) {
+                            if (value >= min && value <= max) {
+                                rangeInput.value = value; 
+                            } else {
+                                rangeInput.value = value < min ? min : max;
+                            }
+                            updateDivWidth(); 
+                        }
+                    });
 
-updateDivWidth();
-break;
+                    updateDivWidth();
+                    break;
 
-case 'AnswersImg':
-answersquiz.innerHTML = `
-    <h3>${questionData.question}</h3>
-    <div class='answersImg'>
-        <div class='left'>
-            ${questionData.answers.map((answer, index) => `
-                <div class='item'>
-                    <button data-index='${index}' class='answerButton'></button>
-                    <p>${answer}</p>
-                </div>
-            `).join('')}
-        </div>
-        <div class='right' style='background: url(${questionData.imgs[0]});'></div>
-    </div>
-`;
-break;
+                case 'AnswersImg':
+                    answersquiz.innerHTML = `
+                        <h3>${questionData.question}</h3>
+                        <div class='answersImg'>
+                            <div class='left'>
+                                ${questionData.answers.map((answer, index) => `
+                                    <div class='item'>
+                                        <button data-index='${index}' class='answerButton'></button>
+                                        <p>${answer}</p>
+                                    </div>
+                                `).join('')}
+                            </div>
+                            <div class='right' style='background: url(${questionData.imgs[0]});'></div>
+                        </div>
+                    `;
+                    break;
 
-case 'AnswersAndImg':
-answersquiz.innerHTML = `
-    <h3>${questionData.question}</h3>
-    <div class='answersAndImg'>
-        <div class='items'>
-            ${questionData.answers.map((answer, index) => `
-                <div class='item'>
-                    <div class='img' style='background: url(${questionData.imgs[index]});'></div>
-                    <div class='btns'>
-                        <button data-index='${index}' class='answerButton'></button>
-                        <p>${answer}</p>
-                    </div>
-                </div>
-            `).join('')}
-        </div>
-    </div>
-`;
-break;
+                case 'AnswersAndImg':
+                    answersquiz.innerHTML = `
+                        <h3>${questionData.question}</h3>
+                        <div class='answersAndImg'>
+                            <div class='items'>
+                                ${questionData.answers.map((answer, index) => `
+                                    <div class='item'>
+                                        <div class='img' style='background: url(${questionData.imgs[index]});'></div>
+                                        <div class='btns'>
+                                            <button data-index='${index}' class='answerButton'></button>
+                                            <p>${answer}</p>
+                                        </div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    `;
+                    break;
 
-default:
-break;
-};
+                default:
+                    break;
+                };
 
-userData.details.answers[currentIndex].question = questionData.question;
+            userData.details.answers[currentIndex].question = questionData.question;
             const answerButtons = document.querySelectorAll('.answerButton');
             answerButtons.forEach(button => {
                 button.addEventListener('click', () => {
@@ -173,7 +173,6 @@ userData.details.answers[currentIndex].question = questionData.question;
                     const selectedAnswer = questionData.answers[index]; 
                     const answerIndex = userData.details.answers[currentIndex].answer.indexOf(selectedAnswer);
                     if (answerIndex === -1) {
-                
                         userData.details.answers[currentIndex].answer.push(selectedAnswer);
                         console.log(`Добавлен ответ: ${selectedAnswer}`);
                         button.classList.add('active'); 

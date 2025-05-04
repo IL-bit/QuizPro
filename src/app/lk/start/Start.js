@@ -1,25 +1,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { isQuizes } from '../../../actions';
-import { APPLICATIONS } from '../../../middleware';
-import { BALANCE, QUIZESALL } from '../../../middleware';
 import LeftBar from '../../components/lk/leftBar/LeftBar';
 import Quizes from '../../components/lk/quizes/Quizes';
 
 const Start = () => {
-  const dispatch = useDispatch();
-  const token = useSelector((state) => state.Token);
-  const isQuiz = useSelector((state) => state.isQuizes);
-  const isApplications = useSelector((state) => state.isApplications);
-  useEffect(() => {
-    if (isQuiz) {   
-      dispatch(BALANCE(token));      
-      dispatch(QUIZESALL(token));      
-    }
-    if (!isApplications) {
-      dispatch(APPLICATIONS(token));
-    }
-  });
   return (
     <div className="container">
         <div className="row">

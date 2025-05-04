@@ -470,11 +470,22 @@
             left: 50%;
             transform: translateX(-50%);
             border-radius: 16px;
-            width: 179px;
+            width: 159px;
             height: 58px;
             font-weight: 400;
             font-size: 16px;
             border: none;
+        }
+        >button {
+            left: 50% !important;
+            transform: translateX(-105%) !important;
+        }
+        >:nth-last-child(1) {
+            border: 1px solid #6a8496;
+            background: none;
+            color: #000;
+            left: 50% !important;
+            transform: translateX(5%) !important;
         }
     }
 }

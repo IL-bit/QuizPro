@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { CONVERSION } from '../../../middleware';
 import LeftBar from '../../components/lk/leftBar/LeftBar';
 import logo from '../../img/conversion/logo.svg';
 import vk from '../../img/conversion/vk.svg';
@@ -6,6 +8,16 @@ import tg from '../../img/conversion/tg.svg';
 import './style.scss';
 
 const Conversion = () => {
+    const dispatch = useDispatch();
+    const quizID = useSelector(state => state.createQuiz.currentQuizID);
+    const quizName = useSelector(state => state.quizName);
+    const token = useSelector((state) => state.Token);  
+    const converion = useSelector(state => state.conversion);
+    useEffect(() => {
+        if (Object.keys(converion).length === 0) {
+            dispatch(CONVERSION(quizID, token));
+        }
+    }, [dispatch, quizID, token, converion]);
   return (
     <div className="container">
         <div className="row">
@@ -16,73 +28,62 @@ const Conversion = () => {
                 <div id="conversion">
                     <div className="head">
                         <h2>Конверсия</h2>
-                        <div className='count'>1</div>
-                        <p className='name'>Майки из камня</p>
+                        <div className='count'>{quizID}</div>
+                        <p className='name'>{quizName}</p>
                     </div>
                     <div className="charts">
                         <div className="chart">
                             <p>Открыли квиз</p>
-                            <h5>3 745</h5>
+                            <h5>{converion.open ? converion.open : 0}</h5>
                         </div>
                         <div className="chart">
                             <p>Получено заявок</p>
-                            <h5>342</h5>
+                            <h5>{converion.applications ? converion.applications : 0}</h5>
                         </div>
                         <div className="chart">
                             <p>Конверсия</p>
-                            <h5>18%</h5>
+                            <h5>{converion.conversion ? converion.conversion.toFixed(1) : 0}%</h5>
                         </div>
                     </div>
                     <div className="start">
                         <p>Стартовая страница</p>
                         <div className="progress">
-                            <div></div>
+                            <div style={{ width: `${converion.start_page}%` }}></div>
                         </div>
-                        <h5>30%</h5>
+                        <h5>{converion.start_page ? converion.start_page.toFixed(1) : 0}%</h5>
                     </div>
                     <div className="questions">
-                        <div className="item">
-                            <p>Вопрос 1</p>
-                            <div className="progress">
-                                <div></div>
+                        {converion.question && Object.entries(converion.question)
+                        .slice(0, 5) 
+                        .map(([key, value]) => (
+                            <div className="item" key={key}>
+                                <p>Вопрос {key / 10}</p> 
+                                <div className="progress">
+                                    <div style={{ width: `${value}%` }}></div>
+                                </div>
+                                <h6>{value.toFixed(1)}%</h6>
                             </div>
-                            <h6>20%</h6>
-                        </div>
-                        <div className="item">
-                            <p>Вопрос 2</p>
-                            <div className="progress">
-                                <div></div>
+                        ))}
+                    </div>
+                    <div className="questions">
+                        {converion.question && Object.entries(converion.question)
+                        .slice(5, 10) 
+                        .map(([key, value]) => (
+                            <div className="item" key={key}>
+                                <p>Вопрос {key / 10}</p> 
+                                <div className="progress">
+                                    <div style={{ width: `${value}%` }}></div>
+                                </div>
+                                <h6>{value.toFixed(1)}%</h6>
                             </div>
-                            <h6>20%</h6>
-                        </div>
-                        <div className="item">
-                            <p>Вопрос 3</p>
-                            <div className="progress">
-                                <div></div>
-                            </div>
-                            <h6>20%</h6>
-                        </div>
-                        <div className="item">
-                            <p>Вопрос 4</p>
-                            <div className="progress">
-                                <div></div>
-                            </div>
-                            <h6>20%</h6>
-                        </div>
-                        <div className="item">
-                            <p>Вопрос 5</p>
-                            <div className="progress">
-                                <div></div>
-                            </div>
-                            <h6>20%</h6>
-                        </div>
+                        ))}
                     </div>
                     <div className="form">
                         <p>Форма</p>
                         <div className="progress">
-                            <div></div>
+                            <div style={{ width: `${converion.form ? converion.form : 0}%` }}></div>
                         </div>
-                        <h5>1%</h5>
+                        <h5>{converion.form ? converion.form.toFixed(1) : 0}%</h5>
                     </div>
                     <div className="footer">
                         <img src={logo} alt="#" />

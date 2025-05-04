@@ -1,10 +1,27 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { APPLICATION } from '../../../middleware';
+import { DELETEAPPLICATION } from '../../../middleware';
+import { useNavigate } from 'react-router';
 import './style.scss';
 import LeftBar from '../../components/lk/leftBar/LeftBar';
 import trash from '../../img/answer/trash.svg';
 import again from '../../img/answer/again.svg';
 
 const Answer = () => {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const token = useSelector((state) => state.Token);  
+    const applicaion = useSelector((state) => state.application);
+    const handleDelete = () => {
+        navigate('/user/applications');
+        dispatch(DELETEAPPLICATION(applicaion.id, token));
+    };
+    useEffect(() => {
+        if (Object.keys(applicaion.data).length === 0) {
+            dispatch(APPLICATION(token, applicaion.id));
+        }
+    }, [dispatch, applicaion.id, token, applicaion]);
   return (
     <div className="container">
         <div className="row">
@@ -17,39 +34,46 @@ const Answer = () => {
                         <h2>Ответы клиента</h2>
                         {/* <button></button> */}
                         <div className="info">
-                            <p>Время заявки: <span>воскресенье, 1 декабря 2024 г., 13:04 UTC(+03:00)</span><br/>Местоположение: <span>Россия, Тюмень<br/>Для клиента 23:01 на часах , Contact us during office hours</span></p>
-                            <p>Имя: <span>Екатерина Мещерякова</span><br/>Email: <span>emesh26042015@gmail.com</span><br/>Телефон: <span>+79129285745</span></p>
+                            <p>Время заявки: <span>{applicaion.data.date ? applicaion.data.date : 'none'}</span><br/>Местоположение: <span>{applicaion.data.position ? applicaion.data.position : 'none'}</span></p>
+                            <p>Имя: <span>{applicaion.data.name ? applicaion.data.name : 'none'}</span><br/>Email: <span>{applicaion.data.email ? applicaion.data.email : 'none'}</span><br/>Телефон: <span>{applicaion.data.phone ? applicaion.data.phone : 'none'}</span></p>
                         </div>
                         <div className="answer">
                             <h2>Ответы</h2>
                             <div>
-                                <p>Выберите направления, которые ведете<br/><span>Я веду все направления "Универсальный фитнес-тренер"</span></p>
-                                <p>Выберите направления, которые ведете<br/><span>Я веду все направления "Универсальный фитнес-тренер"</span></p>
-                                <p>Выберите направления, которые ведете<br/><span>Я веду все направления "Универсальный фитнес-тренер"</span></p>
-                                <p>Выберите направления, которые ведете<br/><span>Я веду все направления "Универсальный фитнес-тренер"</span></p>
-                                <p>Выберите направления, которые ведете<br/><span>Я веду все направления "Универсальный фитнес-тренер"</span></p>
+                                {applicaion.data.details && applicaion.data.details.answers ? (
+                                    applicaion.data.details.answers.map((item, index) => (
+                                        <p key={index}>{item.question}{item.answer.map((answ, index) => (
+                                            <>
+                                                <br/><span key={index}>{answ}</span>
+                                            </>
+                                        ))}
+                                        </p>
+                                    ))
+                                ) : (
+                                    <p>Нет ответов</p>
+                                )}
                             </div>
                         </div>
                     </div>
-                    <div className="results">
+                    {/* <div className="results">
                         <h2>Результаты:</h2>
                         <div>Результатов нет</div>
-                    </div>
+                    </div> */}
                     <div className="someInfo">
                         <h2>Дополнительная информация:</h2>
-                        <div>Источник<div>https://qz/pro.me/6741ca6e3719050026164765</div></div>
-                        <div>IP-адрес<div>188.186.20.67</div></div>
-                        <p>Cookies</p>
+                        <div>Источник<div>{applicaion.data.details && applicaion.data.details.url ? applicaion.data.details.url : 'none'}</div></div>
+                        <div>IP-адрес<div>{applicaion.data.details && applicaion.data.details.ip ? applicaion.data.details.ip : 'none'}</div></div>
+                        {/* <p>Cookies</p>
                         <div>_ga<div>GA1.2.1183204216.1733047398</div></div>
-                        <div>fingerprint<div>3ccb40b1bdf329e9944c335cf9831bf9</div></div>
+                        <div>fingerprint<div>3ccb40b1bdf329e9944c335cf9831bf9</div></div> */}
                     </div>                    
                     <div className="footer">
-                        <div className="id_answer">ID заявки:<div>674c34b9f426100026a73545</div></div>
-                        <div className="actions">
+                        <div className="id_answer">ID заявки:<div>{applicaion.id}</div></div>
+                        {/* <div className="actions">
                             <p><img src={trash} alt="#" />Удалить</p>
                             <p><img src={again} alt="#" />Отправить повторно в интеграции</p>                                  
-                        </div>
-                        <button>Заблокировать адрес</button>
+                        </div> */}
+                        <button onClick={() => handleDelete()}>Удалить</button>
                     </div>                    
                 </div>
             </div>

@@ -9,9 +9,11 @@ import Canvas3 from './previev/canvas3';
 const PrevievQuizPc = () => {
   const navigate = useNavigate();
   const canvas2 = useSelector((state) => state.quiz.data.canvas2);
-  const isCanvas1 = useSelector((state) => state.quiz.data.canvas1.isActive);
+  const isCanvas1 = useSelector((state) => state.quiz.data.canvas1.is_active);
   const theme = useSelector(state => state.quiz.data.theme.theme);
-  const buttonStyle = useSelector(state => state.quiz.data.theme.buttonStyle);
+  const buttonStyle = useSelector(state => state.quiz.data.theme.button_style);
+  const quizID = useSelector(state => state.quiz.currentQuizID);
+  const [IDquestion, setIDquestion] = useState(0);
   const [currentCanvas, setCurrentCanvas] = useState('canvas1');
 
   const handleButtonClick = (canvas) => {
@@ -19,9 +21,12 @@ const PrevievQuizPc = () => {
     // Проверяем, является ли canvas2 пустым массивом
     if (canvas === 'canvas2' && canvas2.length === 0) {
       setCurrentCanvas('canvas3');      
+    } else if (canvas === 'canvas2Back') {
+      setIDquestion(canvas2.length - 1);
+      setCurrentCanvas('canvas2'); 
     } else {
       setCurrentCanvas(canvas);
-    }
+    } 
   };
   useEffect(() => {
     if (isCanvas1) {
@@ -39,10 +44,10 @@ const PrevievQuizPc = () => {
                     <Canvas1 handleButtonClick={handleButtonClick} />
                   )}
                   {currentCanvas === 'canvas2' && (
-                    <Canvas2 handleButtonClick={handleButtonClick} />
+                    <Canvas2 handleButtonClick={handleButtonClick} IDquestion={IDquestion} />
                   )}
                   {currentCanvas === 'canvas3' && (
-                    <Canvas3 />
+                    <Canvas3 handleButtonClick={handleButtonClick} />
                   )}
                 </div>
             </div>

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { logOut, setLk } from '../../../../actions';
-import { LOGOUT } from '../../../../middleware';
+import { logOut, setLk, isQuizes, setNoQuiz } from '../../../../actions';
+import { LOGOUT, APPLICATIONS, QUIZESALL, BALANCE, NOTIFICATIONS, HISTORY, COUNTBASE } from '../../../../middleware';
 import './style.scss';
 import Logo from '../../../img/leftbar/logo.svg';
 import Arrow from '../../../img/leftbar/arrow.svg';
@@ -14,6 +14,7 @@ import applications from '../../../img/leftbar/applic.svg';
 import Balance from '../../../img/leftbar/balance.svg';
 import Balance2 from '../../../img/leftbar/balance2.svg';
 import PopUp from '../pop-up/PopUp';
+import Popup from '../notification/Popup';
 
 const LeftBar = () => {
   const navigate = useNavigate();   
@@ -24,8 +25,11 @@ const LeftBar = () => {
   const application = useSelector((state) => state.applications);
   const quizes = useSelector((state) => state.quizes);
   const [isModalActive, setIsModalActive] = useState(false);
-  const [isPopupVisible, setIsPopupVisible] = useState(false);  
+  const [isPopupVisible, setIsPopupVisible] = useState(false);   
   const isActive = useSelector((state) => state.leftbarLk);
+  const isQuiz = useSelector((state) => state.isQuizes);
+  const isApplications = useSelector((state) => state.isApplications);  
+  const notifications = useSelector((state) => state.notifications);
   let count = 0;
   const handleClick = (route, id) => {
     navigate(route);
@@ -67,10 +71,25 @@ const LeftBar = () => {
       return 'prem';
     };
   };
+
+  useEffect(() => {
+    if (!isQuiz) {   
+      dispatch(HISTORY(token));
+      dispatch(BALANCE(token));      
+      dispatch(QUIZESALL(token));    
+      dispatch(NOTIFICATIONS(token));  
+      dispatch(COUNTBASE(token));
+    }
+    if (!isApplications) {
+      dispatch(APPLICATIONS(token));
+    }
+    dispatch(setNoQuiz());
+  });
   return (
     <>
       <div id="LeftBarLk" className='pc'>
           <div className="head">
+          <Popup />
             <img src={Logo} alt="#" />
             <div className='balance'>
               <p><img src={Balance} alt="#" />Баланс</p>
@@ -78,7 +97,7 @@ const LeftBar = () => {
             </div>
             <div className="account" onClick={handleAccountClick}>
               <button className={handleRate()}>D</button>
-              <div className="new">1</div>
+              <div className="new">{notifications.length}</div>
               {isPopupVisible && <PopUp />}
             </div>
           </div>
@@ -111,6 +130,7 @@ const LeftBar = () => {
       </div>   
       <div id="LeftBarLkMobile" className='mobile'>
         <div className="head">
+          <Popup />
           <button className="burger" onClick={handleOpenModal}></button>
           <img src={Logo} alt="#" />
           <div className='balance'>
@@ -119,9 +139,9 @@ const LeftBar = () => {
           </div>
           <div className="account" onClick={handleAccountClick}>
             <button className="base">D</button>
-            <div className="new">1</div>
+            <div className="new">{notifications.length}</div>
           </div>
-          {isPopupVisible && <PopUp />}          
+          {isPopupVisible && <PopUp />}        
         </div>
       </div>
       <div id="modal" className={isModalActive ? 'active' : ''}>

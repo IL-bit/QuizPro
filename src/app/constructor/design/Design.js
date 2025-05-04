@@ -100,8 +100,8 @@ const Design = () => {
 
                 <div className="colors">
                   <p>Цвет фона</p>
-                  <div className="color">
-                    <button style={{ background: backgroundColor }} onClick={() => toggleColorPicker('background')}></button>
+                  <div className="color" onClick={() => toggleColorPicker('background')}>
+                    <button style={{ background: backgroundColor }}></button>
                     <img src={down} alt="#" className={activeColorPicker === 'background' ? 'active' : ''}/>
                   </div>
                   {activeColorPicker === 'background' && (
@@ -113,8 +113,8 @@ const Design = () => {
 
                 <div className="colors">
                   <p>Цвет текста</p>
-                  <div className="color">
-                    <button style={{ background: TextColor }} onClick={() => toggleColorPicker('text')}></button>
+                  <div className="color" onClick={() => toggleColorPicker('text')}>
+                    <button style={{ background: TextColor }}></button>
                     <img src={down} alt="#" className={activeColorPicker === 'text' ? 'active' : ''}/>
                   </div>
                   {activeColorPicker === 'text' && (
@@ -137,8 +137,8 @@ const Design = () => {
 
                 <div className="colors">
                   <p>Цвет кнопок</p>
-                  <div className="color">
-                    <button style={{ background: ButtonColor }} onClick={() => toggleColorPicker('button')}></button>
+                  <div className="color" onClick={() => toggleColorPicker('button')}>
+                    <button style={{ background: ButtonColor }}></button>
                     <img src={down} alt="#" className={activeColorPicker === 'button' ? 'active' : ''}/>
                   </div>
                   {activeColorPicker === 'button' && (
@@ -150,8 +150,8 @@ const Design = () => {
 
                 <div className="colors">
                   <p>Цвет текста кнопок</p>
-                  <div className="color">
-                    <button style={{ background: ButtonTextColor }} onClick={() => toggleColorPicker('buttonText')}></button>
+                  <div className="color" onClick={() => toggleColorPicker('buttonText')}>
+                    <button style={{ background: ButtonTextColor }}></button>
                     <img src={down} alt="#" className={activeColorPicker === 'buttonText' ? 'active' : ''}/>
                   </div>
                   {activeColorPicker === 'buttonText' && (

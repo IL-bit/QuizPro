@@ -1,9 +1,11 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import './style.scss';
 import LeftBar from '../../components/lk/leftBar/LeftBar';
 import Whistory from '../../components/lk/history/Whistory';
 
 const WriteOff = () => {
+    const writeOffs = useSelector((state) => state.balance_history.writeOff);
   return (
     <div className="container">
         <div className="row">
@@ -20,10 +22,9 @@ const WriteOff = () => {
                             <p>Сумма списания</p>                            
                         </div>
                         <div className="items">
-                            <Whistory />
-                            <Whistory />
-                            <Whistory />
-                            <Whistory />
+                            {writeOffs.length > 0 ? writeOffs.map(writeOff => (
+                                <Whistory data={writeOff}/>
+                            )) : null}
                         </div>
                     </div>
                 </div>

@@ -27,9 +27,10 @@ const LeftBar = () => {
   const token = useSelector((state) => state.Token);
   const [isModalActive, setIsModalActive] = useState(false);
   const [isPopupVisible, setIsPopupVisible] = useState(false);
-  const isActive = useSelector((state) => state.leftbar);
+  const isActive = useSelector((state) => state.leftbarConstr);
   const handleClick = (route, id) => {
     navigate(route); 
+    dispatch(setLk(2)); 
     dispatch(setLk2(id));
   };
   const handleAccountClick = () => {

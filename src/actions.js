@@ -29,6 +29,7 @@ export const removeField = createAction('HANDLEREMOVEFIELD');
 export const setCurrentSection = createAction('HANDLESETCURRENTSECTION');
 
 export const setCurrentQuestion = createAction('HANDLESETCURRENTQUESTION');
+export const setCurrentIndex = createAction('HANDLESETCURRENTQUESTIONINDEX');
 export const addQuestion = createAction('ADDQUESTION', data => ({ payload: data }));
 export const updateQuestion = createAction('UPDATEQUESTION', data => ({ payload: data }));
 export const incremenCountQuestion = createAction('INCREMENTCOUNTQUESTION');
@@ -92,6 +93,10 @@ export const setApllications = (applications) => ({
   type: 'SET_APPLICATIONS',
   payload: applications
 });
+export const setApllication = (application) => ({
+  type: 'SET_APPLICATION',
+  payload: application
+});
 export const setQuiz = (quiz) => ({
   type: 'SET_QUIZ',
   payload: quiz
@@ -124,6 +129,81 @@ export const setBannedUsers = (users) => ({
   type: 'SET_BANNEDUSERS',
   payload: users
 });
+export const setConverion = (data) => ({
+  type: 'SET_CONVERSION',
+  payload: data
+});
+
+export const deleteConversion = createAction('DELETE_CONVERSION');
+export const deleteApplication = createAction('DELETE_APPLICATION');
+
+export const setNameQuiz = (name) => ({
+  type: 'SET_NAME_QUIZ',
+  payload: name
+});
+
+export const setIdApplication = (id) => ({
+  type: 'SET_ID_APPLICATION',
+  payload: id
+});
+
+export const setAnswer = (answer) => ({
+  type: 'SET_ANSWER',
+  payload: answer
+});
+export const changeAnswer = (id, data) => ({
+  type: 'CHANGE_ANSWER',
+  payload: { id, data }
+});
+
+
+export const setTime = (time) => ({
+  type: 'SET_TIME',
+  payload: time
+});
+export const setDateTo = (date) => ({
+  type: 'SET_DATE_TO',
+  payload: date
+});
+export const setDateFrom = (date) => ({
+  type: 'SET_DATE_FROM',
+  payload: date
+});
+export const setType = (type) => ({
+  type: 'SET_TYPE',
+  payload: type
+});
+export const setName = (name) => ({
+  type: 'SET_NAME',
+  payload: name
+});
+export const setCity = (city) => ({
+  type: 'SET_CITY',
+  payload: city
+});
+export const setNotifications = (data) => ({
+  type: 'SET_NOTIFICATIONS',
+  payload: data
+});
+export const setHistory = (data) => ({
+  type: 'SET_HISTORY',
+  payload: data
+});
+export const setCountBase = (data) => ({
+  type: 'SET_COUNT_BASE',
+  payload: data
+});
+export const setBase = (data) => ({
+  type: 'SET_BASE',
+  payload: data
+});
+export const setCurrenBase = (index) => ({
+  type: 'SET_CURRENT_BASE',
+  payload: index
+});
+export const noPopUp2 = createAction('NO_POPUP2');
+
+export const setNoQuiz = createAction('SET_NO_QUIZ');
 export const isUser = createAction('IS_USER');
 export const noUser = createAction('NO_USER');
 export const isUsers = createAction('IS_USERS');

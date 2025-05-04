@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCurrentQuiz2 } from '../actions';
-import { QUIZ2 } from '../middleware';
+import { QUIZ2, STATUS } from '../middleware';
 import PrevievQuizPc from './QUIZ/pc/PrevievQuizPc';
 import PrevievQuizMob from './QUIZ/mobile/PrevievQuizMob';
 import { BrowserRouter as Router, Route, Switch, useParams } from 'react-router-dom';
@@ -19,8 +19,10 @@ const QUIZ = () => {
         if (quizId !== currentQuizID) {
             dispatch(QUIZ2(quizId));
             dispatch(setCurrentQuiz2(quizId));
-        }               
-        console.log(currentData);
+        } else {
+            console.log(12);
+            dispatch(STATUS(12, currentQuizID));
+        }
     })
     useEffect(() => {
         const handleResize = () => {
@@ -31,7 +33,7 @@ const QUIZ = () => {
         return () => {
             window.removeEventListener('resize', handleResize);
         };
-    }, []);
+    }, []);  
     const RenderQuiz = () => {
         if (!currentData || Object.keys(currentData).length === 0) {
             return (
@@ -44,7 +46,8 @@ const QUIZ = () => {
         } else {
             return <PrevievQuizMob /> 
         } 
-    }
+    };
+
 
   return (
     <div className='container'>

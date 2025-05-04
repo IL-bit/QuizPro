@@ -5,15 +5,21 @@ import cursor from '../../img/base/cursor.svg';
 import integrations from '../../img/base/integrations.svg';
 import folder from '../../img/base/folder.svg';
 import services from '../../img/base/services.svg';
-import advert from '../../img/base/at.svg';
+import adverts from '../../img/base/at.svg';
 import pip from '../../img/base/pip.svg';
 import './style.scss';
+import { BASE } from '../../../middleware';
+import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 
 const Base = () => {
     const navigate = useNavigate();   
-    const handleClick = (route) => {
+    const dispatch = useDispatch();
+    const token = useSelector((state) => state.Token);
+    const base = useSelector((state) => state.base);
+    const handleClick = (route, id) => {
+        dispatch(BASE(token, id));
       navigate(route);
     };
   return (
@@ -26,40 +32,40 @@ const Base = () => {
                 <div id="base">
                     <h2>База знаний</h2>
                     <div className="content">
-                        <div className="item" onClick={() => handleClick('/user/base/payment')}>
+                        <div className="item" onClick={() => handleClick('/user/base/payment', 1)}>
                             <img src={check} alt="#" />
                             <h5>Оплата</h5>
-                            <p>5 статей</p>
+                            <p>{base.payment} статей</p>
                         </div>
-                        <div className="item" onClick={() => handleClick('/user/base/content')}>
+                        <div className="item" onClick={() => handleClick('/user/base/content', 2)}>
                             <img src={pip} alt="#" />
                             <h5>Наполнение квиза</h5>
-                            <p>5 статей</p>
+                            <p>{base.content} статей</p>
                         </div>
-                        <div className="item" onClick={() => handleClick('/user/base/settings')}>
+                        <div className="item" onClick={() => handleClick('/user/base/settings', 3)}>
                             <img src={folder} alt="#" />
                             <h5>Настройка квиза</h5>
-                            <p>5 статей</p>
+                            <p>{base.settings} статей</p>
                         </div>
-                        <div className="item" onClick={() => handleClick('/user/base/integrations/sites')}>
+                        <div className="item" onClick={() => handleClick('/user/base/integrations/sites', 4)}>
                             <img src={integrations} alt="#" />
                             <h5>Интеграция с сайтом</h5>
-                            <p>5 статей</p>
+                            <p>{base.integSite} статей</p>
                         </div>
-                        <div className="item" onClick={() => handleClick('/user/base/integrations/servises')}>
+                        <div className="item" onClick={() => handleClick('/user/base/integrations/servises', 5)}>
                             <img src={services} alt="#" />
                             <h5>Интеграция с сервисами</h5>
-                            <p>5 статей</p>
+                            <p>{base.integServises} статей</p>
                         </div>
-                        <div className="item" onClick={() => handleClick('/user/base/analytics')}>
+                        <div className="item" onClick={() => handleClick('/user/base/analytics', 6)}>
                             <img src={cursor} alt="#" />
                             <h5>Аналитика</h5>
-                            <p>5 статей</p>
+                            <p>{base.analytics} статей</p>
                         </div>
-                        <div className="item" onClick={() => handleClick('/user/base/advert')}>
-                            <img src={advert} alt="#" />
+                        <div className="item" onClick={() => handleClick('/user/base/advert', 7)}>
+                            <img src={adverts} alt="#" />
                             <h5>Реклама</h5>
-                            <p>5 статей</p>
+                            <p>{base.advert} статей</p>
                         </div>
                     </div>
                 </div>

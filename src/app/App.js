@@ -39,6 +39,7 @@ import Plugins from './constructor/plugins/Plugins.js';
 import StartAd from './constructor/startad/StartAd.js';
 import PrevievQuizMob from './constructor/previevQuizMob/PrevievQuizMob.js';
 import QUIZ from './QUIZ.js';
+import Article from './components/lk/base/Article.js';
 
 /* admin */
 import Users from './admin/pages/Users';
@@ -55,6 +56,7 @@ function App() {
   const dispatch = useDispatch();
   const isAuthenticated = useSelector((state) => state.isAuth);    
   const isAdmin = useSelector((state) => state.isAdmin);    
+  const currentBase = useSelector((state) => state.current_base_index);   
   const currentQuiz = useSelector((state) => state.createQuiz.currentQuizID);  
   const token = localStorage.getItem('access_token');
   const email = localStorage.getItem('login');
@@ -81,6 +83,7 @@ function App() {
 
         <Route path="/user/notifications" element={<PrivateRoute element={<Notifications />} isAuthenticated={isAuthenticated} />} />
         <Route path="/user/base" element={<PrivateRoute element={<Base />} isAuthenticated={isAuthenticated} />} />
+        <Route path={`/user/base/${currentBase}`} element={<PrivateRoute element={<Article />} isAuthenticated={isAuthenticated} />} />
         <Route path="/user/base/advert" element={<PrivateRoute element={<Advert />} isAuthenticated={isAuthenticated} />} />
         <Route path="/user/base/analytics" element={<PrivateRoute element={<Analytics />} isAuthenticated={isAuthenticated} />} />
         <Route path="/user/base/content" element={<PrivateRoute element={<Content />} isAuthenticated={isAuthenticated} />} />

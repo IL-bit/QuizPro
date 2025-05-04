@@ -1,64 +1,89 @@
-import React from 'react';
+import React, { useEffect,useState } from 'react';
 import './canvas3.scss';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { STATUS, SENDDATA } from '../../../../middleware';
 import user from '../../../img/Constructor/create/user2.svg';
 import letter from '../../../img/Constructor/create/Letter.svg';
-import phone from '../../../img/Constructor/create/Phone2.svg';
+import phones from '../../../img/Constructor/create/Phone2.svg';
 
-const Canvas3 = () => {
-    const url = 'http://qzpro.ru';
+const Canvas3 = ({ handleButtonClick }) => {
+    const dispatch = useDispatch();
     const ID = useSelector((state) => state.quiz.currentQuizID);
     const quiz = useSelector((state) => state.quiz);
-    const theme = quiz.data.theme.theme; // Get the current theme
+    const Answers = useSelector((state) => state.userAnswer);
+
+    const [name, setName] = useState(null);
+    const [email, setEmail] = useState(null);
+    const [phone, setPhone] = useState(null);
+
+    const theme = quiz.data.theme.theme; 
     const alignClass = quiz.data.canvas3.aling;
     const canvasClass = 'canvas3 ' + alignClass;
-
-    // Determine colors based on the theme
     const backgroundColor = theme === 'user' ? quiz.data.theme.background_color : ''; 
     const textColor = theme === 'user' ? quiz.data.theme.text_color : ''; 
     const buttonColor = theme === 'user' ? quiz.data.theme.button_color : ''; 
     const buttonTextColor = theme === 'user' ? quiz.data.theme.button_text_color : ''; 
-    const COUNT = async () => { 
-        try {
-            const response = await fetch(`${url}/api/quiz/counter`, {
-                method: 'PUT',
-                mode: 'cors',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({id: ID, counter: 11})
-            });
-            if (!response.ok) {
-                console.error('Fetch failed with status:', response.status); 
-                return;
-            }
-            const data = await response.json();    
-            console.log('ok', ID);
-        } catch (error) {       
-            console.error("Error occurred:", error); 
-        }
+
+    const formatDate = (date) => {
+        const pad = (num) => (num < 10 ? '0' + num : num);
+        const year = date.getFullYear();
+        const month = pad(date.getMonth() + 1); 
+        const day = pad(date.getDate());
+        const hours = pad(date.getHours());
+        const minutes = pad(date.getMinutes());
+        const seconds = pad(date.getSeconds());
+        return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
     };
-    const APPLICATION = async () => { 
-        try {
-            const response = await fetch(`${url}/api/application/${ID}`, {
-                method: 'POST',
-                mode: 'cors',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({name: '', tel: '', email: ''})
-            });
-            if (!response.ok) {
-                console.error('Fetch failed with status:', response.status); 
-                return;
-            }
-            const data = await response.json();    
-            console.log('ok', ID);
-        } catch (error) {       
-            console.error("Error occurred:", error); 
+
+    const dataUser = {
+        'quiz_id': ID,
+        'name': name,
+        'email': email,
+        'phone': phone,
+        position: '',
+        date: formatDate(new Date()),
+        'details': {
+            'answers': Answers,
+            ip: '',
+            url: ''
         }
     };
 
+    const handleSendForm = () => {
+        const isNameFilled = quiz.data.canvas3.name ? name !== null : true;
+        const isEmailFilled = quiz.data.canvas3.email ? email !== null : true;
+        const isPhoneFilled = quiz.data.canvas3.phone ? phone !== null : true;
+        if (isNameFilled && isEmailFilled && isPhoneFilled) {
+            City();
+        }
+    };
+    const handleformatDate = (date) => {
+        const options = { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false };
+        const formattedDate = date.toLocaleString('ru-RU', options);
+        dataUser.position = formattedDate;
+        console.log(dataUser.position, dataUser.date)
+    };
+    const handleInputChange = (setter) => (event) => {
+        setter(event.target.value);
+        console.log(dataUser);
+    };
+    const City = async () => {
+        try {
+            const response = await fetch('http://ip-api.com/json/');
+            const data = await response.json();
+            dataUser.details.ip = data.query;
+            dataUser.details.url = window.location.href;
+            handleformatDate(data.city);
+            dispatch(SENDDATA(dataUser));
+            handleButtonClick('finish')
+        } catch (error) {
+            console.error('Ошибка при получении города:', error);
+        }
+    };
+    useEffect(() => {
+        console.log(11);
+        dispatch(STATUS(11, ID));
+    }, []);
     return (
         <div className={canvasClass} style={{ backgroundColor }}>
             {quiz.data.canvas3.video ? (
@@ -75,27 +100,28 @@ const Canvas3 = () => {
                 <div className="inputs">
                     {quiz.data.canvas3.name && (
                         <div className="name">
-                            <p style={{ color: textColor }}>Имя*</p>
-                            <input type="text" placeholder='Иван' style={{ borderColor: buttonColor }} />
+                            <p>Имя*</p>
+                            <input type="text" placeholder='Иван' onChange={handleInputChange(setName)} />
                             <img src={user} alt="#" />
                         </div>
                     )}
                     {quiz.data.canvas3.email && (
                         <div className="email">
-                            <p style={{ color: textColor }}>Email*</p>
-                            <input type="text" placeholder='Mail@example.com' style={{ borderColor: buttonColor }} />
+                            <p>Email*</p>
+                            <input type="text" placeholder='Mail@example.com' onChange={handleInputChange(setEmail)} />
                             <img src={letter} alt="#" />
                         </div>
                     )}
                     {quiz.data.canvas3.phone && (
                         <div className="phone">
-                            <p style={{ color: textColor }}>Телефон*</p>
-                            <input type="text" placeholder='+7 (900) 000-00-00' style={{ borderColor: buttonColor }} />
-                            <img src={phone} alt="#" />
+                            <p>Телефон*</p>
+                            <input type="text" placeholder='+7 (900) 000-00-00' onChange={handleInputChange(setPhone)} />
+                            <img src={phones} alt="#" />
                         </div>
                     )}
                 </div>
-                <button style={{ backgroundColor: buttonColor, color: buttonTextColor }}>Отправить</button>
+                <button style={{ backgroundColor: buttonColor, color: buttonTextColor }} onClick={() => handleSendForm()}>Отправить</button>
+                <button style={{ backgroundColor: buttonColor, color: buttonTextColor }} onClick={() => handleButtonClick('canvas2Back')}>Назад</button>
             </div>
         </div>
     );

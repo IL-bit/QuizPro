@@ -9,6 +9,7 @@ const PopUp = () => {
     const navigate = useNavigate();   
     const rates = useSelector((state) => state.rate);
     const application = useSelector((state) => state.applications);
+    const notifications = useSelector((state) => state.notifications);
     const handleClick = (route) => {
       navigate(route);
     };
@@ -50,7 +51,7 @@ const PopUp = () => {
     <div id='pop_up'>
         <div className="head">
             <h3 onClick={() => handleClick('/user/profile')}><img src={person} alt="#" />Мой профиль</h3>
-            <button className='notification' onClick={() => handleClick('/user/notifications')}><span>1</span></button>
+            <button className='notification' onClick={() => handleClick('/user/notifications')}><span>{notifications.length}</span></button>
         </div>
         <div className="application">
             <p className='count'>{data.max - data.count} заявок осталось</p>
@@ -65,7 +66,7 @@ const PopUp = () => {
         <ul>
             <li onClick={() => handleClick('/user/base')}>База знаний</li>
             <li onClick={() => handleClick('/user/createquizes')}>Галерея шаблонов</li>
-            <li>Ответы на частые вопросы</li>
+            <li onClick={() => window.location.href = 'http://qzpro.ru'}>Ответы на частые вопросы</li>
             <li>Новые фичи в Qz</li>
             <li>Предложить идею</li>
         </ul>

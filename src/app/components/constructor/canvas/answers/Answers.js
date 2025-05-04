@@ -11,7 +11,6 @@ import close from '../../../../img/Constructor/create/close.svg';
 const Answers = () => {
     const dispatch = useDispatch();
     const index = useSelector((state) => state.createQuiz.currentQuestionIndex);
-    console.log(index);
     const count = useSelector((state) => state.createQuiz.countQuestions);
     const canvas2 = useSelector((state) => state.createQuiz.data.canvas2);
     
@@ -105,8 +104,8 @@ const Answers = () => {
     };
 
     const handleDeleteQuestion = () => {
-        dispatch(removeQuestion(index)); // Удаляем вопрос        
-        dispatch(changeQuestion(-1)); // Переходим к предыдущему вопросу        
+        dispatch(removeQuestion(index));       
+        dispatch(changeQuestion(-1));       
     };
 
     const handleDragStart = (e, idx) => {

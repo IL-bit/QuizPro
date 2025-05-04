@@ -166,6 +166,7 @@
         padding-top: 22px;
         padding-left: 30px;
         padding-right: 30px;
+        padding-bottom: 96px;
         position: relative;
         >.id_answer {
             width: 100%;
@@ -328,7 +329,7 @@
             }
         }
         >.footer {
-            padding: 18px 24px 19px 24px;
+            padding: 18px 24px 79px 24px;
             >.id_answer {
                 border: 0.82px solid rgba(66, 87, 102, 0.38);
                 border-radius: 16px;
@@ -389,7 +390,7 @@
         border: 0.68px solid #1d2a33;
         border-radius: 17px;
         height: auto;
-        padding: 11px 17px 27px 10px;
+        padding: 11px 17px 7px 10px;
         margin-bottom: 0;
         >.answers {
             border: 0.68px solid rgba(66, 87, 102, 0.38);
@@ -477,7 +478,7 @@
             }
         }
         >.footer {
-            padding: 15px 21px 27px 21px;
+            padding: 15px 21px 70px 21px;
             >.id_answer {
                 border: 0.68px solid rgba(66, 87, 102, 0.38);
                 border-radius: 14px;

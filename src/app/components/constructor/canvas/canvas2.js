@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setCurrentQuestion, clearCanvas2, buttonClick, changeTitle } from '../../../../actions';
+import { setCurrentQuestion, clearCanvas2, buttonClick, changeTitle, setCurrentIndex } from '../../../../actions';
 import './style.scss';
 import answer1 from '../../../img/Constructor/create/answer1.svg';
 import answer2 from '../../../img/Constructor/create/answer2.svg';
@@ -18,7 +18,8 @@ const Canvas2 = () => {
   const dispatch = useDispatch();
   const index = useSelector((state) => state.createQuiz.currentQuestionIndex);
   const currentQuestion = useSelector((state) => state.createQuiz.currentQuestion);
-  const title = useSelector((state) => state.createQuiz.data.title); // Получаем заголовок из состояния
+  const title = useSelector((state) => state.createQuiz.data.title); 
+  const canvas2 = useSelector((state) => state.createQuiz.data.canvas2);
 
   const handleButtonClick = (componentName) => {
     dispatch(setCurrentQuestion(componentName));
@@ -32,7 +33,14 @@ const Canvas2 = () => {
     const newTitle = e.currentTarget.textContent; // Получаем новое значение заголовка
     dispatch(changeTitle(newTitle)); // Диспатчим новое значение заголовка
   };
-
+  const handleSetAnswer = () => {
+    if (canvas2.length > 0) {
+      const lastElement = canvas2[canvas2.length - 1]; // Получаем последний элемент
+      const currentIndex = canvas2.length - 1; // Индекс последнего элемента
+      dispatch(setCurrentQuestion(lastElement.name)); // Диспатчим имя последнего элемента
+      dispatch(setCurrentIndex(currentIndex));
+    }
+  };
   const renderComponent = () => {
     switch (currentQuestion) {
       case 'Answers':
@@ -70,7 +78,9 @@ const Canvas2 = () => {
   const handleButton = (index) => {
     dispatch(buttonClick(index));
   };
-
+  useEffect(() => {
+    handleSetAnswer();
+  }, []);
   return (
     <>
       <div id="canvas2">
@@ -83,6 +93,7 @@ const Canvas2 = () => {
             {title}
           </h2>
           <img src={pen} alt="#" />
+          <button className={`type_button ${currentQuestion === null ? 'active' : ''}`} onClick={() => handleSetAnswer()}></button>
         </div>
         <div className="canvas">
           {renderComponent()}

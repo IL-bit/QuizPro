@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { POSTQUIZ } from '../../../../middleware';
+import { setCurrentQuiz } from '../../../../actions';
 import add from '../../../img/Constructor/patterns/add.svg'
 
 const New = () => {
@@ -52,9 +53,9 @@ const New = () => {
   };
 
   const handleClick = () => {
-    console.log(createQuizData);
     dispatch(POSTQUIZ(names, token, createQuizData)).then((data) => {
       setTimeout(() => {
+        dispatch(setCurrentQuiz(data.id));
         navigate(`/user/quiz/${data.id}`);
       }, 1000);     
     })

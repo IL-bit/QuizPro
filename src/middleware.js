@@ -1,4 +1,4 @@
-import { setQuizes, setBalance, setProfile, setQuiz, setCurrentQuiz, noQuizes, logOut, isQuizes, setQuiz2, setApllications, noApplications, setStatist, setUsers, setUser, setDeposits, setBannedWords, setBannedUsers, isUser, isUsers, noUser, noUsers, isBlocked, noBlocked, setRate } from './actions'; 
+import { setQuizes, setBalance, setProfile, setQuiz, setCurrentQuiz, noQuizes, logOut, isQuizes, setQuiz2, setApllications, noApplications, setStatist, setUsers, setUser, setDeposits, setBannedWords, setBannedUsers, isUser, isUsers, noUser, noUsers, isBlocked, noBlocked, setRate, setConverion, setApllication, setNotifications, setHistory, setCountBase, setBase } from './actions'; 
 const url = 'http://qzpro.ru:8000';
 
 export const REGISTER = (formData) => async (dispatch) => { 
@@ -11,7 +11,6 @@ export const REGISTER = (formData) => async (dispatch) => {
             },
             body: JSON.stringify(formData),
         });
-        console.log(JSON.stringify(formData));
         if (!response.ok) {
             console.error('Fetch failed with status:', response.status); 
             return;
@@ -187,22 +186,20 @@ export const PROFILE = (token) => async (dispatch) => {
             return;
         }
         const data = await response.json();
-
-        console.log('ok', data);
         dispatch(setProfile(data.data.user)); 
-
     } catch (error) {       
         console.error("Error occurred:", error); 
     }
 };
 
-export const QUIZ = (id) => async (dispatch) => { 
+export const QUIZ = (id, token) => async (dispatch) => { 
     try {
         const response = await fetch(`${url}/api/quiz/${id}`, {
             method: 'GET',
             mode: 'cors',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
             }
         });
         if (!response.ok) {
@@ -210,10 +207,6 @@ export const QUIZ = (id) => async (dispatch) => {
             return;
         }
         const data = await response.json();
-
-        console.log('ok', data);
-        
-        console.log(data.params);
         dispatch(setQuiz(data.params)); 
 
     } catch (error) {       
@@ -235,10 +228,6 @@ export const QUIZESALL = (token) => async (dispatch) => {
             return;
         }
         const data = await response.json();
-
-        console.log('ok', data);
-        
-        // Диспатчим действие для обновления состояния
         dispatch(setQuizes(data)); 
         dispatch(noQuizes());
 
@@ -286,8 +275,6 @@ export const PUTQUIZ = (ID, token, datas) => async (dispatch) => {
             return;
         }
         const data = await response.json();
-
-        console.log('ok', data);
         dispatch(isQuizes());
 
     } catch (error) {       
@@ -295,7 +282,6 @@ export const PUTQUIZ = (ID, token, datas) => async (dispatch) => {
     }
 };
 export const POSTQUIZ = (newName, token, createQuizData) => async (dispatch) => { 
-    console.log(JSON.stringify({name: newName, params: createQuizData}))
     try {
         const response = await fetch(`${url}/api/quiz`, {
             method: 'POST',
@@ -311,8 +297,6 @@ export const POSTQUIZ = (newName, token, createQuizData) => async (dispatch) => 
             return;
         }
         const data = await response.json();
-
-        console.log('ok', data);
         dispatch(setCurrentQuiz(data.id));
         dispatch(isQuizes());
         return data;
@@ -344,7 +328,7 @@ export const DELETEQUIZ = (id, token) => async (dispatch) => {
 
 export const APPLICATIONS = (token) => async (dispatch) => { 
     try {
-        const response = await fetch(`${url}/api/application/1/3`, {
+        const response = await fetch(`${url}/api/application/0/99999`, {
             method: 'GET',
             mode: 'cors',
             headers: {
@@ -357,9 +341,28 @@ export const APPLICATIONS = (token) => async (dispatch) => {
             return;
         }
         const data = await response.json();
-
-        console.log('ok', data);
         dispatch(setApllications(data)); 
+
+    } catch (error) {       
+        console.error("Error occurred:", error); 
+    }
+};
+export const APPLICATION = (token, ID) => async (dispatch) => { 
+    try {
+        const response = await fetch(`${url}/api/application/${ID}`, {
+            method: 'GET',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        });
+        if (!response.ok) {
+            console.error('Fetch failed with status:', response.status); 
+            return;
+        }
+        const data = await response.json();
+        dispatch(setApllication(data)); 
 
     } catch (error) {       
         console.error("Error occurred:", error); 
@@ -385,8 +388,46 @@ export const DELETEAPPLICATION = (id, token) => async (dispatch) => {
         console.error("Error occurred:", error); 
     }
 };
+export const CONVERSION = (id, token) => async (dispatch) => { 
+    try {
+        const response = await fetch(`${url}/api/quiz/${id}/conversion`, {
+            method: 'GET',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        });
+        if (!response.ok) {
+            console.error('Fetch failed with status:', response.status); 
+            return;
+        }
+        const data = await response.json();
+        dispatch(setConverion(data)); 
 
-
+    } catch (error) {       
+        console.error("Error occurred:", error); 
+    }
+};
+export const SENDDATA = (userData) => async (dispatch) => {
+    try {
+        const response = await fetch(`${url}/api/application`, {
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(userData)
+        });
+        if (!response.ok) {
+            console.error('Fetch failed with status:', response.status); 
+            return;
+        }
+        const data = await response.json();
+    } catch (error) {       
+        console.error('Error occurred:', error); 
+    }
+};
 export const QUIZ2 = (id) => async (dispatch) => { 
     try {
         const response = await fetch(`${url}/api/quiz/${id}`, {
@@ -401,10 +442,6 @@ export const QUIZ2 = (id) => async (dispatch) => {
             return;
         }
         const data = await response.json();
-
-        console.log('ok', data);
-        
-        console.log(data.params);
         dispatch(setQuiz2(data.params)); 
 
     } catch (error) {       
@@ -454,8 +491,130 @@ export const TURNONQUIZ = (token, ID) => async (dispatch) => {
         console.error("Error occurred:", error); 
     }
 };
+export const STATUS = (id, quiz_id) => async (dispatch) => { 
+    try {
+        const response = await fetch(`${url}/api/quiz/counter`, {
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({'quiz_id': quiz_id, 'operation_id': id})
+        });
+        if (!response.ok) {
+            console.error('Fetch failed with status:', response.status); 
+            return;
+        }
+        const data = await response.json();
 
+    } catch (error) {       
+        console.error('Error occurred:', error); 
+    }
+};  
 
+export const NOTIFICATIONS = (token) => async (dispatch) => { 
+    try {
+        const response = await fetch(`${url}/api/notification`, {
+            method: 'GET',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        });
+        if (!response.ok) {
+            console.error('Fetch failed with status:', response.status); 
+            return;
+        }
+        const data = await response.json();
+        dispatch(setNotifications(data)); 
+
+    } catch (error) {       
+        console.error("Error occurred:", error); 
+    }
+};
+export const HISTORY = (token) => async (dispatch) => { 
+    try {
+        const response = await fetch(`${url}/api/balance_history`, {
+            method: 'GET',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        });
+        if (!response.ok) {
+            console.error('Fetch failed with status:', response.status); 
+            return;
+        }
+        const data = await response.json();
+        dispatch(setHistory(data.balance_history)); 
+
+    } catch (error) {       
+        console.error("Error occurred:", error); 
+    }
+};
+export const DELETEHISTORY = (token, id) => async (dispatch) => { 
+    try {
+        const response = await fetch(`${url}/api/balance_history/${id}`, {
+            method: 'DELETE',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        });
+        if (!response.ok) {
+            console.error('Fetch failed with status:', response.status); 
+            return;
+        }
+        const data = await response.json();
+    } catch (error) {       
+        console.error("Error occurred:", error); 
+    }
+};
+export const COUNTBASE = (token) => async (dispatch) => { 
+    try {
+        const response = await fetch(`${url}/api/articles/counter`, {
+            method: 'GET',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        });
+        if (!response.ok) {
+            console.error('Fetch failed with status:', response.status); 
+            return;
+        }
+        const data = await response.json();
+        dispatch(setCountBase(data)); 
+
+    } catch (error) {       
+        console.error("Error occurred:", error); 
+    }
+};
+export const BASE = (token, id) => async (dispatch) => { 
+    try {
+        const response = await fetch(`${url}/api/article/${id}`, {
+            method: 'GET',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        });
+        if (!response.ok) {
+            console.error('Fetch failed with status:', response.status); 
+            return;
+        }
+        const data = await response.json();
+        dispatch(setBase(data)); 
+
+    } catch (error) {       
+        console.error("Error occurred:", error); 
+    }
+};
 /* admin */
 export const STATIS = (token) => async (dispatch) => { 
     try {
@@ -480,7 +639,7 @@ export const STATIS = (token) => async (dispatch) => {
 };
 export const USERS = (token) => async (dispatch) => { 
     try {
-        const response = await fetch(`${url}/api/admin/users/0/0/3`, {
+        const response = await fetch(`${url}/api/admin/users/0/0/9999999`, {
             method: 'GET',
             mode: 'cors',
             headers: {
@@ -566,7 +725,7 @@ export const BANNEDWORDS = (token) => async (dispatch) => {
 };
 export const BANNEDUSERS = (token) => async (dispatch) => { 
     try {
-        const response = await fetch(`${url}/api/admin/users/1/0/3`, {
+        const response = await fetch(`${url}/api/admin/users/1/0/9999999`, {
             method: 'GET',
             mode: 'cors',
             headers: {

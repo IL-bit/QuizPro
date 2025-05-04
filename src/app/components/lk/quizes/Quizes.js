@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { setCurrentQuiz } from '../../../../actions';
+import { setCurrentQuiz, setLk2, setNameQuiz, deleteConversion } from '../../../../actions';
 import { DELETEQUIZ, PUTQUIZNAME } from '../../../../middleware';
 import './style.scss';
 import change from '../../../img/quizes/change.svg';
@@ -29,13 +29,17 @@ const Quizes = () => {
   const [searchs, setSearch] = useState('Поиск по названию...');
   const [filteredQuizzes, setFilteredQuizzes] = useState(quizes); 
   const [modal, setModal] = useState(false);
-
+  const [modalDelete, setModalDelete] = useState(false);
+  const [quizToDelete, setQuizToDelete] = useState(null);
   const handleModal = () => {
     setModal(!modal);
   }
-  const handleClick = (route, id) => {
+  const handleClick = (route, quiz) => {
       navigate(route);
-      dispatch(setCurrentQuiz(id));
+      dispatch(deleteConversion());
+      dispatch(setNameQuiz(quiz.name))
+      dispatch(setCurrentQuiz(quiz.id));
+      dispatch(setLk2(1));
   };
 
   const handleCheckboxChange = (id) => {
@@ -66,7 +70,8 @@ const Quizes = () => {
       setSelectedQuizzes(prevState => ({ ...prevState, [id]: false }));
       const newQuizName = inputValues[id] || ''; // Получаем название из input
       dispatch(PUTQUIZNAME(id, newQuizName, token)); // Передаем название
-      setUpdatedQuizzes(prevState => ({ ...prevState, [id]: newQuizName })); // Обновляем состояние
+      setUpdatedQuizzes(prevState => ({ ...prevState, [id]: newQuizName })); 
+      handleClose(id);
   };
   const handleSearchBlur = (e) => {
     setSearch(e.target.innerText); 
@@ -87,6 +92,24 @@ const Quizes = () => {
       );
       setFilteredQuizzes(filtered);
     }
+  };
+  const handleDeleteClick = (id) => {
+    setQuizToDelete(id); 
+    setModalDelete(true); 
+  };
+
+  const confirmDelete = () => {
+      if (quizToDelete) {
+          dispatch(DELETEQUIZ(quizToDelete, token)); 
+          setDeletedQuizzes(prevState => ({ ...prevState, [quizToDelete]: true })); 
+          setQuizToDelete(null); 
+      }
+      setModalDelete(false); 
+  };
+
+  const cancelDelete = () => {
+      setQuizToDelete(null);
+      setModalDelete(false); 
   };
   useEffect(() => {
     handleSearch();
@@ -118,7 +141,7 @@ const Quizes = () => {
             <div className={`quiz_small ${selectedQuizzes[quiz.id] ? 'active' : ''} ${deletedQuizzes[quiz.id] ? 'delete' : ''}`} key={quiz.id}>
               <div className={`quiz_small_head ${selectedQuiz[quiz.id] ? 'active' : ''}`}>
                 <p>{quiz.id}</p>
-                <h5>{deletedQuizzes[quiz.id] ? quiz.name : (updatedQuizzes[quiz.id] || quiz.name)}</h5> {/* Изменено здесь */}
+                <h5>{deletedQuizzes[quiz.id] ? quiz.name : (updatedQuizzes[quiz.id] || quiz.name)}</h5> 
                 <input 
                   type="text" 
                   placeholder='Написание нового названия...'
@@ -134,10 +157,10 @@ const Quizes = () => {
                 </button>
               </div>
               <div className="quiz_small_btns">
-                <button><img src={notes} alt="#" />Заявки<div className="count">2</div></button>
-                <button onClick={deletedQuizzes[quiz.id] ? null : () => handleClick(`/user/quiz/${quiz.id}/conversion`, quiz.id)}><img src={convers} alt="#"/>Конверсия</button>
-                <button onClick={deletedQuizzes[quiz.id] ? null : () => handleClick(`/user/quiz/${quiz.id}`, quiz.id)}><img src={widget} alt="#" />Редактировать</button>
-                <button onClick={deletedQuizzes[quiz.id] ? null : () => handleClick(`/user/quiz/${quiz.id}/previev/pc`, quiz.id)}><img src={eye} alt="#" />Предпросмотр</button>
+                <button><img src={notes} alt="#" />Заявки<div className="count">{quiz.apps}</div></button>
+                <button onClick={deletedQuizzes[quiz.id] ? null : () => handleClick(`/user/quiz/${quiz.id}/conversion`, quiz)}><img src={convers} alt="#"/>Конверсия</button>
+                <button onClick={deletedQuizzes[quiz.id] ? null : () => handleClick(`/user/quiz/${quiz.id}`, quiz)}><img src={widget} alt="#" />Редактировать</button>
+                <button onClick={deletedQuizzes[quiz.id] ? null : () => handleClick(`/user/quiz/${quiz.id}/previev/pc`, quiz)}><img src={eye} alt="#" />Предпросмотр</button>
               </div>
               <input 
                 type="checkbox" 
@@ -145,9 +168,18 @@ const Quizes = () => {
                 checked={selectedQuizzes[quiz.id]}
                 onChange={deletedQuizzes[quiz.id] ? null : () => handleCheckboxChange(quiz.id)} 
               />        
-              <button className="delete" onClick={deletedQuizzes[quiz.id] ? null : () => handleDelete(quiz.id)}><img src={trash} alt="#" /></button>
+              <button className="delete" onClick={deletedQuizzes[quiz.id] ? null : () => handleDeleteClick(quiz.id)}><img src={trash} alt="#" /></button>
             </div>          
-          )) : null}                     
+          )) : null}    
+          <div id='bgPop' className={modalDelete ? 'active' : ''}></div>    
+          <div id='Pop' className={modalDelete ? 'active' : ''}>
+            <h1>Вы действительно хотите удалить квиз?</h1>
+            <button onClick={() => cancelDelete()}></button>
+            <div className="btns">
+              <button onClick={() => confirmDelete()}>Да</button>
+              <button onClick={() => cancelDelete()}>Нет</button>
+            </div>
+          </div>                    
         </div>  
       </div>
     </div>

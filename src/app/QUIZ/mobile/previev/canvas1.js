@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './style.scss';
-import { useSelector } from 'react-redux';
+import { STATUS } from '../../../../middleware';
+import { useSelector, useDispatch } from 'react-redux';
 
 const Canvas1 = ({ handleButtonClick }) => {  
+    const dispatch = useDispatch();
+    const url = 'http://qzpro.ru';
+    const ID = useSelector((state) => state.quiz.currentQuizID);
     const quiz = useSelector((state) => state.quiz);
     const theme = quiz.data.theme.theme;
 
@@ -13,7 +17,10 @@ const Canvas1 = ({ handleButtonClick }) => {
     const buttonTextColor = theme === 'user' ? quiz.data.theme.buttonTextColor : ''; 
 
     const logoStyle = quiz.data.canvas1.logo ? { background: `url(${quiz.data.canvas1.logo})` } : { backgroundColor: 'rgba(66, 87, 102, 0.52)' };
-
+    useEffect(() => {
+      console.log(13);
+      dispatch(STATUS(13, ID));
+    })
     return (
         <div id='canvas1Mob' style={{ backgroundColor }}>
             {quiz.data.canvas1.mobileVideo ? (

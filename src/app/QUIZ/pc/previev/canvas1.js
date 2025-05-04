@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './canvas1.scss';
-import { useSelector } from 'react-redux';
+import { STATUS } from '../../../../middleware';
+import { useSelector, useDispatch } from 'react-redux';
 
 const Canvas1 = ({ handleButtonClick }) => {  
+    const dispatch = useDispatch();
     const url = 'http://qzpro.ru';
     const ID = useSelector((state) => state.quiz.currentQuizID);
     const quiz = useSelector((state) => state.quiz);
@@ -17,26 +19,10 @@ const Canvas1 = ({ handleButtonClick }) => {
     const buttonTextColor = theme === 'user' ? quiz.data.theme.button_text_color : ''; 
 
     const logoStyle = quiz.data.canvas1.logo ? { background: `url(${quiz.data.canvas1.logo})` } : { backgroundColor: 'rgba(66, 87, 102, 0.52)' };
-    const COUNT = async () => { 
-        try {
-            const response = await fetch(`${url}/api/quiz/counter`, {
-                method: 'PUT',
-                mode: 'cors',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({id: ID, counter: 0})
-            });
-            if (!response.ok) {
-                console.error('Fetch failed with status:', response.status); 
-                return;
-            }
-            const data = await response.json();    
-            console.log('ok', ID);
-        } catch (error) {       
-            console.error("Error occurred:", error); 
-        }
-    };
+    useEffect(() => {
+      console.log(13);
+      dispatch(STATUS(13, ID));
+    })
     return (
         <div className={canvasClass} style={{ backgroundColor }}>
             {quiz.data.canvas1.video ? (
@@ -54,7 +40,7 @@ const Canvas1 = ({ handleButtonClick }) => {
                 </div>
                 <h1 style={{ color: textColor }}>{quiz.data.canvas1.title}</h1>
                 <h3 style={{ color: textColor }}>{quiz.data.canvas1.subtitle}</h3>
-                <button onClick={() => {handleButtonClick('canvas2'); COUNT()}} style={{ backgroundColor: buttonColor, color: buttonTextColor }}>
+                <button onClick={() => {handleButtonClick('canvas2')}} style={{ backgroundColor: buttonColor, color: buttonTextColor }}>
                     {quiz.data.canvas1.button}
                 </button>
                 <a href="http://qzpro.ru" style={{ color: textColor, textDecorationColor: buttonColor }}>Создано в <span style={{ color: buttonColor }}>QZ.pro</span></a>

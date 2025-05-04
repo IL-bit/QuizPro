@@ -59,10 +59,26 @@ const initialState = {
         isQuiz: false,
         data: {}
     },
+    userAnswer: [],
     quizes: [],
-    isQuizes: true,
+    conversion: {},
+    quizName: '',
+    isQuizes: false,
     isApplications: false,
     applications: [],
+    filters: {
+        type: '',
+        name: '',
+        city: '',
+        time: '',
+        dateFrom: '',
+        dateTo: ''
+    },
+    application: {
+        id: 0,
+        data: {}
+    },    
+    notifications: [],
     profile: {},
     login: '',
     email: '',
@@ -70,10 +86,18 @@ const initialState = {
     isAdmin: false,    
     isProfile: false,
     balance: -1,
+    balance_history: {
+        deposits: [],
+        writeOff: []
+    },
+    base: {},
+    current_base: [],
+    current_base_index: null,
     Token: '',
     rate: '',
+    isPopUp2: true,
     leftbarLk: 2,
-    leftbar: 1,
+    leftbarConstr: 1,
     admin: {
         statistic: {},
         filters: {
@@ -144,8 +168,6 @@ const RootReducer = createReducer(initialState, builder => {
         state.createQuiz.data[canvas].video = file; 
     })
     .addCase('RESETBACKGROUND', (state, action) => {
-        console.log(state.createQuiz.isvideo1);
-        console.log(state.createQuiz.isvideo2); 
         const canvas = action.payload;
         if (canvas === 'canvas1' && state.createQuiz.data.isvideo1 === false) {
             state.createQuiz.data.isvideo1 = true;
@@ -162,6 +184,9 @@ const RootReducer = createReducer(initialState, builder => {
     })
     .addCase('HANDLESETCURRENTSECTION', (state, action) => {
         state.createQuiz.currentSection = action.payload;
+    })
+    .addCase('HANDLESETCURRENTQUESTIONINDEX', (state, action) => {
+        state.createQuiz.currentQuestionIndex = action.payload;
     })
     .addCase('ADDQUESTION', (state, action) => {
         state.createQuiz.data.canvas2.push(action.payload);
@@ -209,8 +234,8 @@ const RootReducer = createReducer(initialState, builder => {
         state.createQuiz.currentQuestion = null; 
     })
     .addCase('CLEAR_CANVAS2', (state) => {
-        state.createQuiz.data.canvas2 = []; // Очищаем canvas2
-        state.createQuiz.currentQuestionIndex = 0; // Сбрасываем индекс текущего вопроса
+        state.createQuiz.data.canvas2 = []; 
+        state.createQuiz.currentQuestionIndex = 0; 
         state.createQuiz.data.title = 'Заголовок страницы';
     })
     .addCase('TURNOFFCANVAS1', (state) => {
@@ -224,10 +249,10 @@ const RootReducer = createReducer(initialState, builder => {
         state.createQuiz.data.canvas1.isActive = true;
     })
     .addCase('SET_ALIGN', (state, action) => {
-        state.createQuiz.data.canvas1.aling = action.payload; // Обновляем значение align
+        state.createQuiz.data.canvas1.aling = action.payload; 
     })
     .addCase('SET_ALIGN3', (state, action) => {
-        state.createQuiz.data.canvas3.aling = action.payload; // Обновляем значение align
+        state.createQuiz.data.canvas3.aling = action.payload; 
     })
     .addCase('CHANGETHEME', (state, action) => {
         state.createQuiz.data.theme.theme = action.payload; 
@@ -257,8 +282,6 @@ const RootReducer = createReducer(initialState, builder => {
     })
     /* ЛК */
     .addCase('LOGIN_SUCCESS', (state, action) => {
-        console.log('LOGIN_SUCCESS action triggered');
-        console.log('Access Token:', action.payload.data.accessToken); 
         if (action.payload.data.isAdmin) {
             state.isAdmin = true;
             state.Token = action.payload.data.accessToken; 
@@ -268,26 +291,18 @@ const RootReducer = createReducer(initialState, builder => {
                 localStorage.setItem('access_token', state.Token); 
                 const expirationTime = Date.now() + 3 * 24 * 60 * 60 * 1000; 
                 localStorage.setItem('token_expiration', expirationTime);
-
                 state.login = 'ok';
                 state.isAuth = true;
-                console.log('SUCCESS', action);
-                console.log('Token saved to localStorage:', state.Token);
-            } else {
-                console.error('No access token found in action payload');
             }            
         }
     })
     .addCase('LOGIN_ERROR', (state) => {
         state.login = 'error';
-        console.log('ERROR');
     })
     .addCase('LOGIN_FAILED', (state) => {
         state.login = 'no';
-        console.log('NO');
     })
     .addCase('LOGOUT', (state) => {
-        console.log('LOGOUT');
         localStorage.removeItem('access_token');
         localStorage.removeItem('token_expiration');
         state.isAuth = false;
@@ -307,18 +322,16 @@ const RootReducer = createReducer(initialState, builder => {
 
         if (isLog && expirationTime) {
             if (Date.now() > expirationTime) {
-                // Если срок действия токена истек, удаляем его
                 localStorage.removeItem('access_token');
                 localStorage.removeItem('token_expiration');
-                state.isAuth = false; // Обновляем состояние аутентификации
-                console.log('Token expired and removed from localStorage');
+                state.isAuth = false;
             } else {
                 state.Token = isLog; 
                 state.login = 'ok';
-                state.isAuth = true; // Токен действителен
+                state.isAuth = true; 
             }
         } else {
-            state.isAuth = false; // Токен отсутствует
+            state.isAuth = false; 
         }
     })
     .addCase('SET_BALANCE', (state, action) => {
@@ -339,6 +352,9 @@ const RootReducer = createReducer(initialState, builder => {
     .addCase('SET_APPLICATIONS', (state, action) => {
         state.isApplications = true;
         state.applications = action.payload;
+    })
+    .addCase('SET_APPLICATION', (state, action) => {
+        state.application.data = action.payload;
     })
     .addCase('NO_APPLICATIONS', (state, action) => {
         state.isApplications = false;
@@ -364,51 +380,123 @@ const RootReducer = createReducer(initialState, builder => {
         state.isQuizes = true;
     })
     .addCase('SET_CURRENT_QUIZ', (state, action) => {
-        console.log(action.payload);
         state.createQuiz.currentQuizID = action.payload;
     })
     .addCase('SET_CURRENT_QUIZ2', (state, action) => {
         state.quiz.currentQuizID = action.payload;    
     })
     .addCase('SET_QUIZ', (state, action) => {
-        console.log(action.payload);
         state.createQuiz.isData = true;
+        state.createQuiz.currentSection = 0;
+        state.createQuiz.currentQuestion = null;
+        state.createQuiz.currentQuestionIndex = 0;
+        state.createQuiz.countQuestions = 0;
         state.createQuiz.data = action.payload;
     })
+    .addCase('SET_NO_QUIZ', (state) => {
+        state.createQuiz.isData = false;
+        state.createQuiz.currentSection = 0;
+        state.createQuiz.currentQuestion = null;
+        state.createQuiz.currentQuestionIndex = 0;
+        state.createQuiz.countQuestions = 0;
+    })
+    .addCase('SET_CONVERSION', (state, action) => {
+        state.conversion = action.payload;
+    })
+    .addCase('DELETE_CONVERSION', (state) => {
+        state.conversion = {};
+        state.quizName = '';
+    })
+    .addCase('DELETE_APPLICATION', (state) => {
+        state.application.data = {};
+        state.application.id = '';
+    })
+    .addCase('SET_NAME_QUIZ', (state, action) => {
+        state.quizName = action.payload;
+    })
+    .addCase('SET_ID_APPLICATION', (state, action) => {
+        state.application.id = action.payload;
+    })
     .addCase('SET_QUIZ2', (state, action) => {
-        console.log(action.payload);
         state.quiz.data = action.payload;
     })
     .addCase('SET_LEFTBAR', (state, action) => {
         state.leftbarLk = action.payload;
     })
     .addCase('SET_LEFTBAR2', (state, action) => {
-        state.leftbar = action.payload;
+        state.leftbarConstr = action.payload;
+    })
+    .addCase('SET_ANSWER', (state, action) => {
+        state.userAnswer.push(action.payload);
+    })
+    .addCase('CHANGE_ANSWER', (state, action) => {
+        const { id, data } = action.payload;
+        state.userAnswer[id] = data;
     })
 
+    .addCase('SET_CITY', (state, action) => {
+        state.filters.city = action.payload;
+    })
+    .addCase('SET_TIME', (state, action) => {
+        state.filters.time = action.payload;
+    })
+    .addCase('SET_DATE_TO', (state, action) => {
+        state.filters.dateTo = action.payload;
+    })
+    .addCase('SET_DATE_FROM', (state, action) => {
+        state.filters.dateFrom = action.payload;
+    })
+    .addCase('SET_TYPE', (state, action) => {
+        state.filters.type = action.payload;
+    })
+    .addCase('SET_NAME', (state, action) => {
+        state.filters.name = action.payload;
+    })
+    .addCase('SET_NOTIFICATIONS', (state, action) => {
+        state.notifications = action.payload;
+    })
+    .addCase('SET_HISTORY', (state, action) => {
+        const deposits = [];
+        const writeOff = [];
+        action.payload.forEach(transaction => {
+            if (transaction.operation === 'minus') {
+                writeOff.push(transaction);
+            } else {
+                deposits.push(transaction); 
+            }
+        });
+        state.balance_history.deposits = deposits;
+        state.balance_history.writeOff = writeOff;
+    })
+    .addCase('NO_POPUP2', (state) => {
+        state.isPopUp2 = false;
+    })
+    .addCase('SET_COUNT_BASE', (state, action) => {
+        state.base = action.payload;
+    })
+    .addCase('SET_BASE', (state, action) => {
+        state.current_base = action.payload;
+    })
+    .addCase('SET_CURRENT_BASE', (state, action) => {
+        state.current_base_index = action.payload;
+    })
     /* admin */
     .addCase('SET_STATIST', (state, action) => {
-        console.log(action.payload);
         state.admin.statistic = action.payload;
     })
     .addCase('SET_USERS', (state, action) => {
-        console.log(action.payload);
         state.admin.users = action.payload;
     })
     .addCase('SET_USER', (state, action) => {
-        console.log(action.payload);
         state.admin.currentUser = action.payload;
     })
     .addCase('SET_DEPOSITS', (state, action) => {
-        console.log(action.payload);
         state.admin.deposits = action.payload;
     })
     .addCase('SET_BANNEDWORDS', (state, action) => {
-        console.log(action.payload);
         state.admin.bannedWords = action.payload;
     })
     .addCase('SET_BANNEDUSERS', (state, action) => {
-        console.log(action.payload);
         state.admin.blockedUsers = action.payload;
     })
     .addCase('IS_USERS', (state) => {

@@ -1,16 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { DELETEHISTORY } from '../../../../middleware';
+import { useDispatch, useSelector } from 'react-redux';
 import './style.scss';
 import trash from '../../../img/history/trash.svg';
 
-const Dprocess = () => {
+const Dprocess = ({data}) => {
+  const dispatch = useDispatch();
+  const token = useSelector((state) => state.Token);
+  const [isDeleted, setDeleted] = useState(false);
+  const handleDelete = (id) => {
+    dispatch(DELETEHISTORY(token, id));
+    setDeleted(true)
+  };
   return (
-    <div className="referal">
-        <div className='id'>#ID23</div>
+    <div className={`referal ${isDeleted ? 'deleted' : ''}`}>
+        <div className='id'>#{data.id}</div>
         <h5>Выплаты по реферальной программе</h5>
-        <p className='date'>08.12.2024</p>
-        <p className='money'>590 ₽</p>
+        <p className='date'>{data.date}</p>
+        <p className='money'>{data.amount}</p>
         <div>Получен</div>
-        <button className='trash'><img src={trash} alt="#" /></button>
+        <button className="trash" onClick={isDeleted ?  null : () => handleDelete(data.id)}><img src={trash} alt="#" /></button>
     </div>
   )
 }

@@ -20,11 +20,11 @@ const LeftBar = () => {
     <div className="col-xxl-2" id='LeftBar'>
         <div onClick={() => handleChangeRoute('/admin/statist')}><img src={statist} alt="#" />Статистика</div>
         <div onClick={() => handleChangeRoute('/admin/deposits')}><img src={deposits} alt="#" />Пополнения</div>
-        <div onClick={() => handleChangeRoute('/admin/writeOff')}><img src={writeoffsuccess} alt="#" />Подтвержденый вывод</div>
-        <div onClick={() => handleChangeRoute('/admin/writeOffError')}><img src={writeoff} alt="#" />Отклоненный вывод</div>
+        {/* <div onClick={() => handleChangeRoute('/admin/writeOff')}><img src={writeoffsuccess} alt="#" />Подтвержденый вывод</div> */}
+        {/* <div onClick={() => handleChangeRoute('/admin/writeOffError')}><img src={writeoff} alt="#" />Отклоненный вывод</div> */}
         <div onClick={() => handleChangeRoute('/admin/users')}><img src={users} alt="#" />Аккаунты пользователей</div>
         <div onClick={() => handleChangeRoute('/admin/bannedWodrs')}><img src={bannedWords} alt="#" />Запрещенные слова</div>
-        <div><img src={configurations} alt="#" />Конфигурация групп</div>
+        {/* <div><img src={configurations} alt="#" />Конфигурация групп</div> */}
         <div onClick={() => handleChangeRoute('/admin/bannedUsers')}><img src={userBlock} alt="#" />Заблокированные пользователи</div>
     </div>
   )

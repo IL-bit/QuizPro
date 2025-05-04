@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import './style.scss';
 import LeftBar from '../../components/lk/leftBar/LeftBar';
 import Dprocess from '../../components/lk/history/Dprocess';
@@ -8,6 +9,23 @@ import Drefund from '../../components/lk/history/Drefund';
 import Dreferal from '../../components/lk/history/Dreferal';
 
 const Deposits = () => {
+    const deposit = useSelector((state) => state.balance_history.deposits);
+    const renderStatusComponent = (item) => {
+        switch (item.status) {
+            case 'process':
+                return <Dprocess data={item}/>;
+            case 'paid':
+                return <Dpaid data={item}/>;
+            case 'error':
+                return <Derror data={item}/>;
+            case 'refund':
+                return <Drefund data={item}/>;
+            case 'referral':
+                return <Dreferal data={item}/>;
+            default:
+                return null;
+        }
+    };
   return (
     <div className="container">
         <div className="row">
@@ -25,11 +43,7 @@ const Deposits = () => {
                             <p>Статус</p>                            
                         </div>
                         <div className="items">
-                            <Dprocess />
-                            <Dpaid />
-                            <Derror />
-                            <Drefund />
-                            <Dreferal />
+                            {deposit.length > 0 ? deposit.map(item => (renderStatusComponent(item))) : null}
                         </div>
                     </div>
                     <div className="history mobile">
@@ -41,21 +55,7 @@ const Deposits = () => {
                                 <p>Статус</p>                            
                             </div>
                             <div className="items">
-                                <Dprocess />
-                                <Dpaid />
-                                <Derror />
-                                <Drefund />
-                                <Dreferal />
-                                <Dprocess />
-                                <Dpaid />
-                                <Derror />
-                                <Drefund />
-                                <Dreferal />
-                                <Dprocess />
-                                <Dpaid />
-                                <Derror />
-                                <Drefund />
-                                <Dreferal />
+                                {deposit.length > 0 ? deposit.map(item => (renderStatusComponent(item))) : null}
                             </div>
                         </div>
                     </div>

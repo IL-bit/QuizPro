@@ -7,10 +7,11 @@ import Constructor from '../../components/constructor/Constructor';
 const CreateNew = () => {
   const dispatch = useDispatch();
   const isData = useSelector((state) => state.createQuiz.isData);
+  const token = useSelector((state) => state.Token);
   const currentQuizID = useSelector((state) => state.createQuiz.currentQuizID);
   useEffect(() => {
     if (!isData) {
-      dispatch(QUIZ(currentQuizID));
+      dispatch(QUIZ(currentQuizID, token));
     }
   })
   return (

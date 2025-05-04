@@ -40,7 +40,7 @@ const PrevievQuizPc = () => {
     <div className="container" id='previevQuizPc'>
         <div className="row">
             <div className={`col-xxl-12 col-xl-12 col-lg-12 ${theme}`}>
-                <button className='close' onClick={() => handleClick(`/user`)}>{theme === 'dark'? <img src={closeDark} alt="#" /> : <img src={close} alt="#" />}</button>
+                <button className='close' onClick={() => handleClick(`/user/quiz/${quizID}`)}>{theme === 'dark'? <img src={closeDark} alt="#" /> : <img src={close} alt="#" />}</button>
                 <div className={`previev ${theme}-theme ${buttonStyle}`}>
                   {currentCanvas === 'canvas1' && (
                     <Canvas1 handleButtonClick={handleButtonClick} />

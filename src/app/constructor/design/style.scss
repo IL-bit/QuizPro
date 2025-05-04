@@ -104,7 +104,7 @@
                 height: 56px;
                 display: flex;
                 align-items: center;
-                position: relative;                
+                position: relative;                              
                 p {
                     margin: 0;
                     font-weight: 300;
@@ -123,7 +123,7 @@
                     align-items: center;
                     padding-left: 10px;
                     padding-right: 13px;
-
+                    cursor: pointer;  
                     >button {
                         margin-left: 0;
                         border-radius: 100%;
@@ -175,6 +175,7 @@
                     align-items: center;
                     padding-left: 10px;
                     padding-right: 13px;
+                    cursor: pointer;  
                     >button {
                         margin-left: 0;
                         border-radius: 100%;

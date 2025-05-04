@@ -5,87 +5,90 @@
     height: 902px;
     background: #0f181e;
     padding: 24px 26px 13px 15px;
-    position: relative;
-    >h2 {
-        margin: 0;
-        font-weight: 500;
-        font-size: 26px;
-        color: #fff;
-        margin-left: 39px;
-        margin-top: 7px;
-        width: 85px;
-    }
-    >.all {
-        border-radius: 24px;
-        width: 63px;
-        height: 47px;
-        background: #141e27;
-        position: absolute;
-        left: 171px;
-        top: 24px;
-        font-weight: 500;
-        font-size: 14px;
-        color: #fff;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    >.new {
-        border-radius: 24px;
-        width: 138px;
-        height: 48px;
-        background: #141e27;
-        position: absolute;
-        left: 239px;
-        top: 24px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-        font-weight: 300;
-        font-size: 14px;
-        color: #fff;
-        div {
+    >.head {
+        position: relative;
+        padding-top: 7px;
+        >h2 {
+            margin: 0;
+            font-weight: 500;
+            font-size: 26px;
+            color: #fff;
+            margin-left: 39px;
+            width: 85px;
+        }
+        >.all {
             border-radius: 24px;
-            width: 59px;
-            height: 40px;
-            background: #1c2a36;
+            width: 63px;
+            height: 47px;
+            background: #141e27;
+            position: absolute;
+            left: 171px;
+            top: 0;
             font-weight: 500;
             font-size: 14px;
-            color: #6df882;
+            color: #fff;
             display: flex;
             align-items: center;
             justify-content: center;
         }
-    }
-    >button {
-        background: none;
-        border: none;
-        font-weight: 300;
-        font-size: 14px;
-        color: #fff;
-        position: absolute;
-        left: auto;
-        img {
-            margin-top: -2px;
-            margin-right: 10px;
+        >.new {
+            border-radius: 24px;
+            width: 138px;
+            height: 48px;
+            background: #141e27;
+            position: absolute;
+            left: 239px;
+            top: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-weight: 300;
+            font-size: 14px;
+            color: #fff;
+            div {
+                border-radius: 24px;
+                width: 59px;
+                height: 40px;
+                background: #1c2a36;
+                font-weight: 500;
+                font-size: 14px;
+                color: #6df882;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
         }
-    }
-    >:nth-child(4) {
-        width: 110px;
-        height: 24px;
-        right: 184px;
-        top: 37px;
-    }
-    >:nth-child(5) {
-        width: 103px;
-        height: 20px;
-        right: 60px;
-        top: 38px;
-        img {
-            margin-top: -5px;
+        >button {
+            background: none;
+            border: none;
+            font-weight: 300;
+            font-size: 14px;
+            color: #fff;
+            position: absolute;
+            left: auto;
+            img {
+                margin-top: -2px;
+                margin-right: 10px;
+            }
         }
+        >:nth-child(4) {
+            width: 110px;
+            height: 24px;
+            right: 184px;
+            top: 13px;
+        }
+        >:nth-child(5) {
+            width: 103px;
+            height: 20px;
+            right: 60px;
+            top: 14px;
+            img {
+                margin-top: -5px;
+            }
+        }        
     }
+
     >.content {
         border: 1px solid rgba(66, 87, 102, 0.38);
         border-radius: 20px;
@@ -113,6 +116,7 @@
                 font-weight: 300;
                 font-size: 14px;
                 color: #fff;
+                cursor: pointer;
                 img {
                     margin-left: auto;
                     margin-right: 0;
@@ -258,6 +262,7 @@
                     justify-content: center;
                 }
                 >.date {
+                    width: 123px;
                     text-align: left;
                     font-weight: 300;
                     font-size: 14px;
@@ -266,6 +271,7 @@
                     margin-bottom: 0;
                 }
                 >.name {
+                    width: 150px;
                     font-weight: 300;
                     font-size: 14px;
                     color: #fff;
@@ -325,6 +331,11 @@
                 &.pc {
                     display: flex !important;
                 }
+                &.deleted {
+                    box-shadow: inset -17px -14px 49px -26px rgba(255, 58, 58, 0.89);
+                    background: #141e27;
+                    transition: 0.5s ease-in-out;  
+                }
             }  
         }
        
@@ -343,70 +354,71 @@
         height: 814px;
         padding: 19px 21px 0px 12px;
         padding-top: 19px;
-        >h2 {
-            margin-top: 6px;
-            margin-left: 32px;
-            width: 29px;
-            font-weight: 500;
-            font-size: 21px;
-            color: #fff;
-        }
-        >.all {
-            border-radius: 19px;
-            width: 51px;
-            height: 38px;
-            margin: 0;
-            top: 19px;
-            left: 139px;
-            font-weight: 500;
-            font-size: 11px;
-            color: #fff;
-        }
-        >.new {
-            border-radius: 19px;
-            width: 111px;
-            height: 38px;
-            margin: 0;
-            top: 19px;
-            left: 194px;
-            gap: 8px;
-            font-weight: 300;
-            font-size: 11px;
-            color: #fff;
-            padding-left: 7px;
-            div {
+        >.head {
+            padding-top: 6px;
+            >h2 {
+                margin-left: 32px;
+                width: 29px;
+                font-weight: 500;
+                font-size: 21px;
+                color: #fff;
+            }
+            >.all {
                 border-radius: 19px;
-                width: 47px;
-                height: 32px;
+                width: 51px;
+                height: 38px;
+                margin: 0;
+                left: 139px;
                 font-weight: 500;
                 font-size: 11px;
-                color: #6df882;
+                color: #fff;
             }
-        }
-        >button {
-            font-weight: 300;
-            font-size: 11px;
-            color: #fff;
-            img {
-                width: 19px;
+            >.new {
+                border-radius: 19px;
+                width: 111px;
+                height: 38px;
+                margin: 0;
+                left: 194px;
+                gap: 8px;
+                font-weight: 300;
+                font-size: 11px;
+                color: #fff;
+                padding-left: 7px;
+                div {
+                    border-radius: 19px;
+                    width: 47px;
+                    height: 32px;
+                    font-weight: 500;
+                    font-size: 11px;
+                    color: #6df882;
+                }
+            }
+            >button {
+                font-weight: 300;
+                font-size: 11px;
+                color: #fff;
+                img {
+                    width: 19px;
+                    height: 19px;
+                    margin-right: 6px;
+                }
+            }
+            >:nth-child(4) {
+                top: 12px;
+                width: 86px;
                 height: 19px;
-                margin-right: 6px;
             }
+            >:nth-child(5) {
+                top: 13px;
+                width: 76px;
+                height: 19px;
+                img {
+                    width: 16px;
+                    height: 16px;
+                }
+            }            
         }
-        >:nth-child(4) {
-            top: 30px;
-            width: 86px;
-            height: 19px;
-        }
-        >:nth-child(5) {
-            top: 31px;
-            width: 76px;
-            height: 19px;
-            img {
-                width: 16px;
-                height: 16px;
-            }
-        }
+
         >.content {
             border: 0.81px solid rgba(66, 87, 102, 0.38);
             border-radius: 16px;
@@ -521,12 +533,14 @@
                         color: #fff;
                     }
                     >.date {
+                        width: 100px;
                         font-weight: 300;
                         font-size: 11px;
                         color: #fff;
                         margin-left: 51px;
                     }
                     >.name {
+                        width: 120px;
                         font-weight: 300;
                         font-size: 11px;
                         color: #fff;
@@ -580,73 +594,74 @@
         border-radius: 17px;
         height: 687px;
         padding: 16px 17px 0px 9px;
-        >h2 {
-            margin-top: 5px;
-            margin-left: 27px;
-            width: 29px;
-            font-weight: 500;
-            font-size: 21px;
-            color: #fff;
-        }
-        >.all {
-            border-radius: 16px;
-            width: 43px;
-            height: 32px;
-            margin: 0;
-            top: 16px;
-            left: 116px;
-            font-weight: 500;
-            font-size: 9px;
-            color: #fff;
-        }
-        >.new {
-            border-radius: 16px;
-            width: 94px;
-            height: 32px;
-            margin: 0;
-            top: 16px;
-            left: 163px;
-            gap: 8px;
-            font-weight: 300;
-            font-size: 9px;
-            color: #fff;
-            padding-left: 6px;
-            div {
+        >.head {
+            padding-top: 5px;
+            >h2 {
+                margin-left: 27px;
+                width: 29px;
+                font-weight: 500;
+                font-size: 21px;
+                color: #fff;
+            }
+            >.all {
                 border-radius: 16px;
-                width: 40px;
-                height: 27px;
+                width: 43px;
+                height: 32px;
+                margin: 0;
+                left: 116px;
                 font-weight: 500;
                 font-size: 9px;
-                color: #6df882;
+                color: #fff;
             }
-        }
-        >button {
-            font-weight: 300;
-            font-size: 9px;
-            color: #fff;
-            padding: 0;
-            img {
-                width: 16px;
+            >.new {
+                border-radius: 16px;
+                width: 94px;
+                height: 32px;
+                margin: 0;
+                left: 163px;
+                gap: 8px;
+                font-weight: 300;
+                font-size: 9px;
+                color: #fff;
+                padding-left: 6px;
+                div {
+                    border-radius: 16px;
+                    width: 40px;
+                    height: 27px;
+                    font-weight: 500;
+                    font-size: 9px;
+                    color: #6df882;
+                }
+            }
+            >button {
+                font-weight: 300;
+                font-size: 9px;
+                color: #fff;
+                padding: 0;
+                img {
+                    width: 16px;
+                    height: 16px;
+                    margin-right: 4px;
+                }
+            }
+            >:nth-child(4) {
+                top: 9px;
+                width: 63px;
                 height: 16px;
-                margin-right: 4px;
+                right: 126px;
             }
-        }
-        >:nth-child(4) {
-            top: 25px;
-            width: 63px;
-            height: 16px;
-            right: 126px;
-        }
-        >:nth-child(5) {
-            top: 26px;
-            width: 56px;
-            height: 13px;
-            right: 41px;
-            img {
-                width: 13px;
+            >:nth-child(5) {
+                top: 10px;
+                width: 56px;
                 height: 13px;
-            }
+                right: 41px;
+                img {
+                    width: 13px;
+                    height: 13px;
+                }
+            }            
         }
+
         >.content {
             border: 0.68px solid rgba(66, 87, 102, 0.38);
             border-radius: 14px;
@@ -758,12 +773,14 @@
                         color: #fff;
                     }
                     >.date {
+                        width: 84px;
                         font-weight: 300;
                         font-size: 9px;
                         color: #fff;
                         margin-left: 43px;
                     }
                     >.name {
+                        width: 102px;
                         font-weight: 300;
                         font-size: 9px;
                         color: #fff;
@@ -821,72 +838,73 @@
         width: 100%;
         height: auto;
         padding: 14px 0 14px;
-        >h2 {
-            font-weight: 500;
-            font-size: 20px;
-            color: #fff;
-            margin-top: 11px;
-            margin-left: 14px;
-        }
-        >.all {
-            border-radius: 24px;
-            width: 63px;
-            height: 47px;
-            font-weight: 500;
-            font-size: 14px;
-            color: #fff;
-            top: 14px;
-            left: auto;
-            right: 157px;
-        }
-        >.new {
-            border-radius: 24px;
-            width: 138px;
-            height: 48px;
-            font-weight: 300;
-            font-size: 14px;
-            color: #fff;
-            gap: 11px;
-            top: 14px;
-            left: auto;
-            right: 14px;
-            div {
+        >.head {
+            padding-top: 11px;
+            >h2 {
+                font-weight: 500;
+                font-size: 20px;
+                color: #fff;
+                margin-left: 14px;
+            }
+            >.all {
+                border-radius: 24px;
+                width: 63px;
+                height: 47px;
                 font-weight: 500;
                 font-size: 14px;
-                color: #6df882;
-                border-radius: 24px;
-                width: 59px;
-                height: 40px;
+                color: #fff;
+                left: auto;
+                right: 157px;
             }
-        }
-        >button {
-            font-weight: 300;
-            font-size: 14px;
-            color: #fff;
-            padding: 0;
-            left: 14px;
-            img {
-                margin-right: 7px;
-                width: 24px;
+            >.new {
+                border-radius: 24px;
+                width: 138px;
+                height: 48px;
+                font-weight: 300;
+                font-size: 14px;
+                color: #fff;
+                gap: 11px;
+                left: auto;
+                right: 14px;
+                div {
+                    font-weight: 500;
+                    font-size: 14px;
+                    color: #6df882;
+                    border-radius: 24px;
+                    width: 59px;
+                    height: 40px;
+                }
+            }
+            >button {
+                font-weight: 300;
+                font-size: 14px;
+                color: #fff;
+                padding: 0;
+                left: 14px;
+                img {
+                    margin-right: 7px;
+                    width: 24px;
+                    height: 24px;
+                }
+            }
+            >:nth-child(4) {
+                top: 63px;
+                width: 94px;
                 height: 24px;
             }
-        }
-        >:nth-child(4) {
-            top: 77px;
-            width: 94px;
-            height: 24px;
-        }
-        >:nth-child(5) {
-            left: auto;
-            right: 14px;
-            width: 83px;
-            height: 20px;
-            top: 78px;
-            img {
-                width: 20px;
+            >:nth-child(5) {
+                left: auto;
+                right: 14px;
+                width: 83px;
                 height: 20px;
-            }
+                top: 64px;
+                img {
+                    width: 20px;
+                    height: 20px;
+                }
+            }            
         }
+
         >.content {
             margin-top: 67px;
             border: none;
@@ -901,7 +919,6 @@
                 position: relative;
                 >div {
                     border-radius: 7px;
-                    width: 100% !important;
                     height: 48px;
                     font-weight: 300;
                     font-size: 14px;
@@ -928,6 +945,18 @@
                         height: 12px;
                         margin-right: 5px;
                     }
+                }
+                >:nth-child(1) {
+                    width: 100%;
+                }
+                >:nth-child(3) {
+                    width: 100%;
+                }
+                >:nth-child(5) {
+                    width: 100%;
+                }
+                >:nth-child(7) {
+                    width: 100%;
                 }
             }
             >.items {

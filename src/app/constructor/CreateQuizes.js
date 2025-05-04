@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './style.scss';
 import LeftBar from '../components/lk/leftBar/LeftBar';
 import New from '../components/constructor/patterns/New';

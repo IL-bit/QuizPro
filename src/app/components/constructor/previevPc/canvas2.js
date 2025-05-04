@@ -147,12 +147,13 @@ const Canvas2 = ({ handleButtonClick }) => {
   return (
     <div className='canvas2' style={{ backgroundColor }}>
       <h1 style={{ color: textColor }}>{createQuiz.data.title}</h1>
+      <h3>{createQuiz.data.canvas2[currentIndex].question}</h3>
       {createQuiz.data.canvas2.length > 0 ? renderQuiz() : null}
       <div className="progress">
         <p style={{ color: textColor }}>Готово: <span style={{ color: buttonColor }}>{calculateProgress()}%</span></p>
         <div className='prog'><div style={{ width: `${calculateProgress()}%`, background: buttonColor }}></div></div>
         <a href="http://qzpro.ru" style={{ color: textColor, textDecorationColor: buttonColor }}>Создано в <span style={{ color: buttonColor }}>QZ.pro</span></a>
-        <button onClick={handleBackClick} style={{ color: buttonTextColor, border: `0.85px solid ${buttonColor}` }}>
+        <button onClick={handleBackClick} style={{ color: buttonTextColor, border: `0.85px solid ${buttonColor}`, display: `${currentIndex === 0 ? 'none' : 'block'}` }}>
           <img src={arrow_back} alt="#" />
         </button>
         <button onClick={handleNextClick} style={{ backgroundColor: buttonStyle, color: buttonTextColor, border: `0.85px solid ${buttonColor}` }}>
