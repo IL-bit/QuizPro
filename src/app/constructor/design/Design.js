@@ -34,6 +34,10 @@ const Design = () => {
   const [activeColorPicker, setActiveColorPicker] = useState(null);
   const colorPickerRef = useRef(null);
 
+  const font = useSelector((state) => state.createQuiz.data.theme.font);
+  const [activeFontModal, setActiveFontModal] = useState(false);
+  const dataFonts=["Inter","Roboto","Boldonse","Yusei Magic","Gloock","Young Serif","Bungee Inline","Knewave","Limelight","Boogaloo","Bowlby One","Pattaya","Herr Von Muellerhoff","Cormorant Garamond","Lalezar","Russo One","Berkshire Swash","Zilla Slab","Urbanist","Lobster","Lilita One","Big Shoulders Stencil","Plus Jakarta Sans","PT Sans Narrow","Barriecito","Bitter","Prompt","Archivo","Anton","Rochester","Dancing Script","Bebas Neue","Work Sans","Kanit","Rubik","Raleway","Noto Sans","Roboto Mono","Tektur","Oswald","Roboto Condensed","Montserrat Underline","Lato","Poppins","Montserrat","Gidole","Bytesized","Open Sans","Winky Sans"];
+
   const handleButtonClick = (theme) => {
     setActiveItem(theme);
     dispatch(changeTheme(theme));
@@ -64,6 +68,12 @@ const Design = () => {
     setButtonTextColor(color);
     dispatch(changeButtonTextColor(color)); 
   };
+
+  const handleFont = (font) => {
+    dispatch(changeFont(font));
+    setActiveFontModal(false);
+  };
+
   useEffect(() => {
     dispatch(PUTQUIZ(currentQuizID, token, data));
   }, [createQuiz.data.theme]);
@@ -126,9 +136,17 @@ const Design = () => {
 
                 <div className="fonts">
                   <p>Шрифт</p>
-                  <div className="font">
-                    <p>Gilroy</p>
-                    <img src={down} alt="#" />
+                  <div className="font" onClick={() => setActiveFontModal(!activeFontModal)}>
+                    <p>{font}</p>
+                    <img src={down} alt="#" className={activeFontModal ? 'active' : ''}/>
+                  </div>
+                  <div id="fontsUl" style={{display: `${activeFontModal ? 'block' : 'none'}`}}>
+                    <div>
+                      {dataFonts.map((font, index) => (
+                        <button key={index} onClick={() => handleFont(font)}>{font}</button>
+                      ))}                      
+                    </div>
+
                   </div>
                 </div>
               </div>

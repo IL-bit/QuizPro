@@ -11,14 +11,13 @@ const PrevievQuizPc = () => {
   const canvas2 = useSelector((state) => state.quiz.data.canvas2);
   const isCanvas1 = useSelector((state) => state.quiz.data.canvas1.is_active);
   const theme = useSelector(state => state.quiz.data.theme.theme);
+  const font = useSelector((state) => state.quiz.data.theme.font);
   const buttonStyle = useSelector(state => state.quiz.data.theme.button_style);
   const quizID = useSelector(state => state.quiz.currentQuizID);
   const [IDquestion, setIDquestion] = useState(0);
   const [currentCanvas, setCurrentCanvas] = useState('canvas1');
 
   const handleButtonClick = (canvas) => {
-    console.log('change');
-    // Проверяем, является ли canvas2 пустым массивом
     if (canvas === 'canvas2' && canvas2.length === 0) {
       setCurrentCanvas('canvas3');      
     } else if (canvas === 'canvas2Back') {
@@ -38,7 +37,7 @@ const PrevievQuizPc = () => {
   return (
     <div className="container" id='previevQuizMob'>
         <div className="row">
-            <div className="col-12">
+            <div className="col-12" style={{fontFamily: `${font}`}}>
                 <div className={`previev ${theme}-theme ${buttonStyle}`}>
                   {currentCanvas === 'canvas1' && (
                     <Canvas1 handleButtonClick={handleButtonClick} />

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import './style.scss';
 import LeftBar from '../../components/lk/leftBar/LeftBar';
 import folder1 from '../../img/balance/folder1.svg';
@@ -8,6 +9,7 @@ import youmoney from '../../img/balance/yumoney.svg';
 
 const Balance = () => {
     const navigate = useNavigate();   
+    const rate = useSelector((state) => state.rate);
     const handleClick = (route) => {
       navigate(route);
     };
@@ -28,7 +30,7 @@ const Balance = () => {
                     <div className="summa">
                         <h5>Сумма пополнения</h5>
                         <input type="text" placeholder='12.990₽'/>
-                        <p>Тариф «Премиум»</p>
+                        <p>Тариф «{rate}»</p>
                     </div>
                     <div className="methods">
                         <h5>Способы пополнения</h5>

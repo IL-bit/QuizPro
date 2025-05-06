@@ -28,7 +28,6 @@ const Forgot = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Данные для входа:', dataForm);
     dispatch(FORGOT(dataForm));
   };
   useEffect(() => {

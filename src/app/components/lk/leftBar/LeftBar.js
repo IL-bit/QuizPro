@@ -74,11 +74,14 @@ const LeftBar = () => {
 
   useEffect(() => {
     if (!isQuiz) {   
-      dispatch(HISTORY(token));
-      dispatch(BALANCE(token));      
-      dispatch(QUIZESALL(token));    
-      dispatch(NOTIFICATIONS(token));  
-      dispatch(COUNTBASE(token));
+      setTimeout(() => {
+        dispatch(HISTORY(token));
+        dispatch(BALANCE(token));      
+        dispatch(QUIZESALL(token));    
+        dispatch(NOTIFICATIONS(token));  
+        dispatch(COUNTBASE(token));
+      }, 200);
+
     }
     if (!isApplications) {
       dispatch(APPLICATIONS(token));

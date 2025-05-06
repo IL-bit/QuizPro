@@ -20,7 +20,6 @@ const QUIZ = () => {
             dispatch(QUIZ2(quizId));
             dispatch(setCurrentQuiz2(quizId));
         } else {
-            console.log(12);
             dispatch(STATUS(12, currentQuizID));
         }
     })
@@ -49,13 +48,7 @@ const QUIZ = () => {
     };
 
 
-  return (
-    <div className='container'>
-        <div className="row">
-            {RenderQuiz()}
-        </div>
-    </div>
-  )
+  return ( <>{RenderQuiz()}</> )
 }
 
 export default QUIZ;

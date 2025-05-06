@@ -19,11 +19,12 @@ const Application = () => {
     const citys = useSelector((state) => state.filters.city); 
     const names = useSelector((state) => state.filters.name);
     const [output, setOutput] = useState([]);
+    const [output2, setOutput2] = useState([]);
 
     const exportToExcel = () => {
         const formattedData = data.map(application => ({
             '№ заявки': application.id,
-            'Дата': application.details, 
+            'Дата': application.date, 
             'Квиз': application.quizName,
             'Контакты': `${application.name} (${application.phone}) - ${application.email}`
         }));
@@ -96,8 +97,25 @@ const Application = () => {
                 uniqueApplications.push(app);
             }
         });
+        const today = new Date();
+        const threeDaysAgo = new Date(today);
+        threeDaysAgo.setDate(today.getDate() - 3);
+        const filteredByLast3DaysMap = {};
+        const filteredByLast3Days = safeData.filter(application => {
+            if (!application.date) return false;
+            const applicationDate = new Date(application.date);
+            return applicationDate >= threeDaysAgo && applicationDate <= today;
+        }).filter(app => {
+            if (!filteredByLast3DaysMap[app.id]) {
+                filteredByLast3DaysMap[app.id] = true;
+                return true;
+            }
+            return false;
+        });
         setOutput(uniqueApplications);
+        setOutput2(filteredByLast3Days);
     }, [data, dateFrom, dateTo, time, citys, names]);
+
 return (
     <div className="container">
         <div className="row">
@@ -109,7 +127,7 @@ return (
                     <div className="head">
                         <h2>Заявки</h2>
                         <div className="all">{data.length}</div>
-                        <div className="new">Новые: <div>32</div></div>
+                        <div className="new">Новые: <div>{output2.length}</div></div>
                         <button onClick={() => dispatch(APPLICATIONS(token))}><img src={reload} alt="#" />Обновить</button>
                         <button onClick={exportToExcel}><img src={expor} alt="#" />Экспорт</button>                            
                     </div>

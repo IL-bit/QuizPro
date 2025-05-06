@@ -19,10 +19,10 @@ const Instrument = () => {
         { img: align_standart, text: 'Стандратная', align: 'canvas' },
     ];
 
-    const [activeIndex, setActiveIndex] = useState(2); // Убираем начальное значение
+    const [activeIndex, setActiveIndex] = useState(2); 
     const [activeBackgroundIndex, setActiveBackgroundIndex] = useState(0);
     const [modalClass, setModalClass] = useState('close'); 
-    const [activeItem, setActiveItem] = useState(items[2]); // Убираем начальное значение
+    const [activeItem, setActiveItem] = useState(items[2]); 
     const [activeButtonIndex, setActiveButtonIndex] = useState(0); 
     const modalRef = useRef(null); 
 
@@ -54,55 +54,45 @@ const Instrument = () => {
     }, [isvideo]);
 
     useEffect(() => {
-        console.log('canvasAlign изменился:', canvasAlign);
-        // Устанавливаем activeIndex в зависимости от canvasAlign
         switch (canvasAlign) {
             case 'canvas-center':
-                console.log('canvas-center');
                 setActiveIndex(0);
                 setActiveItem(items[0]);
                 break;
             case 'background-left':
-                console.log('background-left');
                 setActiveIndex(1);
                 setActiveItem(items[1]);
                 setActiveButtonIndex(0);
                 break;
 
             case 'background-center':
-                console.log('background-center');
                 setActiveIndex(1);
                 setActiveItem(items[1]);
                 setActiveButtonIndex(1);
                 break;
 
             case 'background-right':
-                console.log('background-right');
                 setActiveIndex(1);
                 setActiveItem(items[1]);
                 setActiveButtonIndex(2);
                 break;
 
             case 'canvas':
-                console.log('canvas');
                 setActiveIndex(2);
                 setActiveItem(items[2]);
                 setActiveButtonIndex(0);
                 break;
             default:
-                console.log('default');
-                setActiveIndex(2); // Значение по умолчанию
+                setActiveIndex(2);
                 setActiveItem(items[2]);
                 setActiveButtonIndex(1);
         }
-    }, [canvasAlign]); // Зависимость от canvasAlign
-
+    }, [canvasAlign]); 
     useEffect(() => {
-        // Обновляем activeItem в зависимости от activeIndex
         if (activeIndex !== null && activeIndex >= 0 && activeIndex < items.length) {
             setActiveItem(items[activeIndex]);
         }
-    }, [activeIndex]); // Зависимость от activeIndex
+    }, [activeIndex]); 
 
     const toggleModal = () => {
         setModalClass(modalClass === 'open' ? 'close' : 'open'); 

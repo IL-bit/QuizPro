@@ -4,6 +4,7 @@ import './style.scss';
 import direct from '../../img/Constructor/startad/yandex_direct.svg';
 import business from '../../img/Constructor/startad/ya_business.svg';
 import arrow from '../../img/Constructor/startad/arrow.svg';
+import lock from '../../img/lock_rate.svg';
 
 const StartAd = () => {
   return (
@@ -51,6 +52,11 @@ const StartAd = () => {
                         <div className="link mobile">
                             <p>Настроить вопросы<img src={arrow} alt="#" /></p>
                         </div>
+                        <div id="blurSoon">
+                            <img src={lock} alt="#" />
+                            <h3>Скоро здесь будет больше информации</h3>
+                        </div>
+                        <div id="bgBlurSoon"></div>
                     </div>
                 </div>
             </div>

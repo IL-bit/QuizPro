@@ -20,7 +20,6 @@ const Canvas1 = ({ handleButtonClick }) => {
 
     const logoStyle = quiz.data.canvas1.logo ? { background: `url(${quiz.data.canvas1.logo})` } : { backgroundColor: 'rgba(66, 87, 102, 0.52)' };
     useEffect(() => {
-      console.log(13);
       dispatch(STATUS(13, ID));
     })
     return (

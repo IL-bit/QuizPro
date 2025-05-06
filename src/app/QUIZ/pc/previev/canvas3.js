@@ -61,11 +61,9 @@ const Canvas3 = ({ handleButtonClick }) => {
         const options = { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false };
         const formattedDate = date.toLocaleString('ru-RU', options);
         dataUser.position = formattedDate;
-        console.log(dataUser.position, dataUser.date)
     };
     const handleInputChange = (setter) => (event) => {
         setter(event.target.value);
-        console.log(dataUser);
     };
     const City = async () => {
         try {
@@ -81,7 +79,6 @@ const Canvas3 = ({ handleButtonClick }) => {
         }
     };
     useEffect(() => {
-        console.log(11);
         dispatch(STATUS(11, ID));
     }, []);
     return (

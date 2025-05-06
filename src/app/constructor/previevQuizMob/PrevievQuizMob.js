@@ -9,6 +9,7 @@ import close from '../../img/Constructor/create/close.svg';
 
 const PrevievQuizPc = () => {
   const navigate = useNavigate();
+  const font = useSelector((state) => state.createQuiz.data.theme.font);
   const canvas2 = useSelector((state) => state.createQuiz.data.canvas2);
   const isCanvas1 = useSelector((state) => state.createQuiz.data.canvas1.is_active);
   const theme = useSelector(state => state.createQuiz.data.theme.theme);
@@ -20,8 +21,6 @@ const PrevievQuizPc = () => {
   const [currentCanvas, setCurrentCanvas] = useState('canvas1');
 
   const handleButtonClick = (canvas) => {
-    console.log('change');
-    // Проверяем, является ли canvas2 пустым массивом
     if (canvas === 'canvas2' && canvas2.length === 0) {
       setCurrentCanvas('canvas3');      
     } else {
@@ -38,7 +37,7 @@ const PrevievQuizPc = () => {
   return (
     <div className="container" id='previevQuizMob'>
         <div className="row">
-            <div className="col-12">
+            <div className="col-12" style={{fontFamily: `${font}`}}>
                 <button className='close' onClick={() => handleClick(`/user/quiz/${quizID}`)}><img src={close} alt="#" /></button>
                 <div className={`previev ${theme}-theme ${buttonStyle}`}>
                   {currentCanvas === 'canvas1' && (

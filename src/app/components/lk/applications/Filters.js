@@ -120,7 +120,6 @@ const Filters = () => {
     dispatch(setTime(null));
     dispatch(setDateTo(value));
   };
-
   useEffect(() => {
     handleNames();
     handleCities();

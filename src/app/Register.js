@@ -31,8 +31,6 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Данные для входа:', dataForm);
-    localStorage.setItem('login', dataForm.email);
     dispatch(REGISTER(dataForm));
   };
   useEffect(() => {

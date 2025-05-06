@@ -59,10 +59,8 @@ function App() {
   const currentBase = useSelector((state) => state.current_base_index);   
   const currentQuiz = useSelector((state) => state.createQuiz.currentQuizID);  
   const token = localStorage.getItem('access_token');
-  const email = localStorage.getItem('login');
   useEffect(() => {
-    dispatch(islog());
-    // dispatch(REFRESH(token, email));
+    dispatch(REFRESH(token));
   }, [isAuthenticated]);  
   return (
     <BrowserRouter>

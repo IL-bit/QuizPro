@@ -59,6 +59,7 @@
             height: 213px;
             padding-top: 12px;
             padding-left: 39px;
+            box-shadow: inset 18px 34px 27px -33px rgba(255, 255, 255, 0.5);
             p {
                 margin: 0;
                 margin-bottom: 2px;
@@ -241,6 +242,54 @@
             transform: translateY(-50%);
         }
     }
+    #bgBlurRate {
+        position: absolute;
+        width: calc(100% - 20px);
+        border: 1px solid rgba(66, 87, 102, 0.38);
+        border-radius: 20px;
+        height: 585px;
+        backdrop-filter: blur(13.399999618530273px);
+        background: rgba(24, 36, 46, 0.88);
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 5;
+    }
+    #blurRate {
+        position: absolute;
+        z-index: 100;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 295px;
+        height: 217px;
+        margin-top: 151px;
+        img {
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 50px;
+            margin: 0;
+            padding: 0;
+        }
+        h3 {
+            font-weight: 300;
+            font-size: 14px;
+            text-align: center;
+            color: #fff;
+            margin-top: 22px;
+        }
+        button {
+            border-radius: 18px;
+            height: 65px;
+            width: 100%;
+            background: #105efe;
+            font-weight: 600;
+            font-size: 18px;
+            color: #fff;
+            margin-top: 38px;
+            border: none;
+        }
+    }
 }
 @media (min-width: 1200px) and (max-width: 1399px) {
     #conversion {
@@ -411,6 +460,12 @@
                 height: 51px;
                 width: 51px;
             }
+        }
+        #bgBlurRate {
+            height: 470px;
+        }
+        #blurRate {
+            margin-top: 100px;
         }
     }
 }
@@ -589,6 +644,13 @@
                 width: 43px;
             }
         }
+        #bgBlurRate {
+            width: calc(100% - 10px);
+            height: 400px;
+        }
+        #blurRate {
+            margin-top: 70px;
+        }
     }
 }
 @media (max-width: 576px) {
@@ -715,6 +777,13 @@
                 height: 48px;
                 margin-top: 10px;
             }
+        }
+        #bgBlurRate {
+            width: calc(100% - 10px);
+            height: 1140px;
+        }
+        #blurRate {
+            margin-top: 400px;
         }
     }
 }

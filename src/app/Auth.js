@@ -30,7 +30,6 @@ const Auth = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Данные для входа:', dataForm); 
     if (!isAuth) {
       dispatch(LOGIN(dataForm));      
     }

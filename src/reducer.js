@@ -8,6 +8,7 @@ const initialState = {
         countQuestions: 0,
         currentQuizID: 0,
         isData: false,
+        is_active: false,
         data: {
             title: 'Заголовок страницы',   
             isvideo1: false,
@@ -67,12 +68,12 @@ const initialState = {
     isApplications: false,
     applications: [],
     filters: {
-        type: '',
-        name: '',
-        city: '',
-        time: '',
-        dateFrom: '',
-        dateTo: ''
+        type: null,
+        name: null,
+        city: null,
+        time: null,
+        dateFrom: null,
+        dateTo: null
     },
     application: {
         id: 0,
@@ -82,7 +83,7 @@ const initialState = {
     profile: {},
     login: '',
     email: '',
-    isAuth: true,
+    isAuth: false,
     isAdmin: false,    
     isProfile: false,
     balance: -1,
@@ -274,7 +275,6 @@ const RootReducer = createReducer(initialState, builder => {
         state.createQuiz.data.theme.buttonTextColor = action.payload;
     })
     .addCase('CHANGEFONT', (state, action) => {
-        state.createQuiz.data.theme.theme = 'user';
         state.createQuiz.data.theme.font = action.payload;
     })
     .addCase('CHANGEBUTTONSTYLE', (state, action) => {
@@ -289,8 +289,6 @@ const RootReducer = createReducer(initialState, builder => {
             if (action.payload.data.accessToken) {
                 state.Token = action.payload.data.accessToken; 
                 localStorage.setItem('access_token', state.Token); 
-                const expirationTime = Date.now() + 3 * 24 * 60 * 60 * 1000; 
-                localStorage.setItem('token_expiration', expirationTime);
                 state.login = 'ok';
                 state.isAuth = true;
             }            
@@ -304,7 +302,6 @@ const RootReducer = createReducer(initialState, builder => {
     })
     .addCase('LOGOUT', (state) => {
         localStorage.removeItem('access_token');
-        localStorage.removeItem('token_expiration');
         state.isAuth = false;
         state.login = 'no';
         state.Token = '';
@@ -316,24 +313,7 @@ const RootReducer = createReducer(initialState, builder => {
         }
 
     })
-    .addCase('ISLOG', (state) => {
-        const isLog = localStorage.getItem('access_token');
-        const expirationTime = localStorage.getItem('token_expiration');
 
-        if (isLog && expirationTime) {
-            if (Date.now() > expirationTime) {
-                localStorage.removeItem('access_token');
-                localStorage.removeItem('token_expiration');
-                state.isAuth = false;
-            } else {
-                state.Token = isLog; 
-                state.login = 'ok';
-                state.isAuth = true; 
-            }
-        } else {
-            state.isAuth = false; 
-        }
-    })
     .addCase('SET_BALANCE', (state, action) => {
         state.balance = action.payload;
     })
@@ -364,14 +344,16 @@ const RootReducer = createReducer(initialState, builder => {
         state.profile = action.payload;
     })
     .addCase('REFRESH_SUCCESS', (state, action) => {
-        state.Token = localStorage.getItem('access_token');
+        state.Token = action.payload.data.accessToken;
+        localStorage.setItem('access_token', state.Token); 
         state.login = 'ok';
-        state.email = localStorage.getItem('login');
         state.isAuth = true;        
     })
     .addCase('REFRESH_ERROR', (state) => {
+        localStorage.removeItem('access_token');
+        state.Token = '';
         state.login = 'error';
-        console.log('ERROR');
+        state.isAuth = false;
     })
     .addCase('ISQUIZES', (state) => {
         state.isQuizes = false;        
@@ -391,7 +373,8 @@ const RootReducer = createReducer(initialState, builder => {
         state.createQuiz.currentQuestion = null;
         state.createQuiz.currentQuestionIndex = 0;
         state.createQuiz.countQuestions = 0;
-        state.createQuiz.data = action.payload;
+        state.createQuiz.data = action.payload.params;
+        state.createQuiz.is_active = action.payload.enabled;
     })
     .addCase('SET_NO_QUIZ', (state) => {
         state.createQuiz.isData = false;

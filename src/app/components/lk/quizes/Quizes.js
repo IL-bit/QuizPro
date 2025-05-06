@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { setCurrentQuiz, setLk2, setNameQuiz, deleteConversion } from '../../../../actions';
+import { setCurrentQuiz, setLk2, setNameQuiz, deleteConversion, setName, setCity, setDateFrom, setDateTo, setTime, setType } from '../../../../actions';
 import { DELETEQUIZ, PUTQUIZNAME } from '../../../../middleware';
 import './style.scss';
 import change from '../../../img/quizes/change.svg';
@@ -31,6 +31,7 @@ const Quizes = () => {
   const [modal, setModal] = useState(false);
   const [modalDelete, setModalDelete] = useState(false);
   const [quizToDelete, setQuizToDelete] = useState(null);
+
   const handleModal = () => {
     setModal(!modal);
   }
@@ -111,6 +112,17 @@ const Quizes = () => {
       setQuizToDelete(null);
       setModalDelete(false); 
   };
+
+  const handleApplication = (route, city) => {
+    dispatch(setTime(null));
+    dispatch(setCity(null));
+    dispatch(setDateFrom(null));
+    dispatch(setDateTo(null));
+    dispatch(setType(null));
+    dispatch(setName(city));    
+    navigate(route);
+  };
+
   useEffect(() => {
     handleSearch();
   }, [quizes]);
@@ -157,7 +169,7 @@ const Quizes = () => {
                 </button>
               </div>
               <div className="quiz_small_btns">
-                <button><img src={notes} alt="#" />Заявки<div className="count">{quiz.apps}</div></button>
+                <button onClick={() => handleApplication('/user/applications', quiz.name)}><img src={notes} alt="#" />Заявки<div className="count">{quiz.apps}</div></button>
                 <button onClick={deletedQuizzes[quiz.id] ? null : () => handleClick(`/user/quiz/${quiz.id}/conversion`, quiz)}><img src={convers} alt="#"/>Конверсия</button>
                 <button onClick={deletedQuizzes[quiz.id] ? null : () => handleClick(`/user/quiz/${quiz.id}`, quiz)}><img src={widget} alt="#" />Редактировать</button>
                 <button onClick={deletedQuizzes[quiz.id] ? null : () => handleClick(`/user/quiz/${quiz.id}/previev/pc`, quiz)}><img src={eye} alt="#" />Предпросмотр</button>

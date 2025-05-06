@@ -13,6 +13,7 @@ const PrevievQuizPc = () => {
   const canvas2 = useSelector((state) => state.createQuiz.data.canvas2);
   const isCanvas1 = useSelector((state) => state.createQuiz.data.canvas1.is_active);
   const theme = useSelector(state => state.createQuiz.data.theme.theme);
+  const font = useSelector((state) => state.createQuiz.data.theme.font);
   const buttonStyle = useSelector(state => state.createQuiz.data.theme.button_style);
   const quizID = useSelector(state => state.createQuiz.currentQuizID);
   const handleClick = (route) => {
@@ -21,8 +22,6 @@ const PrevievQuizPc = () => {
   const [currentCanvas, setCurrentCanvas] = useState('canvas1');
 
   const handleButtonClick = (canvas) => {
-    console.log('change');
-    // Проверяем, является ли canvas2 пустым массивом
     if (canvas === 'canvas2' && canvas2.length === 0) {
       setCurrentCanvas('canvas3');      
     } else {
@@ -39,7 +38,7 @@ const PrevievQuizPc = () => {
   return (
     <div className="container" id='previevQuizPc'>
         <div className="row">
-            <div className={`col-xxl-12 col-xl-12 col-lg-12 ${theme}`}>
+            <div className={`col-xxl-12 col-xl-12 col-lg-12 ${theme}`} style={{fontFamily: `${font}`}}>
                 <button className='close' onClick={() => handleClick(`/user/quiz/${quizID}`)}>{theme === 'dark'? <img src={closeDark} alt="#" /> : <img src={close} alt="#" />}</button>
                 <div className={`previev ${theme}-theme ${buttonStyle}`}>
                   {currentCanvas === 'canvas1' && (

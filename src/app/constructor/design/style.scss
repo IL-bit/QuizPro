@@ -145,6 +145,53 @@
                 >.font {
                     width: 193px;
                 }
+                >#fontsUl {
+                    border: 1px solid rgba(66, 87, 102, 0.1);
+                    border-radius: 10px;
+                    width: 193px;
+                    position: absolute;
+                    background: #141e27;
+                    right: 0;
+                    top: 70px;
+                    height: auto;
+                    padding: 10px;
+                    z-index: 9999;
+                    >div {
+                        height: 168px;
+                        display: block;
+                        overflow-y: auto;
+                        >button {
+                            width: 100%;
+                            height: 56px;
+                            border: none;
+                            background: none;
+                            margin-bottom: 2px;
+                            text-align: left;
+                            font-weight: 300;
+                            font-size: 18px;
+                            color: #fff;
+                        }
+                        >:nth-last-child(1) {
+                            margin-bottom: 0;
+                        }
+                        &::-webkit-scrollbar {
+                            border: none !important;
+                            border-radius: 20px;
+                            width: 7px; 
+                        }       
+                        &::-webkit-scrollbar-track {
+                            border: none !important;
+                            border-radius: 20px;
+                            background: #141e27;
+                        }
+                        &::-webkit-scrollbar-thumb {
+                            border: none !important;
+                            border-radius: 20px;
+                            width: 7px;
+                            background: #fff;
+                        }                        
+                    }
+                }
             }
         }
         >.right {
@@ -337,6 +384,38 @@
                     >.font {
                         width: 156px;
                     }
+                    >#fontsUl {
+                        border: 0.81px solid rgba(66, 87, 102, 0.1);
+                        border-radius: 8px;
+                        width: 156px;
+                        top: 60px;
+                        padding: 8px;
+                        >div {
+                            height: 135px;
+                            >button {
+                                height: 45px;
+                                font-weight: 300;
+                                font-size: 14px;
+                                color: #fff;
+                            }
+                            &::-webkit-scrollbar {
+                                border: none !important;
+                                border-radius: 16px;
+                                width: 5px; 
+                            }       
+                            &::-webkit-scrollbar-track {
+                                border: none !important;
+                                border-radius: 16px;
+                                background: #141e27;
+                            }
+                            &::-webkit-scrollbar-thumb {
+                                border: none !important;
+                                border-radius: 16px;
+                                width: 5px;
+                                background: #fff;
+                            }
+                        }
+                    }
                 }
             }
             >.right {
@@ -478,6 +557,38 @@
                 >.fonts {
                     >.font {
                         width: 132px;
+                    }
+                    >#fontsUl {
+                        border-right: 0.68px solid #1d2a33;
+                        border-radius: 8px;
+                        width: 132px;
+                        padding: 6px;
+                        top: 45px;
+                        >div {
+                            height: 114px;
+                            >button {
+                                height: 38px;
+                                font-weight: 300;
+                                font-size: 12px;
+                                color: #fff;
+                            }
+                            &::-webkit-scrollbar {
+                                border: none !important;
+                                border-radius: 14px;
+                                width: 4px;
+                            }       
+                            &::-webkit-scrollbar-track {
+                                border: none !important;
+                                border-radius: 14px;
+                                background: #141e27;
+                            }
+                            &::-webkit-scrollbar-thumb {
+                                border: none !important;
+                                border-radius: 14px;
+                                width: 4px;
+                                background: #fff;
+                            }
+                        }
                     }
                 }
             }

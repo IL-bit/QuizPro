@@ -42,11 +42,14 @@ const Answer = () => {
                             <div>
                                 {applicaion.data.details && applicaion.data.details.answers ? (
                                     applicaion.data.details.answers.map((item, index) => (
-                                        <p key={index}>{item.question}{item.answer.map((answ, index) => (
-                                            <>
-                                                <br/><span key={index}>{answ}</span>
-                                            </>
-                                        ))}
+                                        <p key={item.question + index}> {/* Используем уникальное значение для ключа */}
+                                            {item.question}
+                                            {item.answer.map((answ, answIndex) => (
+                                                <span key={answIndex}> {/* Уникальный ключ для каждого ответа */}
+                                                    <br />
+                                                    {answ}
+                                                </span>
+                                            ))}
                                         </p>
                                     ))
                                 ) : (

@@ -12,7 +12,7 @@ export const REGISTER = (formData) => async (dispatch) => {
             body: JSON.stringify(formData),
         });
         if (!response.ok) {
-            console.error('Fetch failed with status:', response.status); 
+            // console.error('Fetch failed with status:', response.status); 
             return;
         }
         const data = await response.json();
@@ -23,7 +23,7 @@ export const REGISTER = (formData) => async (dispatch) => {
         }
     } catch (error) {       
         dispatch({ type: 'LOGIN_ERROR'});
-        console.error("Error occurred:", error); 
+        // console.error("Error occurred:", error); 
     }
 };
 export const LOGIN = (formData) => async (dispatch) => { 
@@ -38,7 +38,7 @@ export const LOGIN = (formData) => async (dispatch) => {
         });
         console.log(JSON.stringify(formData));
         if (!response.ok) {
-            console.error('Fetch failed with status:', response.status); 
+            // console.error('Fetch failed with status:', response.status); 
             return;
         }
         const data = await response.json();
@@ -49,7 +49,7 @@ export const LOGIN = (formData) => async (dispatch) => {
         }
     } catch (error) {       
         dispatch({ type: 'LOGIN_ERROR'});
-        console.error("Error occurred:", error); 
+        // console.error("Error occurred:", error); 
     }
 };
 export const LOGOUT = (token) => async (dispatch) => { 
@@ -65,13 +65,13 @@ export const LOGOUT = (token) => async (dispatch) => {
 
         });
         if (!response.ok) {
-            console.error('Fetch failed with status:', response.status); 
+            // console.error('Fetch failed with status:', response.status); 
             return;
         }
         const data = await response.json();
         dispatch(logOut());
     } catch (error) {       
-        console.error("Error occurred:", error); 
+        // console.error("Error occurred:", error); 
     }
 };
 export const FORGOT = (formData) => async () => { 
@@ -86,7 +86,7 @@ export const FORGOT = (formData) => async () => {
         });
         console.log(JSON.stringify(formData));
         if (!response.ok) {
-            console.error('Fetch failed with status:', response.status); 
+            // console.error('Fetch failed with status:', response.status); 
             return;
         }
         const data = await response.json();
@@ -94,7 +94,7 @@ export const FORGOT = (formData) => async () => {
         console.log('ok')
 
     } catch (error) {       
-        console.error("Error occurred:", error); 
+        // console.error("Error occurred:", error); 
     }
 };
 export const RESET = (formData) => async () => { 
@@ -109,29 +109,28 @@ export const RESET = (formData) => async () => {
         });
         console.log(JSON.stringify(formData));
         if (!response.ok) {
-            console.error('Fetch failed with status:', response.status); 
+            // console.error('Fetch failed with status:', response.status); 
             return;
         }
         const data = await response.json();
 
-        console.log('ok')
-
     } catch (error) {       
-        console.error("Error occurred:", error); 
+        // console.error("Error occurred:", error); 
     }
 };
-export const REFRESH = (Token, email) => async (dispatch) => { 
+export const REFRESH = (token) => async (dispatch) => { 
     try {
-        const response = await fetch(`${url}/api/refresh`, {
+        const response = await fetch(`${url}/api/refresh-token`, {
             method: 'POST',
             mode: 'cors',
             headers: {
                 'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
             },
-            body: JSON.stringify({login: email, token: Token}),
+            body: JSON.stringify({}),
         });
         if (!response.ok) {
-            console.error('Fetch failed with status:', response.status); 
+            // console.error('Fetch failed with status:', response.status); 
             return;
         }
         const data = await response.json();
@@ -140,9 +139,9 @@ export const REFRESH = (Token, email) => async (dispatch) => {
         } else {
             dispatch({ type: 'REFRESH_FAILED', payload: data });
         }
-    } catch (error) {       
+    } catch (error) { 
         dispatch({ type: 'REFRESH_ERROR'});
-        console.error("Error occurred:", error); 
+        // console.error("Error occurred:", error); 
     }
 };
 
@@ -158,7 +157,7 @@ export const BALANCE = (token) => async (dispatch) => {
             }
         });
         if (!response.ok) {
-            console.error('Fetch failed with status:', response.status); 
+            // console.error('Fetch failed with status:', response.status); 
             return;
         }
         const data = await response.json();
@@ -167,7 +166,7 @@ export const BALANCE = (token) => async (dispatch) => {
         dispatch(noQuizes());
 
     } catch (error) {       
-        console.error("Error occurred:", error); 
+        // console.error("Error occurred:", error); 
     }
 };
 export const PROFILE = (token) => async (dispatch) => { 
@@ -182,13 +181,33 @@ export const PROFILE = (token) => async (dispatch) => {
             body: JSON.stringify({})
         });
         if (!response.ok) {
-            console.error('Fetch failed with status:', response.status); 
+            // console.error('Fetch failed with status:', response.status); 
             return;
         }
         const data = await response.json();
         dispatch(setProfile(data.data.user)); 
     } catch (error) {       
-        console.error("Error occurred:", error); 
+        // console.error("Error occurred:", error); 
+    }
+};
+export const PUTPROFILE = (token, datas) => async (dispatch) => { 
+    try {
+        const response = await fetch(`${url}/api/me/change/profile`, {
+            method: 'PUT',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify(datas)
+        });
+        if (!response.ok) {
+            // console.error('Fetch failed with status:', response.status); 
+            return;
+        }
+        const data = await response.json();
+    } catch (error) {       
+        // console.error("Error occurred:", error); 
     }
 };
 
@@ -203,14 +222,14 @@ export const QUIZ = (id, token) => async (dispatch) => {
             }
         });
         if (!response.ok) {
-            console.error('Fetch failed with status:', response.status); 
+            // console.error('Fetch failed with status:', response.status); 
             return;
         }
         const data = await response.json();
-        dispatch(setQuiz(data.params)); 
+        dispatch(setQuiz(data)); 
 
     } catch (error) {       
-        console.error("Error occurred:", error); 
+        // console.error("Error occurred:", error); 
     }
 };
 export const QUIZESALL = (token) => async (dispatch) => { 
@@ -224,7 +243,7 @@ export const QUIZESALL = (token) => async (dispatch) => {
             }
         });
         if (!response.ok) {
-            console.error('Fetch failed with status:', response.status); 
+            // console.error('Fetch failed with status:', response.status); 
             return;
         }
         const data = await response.json();
@@ -232,7 +251,7 @@ export const QUIZESALL = (token) => async (dispatch) => {
         dispatch(noQuizes());
 
     } catch (error) {       
-        console.error("Error occurred:", error); 
+        // console.error("Error occurred:", error); 
     }
 };
 export const PUTQUIZNAME = (ID, newName, token) => async (dispatch) => { 
@@ -247,16 +266,14 @@ export const PUTQUIZNAME = (ID, newName, token) => async (dispatch) => {
             body: JSON.stringify({name: newName, id: ID})
         });
         if (!response.ok) {
-            console.error('Fetch failed with status:', response.status); 
+            // console.error('Fetch failed with status:', response.status); 
             return;
         }
         const data = await response.json();
-
-        console.log('ok', data);
         dispatch(isQuizes());
 
     } catch (error) {       
-        console.error("Error occurred:", error); 
+        // console.error("Error occurred:", error); 
     }
 };
 export const PUTQUIZ = (ID, token, datas) => async (dispatch) => { 
@@ -271,14 +288,14 @@ export const PUTQUIZ = (ID, token, datas) => async (dispatch) => {
             body: JSON.stringify({id: ID, params: datas})
         });
         if (!response.ok) {
-            console.error('Fetch failed with status:', response.status); 
+            // console.error('Fetch failed with status:', response.status); 
             return;
         }
         const data = await response.json();
         dispatch(isQuizes());
 
     } catch (error) {       
-        console.error("Error occurred:", error); 
+        // console.error("Error occurred:", error); 
     }
 };
 export const POSTQUIZ = (newName, token, createQuizData) => async (dispatch) => { 
@@ -293,7 +310,7 @@ export const POSTQUIZ = (newName, token, createQuizData) => async (dispatch) => 
             body: JSON.stringify({name: newName, params: createQuizData})
         });
         if (!response.ok) {
-            console.error('Fetch failed with status:', response.status); 
+            // console.error('Fetch failed with status:', response.status); 
             return;
         }
         const data = await response.json();
@@ -301,7 +318,7 @@ export const POSTQUIZ = (newName, token, createQuizData) => async (dispatch) => 
         dispatch(isQuizes());
         return data;
     } catch (error) {       
-        console.error("Error occurred:", error); 
+        // console.error("Error occurred:", error); 
     }
 };
 export const DELETEQUIZ = (id, token) => async (dispatch) => { 
@@ -315,14 +332,14 @@ export const DELETEQUIZ = (id, token) => async (dispatch) => {
             }
         });
         if (!response.ok) {
-            console.error('Fetch failed with status:', response.status); 
+            // console.error('Fetch failed with status:', response.status); 
             return;
         }
         const data = await response.json();
         dispatch(isQuizes());
 
     } catch (error) {       
-        console.error("Error occurred:", error); 
+        // console.error("Error occurred:", error); 
     }
 };
 
@@ -337,14 +354,14 @@ export const APPLICATIONS = (token) => async (dispatch) => {
             }
         });
         if (!response.ok) {
-            console.error('Fetch failed with status:', response.status); 
+            // console.error('Fetch failed with status:', response.status); 
             return;
         }
         const data = await response.json();
         dispatch(setApllications(data)); 
 
     } catch (error) {       
-        console.error("Error occurred:", error); 
+        // console.error("Error occurred:", error); 
     }
 };
 export const APPLICATION = (token, ID) => async (dispatch) => { 
@@ -358,14 +375,14 @@ export const APPLICATION = (token, ID) => async (dispatch) => {
             }
         });
         if (!response.ok) {
-            console.error('Fetch failed with status:', response.status); 
+            // console.error('Fetch failed with status:', response.status); 
             return;
         }
         const data = await response.json();
         dispatch(setApllication(data)); 
 
     } catch (error) {       
-        console.error("Error occurred:", error); 
+        // console.error("Error occurred:", error); 
     }
 };
 export const DELETEAPPLICATION = (id, token) => async (dispatch) => { 
@@ -379,13 +396,13 @@ export const DELETEAPPLICATION = (id, token) => async (dispatch) => {
             }
         });
         if (!response.ok) {
-            console.error('Fetch failed with status:', response.status); 
+            // console.error('Fetch failed with status:', response.status); 
             return;
         }
         const data = await response.json();
 
     } catch (error) {       
-        console.error("Error occurred:", error); 
+        // console.error("Error occurred:", error); 
     }
 };
 export const CONVERSION = (id, token) => async (dispatch) => { 
@@ -399,14 +416,14 @@ export const CONVERSION = (id, token) => async (dispatch) => {
             }
         });
         if (!response.ok) {
-            console.error('Fetch failed with status:', response.status); 
+            // console.error('Fetch failed with status:', response.status); 
             return;
         }
         const data = await response.json();
         dispatch(setConverion(data)); 
 
     } catch (error) {       
-        console.error("Error occurred:", error); 
+        // console.error("Error occurred:", error); 
     }
 };
 export const SENDDATA = (userData) => async (dispatch) => {
@@ -420,12 +437,12 @@ export const SENDDATA = (userData) => async (dispatch) => {
             body: JSON.stringify(userData)
         });
         if (!response.ok) {
-            console.error('Fetch failed with status:', response.status); 
+            // console.error('Fetch failed with status:', response.status); 
             return;
         }
         const data = await response.json();
     } catch (error) {       
-        console.error('Error occurred:', error); 
+        // console.error('Error occurred:', error); 
     }
 };
 export const QUIZ2 = (id) => async (dispatch) => { 
@@ -438,14 +455,14 @@ export const QUIZ2 = (id) => async (dispatch) => {
             }
         });
         if (!response.ok) {
-            console.error('Fetch failed with status:', response.status); 
+            // console.error('Fetch failed with status:', response.status); 
             return;
         }
         const data = await response.json();
         dispatch(setQuiz2(data.params)); 
 
     } catch (error) {       
-        console.error("Error occurred:", error); 
+        // console.error("Error occurred:", error); 
     }
 };
 
@@ -461,13 +478,12 @@ export const TURNOFFQUIZ = (token, ID) => async (dispatch) => {
             body: JSON.stringify({id: ID, enabled: 0})
         });
         if (!response.ok) {
-            console.error('Fetch failed with status:', response.status); 
+            // console.error('Fetch failed with status:', response.status); 
             return;
         }
         const data = await response.json();
-        console.log('enabled no');
     } catch (error) {       
-        console.error("Error occurred:", error); 
+        // console.error("Error occurred:", error); 
     }
 };
 export const TURNONQUIZ = (token, ID) => async (dispatch) => { 
@@ -482,13 +498,12 @@ export const TURNONQUIZ = (token, ID) => async (dispatch) => {
             body: JSON.stringify({id: ID, enabled: 1})
         });
         if (!response.ok) {
-            console.error('Fetch failed with status:', response.status); 
+            // console.error('Fetch failed with status:', response.status); 
             return;
         }
         const data = await response.json();
-        console.log('enabled');
     } catch (error) {       
-        console.error("Error occurred:", error); 
+        // console.error("Error occurred:", error); 
     }
 };
 export const STATUS = (id, quiz_id) => async (dispatch) => { 
@@ -502,13 +517,13 @@ export const STATUS = (id, quiz_id) => async (dispatch) => {
             body: JSON.stringify({'quiz_id': quiz_id, 'operation_id': id})
         });
         if (!response.ok) {
-            console.error('Fetch failed with status:', response.status); 
+            // console.error('Fetch failed with status:', response.status); 
             return;
         }
         const data = await response.json();
 
     } catch (error) {       
-        console.error('Error occurred:', error); 
+        // console.error('Error occurred:', error); 
     }
 };  
 
@@ -523,14 +538,14 @@ export const NOTIFICATIONS = (token) => async (dispatch) => {
             }
         });
         if (!response.ok) {
-            console.error('Fetch failed with status:', response.status); 
+            // console.error('Fetch failed with status:', response.status); 
             return;
         }
         const data = await response.json();
         dispatch(setNotifications(data)); 
 
     } catch (error) {       
-        console.error("Error occurred:", error); 
+        // console.error("Error occurred:", error); 
     }
 };
 export const HISTORY = (token) => async (dispatch) => { 
@@ -544,14 +559,14 @@ export const HISTORY = (token) => async (dispatch) => {
             }
         });
         if (!response.ok) {
-            console.error('Fetch failed with status:', response.status); 
+            // console.error('Fetch failed with status:', response.status); 
             return;
         }
         const data = await response.json();
         dispatch(setHistory(data.balance_history)); 
 
     } catch (error) {       
-        console.error("Error occurred:", error); 
+        // console.error("Error occurred:", error); 
     }
 };
 export const DELETEHISTORY = (token, id) => async (dispatch) => { 
@@ -565,12 +580,12 @@ export const DELETEHISTORY = (token, id) => async (dispatch) => {
             }
         });
         if (!response.ok) {
-            console.error('Fetch failed with status:', response.status); 
+            // console.error('Fetch failed with status:', response.status); 
             return;
         }
         const data = await response.json();
     } catch (error) {       
-        console.error("Error occurred:", error); 
+        // console.error("Error occurred:", error); 
     }
 };
 export const COUNTBASE = (token) => async (dispatch) => { 
@@ -584,14 +599,14 @@ export const COUNTBASE = (token) => async (dispatch) => {
             }
         });
         if (!response.ok) {
-            console.error('Fetch failed with status:', response.status); 
+            // console.error('Fetch failed with status:', response.status); 
             return;
         }
         const data = await response.json();
         dispatch(setCountBase(data)); 
 
     } catch (error) {       
-        console.error("Error occurred:", error); 
+        // console.error("Error occurred:", error); 
     }
 };
 export const BASE = (token, id) => async (dispatch) => { 
@@ -627,14 +642,14 @@ export const STATIS = (token) => async (dispatch) => {
             }
         });
         if (!response.ok) {
-            console.error('Fetch failed with status:', response.status); 
+            // console.error('Fetch failed with status:', response.status); 
             return;
         }
         const data = await response.json();
         dispatch(setStatist(data)); 
 
     } catch (error) {       
-        console.error("Error occurred:", error); 
+        // console.error("Error occurred:", error); 
     }
 };
 export const USERS = (token) => async (dispatch) => { 
@@ -648,7 +663,7 @@ export const USERS = (token) => async (dispatch) => {
             }
         });
         if (!response.ok) {
-            console.error('Fetch failed with status:', response.status); 
+            // console.error('Fetch failed with status:', response.status); 
             return;
         }
         const data = await response.json();
@@ -656,7 +671,7 @@ export const USERS = (token) => async (dispatch) => {
         dispatch(isUsers()); 
 
     } catch (error) {       
-        console.error("Error occurred:", error); 
+        // console.error("Error occurred:", error); 
     }
 };
 export const USER = (token, id) => async (dispatch) => { 
@@ -670,7 +685,7 @@ export const USER = (token, id) => async (dispatch) => {
             }
         });
         if (!response.ok) {
-            console.error('Fetch failed with status:', response.status); 
+            // console.error('Fetch failed with status:', response.status); 
             return;
         }
         const data = await response.json();
@@ -678,7 +693,7 @@ export const USER = (token, id) => async (dispatch) => {
         dispatch(isUser()); 
 
     } catch (error) {       
-        console.error("Error occurred:", error); 
+        // console.error("Error occurred:", error); 
     }
 };
 export const DEPOSITS = (token) => async (dispatch) => { 
@@ -692,14 +707,14 @@ export const DEPOSITS = (token) => async (dispatch) => {
             }
         });
         if (!response.ok) {
-            console.error('Fetch failed with status:', response.status); 
+            // console.error('Fetch failed with status:', response.status); 
             return;
         }
         const data = await response.json();
         dispatch(setDeposits(data)); 
 
     } catch (error) {       
-        console.error("Error occurred:", error); 
+        // console.error("Error occurred:", error); 
     }
 };
 export const BANNEDWORDS = (token) => async (dispatch) => { 
@@ -713,14 +728,14 @@ export const BANNEDWORDS = (token) => async (dispatch) => {
             }
         });
         if (!response.ok) {
-            console.error('Fetch failed with status:', response.status); 
+            // console.error('Fetch failed with status:', response.status); 
             return;
         }
         const data = await response.json();
         dispatch(setBannedWords(data)); 
 
     } catch (error) {       
-        console.error("Error occurred:", error); 
+        // console.error("Error occurred:", error); 
     }
 };
 export const BANNEDUSERS = (token) => async (dispatch) => { 
@@ -734,16 +749,15 @@ export const BANNEDUSERS = (token) => async (dispatch) => {
             }
         });
         if (!response.ok) {
-            console.error('Fetch failed with status:', response.status); 
+            // console.error('Fetch failed with status:', response.status); 
             return;
         }
         const data = await response.json();
-        console.log('BANNEDUSERS', data)
         dispatch(isBlocked());
         dispatch(setBannedUsers(data)); 
 
     } catch (error) {       
-        console.error("Error occurred:", error); 
+        // console.error("Error occurred:", error); 
     }
 };
 export const USERDEPOSIT = (token, id, amount, amountLess) => async (dispatch) => { 
@@ -758,14 +772,14 @@ export const USERDEPOSIT = (token, id, amount, amountLess) => async (dispatch) =
             body: JSON.stringify({userID: id, total: amount, total_less: amountLess})
         });
         if (!response.ok) {
-            console.error('Fetch failed with status:', response.status); 
+            // console.error('Fetch failed with status:', response.status); 
             return;
         }
         const data = await response.json();
         dispatch(noUser()); 
 
     } catch (error) {       
-        console.error("Error occurred:", error); 
+        // console.error("Error occurred:", error); 
     }
 };
 export const USERCHANGERATE = (token, id, rates) => async (dispatch) => { 
@@ -780,13 +794,13 @@ export const USERCHANGERATE = (token, id, rates) => async (dispatch) => {
             body: JSON.stringify({userID: id, rate: rates})
         });
         if (!response.ok) {
-            console.error('Fetch failed with status:', response.status); 
+            // console.error('Fetch failed with status:', response.status); 
             return;
         }
         const data = await response.json();
         dispatch(noUser()); 
 
     } catch (error) {       
-        console.error("Error occurred:", error); 
+        // console.error("Error occurred:", error); 
     }
 };

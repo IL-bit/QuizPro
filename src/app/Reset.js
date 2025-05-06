@@ -12,18 +12,11 @@ const Reset = () => {
     const [isPasswordMatch, setIsPasswordMatch] = useState(true);    
     const isAuth = useSelector((state) => state.isAuth);
     
-    // Получаем текущий URL
     const url = window.location.href;
-    
-    // Извлекаем часть URL после /reset/
-    const paramsString = url.split('/reset/')[1]; // Получаем строку после /reset/
-    
-    // Разделяем параметры по & и затем по =
+    const paramsString = url.split('/reset/')[1]; 
     const params = new URLSearchParams(paramsString);
     const token = params.get('token');
     const email = params.get('email');
-    
-    console.log(token, email, url);
     
     const [dataForm, setDataForm] = useState({
       token: token || '',
@@ -49,15 +42,11 @@ const Reset = () => {
     const handleSubmit = (e) => {
       e.preventDefault();
       
-      // Проверка совпадения паролей при отправке формы
       if (dataForm.password !== confirmPassword) {
         setIsPasswordMatch(false);
-        return; // Не выполняем dispatch, если пароли не совпадают
-      }
-  
-      // Если пароли совпадают, выполняем dispatch
+        return; 
+      };
       setIsPasswordMatch(true);
-      console.log('Данные для входа:', dataForm);
       dispatch(RESET(dataForm));
     };
   
