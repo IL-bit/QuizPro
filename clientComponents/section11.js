@@ -1,6 +1,6 @@
 "use client";
 import Image from 'next/image';
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { togglePopup } from '../redux/actions';
 import swipeSvg from '../img/swipe.svg';
@@ -32,33 +32,27 @@ const Section11 = () => {
         const diffX = startX - currentX;
 
         const sliderTrack = sliderRef.current.querySelector('.slider-track');
-        sliderTrack.style.transition = 'none'; // Отключаем переход для плавного перемещения
-        sliderTrack.style.transform = `translateX(-${tempIndex * 100 + (diffX / window.innerWidth) * 100}%)`; // Обновляем трансформацию
+        sliderTrack.style.transition = 'none'; 
+        sliderTrack.style.transform = `translateX(-${tempIndex * 100 + (diffX / window.innerWidth) * 100}%)`; 
     };
 
     const handleTouchEnd = (e) => {
-        if (!isSwiping) return; // Если не свайпим, выходим
+        if (!isSwiping) return; 
 
         const currentX = e.changedTouches[0].clientX;
         const diffX = startX - currentX;
 
         if (diffX > 50 && tempIndex < 5) {
-            // Swipe left, если не последняя карточка
-            tempIndex = Math.min(tempIndex + 1, 5); // Увеличиваем временный индекс, но не больше 5
+            tempIndex = Math.min(tempIndex + 1, 5);
         } else if (diffX < -50 && tempIndex > 0) {
-            // Swipe right, если не первая карточка
-            tempIndex = Math.max(tempIndex - 1, 0); // Уменьшаем временный индекс, но не меньше 0
-        }
-
-        // Устанавливаем окончательную позицию слайдера
+            tempIndex = Math.max(tempIndex - 1, 0); 
+        };
         const sliderTrack = sliderRef.current.querySelector('.slider-track');
-        sliderTrack.style.transition = 'transform 0.3s ease'; // Включаем переход для плавного перемещения
-        sliderTrack.style.transform = `translateX(-${tempIndex * 100}%)`; // Устанавливаем позицию на основе временного индекса
-
-        // Обновляем состояние currentIndex только после завершения свайпа
+        sliderTrack.style.transition = 'transform 0.3s ease'; 
+        sliderTrack.style.transform = `translateX(-${tempIndex * 100}%)`;
         setCurrentIndex(tempIndex);
 
-        isSwiping = false; // Сбрасываем флаг
+        isSwiping = false; 
     };
 
     const handleIndicatorClick = (index) => {
@@ -67,6 +61,7 @@ const Section11 = () => {
     const handleToggle = (menu) => {     
         dispatch(togglePopup(menu));
     };
+    
     return(
         <div className="mob">
         <div className="slider" ref={sliderRef}>                       

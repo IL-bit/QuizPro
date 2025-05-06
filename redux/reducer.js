@@ -14,7 +14,8 @@ const initialState = {
     pop_up: false,
     button: 1,
     isAuth: false,
-    activebutton: 0
+    activebutton: 0,
+    Token: ''
 };
 
 const RootReducer = createReducer(initialState, (builder) => {
@@ -33,40 +34,31 @@ const RootReducer = createReducer(initialState, (builder) => {
         .addCase(logIn, (state, action) => {
             state.isAuth = true;
             state.pop_up = 'auth';
-            if (action.payload.data.accessToken) {
-                state.Token = action.payload.data.accessToken; 
-                Cookies.set('access_token', state.Token, { expires: 3 }); // Set cookie for 3 days
-                const expirationTime = Date.now() + 3 * 24 * 60 * 60 * 1000;
-                Cookies.set('token_expiration', expirationTime, { expires: 3 }); // Set cookie for 3 days
-                state.login = 'ok';
-                console.log('SUCCESS', action);
-                console.log('Token saved to cookies:', state.Token);
-            } else {
-                console.error('No access token found in action payload');
-            }
-        })
-        .addCase(isLog, (state) => {
-            const isLog = Cookies.get('access_token');
-            const expirationTime = Cookies.get('token_expiration');
-            console.log(isLog);
-            if (isLog && expirationTime) {
-                if (Date.now() > expirationTime) {
-                    Cookies.remove('access_token');
-                    Cookies.remove('token_expiration');
-                    state.isAuth = false; 
-                    console.log('Token expired and removed from cookies');
-                } else {
-                    state.Token = isLog; 
-                    state.login = 'ok';
-                    state.isAuth = true;
-                }
-            } else {
-                state.isAuth = false; 
-            }
+            state.Token = action.payload.data.accessToken;
+            localStorage.setItem('access_token', state.Token); 
+            state.login = 'ok';
         })
         .addCase(changeActiveButton, (state, action) => {
             state.activebutton = action.payload;
-        });
+        })
+        .addCase('REFRESH_SUCCESS', (state, action) => {
+            state.Token = action.payload.data.accessToken;
+            localStorage.setItem('access_token', state.Token); 
+            state.login = 'ok';
+            state.isAuth = true;        
+        })
+        .addCase('REFRESH_ERROR', (state) => {
+            localStorage.removeItem('access_token');
+            state.Token = '';
+            state.login = 'error';
+            state.isAuth = false;
+        })
+        .addCase('REFRESH_FAILED', (state) => {
+            localStorage.removeItem('access_token');
+            state.Token = '';
+            state.login = 'error';
+            state.isAuth = false;
+        })
 });
 
 export default RootReducer;

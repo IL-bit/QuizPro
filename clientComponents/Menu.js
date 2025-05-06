@@ -9,7 +9,7 @@ import logoSvg from '../img/logo.svg';
 const Menu = () => {
     const dispatch = useDispatch();    
     const isAuth = useSelector((state) => state.isAuth);
-    const isOpen = useSelector((state) => state.pop_up);    
+    const isOpen = useSelector((state) => state.pop_up);  
     const [showLogin, setShowLogin] = useState(true);    
     const [formData, setFormData] = useState({
         login: { email: '', password: '', name: '' },
@@ -27,20 +27,42 @@ const Menu = () => {
                 },
                 body: JSON.stringify(formData),
             });
-            console.log(JSON.stringify(formData));
+            if (!response.ok) {
+                // console.error('Fetch failed with status:', response.status); 
+                return;
+            }
+            const data = await response.json();
+            if (data.success === true) {
+                dispatch(logIn(data)); 
+            }
+        } catch (error) {       
+            // console.log('REGISTER_ERROR');
+        }
+    };
+    const REFRESH = async (token) => { 
+        try {
+            const response = await fetch(`${url}/api/refresh-token`, {
+                method: 'POST',
+                mode: 'cors',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify({}),
+            });
             if (!response.ok) {
                 console.error('Fetch failed with status:', response.status); 
                 return;
             }
             const data = await response.json();
             if (data.success === true) {
-                console.log('REGISTER_SUCCESS');
-                dispatch(logIn(data)); 
+                dispatch({ type: 'REFRESH_SUCCESS', payload: data });
             } else {
-                console.log('REGISTER_FAIL');
+                dispatch({ type: 'REFRESH_FAILED', payload: data });
             }
-        } catch (error) {       
-            console.log('REGISTER_ERROR');
+        } catch (error) { 
+            dispatch({ type: 'REFRESH_ERROR'});
+            console.error("Error occurred:", error); 
         }
     };
     const LOGIN = async (formData) => { 
@@ -53,21 +75,16 @@ const Menu = () => {
                 },
                 body: JSON.stringify(formData),
             });
-            console.log(JSON.stringify(formData));
             if (!response.ok) {
-                console.error('Fetch failed with status:', response.status); 
+                // console.error('Fetch failed with status:', response.status); 
                 return;
             }
             const data = await response.json();
-            if (data.success === true) {
-                console.log('LOGIN_SUCCESS');
+            if (data.success === true) {;
                 dispatch(logIn(data)); 
-            } else {
-                console.log('LOGIN_FAIL');
             }
         } catch (error) {       
-            console.log('LOGIN_ERROR');
-            console.error(error);
+            // console.error(error);
         }
     };
     const FORGOT = async (formData) => { 
@@ -80,19 +97,14 @@ const Menu = () => {
                 },
                 body: JSON.stringify(formData),
             });
-            console.log(JSON.stringify(formData));
             if (!response.ok) {
-                console.error('Fetch failed with status:', response.status); 
+                // console.error('Fetch failed with status:', response.status); 
                 return;
             }
             const data = await response.json();
-            if (data.success === true) {
-                console.log('FORGOT_SUCCESS');
-            } else {
-                console.log('FORGOT_FAIL');
-            }
+
         } catch (error) {       
-            console.log('FORGOT_ERROR'); 
+            // console.log('FORGOT_ERROR'); 
         }
     };
     const handleClosePopup = () => {
@@ -121,7 +133,6 @@ const Menu = () => {
     };
     const handleSubmit = (formType, action) => async (e) => {
         e.preventDefault();
-        console.log(`Данные для ${formType}:`, formData[formType]);
         await action(formData[formType]);
     };
 
@@ -150,6 +161,10 @@ const Menu = () => {
             window.removeEventListener('hashchange', handleHashChange);
         };
     }, [dispatch]);
+    useEffect(() => {
+        const token = localStorage.getItem('access_token');
+        REFRESH(token);
+    }, [isAuth]);
     const renderForm = () => {
         switch (isOpen) {
             case 'log_in':

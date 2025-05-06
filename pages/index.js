@@ -8,6 +8,7 @@ import Section11 from "../clientComponents/section11";
 import Menu from "../clientComponents/Menu";
 import FiveMin from "../clientComponents/FiveMin";
 import FourStep from "../clientComponents/FourStep";
+import FAQ from "@/clientComponents/FAQ";
 import logoSvg from '../img/logo.svg';
 import icon1Svg from '../img/icon1.svg';
 import icon2Svg from '../img/icon2.svg';
@@ -81,6 +82,7 @@ export default function Home() {
     polit: "#",
     marketPhoto: "#"
   }; 
+
   const handleToggle = (menu) => {
       if (isAuth) {
           dispatch(togglePopup('auth'));
@@ -124,6 +126,7 @@ export default function Home() {
 
   return (
     <>
+      <FAQ />
       <Head>
         <title>QuizPro - Создайте квиз-сайт для бизнеса</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
