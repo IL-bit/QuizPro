@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logOut, setLk, isQuizes, setNoQuiz } from '../../../../actions';
-import { LOGOUT, APPLICATIONS, QUIZESALL, BALANCE, NOTIFICATIONS, HISTORY, COUNTBASE } from '../../../../middleware';
+import { LOGOUT, APPLICATIONS, QUIZESALL, BALANCE, NOTIFICATIONS, HISTORY, COUNTBASE, PROFILE } from '../../../../middleware';
 import './style.scss';
 import Logo from '../../../img/leftbar/logo.svg';
 import Arrow from '../../../img/leftbar/arrow.svg';
@@ -80,6 +80,9 @@ const LeftBar = () => {
         dispatch(QUIZESALL(token));    
         dispatch(NOTIFICATIONS(token));  
         dispatch(COUNTBASE(token));
+        setTimeout(() => {
+          dispatch(PROFILE(token))
+        }, 200);
       }, 200);
 
     }

@@ -328,6 +328,10 @@
             }
         }
     }
+    input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none; /* Скрыть кнопку календаря в WebKit-браузерах */
+}
 }
 #Pop {
     display: none;
@@ -729,8 +733,4 @@
             }
         }
     }
-}
-input[type="date"]::-webkit-inner-spin-button,
-input[type="date"]::-webkit-calendar-picker-indicator {
-    display: none; /* Скрыть кнопку календаря в WebKit-браузерах */
 }

@@ -50,7 +50,13 @@ import Deposit from './admin/pages/Deposit';
 import WriteOffAdmin from './admin/pages/WriteOff';
 import WriteOffError from './admin/pages/WriteOffError';
 import BannedWords from './admin/pages/BannedWords';
+import WriteOffRequest from './admin/pages/WriteOffRequest.js';
+import BaseAdmin from './admin/pages/Base.js';
+import ArticlesAdmin from './admin/pages/Articles.js';
+import ArticleAdmin from './admin/pages/Article.js';
 
+
+import NOTFOUND from './NOTFOUND.js';
 
 function App() {
   const dispatch = useDispatch();
@@ -66,6 +72,9 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Auth />} />
+
+        <Route path="*" element={<NOTFOUND />} />
+
         <Route path="/reg" element={<Register />} />
         <Route path="/forgot" element={<Forgot />} />
         <Route path="/reset/:resetId" element={<Reset />} />
@@ -113,12 +122,16 @@ function App() {
 
         {/* admin */}
         <Route path="/admin/users" element={<PrivateRoute element={<Users />} isAuthenticated={isAdmin} />} />
+        <Route path="/admin/base" element={<PrivateRoute element={<BaseAdmin />} isAuthenticated={isAdmin} />} />
+        <Route path="/admin/base/:baseId" element={<PrivateRoute element={<ArticleAdmin />} isAuthenticated={isAdmin} />} />
+        <Route path="/admin/article/:articleID" element={<PrivateRoute element={<ArticlesAdmin />} isAuthenticated={isAdmin} />} />
         <Route path="/admin/user/:userID" element={<PrivateRoute element={<UserAdmin />} isAuthenticated={isAdmin} />} />
         <Route path="/admin/statist" element={<PrivateRoute element={<Statist />} isAuthenticated={isAdmin} />} />  
         <Route path="/admin/deposits" element={<PrivateRoute element={<Deposit />} isAuthenticated={isAdmin} />} />
         <Route path="/admin/bannedUsers" element={<PrivateRoute element={<BlockedUsers />} isAuthenticated={isAdmin} />} />
         <Route path="/admin/writeOff" element={<PrivateRoute element={<WriteOffAdmin />} isAuthenticated={isAdmin} />} />    
         <Route path="/admin/writeOffError" element={<PrivateRoute element={<WriteOffError />} isAuthenticated={isAdmin} />} />   
+        <Route path="/admin/request_writeOff" element={<PrivateRoute element={<WriteOffRequest />} isAuthenticated={isAdmin} />} /> 
         <Route path="/admin/bannedWodrs" element={<PrivateRoute element={<BannedWords />} isAuthenticated={isAdmin} />} /> 
       </Routes>
     </BrowserRouter>

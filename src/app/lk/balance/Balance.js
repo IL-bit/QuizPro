@@ -34,7 +34,6 @@ const Balance = () => {
                     </div>
                     <div className="methods">
                         <h5>Способы пополнения</h5>
-
                         <div>
                             <img src={youmoney} alt="f"/>                            
                             <div>Картой</div>

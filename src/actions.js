@@ -197,6 +197,10 @@ export const setBase = (data) => ({
   type: 'SET_BASE',
   payload: data
 });
+export const setBaseAdmin = (data) => ({
+  type: 'SET_BASE_ADMIN',
+  payload: data
+});
 export const setCurrenBase = (index) => ({
   type: 'SET_CURRENT_BASE',
   payload: index
@@ -206,7 +210,11 @@ export const noPopUp2 = createAction('NO_POPUP2');
 export const setNoQuiz = createAction('SET_NO_QUIZ');
 export const isUser = createAction('IS_USER');
 export const noUser = createAction('NO_USER');
+export const noDataUser = createAction('NO_DATA_USER');
 export const isUsers = createAction('IS_USERS');
 export const noUsers = createAction('NO_USERS');
 export const isBlocked = createAction('IS_BANNED');
 export const noBlocked = createAction('NO_BANNED');
+
+export const setBaseName = createAction('SET_BASE_NAME');
+export const setBaseIndex = createAction('SET_BASE_INDEX');

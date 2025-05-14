@@ -53,7 +53,7 @@ const User = () => {
             <div onClick={() => handleChange(1)} className={currentPage === 1 ? 'active' : ''}>Пополнение суммы</div>
             <div onClick={() => handleChange(2)} className={currentPage === 2 ? 'active' : ''}>Транзакции</div>
             <div onClick={() => handleChange(3)} className={currentPage === 3 ? 'active' : ''}>Настройки тарифа пользователя</div>
-            <div onClick={() => handleChange(4)} className={currentPage === 4 ? 'active' : ''}>Приглашения</div>
+            <div  className={currentPage === 4 ? 'active' : ''}>Приглашения</div>
           </div>
           {renderPage()}
         </div>

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { STATIS } from '../../../middleware';
+import Logout from './logout/Logout';
 import LeftBar from './leftBar/LeftBar';
 import './style.scss';
 
@@ -17,9 +18,16 @@ const Statist = () => {
         <LeftBar />       
         <div className="col-xxl-10" id='Statist'>
           <h1>Статистика</h1>
+          <div className="inputs">
+            <label htmlFor="from">От</label>
+            <input type="date" name='from'/>
+            <label htmlFor="to">До</label>  
+            <input type="date" name='to'/>   
+            <button>Поиск</button>         
+          </div>          
           <div className="btns">
             <button>Подробнее</button>
-            <button>Выйти</button>
+            <Logout />
           </div>
           <div className="items">
             <div className="item">

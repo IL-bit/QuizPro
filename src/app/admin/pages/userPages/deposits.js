@@ -5,8 +5,10 @@ import { USERDEPOSIT } from '../../../../middleware';
 const Deposits = () => {
   const dispatch = useDispatch();
   const [inputValue, setInputValue] = useState('');
+  const [textAreaValue, setTextAreaValue] = useState('');
   const token = useSelector((state) => state.Token);
-  const user = useSelector((state) => state.admin.currentUser );
+  const user = useSelector((state) => state.admin.currentUser);
+  const [postText, setPostText] = useState('Подтвердить');
 
   const handlePost = () => {
     const [integerPart, decimalPart] = inputValue.split('.'); 
@@ -14,8 +16,32 @@ const Deposits = () => {
     const decimalValue = decimalPart ? parseFloat(`0.${decimalPart}`) : 0;
 
     if (!isNaN(integerValue) && !isNaN(decimalValue)) {
-      dispatch(USERDEPOSIT(token, user.id, integerValue, decimalValue)); 
-    } 
+      dispatch(USERDEPOSIT(token, {
+        "user_id": user.id,
+        "total": integerValue,
+        "total_less": decimalValue * 100,
+        "comment": textAreaValue
+      }))
+        .then((response) => {
+          if (response && response.status && response.status >= 199 && response.status < 300) {
+            setPostText('Успешно');
+          } else {
+            setPostText('Ошибка');
+          };
+          setTimeout(() => setPostText('Подтвердить'), 3000);
+        })
+        .catch(() => {
+          setPostText('Ошибка');
+          setTimeout(() => setPostText('Подтвердить'), 3000);
+        });
+    }
+    handleClear();    
+       
+  };
+  const handleClear = () => {
+    setTextAreaValue('')
+    setInputValue('');
+    setPostText('Подтвердить');
   };
 
   return (
@@ -24,18 +50,24 @@ const Deposits = () => {
       <div>
         Сумма
         <input
-          type="text"
+          type="number"
+          step="0.01"
           required
-          placeholder='Пополнения счёта'
+          placeholder="Пополнение счёта"
           value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)} 
+          onChange={(e) => setInputValue(e.target.value)}
         />
       </div>
       <div>
         Примечание
-        <textarea></textarea>
-        <button type='submit' onClick={handlePost}>Подтвердить</button>
-        <button type='button' onClick={() => setInputValue('')}>Очистить</button>
+        <textarea 
+          required 
+          placeholder="Описание"           
+          value={textAreaValue}
+          onChange={(e) => setTextAreaValue(e.target.value)}
+          ></textarea>
+        <button type='submit' onClick={handlePost}>{postText}</button>
+        <button type='button' onClick={() => handleClear()}>Очистить</button>
       </div>
     </div>
   );

@@ -3,13 +3,13 @@ import { useSelector } from 'react-redux';
 import Logout from './logout/Logout';
 import LeftBar from './leftBar/LeftBar';
 
-const WriteOffError = () => {
+const WriteOffRequest = () => {
   return (
     <div className='container-fluid'>
       <div className="row admin">
         <LeftBar />       
         <div className="col-xxl-10" id='WriteOff'>
-          <h1>Отклоненный вывод</h1>
+          <h1>Запрос на вывод</h1>
           <Logout />
           <div>
             <form>
@@ -28,8 +28,8 @@ const WriteOffError = () => {
           </div>
         </div>
       </div>
-    </div>
+  </div>
   )
 }
 
-export default WriteOffError;
+export default WriteOffRequest;

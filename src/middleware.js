@@ -1,4 +1,4 @@
-import { setQuizes, setBalance, setProfile, setQuiz, setCurrentQuiz, noQuizes, logOut, isQuizes, setQuiz2, setApllications, noApplications, setStatist, setUsers, setUser, setDeposits, setBannedWords, setBannedUsers, isUser, isUsers, noUser, noUsers, isBlocked, noBlocked, setRate, setConverion, setApllication, setNotifications, setHistory, setCountBase, setBase } from './actions'; 
+import { setQuizes, setBalance, setProfile, setQuiz, setCurrentQuiz, noQuizes, logOut, isQuizes, setQuiz2, setApllications, noApplications, setStatist, setUsers, setUser, setDeposits, setBannedWords, setBannedUsers, isUser, isUsers, noUser, noUsers, isBlocked, noBlocked, setRate, setConverion, setApllication, setNotifications, setHistory, setCountBase, setBase, setBaseAdmin } from './actions'; 
 const url = 'http://qzpro.ru:8000';
 
 export const REGISTER = (formData) => async (dispatch) => { 
@@ -36,7 +36,6 @@ export const LOGIN = (formData) => async (dispatch) => {
             },
             body: JSON.stringify(formData),
         });
-        console.log(JSON.stringify(formData));
         if (!response.ok) {
             // console.error('Fetch failed with status:', response.status); 
             return;
@@ -185,7 +184,7 @@ export const PROFILE = (token) => async (dispatch) => {
             return;
         }
         const data = await response.json();
-        dispatch(setProfile(data.data.user)); 
+        dispatch(setProfile(data.data)); 
     } catch (error) {       
         // console.error("Error occurred:", error); 
     }
@@ -345,7 +344,7 @@ export const DELETEQUIZ = (id, token) => async (dispatch) => {
 
 export const APPLICATIONS = (token) => async (dispatch) => { 
     try {
-        const response = await fetch(`${url}/api/application/0/99999`, {
+        const response = await fetch(`${url}`, {
             method: 'GET',
             mode: 'cors',
             headers: {
@@ -738,6 +737,109 @@ export const BANNEDWORDS = (token) => async (dispatch) => {
         // console.error("Error occurred:", error); 
     }
 };
+export const BASEADMIN = (token, id) => async (dispatch) => { 
+    try {
+        const response = await fetch(`${url}/api/admin/article/${id}`, {
+            method: 'GET',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        });
+        if (!response.ok) {
+            // console.error('Fetch failed with status:', response.status); 
+            return;
+        }
+        const data = await response.json();
+        dispatch(setBaseAdmin(data)); 
+
+    } catch (error) {       
+        // console.error("Error occurred:", error); 
+    }
+};
+export const ARTICLEPOST = (token, datas) => async (dispatch) => { 
+    try {
+        const response = await fetch(`${url}/api/admin/article`, {
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify(datas)
+        });
+        if (!response.ok) {
+            // console.error('Fetch failed with status:', response.status); 
+            return;
+        }
+        const data = await response.json();
+
+    } catch (error) {       
+        // console.error("Error occurred:", error); 
+    }
+};
+export const ARTICLEPUT = (token, datas) => async (dispatch) => { 
+    try {
+        const response = await fetch(`${url}/api/admin/article`, {
+            method: 'PUT',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify(datas)
+        });
+        if (!response.ok) {
+            // console.error('Fetch failed with status:', response.status); 
+            return;
+        }
+        const data = await response.json();
+
+    } catch (error) {       
+        // console.error("Error occurred:", error); 
+    }
+};
+export const ARTICLEDELETE = (token, id) => async (dispatch) => { 
+    try {
+        const response = await fetch(`${url}/api/admin/article/${id}`, {
+            method: 'DELETE',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        });
+        if (!response.ok) {
+            // console.error('Fetch failed with status:', response.status); 
+            return;
+        }
+        const data = await response.json();
+
+    } catch (error) {       
+        // console.error("Error occurred:", error); 
+    }
+};
+export const DELETEWORD = (token, wordID) => async (dispatch) => { 
+    try {
+        const response = await fetch(`${url}/api/admin/word/${wordID}`, {
+            method: 'DELETE',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        });
+        if (!response.ok) {
+            // console.error('Fetch failed with status:', response.status); 
+            return;
+        }
+        const data = await response.json();
+
+    } catch (error) {       
+        // console.error("Error occurred:", error); 
+    }
+};
 export const BANNEDUSERS = (token) => async (dispatch) => { 
     try {
         const response = await fetch(`${url}/api/admin/users/1/0/9999999`, {
@@ -760,7 +862,7 @@ export const BANNEDUSERS = (token) => async (dispatch) => {
         // console.error("Error occurred:", error); 
     }
 };
-export const USERDEPOSIT = (token, id, amount, amountLess) => async (dispatch) => { 
+export const USERDEPOSIT = (token, datas) => async (dispatch) => { 
     try {
         const response = await fetch(`${url}/api/admin/user/deposit`, {
             method: 'PUT',
@@ -769,7 +871,31 @@ export const USERDEPOSIT = (token, id, amount, amountLess) => async (dispatch) =
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`
             },
-            body: JSON.stringify({userID: id, total: amount, total_less: amountLess})
+            body: JSON.stringify(datas)
+        });
+        console.log(datas);
+        if (!response.ok) {
+            // console.error('Fetch failed with status:', response.status); 
+            return;
+        }
+        const data = await response.json();
+        dispatch(noUser()); 
+
+    } catch (error) {       
+        console.log(datas);
+        // console.error("Error occurred:", error); 
+    }
+};
+export const USERCHANGERATE = (token, id, rates) => async (dispatch) => { 
+    try {
+        const response = await fetch(`${url}/api/admin/user/rate`, {
+            method: 'PUT',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify({user_id: id, rate_id: rates})
         });
         if (!response.ok) {
             // console.error('Fetch failed with status:', response.status); 
@@ -782,16 +908,16 @@ export const USERDEPOSIT = (token, id, amount, amountLess) => async (dispatch) =
         // console.error("Error occurred:", error); 
     }
 };
-export const USERCHANGERATE = (token, id, rates) => async (dispatch) => { 
+export const USERBANNED = (token, datas) => async (dispatch) => { 
     try {
-        const response = await fetch(`${url}/api/admin/${id}/deposit`, {
-            method: 'POST',
+        const response = await fetch(`${url}/api/admin/user/banned`, {
+            method: 'PUT',
             mode: 'cors',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`
             },
-            body: JSON.stringify({userID: id, rate: rates})
+            body: JSON.stringify(datas)
         });
         if (!response.ok) {
             // console.error('Fetch failed with status:', response.status); 
@@ -801,6 +927,7 @@ export const USERCHANGERATE = (token, id, rates) => async (dispatch) => {
         dispatch(noUser()); 
 
     } catch (error) {       
+        console.log(datas);
         // console.error("Error occurred:", error); 
     }
 };

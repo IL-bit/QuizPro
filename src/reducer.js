@@ -81,6 +81,7 @@ const initialState = {
     },    
     notifications: [],
     profile: {},
+    profile_rate: {},
     login: '',
     email: '',
     isAuth: false,
@@ -120,7 +121,11 @@ const initialState = {
         bannedWords: [],
         isUser: false,
         isUsers: false,
-        isBlocked: false
+        isBlocked: false,
+        current_base: {},
+        base_index: null,
+        base_name: '',
+        base_name_index: ''
     }
 };
 
@@ -303,6 +308,7 @@ const RootReducer = createReducer(initialState, builder => {
     .addCase('LOGOUT', (state) => {
         localStorage.removeItem('access_token');
         state.isAuth = false;
+        state.isAdmin = false;
         state.login = 'no';
         state.Token = '';
         const cookies = document.cookie.split("; ");
@@ -341,7 +347,8 @@ const RootReducer = createReducer(initialState, builder => {
     })
     .addCase('SET_PROFILE', (state, action) => {
         state.isProfile = true;
-        state.profile = action.payload;
+        state.profile = action.payload.user;
+        state.profile_rate = action.payload.profile;
     })
     .addCase('REFRESH_SUCCESS', (state, action) => {
         state.Token = action.payload.data.accessToken;
@@ -460,6 +467,9 @@ const RootReducer = createReducer(initialState, builder => {
     .addCase('SET_BASE', (state, action) => {
         state.current_base = action.payload;
     })
+    .addCase('SET_BASE_ADMIN', (state, action) => {
+        state.admin.current_base = action.payload;
+    })
     .addCase('SET_CURRENT_BASE', (state, action) => {
         state.current_base_index = action.payload;
     })
@@ -485,20 +495,56 @@ const RootReducer = createReducer(initialState, builder => {
     .addCase('IS_USERS', (state) => {
         state.admin.isUsers = true;
     })
-    .addCase('IS_USES', (state) => {
+    .addCase('IS_USER', (state) => {
         state.admin.isUser = true;
     })
     .addCase('NO_USERS', (state) => {
         state.admin.isUsers = false;
     })
-    .addCase('NO_USES', (state) => {
+    .addCase('NO_USER', (state) => {
         state.admin.isUser = false;
+    })
+    .addCase('NO_DATA_USER', (state) => {
+        state.admin.currentUser = {};
     })
     .addCase('NO_BANNED', (state) => {
         state.admin.isBlocked = false;
     })
     .addCase('IS_BANNED', (state) => {
         state.admin.isBlocked = true;
+    })
+
+    .addCase('SET_BASE_NAME', (state, action) => {
+        state.admin.base_name = action.payload;
+            switch (action.payload) {
+        case 'Оплата':
+            state.admin.base_name_index = 1;
+            break;
+        case 'Наполнение квиза':
+            state.admin.base_name_index = 7;
+            break;
+        case 'Настройка квиза':
+            state.admin.base_name_index = 2;
+            break;
+        case 'Интеграция с сайтом':
+            state.admin.base_name_index = 3;
+            break;
+        case 'Интеграция с сервисами':
+            state.admin.base_name_index = 4;
+            break;
+        case 'Аналитика':
+            state.admin.base_name_index = 5;
+            break;
+        case 'Реклама':
+            state.admin.base_name_index = 6;
+            break;
+        default:
+            state.admin.base_name_index = null;
+            break;
+    }
+    })
+    .addCase('SET_BASE_INDEX', (state, action) => {
+        state.admin.base_index = action.payload;
     })
 });
 

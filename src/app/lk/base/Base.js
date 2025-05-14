@@ -37,32 +37,32 @@ const Base = () => {
                             <h5>Оплата</h5>
                             <p>{base.payment} статей</p>
                         </div>
-                        <div className="item" onClick={() => handleClick('/user/base/content', 2)}>
+                        <div className="item" onClick={() => handleClick('/user/base/content', 7)}>
                             <img src={pip} alt="#" />
                             <h5>Наполнение квиза</h5>
                             <p>{base.content} статей</p>
                         </div>
-                        <div className="item" onClick={() => handleClick('/user/base/settings', 3)}>
+                        <div className="item" onClick={() => handleClick('/user/base/settings', 2)}>
                             <img src={folder} alt="#" />
                             <h5>Настройка квиза</h5>
                             <p>{base.settings} статей</p>
                         </div>
-                        <div className="item" onClick={() => handleClick('/user/base/integrations/sites', 4)}>
+                        <div className="item" onClick={() => handleClick('/user/base/integrations/sites', 3)}>
                             <img src={integrations} alt="#" />
                             <h5>Интеграция с сайтом</h5>
                             <p>{base.integSite} статей</p>
                         </div>
-                        <div className="item" onClick={() => handleClick('/user/base/integrations/servises', 5)}>
+                        <div className="item" onClick={() => handleClick('/user/base/integrations/servises', 4)}>
                             <img src={services} alt="#" />
                             <h5>Интеграция с сервисами</h5>
                             <p>{base.integServises} статей</p>
                         </div>
-                        <div className="item" onClick={() => handleClick('/user/base/analytics', 6)}>
+                        <div className="item" onClick={() => handleClick('/user/base/analytics', 5)}>
                             <img src={cursor} alt="#" />
                             <h5>Аналитика</h5>
                             <p>{base.analytics} статей</p>
                         </div>
-                        <div className="item" onClick={() => handleClick('/user/base/advert', 7)}>
+                        <div className="item" onClick={() => handleClick('/user/base/advert', 6)}>
                             <img src={adverts} alt="#" />
                             <h5>Реклама</h5>
                             <p>{base.advert} статей</p>

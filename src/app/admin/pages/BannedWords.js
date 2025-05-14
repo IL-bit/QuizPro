@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { BANNEDWORDS } from '../../../middleware';
+import { BANNEDWORDS, DELETEWORD } from '../../../middleware';
+import Logout from './logout/Logout';
 import LeftBar from './leftBar/LeftBar';
 import eye from '../img/eye_close.svg';
 import trash from '../img/trash.svg';
@@ -13,11 +14,11 @@ const BannedWords = () => {
   const [action, setAction] = useState('');
   const handleAction = (id) => {
     if (action ==='delete') {
-
-    } 
-    if (action ==='edit') {
-
-    }
+      dispatch(DELETEWORD(token, id));
+      dispatch(BANNEDWORDS(token));
+    } else if (action ==='edit') {
+      dispatch(BANNEDWORDS(token));
+    };
   }
   useEffect(() => {
     dispatch(BANNEDWORDS(token));
@@ -27,10 +28,10 @@ const BannedWords = () => {
       <div className="row admin">
         <LeftBar />       
         <div className="col-xxl-10" id='BannedWords'>
-          <h1>Пополнения</h1>
-          <button>Выйти</button>
+          <h1>Запрещенные слова</h1>
+          <Logout />
           <div>
-            <input type="search" />
+            <input type="search" placeholder='Поиск...'/>
             <div className="btns">
               <button onClick={() => setAction('delete')}><img src={trash} alt="#" /></button>              
               <button onClick={() => setAction('')}><img src={eye} alt="#" /></button>
@@ -38,8 +39,9 @@ const BannedWords = () => {
             </div>
             <div className='items'>
               {words.map((word) => (
-                <div className={action} key={word.id}>{word.text}<div></div></div>
+                <div className={action} key={word.id}>{word.text}<div onClick={() => handleAction(word.id)}></div></div>
               ))}
+              
             </div>
           </div>
         </div>
