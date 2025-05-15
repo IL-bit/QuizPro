@@ -36,7 +36,7 @@ const Canvas1 = ({ handleButtonClick }) => {
                 <button onClick={() => handleButtonClick('canvas2')} style={{ backgroundColor: buttonColor, color: buttonTextColor }}>
                     {quiz.data.canvas1.button}
                 </button>
-                <a href="http://qzpro.ru" style={{ color: textColor, textDecorationColor: buttonColor }}>Создано в <span style={{ color: buttonColor }}>QZ.pro</span></a>
+                <a href="http://quizforbiz.ru" style={{ color: textColor, textDecorationColor: buttonColor }}>Создано в <span style={{ color: buttonColor }}>QZ.pro</span></a>
                 <p style={{ color: textColor }}>{quiz.data.canvas1.tel}</p>
                 <p style={{ color: textColor }}>{quiz.data.canvas1.name}</p>
             </div>

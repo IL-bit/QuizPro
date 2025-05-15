@@ -152,7 +152,7 @@ const Canvas2 = ({ handleButtonClick }) => {
       <div className="progress">
         <p style={{ color: textColor }}>Готово: <span style={{ color: buttonColor }}>{calculateProgress()}%</span></p>
         <div className='prog'><div style={{ width: `${calculateProgress()}%`, background: buttonColor }}></div></div>
-        <a href="http://qzpro.ru" style={{ color: textColor, textDecorationColor: buttonColor }}>Создано в <span style={{ color: buttonColor }}>QZ.pro</span></a>
+        <a href="http://quizforbiz.ru" style={{ color: textColor, textDecorationColor: buttonColor }}>Создано в <span style={{ color: buttonColor }}>QZ.pro</span></a>
         <button onClick={handleBackClick} style={{ color: buttonTextColor, border: `0.85px solid ${buttonColor}`, display: `${currentIndex === 0 ? 'none' : 'block'}` }}>
           <img src={arrow_back} alt="#" />
         </button>

@@ -1,7 +1,8 @@
-import React, { useState, useEffect, use } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { TURNONQUIZ } from '../../../../middleware';
+import { QUIZESALL } from '../../../../middleware';
+import { TURNONQUIZ, PUTQUIZ } from '../../../../middleware';
 import { setLk2, setLk } from '../../../../actions';
 import './style.scss';
 import logo from '../../../img/Constructor/leftbar/logo.svg';
@@ -23,6 +24,7 @@ const LeftBar = () => {
   const navigate = useNavigate();   
   const dispatch = useDispatch();
   const balance = useSelector((state) => state.balance);
+  const data = useSelector((state) => state.createQuiz.data);
   const currentQuizID = useSelector((state) => state.createQuiz.currentQuizID);
   const token = useSelector((state) => state.Token);
   const [isModalActive, setIsModalActive] = useState(false);
@@ -60,6 +62,16 @@ const LeftBar = () => {
   const handleOn = () => {
     dispatch(TURNONQUIZ(token, currentQuizID));
   };
+  useEffect(() => {
+    dispatch(QUIZESALL(token)); 
+  }, [isActive, isModalActive, isPopupVisible]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      dispatch(PUTQUIZ(currentQuizID, token, data));
+    }, 1500); 
+    return () => clearInterval(interval);
+  }, [currentQuizID, token, data]);
   return (
     <>
       <div id="LeftBarConstr">

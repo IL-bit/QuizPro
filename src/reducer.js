@@ -309,6 +309,7 @@ const RootReducer = createReducer(initialState, builder => {
         localStorage.removeItem('access_token');
         state.isAuth = false;
         state.isAdmin = false;
+        state.isQuizes = false;
         state.login = 'no';
         state.Token = '';
         const cookies = document.cookie.split("; ");

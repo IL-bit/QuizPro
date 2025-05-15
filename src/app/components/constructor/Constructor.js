@@ -45,9 +45,6 @@ const Constructor = () => {
     }
   };
 
-  useEffect(() => {
-    dispatch(PUTQUIZ(currentQuizID, token, data))
-  }, [createQuiz.currentSection]);
   return (
     <div id="constructor">
       <button className={createQuiz.currentSection === 0 ? 'activ' : ''} onClick={() => handleButton(0)}>Стартовая страница</button>

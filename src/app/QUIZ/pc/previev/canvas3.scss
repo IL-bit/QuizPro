@@ -84,8 +84,8 @@
             border: none;
         }
         >:nth-last-child(1) {
-            border: 1px solid #6a8496;
-            background: none;
+            border: 1px solid #6a8496 !important;
+            background: none !important;
             left: 237px !important;
             color: #000;
         }

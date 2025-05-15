@@ -51,6 +51,7 @@ const Canvas3 = () => {
                     )}
                 </div>
                 <button style={{ backgroundColor: buttonColor, color: buttonTextColor }}>Отправить</button>
+                <button style={{ backgroundColor: buttonColor, color: buttonTextColor }}>Назад</button>
             </div>
         </div>
     );

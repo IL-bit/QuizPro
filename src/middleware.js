@@ -344,7 +344,7 @@ export const DELETEQUIZ = (id, token) => async (dispatch) => {
 
 export const APPLICATIONS = (token) => async (dispatch) => { 
     try {
-        const response = await fetch(`${url}`, {
+        const response = await fetch(`${url}/api/application`, {
             method: 'GET',
             mode: 'cors',
             headers: {

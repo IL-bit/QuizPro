@@ -73,24 +73,21 @@ const LeftBar = () => {
   };
 
   useEffect(() => {
-    if (!isQuiz) {   
-      setTimeout(() => {
+    setTimeout(() => {
+      if (!isQuiz) {   
         dispatch(HISTORY(token));
         dispatch(BALANCE(token));      
         dispatch(QUIZESALL(token));    
         dispatch(NOTIFICATIONS(token));  
         dispatch(COUNTBASE(token));
-        setTimeout(() => {
-          dispatch(PROFILE(token))
-        }, 200);
-      }, 200);
-
-    }
-    if (!isApplications) {
-      dispatch(APPLICATIONS(token));
-    }
-    dispatch(setNoQuiz());
-  });
+        dispatch(PROFILE(token))
+      }
+      if (!isApplications) {
+        dispatch(APPLICATIONS(token));
+      }
+    }, 1000);
+    dispatch(setNoQuiz());  
+  }); 
   return (
     <>
       <div id="LeftBarLk" className='pc'>
