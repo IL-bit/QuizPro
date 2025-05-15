@@ -13,7 +13,7 @@ const Menu = () => {
     const [showLogin, setShowLogin] = useState(true);    
     const [formData, setFormData] = useState({
         login: { email: '', password: '', name: '' },
-        register: { email: '', password: '', password2: '', name: '' },
+        register: { email: '', password: '', password_confirmation: '', name: '' },
         forgot: { email: '' }
     });
     const url = 'http://qzpro.ru:8000';
@@ -219,7 +219,7 @@ const Menu = () => {
                         <input type="password" placeholder="Повторите пароль"
                             value={formData.register.password2} 
                             onChange={handleChange('register')} 
-                            name='password2'
+                            name='password_confirmation'
                             required/>
                         <button>Зарегистрироваться</button>
                         <p className="mob">Нажимая на кнопку, вы соглашаетесь<br/><a href="#">с политикой конфиденциальности и политикой<br/> использования персональных данных</a></p>
@@ -261,7 +261,7 @@ const Menu = () => {
                     <div id="burger">
                         <header>
                             <Image src={closeSvg} alt="#"/>
-                            <button onClick={() => {isAuth ? window.location.href = 'http://qzpro.ru:90' : handleToggle('log_in')}}>Создать квиз</button>
+                            <button onClick={() => {isAuth ? window.location.href = 'http://quizforbiz.ru:90' : handleToggle('log_in')}}>Создать квиз</button>
                             <button onClick={handleClosePopup}></button>
                         </header>
                         <nav>
@@ -288,7 +288,7 @@ const Menu = () => {
                             <p><Image src={closeSvg} alt="#"/>Закрыть</p>
                         </button>
                         <h2>Вы авторизованы</h2>
-                        <p><a href='http://qzpro.ru:90'>Перейти в Личный кабинет</a></p>
+                        <p><a href='http://quizforbiz.ru:90'>Перейти в Личный кабинет</a></p>
                     </form>
                 );
             default:

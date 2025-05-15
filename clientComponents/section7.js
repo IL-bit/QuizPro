@@ -91,7 +91,7 @@ const Section7 = () => {
                                 <Image  alt="Изображение квиза"/>
                                 <h5>{item.name}</h5>
                                 <Link href="#" title="Смотреть квиз" aria-label="Смотреть квиз">Смотреть квиз</Link>
-                                <button title="Попробовать бесплатно" aria-label="Попробовать бесплатно" onClick={() => {isAuth ? window.location.href = 'http://qzpro.ru:90': handleToggle('log_in')}}>попробовать бесплатно</button>
+                                <button title="Попробовать бесплатно" aria-label="Попробовать бесплатно" onClick={() => {isAuth ? window.location.href = 'http://quizforbiz.ru:90': handleToggle('log_in')}}>попробовать бесплатно</button>
                             </div>
                         ))}
                     </div>
