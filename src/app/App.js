@@ -57,6 +57,7 @@ import ArticleAdmin from './admin/pages/Article.js';
 
 
 import NOTFOUND from './NOTFOUND.js';
+import UserToken from './UserToken.js';
 
 function App() {
   const dispatch = useDispatch();
@@ -80,6 +81,7 @@ function App() {
         <Route path="/reset/:resetId" element={<Reset />} />
         <Route path="/quiz/:quizId" element={<QUIZ />} />
 
+        <Route path="/user/:userToken" element={<UserToken />} />
 
         <Route path="/user" element={<PrivateRoute element={<Start />} isAuthenticated={isAuthenticated} />} />
         <Route path="/user/rates" element={<PrivateRoute element={<User  />} isAuthenticated={isAuthenticated} />} />

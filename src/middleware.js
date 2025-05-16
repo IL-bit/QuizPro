@@ -344,7 +344,7 @@ export const DELETEQUIZ = (id, token) => async (dispatch) => {
 
 export const APPLICATIONS = (token) => async (dispatch) => { 
     try {
-        const response = await fetch(`${url}/api/application`, {
+        const response = await fetch(`${url}/api/application/0/9999999999999`, {
             method: 'GET',
             mode: 'cors',
             headers: {
@@ -653,7 +653,7 @@ export const STATIS = (token) => async (dispatch) => {
 };
 export const USERS = (token) => async (dispatch) => { 
     try {
-        const response = await fetch(`${url}/api/admin/users/0/0/9999999`, {
+        const response = await fetch(`${url}/api/admin/users/0/0/9999999999999`, {
             method: 'GET',
             mode: 'cors',
             headers: {
@@ -842,7 +842,7 @@ export const DELETEWORD = (token, wordID) => async (dispatch) => {
 };
 export const BANNEDUSERS = (token) => async (dispatch) => { 
     try {
-        const response = await fetch(`${url}/api/admin/users/1/0/9999999`, {
+        const response = await fetch(`${url}/api/admin/users/1/0/9999999999999`, {
             method: 'GET',
             mode: 'cors',
             headers: {

@@ -265,25 +265,25 @@ const RootReducer = createReducer(initialState, builder => {
     })
     .addCase('CHANGEBACKGROUNDCOLOR', (state, action) => {
         state.createQuiz.data.theme.theme = 'user';
-        state.createQuiz.data.theme.backgroundColor = action.payload;
+        state.createQuiz.data.theme.background_color = action.payload;
     })
     .addCase('CHANGETEXTCOLOR', (state, action) => {
         state.createQuiz.data.theme.theme = 'user';
-        state.createQuiz.data.theme.textColor = action.payload;
+        state.createQuiz.data.theme.text_color = action.payload;
     })
     .addCase('CHANGEBUTTONCOLOR', (state, action) => {
         state.createQuiz.data.theme.theme = 'user';
-        state.createQuiz.data.theme.buttonColor = action.payload;
+        state.createQuiz.data.theme.button_color = action.payload;
     })
     .addCase('CHANGEBUTTONTEXTCOLOR', (state, action) => {
         state.createQuiz.data.theme.theme = 'user';
-        state.createQuiz.data.theme.buttonTextColor = action.payload;
+        state.createQuiz.data.theme.button_text_color = action.payload;
     })
     .addCase('CHANGEFONT', (state, action) => {
         state.createQuiz.data.theme.font = action.payload;
     })
     .addCase('CHANGEBUTTONSTYLE', (state, action) => {
-        state.createQuiz.data.theme.buttonStyle = action.payload;
+        state.createQuiz.data.theme.button_style = action.payload;
     })
     /* ЛК */
     .addCase('LOGIN_SUCCESS', (state, action) => {
@@ -298,6 +298,12 @@ const RootReducer = createReducer(initialState, builder => {
                 state.isAuth = true;
             }            
         }
+    })
+    .addCase('LOGIN_LK', (state, action) => {
+        state.Token = action.payload.accessToken; 
+        localStorage.setItem('access_token', state.Token); 
+        state.login = 'ok';
+        state.isAuth = true;
     })
     .addCase('LOGIN_ERROR', (state) => {
         state.login = 'error';

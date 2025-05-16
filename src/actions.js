@@ -218,3 +218,5 @@ export const noBlocked = createAction('NO_BANNED');
 
 export const setBaseName = createAction('SET_BASE_NAME');
 export const setBaseIndex = createAction('SET_BASE_INDEX');
+
+export const loginLk = createAction('LOGIN_LK');

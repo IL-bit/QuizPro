@@ -36,36 +36,51 @@ const Install = () => {
             }, 3500);
         });
     };
-    const downloadScriptFile = (text, buttonKey) => {
-      navigator.clipboard.writeText(text).then(() => {
+    const downloadScriptFile = async (variableValue, buttonKey) => {
+      try {
+        const response = await fetch('/script.js');
+        let scriptText = await response.text();
+
+        const variableDeclaration = `const Quiz_id = ${currentQuizID};\n`;
+        scriptText = variableDeclaration + scriptText;
+
+        const blob = new Blob([scriptText], { type: 'text/javascript' });
+        const url = URL.createObjectURL(blob);
+
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = 'script.js';
+        document.body.appendChild(link);
+        link.click();
+
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+
         setButtonText((prev) => ({
-            ...prev,
-            [buttonKey]: 'Файл скачан', 
+          ...prev,
+          [buttonKey]: 'Файл скачан',
         }));
 
         setImageVisible((prev) => ({
-            ...prev,
-            [buttonKey]: false,
+          ...prev,
+          [buttonKey]: false,
         }));
 
         setTimeout(() => {
-            setButtonText((prev) => ({
-                ...prev,
-                [buttonKey]: 'Скачать',
-            }));
-            setImageVisible((prev) => ({
-                ...prev,
-                [buttonKey]: true, 
-            }));
+          setButtonText((prev) => ({
+            ...prev,
+            [buttonKey]: 'Скачать',
+          }));
+          setImageVisible((prev) => ({
+            ...prev,
+            [buttonKey]: true,
+          }));
         }, 3500);
-      });
-      const link = document.createElement('a');
-      link.href = '/script.js';
-      link.download = 'script.js'; 
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
+      } catch (error) {
+        console.error('Ошибка при загрузке и скачивании файла:', error);
+      }
     };
+
     const downloadScriptFile2 = (text, buttonKey) => {
       navigator.clipboard.writeText(text).then(() => {
         setButtonText((prev) => ({
@@ -97,7 +112,9 @@ const Install = () => {
       document.body.removeChild(link);
     };
     const codeInit = `<button id="buttonQuiz">Пройти квиз</button><div id="Quiz"></div><script src="путь до файла JS"/>`;
-    const codeInit2 = `<script>const quiz_id = ${currentQuizID};</script><style src="путь до файла CSS"/>`;
+    const codeInit2 = `<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:ital,wght@0,100..900;1,100..900&family=Barriecito&family=Bebas+Neue&family=Berkshire+Swash&family=Big+Shoulders+Stencil:opsz,wght@10..72,100..900&family=Bitter:ital,wght@0,100..900;1,100..900&family=Boldonse&family=Boogaloo&family=Bowlby+One&family=Bungee+Inline&family=Bytesized&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Dancing+Script:wght@400..700&family=Gidole&family=Gloock&family=Herr+Von+Muellerhoff&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Knewave&family=Lalezar&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Lilita+One&family=Limelight&family=Lobster&family=Montserrat+Underline:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Oswald:wght@200..700&family=PT+Sans+Narrow:wght@400;700&family=Pattaya&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rochester&family=Rubik:ital,wght@0,300..900;1,300..900&family=Russo+One&family=Tektur:wght@400..900&family=Urbanist:ital,wght@0,100..900;1,100..900&family=Winky+Sans:ital,wght@0,300..900;1,300..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&family=Young+Serif&family=Yusei+Magic&family=Zilla+Slab:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet"><style src="путь до файла CSS"/>`;
   return (
     <div className="container">
       <div className="row">

@@ -207,6 +207,9 @@
                 font-size: 16px;
                 color: #fff;
                 padding: 46px;
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+                white-space: normal;
             }
             >button {
                 position: absolute;

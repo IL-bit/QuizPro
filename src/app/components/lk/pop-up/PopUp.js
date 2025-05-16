@@ -35,8 +35,9 @@ const PopUp = () => {
 
     const handleScore = (max) => {
         const calculatedScore = (data.count * 100) / max;
-        setScore(calculatedScore);
+        setScore(Math.min(calculatedScore, 100)); // Ограничиваем значение score до 100
     };
+
 
     useEffect(() => {
         const max = handleMax();
