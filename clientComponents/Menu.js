@@ -8,12 +8,13 @@ import logoSvg from '../img/logo.svg';
 
 const Menu = () => {
     const dispatch = useDispatch();    
+    const urlLk = useSelector((state) => state.url);
     const isAuth = useSelector((state) => state.isAuth);
     const isOpen = useSelector((state) => state.pop_up);  
     const [showLogin, setShowLogin] = useState(true);    
     const [formData, setFormData] = useState({
-        login: { email: '', password: '', name: '' },
-        register: { email: '', password: '', password_confirmation: '', name: '' },
+        login: { email: '', password: '', name: '', is_landing: 1 },
+        register: { email: '', password: '', password_confirmation: '', name: '', is_landing: 1 },
         forgot: { email: '' }
     });
     const url = 'http://qzpro.ru:8000';
@@ -164,7 +165,7 @@ const Menu = () => {
     useEffect(() => {
         const token = localStorage.getItem('access_token');
         REFRESH(token);
-    }, [isAuth]);
+    }, []);
     const renderForm = () => {
         switch (isOpen) {
             case 'log_in':
@@ -261,7 +262,7 @@ const Menu = () => {
                     <div id="burger">
                         <header>
                             <Image src={closeSvg} alt="#"/>
-                            <button onClick={() => {isAuth ? window.location.href = 'http://quizforbiz.ru:90' : handleToggle('log_in')}}>Создать квиз</button>
+                            <button onClick={() => {isAuth ? window.location.href = `http://${urlLk}` : handleToggle('log_in')}}>Создать квиз</button>
                             <button onClick={handleClosePopup}></button>
                         </header>
                         <nav>
@@ -288,7 +289,7 @@ const Menu = () => {
                             <p><Image src={closeSvg} alt="#"/>Закрыть</p>
                         </button>
                         <h2>Вы авторизованы</h2>
-                        <p><a href='http://quizforbiz.ru:90'>Перейти в Личный кабинет</a></p>
+                        <p><a href={`http://${urlLk}`}>Перейти в Личный кабинет</a></p>
                     </form>
                 );
             default:

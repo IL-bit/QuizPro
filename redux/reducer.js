@@ -15,7 +15,8 @@ const initialState = {
     button: 1,
     isAuth: false,
     activebutton: 0,
-    Token: ''
+    Token: '',
+    url: ''
 };
 
 const RootReducer = createReducer(initialState, (builder) => {
@@ -34,6 +35,7 @@ const RootReducer = createReducer(initialState, (builder) => {
         .addCase(logIn, (state, action) => {
             state.isAuth = true;
             state.pop_up = 'auth';
+            state.url = action.payload.data.lkUrl.replace("qzpro.ru\/api\/token\/", "quizforbiz.ru:90/user/");
             state.Token = action.payload.data.accessToken;
             localStorage.setItem('access_token', state.Token); 
             state.login = 'ok';
@@ -45,18 +47,21 @@ const RootReducer = createReducer(initialState, (builder) => {
             state.Token = action.payload.data.accessToken;
             localStorage.setItem('access_token', state.Token); 
             state.login = 'ok';
-            state.isAuth = true;        
+            state.isAuth = true;       
+            // state.url = "quizforbiz.ru:90/user/"; 
         })
         .addCase('REFRESH_ERROR', (state) => {
             localStorage.removeItem('access_token');
             state.Token = '';
             state.login = 'error';
+            state.url = '';
             state.isAuth = false;
         })
         .addCase('REFRESH_FAILED', (state) => {
             localStorage.removeItem('access_token');
             state.Token = '';
             state.login = 'error';
+            state.url = '';
             state.isAuth = false;
         })
 });

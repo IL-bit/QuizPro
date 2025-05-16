@@ -8,6 +8,7 @@ import swipeSvg from '../img/swipe.svg';
 
 const Section7 = () => {
     const dispatch = useDispatch();    
+    const urlLk = useSelector((state) => state.url);
     const appData = [
         { id: 1, cardTitle: "1", convers: "19%", name: "Привели 1.000.000₽ в нишу дачных домов", link: "", img: "" },
         { id: 2, cardTitle: "2", convers: "19%", name: "Привели 1.000.000₽ в нишу дачных домов", link: "", img: "" },
@@ -91,7 +92,7 @@ const Section7 = () => {
                                 <Image  alt="Изображение квиза"/>
                                 <h5>{item.name}</h5>
                                 <Link href="#" title="Смотреть квиз" aria-label="Смотреть квиз">Смотреть квиз</Link>
-                                <button title="Попробовать бесплатно" aria-label="Попробовать бесплатно" onClick={() => {isAuth ? window.location.href = 'http://quizforbiz.ru:90': handleToggle('log_in')}}>попробовать бесплатно</button>
+                                <button title="Попробовать бесплатно" aria-label="Попробовать бесплатно" onClick={() => {isAuth ? window.location.href = `http://${urlLk}` : handleToggle('log_in')}}>попробовать бесплатно</button>
                             </div>
                         ))}
                     </div>
