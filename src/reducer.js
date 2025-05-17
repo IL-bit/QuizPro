@@ -9,47 +9,7 @@ const initialState = {
         currentQuizID: 0,
         isData: false,
         is_active: false,
-        data: {
-            title: 'Заголовок страницы',   
-            isvideo1: false,
-            isvideo2: false,              
-            theme: {
-                backgroundColor: '#425766',
-                textColor: '#FFFFFF',
-                buttonColor: '#105EFE',
-                buttonTextColor: '#FFFFFF',
-                font: '',
-                buttonStyle: 'style1',
-                theme: 'light'
-            },
-            canvas1: {
-                title: 'Введите заголовок формы',
-                subtitle: 'Дополнительный текст-описание',
-                img: null,
-                logo: null,
-                name: 'ООО «Название компании»',
-                description: 'Название или слоган компании',
-                tel: '+7 (900) 000-00-00',
-                button: 'Начать',
-                video: null,
-                mobile: null,
-                mobileVideo: null,
-                aling: 'canvas',
-                is_active: true
-            },
-            canvas2: [
-            ],
-            canvas3: {
-                title: 'Введите заголовок формы',
-                subtitle: 'Дополнительный текст-описание',
-                img: null,
-                name: 'Иван',
-                email: 'Mail@example.com',
-                phone: '+7 (900) 000-00-00',
-                video: null,
-                aling: 'canvas'
-            }
-        }
+        data: {}
     },
     quiz: {
         currentSection: 0,
@@ -392,6 +352,7 @@ const RootReducer = createReducer(initialState, builder => {
     })
     .addCase('SET_NO_QUIZ', (state) => {
         state.createQuiz.isData = false;
+        state.createQuiz.data = {};
         state.createQuiz.currentSection = 0;
         state.createQuiz.currentQuestion = null;
         state.createQuiz.currentQuestionIndex = 0;

@@ -54,11 +54,9 @@ const New = () => {
 
   const handleClick = () => {
     dispatch(POSTQUIZ(names, token, createQuizData)).then((data) => {
-      setTimeout(() => {
-        dispatch(setLk2(1));
-        dispatch(setCurrentQuiz(data.id));
-        navigate(`/user/quiz/${data.id}`);
-      }, 1000);     
+      dispatch(setLk2(1));
+      dispatch(setCurrentQuiz(data.id));
+      navigate(`/user/quiz/${data.id}`);   
     })
   };
 

@@ -68,7 +68,9 @@ const LeftBar = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      dispatch(PUTQUIZ(currentQuizID, token, data));
+      if (Object.keys(data).length > 0) {
+        dispatch(PUTQUIZ(currentQuizID, token, data));
+      }
     }, 1500); 
     return () => clearInterval(interval);
   }, [currentQuizID, token, data]);

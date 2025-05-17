@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './style.scss';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Canvas1 from '../../components/constructor/previevPc/canvas1';
 import Canvas2 from '../../components/constructor/previevPc/canvas2';
@@ -28,6 +28,7 @@ const PrevievQuizPc = () => {
       setCurrentCanvas(canvas);
     }
   };
+
   useEffect(() => {
     if (isCanvas1) {
       setCurrentCanvas('canvas1');

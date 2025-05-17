@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { setCurrentQuiz, setLk2, setNameQuiz, deleteConversion, setName, setCity, setDateFrom, setDateTo, setTime, setType } from '../../../../actions';
-import { DELETEQUIZ, PUTQUIZNAME } from '../../../../middleware';
+import { DELETEQUIZ, PUTQUIZNAME, QUIZ } from '../../../../middleware';
 import './style.scss';
 import change from '../../../img/quizes/change.svg';
 import widget from '../../../img/quizes/widget.svg';
@@ -36,11 +36,21 @@ const Quizes = () => {
     setModal(!modal);
   }
   const handleClick = (route, quiz) => {
-      navigate(route);
-      dispatch(deleteConversion());
-      dispatch(setNameQuiz(quiz.name))
-      dispatch(setCurrentQuiz(quiz.id));
-      dispatch(setLk2(1));
+    navigate(route);
+    dispatch(deleteConversion());
+    dispatch(setNameQuiz(quiz.name))
+    dispatch(setCurrentQuiz(quiz.id));
+    dispatch(setLk2(1));
+  };
+  const handlePrevievQuiz = (route, quiz) => {
+    console.log(quiz)
+    dispatch(deleteConversion());
+    dispatch(setNameQuiz(quiz.name))
+    dispatch(setCurrentQuiz(quiz.id));
+    dispatch(setLk2(1));
+    dispatch(QUIZ(quiz.id, token)).then(() => {
+      navigate(route)
+    });
   };
 
   const handleCheckboxChange = (id) => {
@@ -172,7 +182,7 @@ const Quizes = () => {
                 <button onClick={() => handleApplication('/user/applications', quiz.name)}><img src={notes} alt="#" />Заявки<div className="count">{quiz.apps}</div></button>
                 <button onClick={deletedQuizzes[quiz.id] ? null : () => handleClick(`/user/quiz/${quiz.id}/conversion`, quiz)}><img src={convers} alt="#"/>Конверсия</button>
                 <button onClick={deletedQuizzes[quiz.id] ? null : () => handleClick(`/user/quiz/${quiz.id}`, quiz)}><img src={widget} alt="#" />Редактировать</button>
-                <button onClick={deletedQuizzes[quiz.id] ? null : () => handleClick(`/user/quiz/${quiz.id}/previev/pc`, quiz)}><img src={eye} alt="#" />Предпросмотр</button>
+                <button onClick={deletedQuizzes[quiz.id] ? null : () => handlePrevievQuiz(`/user/quiz/${quiz.id}/previev/pc`, quiz)}><img src={eye} alt="#" />Предпросмотр</button>
               </div>
               <input 
                 type="checkbox" 
