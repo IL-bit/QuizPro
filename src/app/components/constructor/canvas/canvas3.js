@@ -101,7 +101,7 @@ const Canvas3 = () => {
                 </div>
               )}
             </div>
-            <button onClick={() => console.log('Отправить')}>Отправить</button>
+            <button>Отправить</button>
           </div>
         </div>
         <Instrument3 /> 

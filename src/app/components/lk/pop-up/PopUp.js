@@ -9,6 +9,7 @@ const PopUp = () => {
     const navigate = useNavigate();   
     const rates = useSelector((state) => state.rate);
     const application = useSelector((state) => state.applications);
+    const profileRate = useSelector((state) => state.profile_rate);
     const notifications = useSelector((state) => state.notifications);
     const handleClick = (route) => {
       navigate(route);
@@ -34,7 +35,7 @@ const PopUp = () => {
     };
 
     const handleScore = (max) => {
-        const calculatedScore = (data.count * 100) / max;
+        const calculatedScore = (profileRate.appsSumm * 100) / max;
         setScore(Math.min(calculatedScore, 100)); // Ограничиваем значение score до 100
     };
 

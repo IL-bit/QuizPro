@@ -101,7 +101,9 @@ const Canvas1 = () => {
                 </div>
                 <h1 contentEditable="true" spellcheck="false" suppressContentEditableWarning={true} data-name="title" onBlur={(e) => handleInput('title', e.currentTarget.textContent)}>{createQuiz.data.canvas1.title}</h1>
                 <h3 contentEditable="true" spellcheck="false" suppressContentEditableWarning={true} data-name="subtitle" onBlur={(e) => handleInput('subtitle', e.currentTarget.textContent)}>{createQuiz.data.canvas1.subtitle}</h3>
-                <button contentEditable="true" spellcheck="false" suppressContentEditableWarning={true} onBlur={(e) => handleButtonB('button', e.currentTarget.textContent)}>{createQuiz.data.canvas1.button}</button>
+
+                <button><p contentEditable="true" spellcheck="false" suppressContentEditableWarning={true} onBlur={(e) => handleButtonB('button', e.currentTarget.textContent)}>{createQuiz.data.canvas1.button}</p> </button>
+                
                 <p contentEditable="true" spellcheck="false" suppressContentEditableWarning={true} data-name="tel" onBlur={(e) => handleInput('tel', e.currentTarget.textContent)}>{createQuiz.data.canvas1.tel}</p>
                 <p contentEditable="true" spellcheck="false" suppressContentEditableWarning={true} data-name="name" onBlur={(e) => handleInput('name', e.currentTarget.textContent)}>{createQuiz.data.canvas1.name}</p>
               </div>

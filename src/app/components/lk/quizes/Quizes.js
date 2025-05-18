@@ -43,7 +43,6 @@ const Quizes = () => {
     dispatch(setLk2(1));
   };
   const handlePrevievQuiz = (route, quiz) => {
-    console.log(quiz)
     dispatch(deleteConversion());
     dispatch(setNameQuiz(quiz.name))
     dispatch(setCurrentQuiz(quiz.id));
@@ -182,7 +181,16 @@ const Quizes = () => {
                 <button onClick={() => handleApplication('/user/applications', quiz.name)}><img src={notes} alt="#" />Заявки<div className="count">{quiz.apps}</div></button>
                 <button onClick={deletedQuizzes[quiz.id] ? null : () => handleClick(`/user/quiz/${quiz.id}/conversion`, quiz)}><img src={convers} alt="#"/>Конверсия</button>
                 <button onClick={deletedQuizzes[quiz.id] ? null : () => handleClick(`/user/quiz/${quiz.id}`, quiz)}><img src={widget} alt="#" />Редактировать</button>
-                <button onClick={deletedQuizzes[quiz.id] ? null : () => handlePrevievQuiz(`/user/quiz/${quiz.id}/previev/pc`, quiz)}><img src={eye} alt="#" />Предпросмотр</button>
+                <button 
+                  onClick={deletedQuizzes[quiz.id] ? null : () => {
+                    const isMobile = window.innerWidth <= 576; // Проверка ширины экрана
+                    const previewUrl = isMobile ? `/user/quiz/${quiz.id}/previev/mob` : `/user/quiz/${quiz.id}/previev/pc`;
+                    handlePrevievQuiz(previewUrl, quiz);
+                  }}
+                >
+                  <img src={eye} alt="#" />Предпросмотр
+                </button>
+
               </div>
               <input 
                 type="checkbox" 

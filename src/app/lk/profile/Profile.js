@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { PROFILE, PUTPROFILE, RESET } from '../../../middleware';
+import { PROFILE, PUTPROFILE, RESETPASSWORD } from '../../../middleware';
 import LeftBar from '../../components/lk/leftBar/LeftBar';
 import './style.scss';
 import money from '../../img/profile/money.svg';
@@ -14,15 +14,17 @@ const Profile = () => {
     const balance = useSelector((state) => state.balance);
     const token = useSelector((state) => state.Token);
     const id = useSelector((state) => state.id);
+    const profileRate = useSelector((state) => state.profile_rate);
     const isProfile = useSelector((state) => state.isProfile);
     const [modalActive, setModalActive] = useState(false);
     const [modaSuccessActive, setModalSuccessActive] = useState(false);
     
     const [newEmail, setEmail] = useState(profile.email || '');
-    const [newPhone, setPhone] = useState(profile.phone || '');
+    const [newPhone, setPhone] = useState(profileRate.phone || '');
     const [newName, setName] = useState(profile.name || '');
 
     const [dataForm, setDataForm] = useState({
+        'id': profile.id,
         password_old: '',
         password: '',
         password_confirmation: ''
@@ -40,7 +42,7 @@ const Profile = () => {
     };
     const handleReset = () => {
         setEmail(profile.email);
-        setPhone(profile.phone);
+        setPhone(profileRate.phone);
         setName(profile.name);
     };
 
@@ -51,7 +53,7 @@ const Profile = () => {
     }, [dispatch, isProfile, token, id]);
     useEffect(() => {
         setEmail(profile.email || '');
-        setPhone(profile.phone || '');
+        setPhone(profileRate.phone || '');
         setName(profile.name || '');
     }, [profile]);
 
@@ -67,12 +69,21 @@ const Profile = () => {
     };
     const handlePost = () => {
         if (dataForm.password === dataForm.password_confirmation && dataForm.password !== '' && dataForm.password_old !== '') {
-            dispatch(RESET(dataForm)).then(() => {
-                setModalActive(false);
-                setModalSuccessActive(true);
-            }).catch(() => {});
-
-        };
+            dispatch(RESETPASSWORD(dataForm))
+                .then(() => {
+                    setModalActive(false);
+                    setModalSuccessActive(true);
+                    setDataForm({
+                        'id': profile.id,
+                        password_old: '',
+                        password: '',
+                        password_confirmation: ''
+                    });
+                })
+                .catch(() => {
+                    console.error("Ошибка при изменении пароля");
+                });
+        }
     };
 
     return (
@@ -95,8 +106,7 @@ const Profile = () => {
                             <input 
                                 type="text" 
                                 placeholder={profile.email} 
-                                value={newEmail} 
-                                onChange={(e) => setEmail(e.target.value)} 
+                                readOnly
                             />
                         </div>
                         <div className="name">
@@ -116,7 +126,7 @@ const Profile = () => {
                             <h6>Телефон</h6>
                             <input 
                                 type="text" 
-                                placeholder={profile.phone} 
+                                placeholder={profileRate.phone} 
                                 value={newPhone} 
                                 onChange={(e) => setPhone(e.target.value)} 
                             />
@@ -139,7 +149,7 @@ const Profile = () => {
                         <input type="password" name="password" placeholder='Новый пароль'onChange={handleChange} value={dataForm.password} required />
                         <input type="password" name="password_confirmation" placeholder='Повторите пароль'onChange={handleChange} value={dataForm.password_confirmation} required />
                         <div className="btns">
-                            <button>Да</button>
+                            <button onClick={() => handlePost()}>Да</button>
                             <button onClick={() => setModalActive(false)}>Нет</button>
                         </div>
                         <div className="close" onClick={() => setModalActive(false)}><img src={close} alt="#" /></div>
@@ -147,7 +157,7 @@ const Profile = () => {
                     <div id="changePasswordOk" style={{ display: modaSuccessActive ? 'block' : 'none' }}>
                         <h2>Ваш пароль<br/>успешно изменён</h2>
                         <img src={success} alt="#" />
-                        <button>Хорошо</button>
+                        <button onClick={() => setModalSuccessActive(false)}>Хорошо</button>
                         <div className="close" onClick={() => setModalSuccessActive(false)}><img src={close} alt="#" /></div>
                     </div>
                 </div>

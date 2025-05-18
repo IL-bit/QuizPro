@@ -34,6 +34,9 @@ const LeftBar = () => {
     navigate(route); 
     dispatch(setLk(2)); 
     dispatch(setLk2(id));
+    if (Object.keys(data).length > 0) {
+      dispatch(PUTQUIZ(currentQuizID, token, data));
+    }
   };
   const handleAccountClick = () => {
     setIsPopupVisible(true);
@@ -71,7 +74,7 @@ const LeftBar = () => {
       if (Object.keys(data).length > 0) {
         dispatch(PUTQUIZ(currentQuizID, token, data));
       }
-    }, 1500); 
+    }, 2000); 
     return () => clearInterval(interval);
   }, [currentQuizID, token, data]);
   return (

@@ -60,10 +60,10 @@ const Canvas2 = () => {
               <button onClick={() => handleButtonClick("Answers")}>
                 <img src={answer1} alt="#" />Варианты ответов
               </button>
-              <button onClick={() => handleButtonClick("AnswersImg")}>
+              <button onClick={() => handleButtonClick("AnswersAndImg")}>
                 <img src={answer2} alt="#" />Варианты с картинками
               </button>
-              <button onClick={() => handleButtonClick("AnswersAndImg")}>
+              <button onClick={() => handleButtonClick("AnswersImg")}>
                 <img src={answer3} alt="#" />Варианты и картинка
               </button>
               <button onClick={() => handleButtonClick("Calculator")}>
