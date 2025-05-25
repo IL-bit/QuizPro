@@ -43,6 +43,7 @@
         >button {
             background: #105efe !important;
             color: #fff !important;
+            border: 1px solid #105efe !important;
         }    
         a {
             color: #1d2a33 !important;
@@ -72,6 +73,7 @@
         button {
             background: #105efe !important;
             color: #fff !important;
+            border: 1px solid #105efe !important;
         }    
         a {
             color: #fff !important;
@@ -118,7 +120,7 @@
 }
 .style1 {
     
-    >#canvas2Mob {
+    >#canvas2Mob, #canvas1Mob, #canvas3Mob {
         >.progress {
             >:nth-last-child(1) {
                 border: none;
@@ -128,13 +130,19 @@
             >:nth-last-child(2) {
                 border: 1.34px solid #6a8496;
                 background: none;
+                border-radius: 39px;
+            }
+        }
+        >.right {
+            >button {
+                border: none;
                 border-radius: 39px;
             }
         }
     }
 }
 .style2 {
-    >#canvas2Mob {
+    >#canvas2Mob, #canvas1Mob, #canvas3Mob {
         >.progress {
             >:nth-last-child(1) {
                 border: none;
@@ -147,10 +155,16 @@
                 border-radius: 3px;
             }
         }
+        >.right {
+            >button {
+                border: none;
+                border-radius: 3px;
+            }
+        }
     }
 }
 .style3 {
-    >#canvas2Mob {
+    >#canvas2Mob, #canvas1Mob, #canvas3Mob {
         >.progress {
             >:nth-last-child(1) {
                 border: none;
@@ -164,10 +178,18 @@
                 border-radius: 39px;
             }
         }
+        >.right {
+            >button {
+                border: none;
+                background: none;
+                border-radius: 39px;
+                border: 0.60px solid #105efe;
+            }
+        }
     }
 }
 .style4 {
-    >#canvas2Mob {
+    >#canvas2Mob, #canvas1Mob, #canvas3Mob {
         >.progress {
             >:nth-last-child(1) {
                 border: none;
@@ -178,6 +200,13 @@
             >:nth-last-child(2) {
                 border: 1.34px solid #6a8496;
                 background: none;
+                border-radius: 3px;
+            }
+        }
+        >.right {
+            >button {
+                border: none;
+                background: none !important;
                 border-radius: 3px;
             }
         }

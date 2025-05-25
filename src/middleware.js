@@ -749,6 +749,32 @@ export const STATIS = (token) => async (dispatch) => {
         console.error("Error occurred:", error); 
     }
 };
+export const DEPOSITS = (token) => async (dispatch) => { 
+    try {
+        const response = await fetch(`${url}/api/admin/deposits`, {
+            method: 'GET',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        });
+        if (response.status === 401) {
+            dispatch(logOut());
+            return;
+        }
+        if (!response.ok) {
+            console.error('Fetch failed with status:', response.status); 
+            return;
+        }
+        const data = await response.json();
+        dispatch(setDeposits(data)); 
+
+    } catch (error) {       
+        console.error("Error occurred:", error); 
+    }
+};
+
 export const USERS = (token) => async (dispatch) => { 
     try {
         const response = await fetch(`${url}/api/admin/users/0/0/9999999999999`, {
@@ -775,205 +801,6 @@ export const USERS = (token) => async (dispatch) => {
         console.error("Error occurred:", error); 
     }
 };
-export const USER = (token, id) => async (dispatch) => { 
-    try {
-        const response = await fetch(`${url}/api/admin/user/${id}`, {
-            method: 'GET',
-            mode: 'cors',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            }
-        });
-        if (response.status === 401) {
-            dispatch(logOut());
-            return;
-        }
-        if (!response.ok) {
-            console.error('Fetch failed with status:', response.status); 
-            return;
-        }
-        const data = await response.json();
-        dispatch(setUser(data)); 
-        dispatch(isUser()); 
-
-    } catch (error) {       
-        console.error("Error occurred:", error); 
-    }
-};
-export const DEPOSITS = (token) => async (dispatch) => { 
-    try {
-        const response = await fetch(`${url}/api/admin/deposits`, {
-            method: 'GET',
-            mode: 'cors',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            }
-        });
-        if (response.status === 401) {
-            dispatch(logOut());
-            return;
-        }
-        if (!response.ok) {
-            console.error('Fetch failed with status:', response.status); 
-            return;
-        }
-        const data = await response.json();
-        dispatch(setDeposits(data)); 
-
-    } catch (error) {       
-        console.error("Error occurred:", error); 
-    }
-};
-export const BANNEDWORDS = (token) => async (dispatch) => { 
-    try {
-        const response = await fetch(`${url}/api/admin/word`, {
-            method: 'GET',
-            mode: 'cors',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            }
-        });
-        if (response.status === 401) {
-            dispatch(logOut());
-            return;
-        }
-        if (!response.ok) {
-            console.error('Fetch failed with status:', response.status); 
-            return;
-        }
-        const data = await response.json();
-        dispatch(setBannedWords(data)); 
-
-    } catch (error) {       
-        console.error("Error occurred:", error); 
-    }
-};
-export const BASEADMIN = (token, id) => async (dispatch) => { 
-    try {
-        const response = await fetch(`${url}/api/admin/article/${id}`, {
-            method: 'GET',
-            mode: 'cors',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            }
-        });
-        if (response.status === 401) {
-            dispatch(logOut());
-            return;
-        }
-        if (!response.ok) {
-            console.error('Fetch failed with status:', response.status); 
-            return;
-        }
-        const data = await response.json();
-        dispatch(setBaseAdmin(data)); 
-
-    } catch (error) {       
-        console.error("Error occurred:", error); 
-    }
-};
-export const ARTICLEPOST = (token, datas) => async (dispatch) => { 
-    try {
-        const response = await fetch(`${url}/api/admin/article`, {
-            method: 'POST',
-            mode: 'cors',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            },
-            body: JSON.stringify(datas)
-        });
-        if (response.status === 401) {
-            dispatch(logOut());
-            return;
-        }
-        if (!response.ok) {
-            console.error('Fetch failed with status:', response.status); 
-            return;
-        }
-        const data = await response.json();
-
-    } catch (error) {       
-        console.error("Error occurred:", error); 
-    }
-};
-export const ARTICLEPUT = (token, datas) => async (dispatch) => { 
-    try {
-        const response = await fetch(`${url}/api/admin/article`, {
-            method: 'PUT',
-            mode: 'cors',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            },
-            body: JSON.stringify(datas)
-        });
-        if (response.status === 401) {
-            dispatch(logOut());
-            return;
-        }
-        if (!response.ok) {
-            console.error('Fetch failed with status:', response.status); 
-            return;
-        }
-        const data = await response.json();
-
-    } catch (error) {       
-        console.error("Error occurred:", error); 
-    }
-};
-export const ARTICLEDELETE = (token, id) => async (dispatch) => { 
-    try {
-        const response = await fetch(`${url}/api/admin/article/${id}`, {
-            method: 'DELETE',
-            mode: 'cors',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            }
-        });
-        if (response.status === 401) {
-            dispatch(logOut());
-            return;
-        }
-        if (!response.ok) {
-            console.error('Fetch failed with status:', response.status); 
-            return;
-        }
-        const data = await response.json();
-
-    } catch (error) {       
-        console.error("Error occurred:", error); 
-    }
-};
-export const DELETEWORD = (token, wordID) => async (dispatch) => { 
-    try {
-        const response = await fetch(`${url}/api/admin/word/${wordID}`, {
-            method: 'DELETE',
-            mode: 'cors',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            }
-        });
-        if (response.status === 401) {
-            dispatch(logOut());
-            return;
-        }
-        if (!response.ok) {
-            console.error('Fetch failed with status:', response.status); 
-            return;
-        }
-        const data = await response.json();
-
-    } catch (error) {       
-        console.error("Error occurred:", error); 
-    }
-};
 export const BANNEDUSERS = (token) => async (dispatch) => { 
     try {
         const response = await fetch(`${url}/api/admin/users/1/0/9999999999999`, {
@@ -995,6 +822,32 @@ export const BANNEDUSERS = (token) => async (dispatch) => {
         const data = await response.json();
         dispatch(isBlocked());
         dispatch(setBannedUsers(data)); 
+
+    } catch (error) {       
+        console.error("Error occurred:", error); 
+    }
+};
+export const USER = (token, id) => async (dispatch) => { 
+    try {
+        const response = await fetch(`${url}/api/admin/user/${id}`, {
+            method: 'GET',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        });
+        if (response.status === 401) {
+            dispatch(logOut());
+            return;
+        }
+        if (!response.ok) {
+            console.error('Fetch failed with status:', response.status); 
+            return;
+        }
+        const data = await response.json();
+        dispatch(setUser(data)); 
+        dispatch(isUser()); 
 
     } catch (error) {       
         console.error("Error occurred:", error); 
@@ -1078,3 +931,209 @@ export const USERBANNED = (token, datas) => async (dispatch) => {
         console.error("Error occurred:", error); 
     }
 };
+
+
+export const BANNEDWORDS = (token) => async (dispatch) => { 
+    try {
+        const response = await fetch(`${url}/api/admin/word`, {
+            method: 'GET',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        });
+        if (response.status === 401) {
+            dispatch(logOut());
+            return;
+        }
+        if (!response.ok) {
+            console.error('Fetch failed with status:', response.status); 
+            return;
+        }
+        const data = await response.json();
+        dispatch(setBannedWords(data)); 
+
+    } catch (error) {       
+        console.error("Error occurred:", error); 
+    }
+};
+export const DELETEWORD = (token, wordID) => async (dispatch) => { 
+    try {
+        const response = await fetch(`${url}/api/admin/word/${wordID}`, {
+            method: 'DELETE',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        });
+        if (response.status === 401) {
+            dispatch(logOut());
+            return;
+        }
+        if (!response.ok) {
+            console.error('Fetch failed with status:', response.status); 
+            return;
+        }
+        const data = await response.json();
+
+    } catch (error) {       
+        console.error("Error occurred:", error); 
+    }
+};
+export const POSTWORD = (token, word) => async (dispatch) => { 
+    try {
+        const response = await fetch(`${url}/api/admin/word`, {
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify(word)
+
+        });
+        if (response.status === 401) {
+            dispatch(logOut());
+            return;
+        }
+        if (!response.ok) {
+            console.error('Fetch failed with status:', response.status); 
+            return;
+        }
+        const data = await response.json();
+
+    } catch (error) {       
+        console.error("Error occurred:", error); 
+    }
+};
+export const PUTWORD = (token, word) => async (dispatch) => { 
+    try {
+        const response = await fetch(`${url}/api/admin/word`, {
+            method: 'PUT',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify(word)
+
+        });
+        if (response.status === 401) {
+            dispatch(logOut());
+            return;
+        }
+        if (!response.ok) {
+            console.error('Fetch failed with status:', response.status); 
+            return;
+        }
+        const data = await response.json();
+
+    } catch (error) {       
+        console.error("Error occurred:", error); 
+    }
+};
+
+export const BASEADMIN = (token, id) => async (dispatch) => { 
+    try {
+        const response = await fetch(`${url}/api/article/${id}`, {
+            method: 'GET',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        });
+        if (response.status === 401) {
+            dispatch(logOut());
+            return;
+        }
+        if (!response.ok) {
+            console.error('Fetch failed with status:', response.status); 
+            return;
+        }
+        const data = await response.json();
+        console.log(data);
+        dispatch(setBaseAdmin(data)); 
+
+    } catch (error) {       
+        console.error("Error occurred:", error); 
+    }
+};
+export const ARTICLEPOST = (token, datas) => async (dispatch) => { 
+    try {
+        const response = await fetch(`${url}/api/admin/article`, {
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify(datas)
+        });
+        if (response.status === 401) {
+            dispatch(logOut());
+            return;
+        }
+        if (!response.ok) {
+            console.error('Fetch failed with status:', response.status); 
+            return;
+        }
+        const data = await response.json();
+
+    } catch (error) {       
+        console.error("Error occurred:", error); 
+    }
+};
+export const ARTICLEPUT = (token, datas) => async (dispatch) => { 
+    try {
+        const response = await fetch(`${url}/api/admin/article`, {
+            method: 'PUT',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify(datas)
+        });
+        if (response.status === 401) {
+            dispatch(logOut());
+            return;
+        }
+        if (!response.ok) {
+            console.error('Fetch failed with status:', response.status); 
+            return;
+        }
+        const data = await response.json();
+
+    } catch (error) {       
+        console.error("Error occurred:", error); 
+    }
+};
+export const ARTICLEDELETE = (token, id) => async (dispatch) => { 
+    try {
+        const response = await fetch(`${url}/api/admin/article/${id}`, {
+            method: 'DELETE',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        });
+        if (response.status === 401) {
+            dispatch(logOut());
+            return;
+        }
+        if (!response.ok) {
+            console.error('Fetch failed with status:', response.status); 
+            return;
+        }
+        const data = await response.json();
+
+    } catch (error) {       
+        console.error("Error occurred:", error); 
+    }
+};
+
+

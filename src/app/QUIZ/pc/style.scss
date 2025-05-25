@@ -33,96 +33,86 @@
 }
 .light-theme {
     >div {
-        background: #fff;
+        background: #fff !important;
         p, h1, h3 {
-            color: #1d2a33;
+            color: #1d2a33 !important;
         }
-        .right {
-            >button {
-                background: #105efe;
-                color: #fff;
-            }    
-            a {
-                color: #1d2a33;
-                text-decoration-color: #105efe;
-                span {
-                    color: #105efe;
-                }
-            }  
-            .inputs {
-                input {
-                    border: 0.85px solid #6a8496;  
-                    color: #fff;
-                }   
-                input::placeholder {
-                    color: #6a8496;
-                }                 
-            }                         
-        }
-
+        >button {
+            background: #105efe !important;
+            color: #fff !important;
+            border: 1px solid #105efe !important;
+        }    
+        a {
+            color: #1d2a33 !important;
+            text-decoration-color: #105efe !important;
+            span {
+                color: #105efe !important;
+            }
+        }   
+        input {
+            border: 0.85px solid #6a8496 !important;  
+            color: #6a8496 !important;
+        }   
+        input::placeholder {
+            color: #6a8496 !important;
+        }                          
     }
 }
 .dark-theme {
     >div {
-        background: #141c23;
+        background: #141c23 !important;
         p, h1, h3 {
-            color: #fff;
+            color: #fff !important;
         }
         a {
-            color: #fff;
+            color: #fff !important;
         }
-        .right {
-            >button {
-                background: #105efe;
-                color: #fff;
-            }    
-            a {
-                color: #fff;
-                text-decoration-color: #105efe;
-                span {
-                    color: #105efe;
-                }
-            }  
-            .inputs {
-                input {
-                    border: 0.85px solid #fff;
-                    color: #fff;
-                }
-                input::placeholder {
-                    color: #fff;
-                }
-            }      
+        button {
+            background: #105efe !important;
+            color: #fff !important;
+            border: 1px solid #105efe !important;
+        }    
+        a {
+            color: #fff !important;
+            text-decoration-color: #105efe !important;
+            span {
+                color: #105efe !important;
+            }
+        }      
+        input {
+            border: 0.85px solid #fff !important;
+            color: #fff !important;
         }
+        input::placeholder {
+            color: #fff !important;
+        }              
+
     }
 }
 .quiz-theme {
     >div {
-        background: #1153fe;
+        background: #1153fe !important;
         p, h1, h3 {
-            color: #fff;
+            color: #fff !important;
         }
-        .right {
-            >button {
-                background: #ff6210;
-                color: #fff;
-            }    
-            a {
-                color: #fff;
-                text-decoration-color: #ff6210;
-                span {
-                    color: #ff6210;
-                }
-            }   
-            .inputs {
-                input {
-                    border: 0.85px solid #fff;
-                    color: #fff;
-                }
-                input::placeholder {
-                    color: #fff;
-                }
-            }         
+        >button {
+            background: #ff6210 !important;
+            color: #fff !important;  
+        }    
+        a {
+            color: #fff !important; 
+            text-decoration-color: #ff6210 !important;
+            span {
+                color: #ff6210 !important;
+            }
+        }         
+        input {
+            border: 0.85px solid #fff !important;
+            color: #fff !important;
         }
+        input::placeholder {
+            color: #fff !important;
+        }        
     }
 }
 .style1 {
@@ -201,7 +191,7 @@
             >:nth-last-child(1) {
                 border: none;
                 border: 0.60px solid #105efe;
-                background: none;
+                background: none !important;
                 border-radius: 3px;
             }
             >:nth-last-child(2) {
@@ -213,7 +203,7 @@
         >.right {
             >button {
                 border: none;
-                background: none;
+                background: none !important;
                 border-radius: 3px;
             }
         }

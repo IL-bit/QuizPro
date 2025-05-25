@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Logout from './logout/Logout';
 import LeftBar from './leftBar/LeftBar';
 import { ARTICLEPOST, BASEADMIN } from '../../../middleware';
@@ -9,10 +9,11 @@ import { useNavigate } from 'react-router';
 const ArticlesAdmin = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const datas = useSelector((state) => state.current_base);
+  const datas = useSelector((state) => state.admin.current_base);
   const token = useSelector((state) => state.Token);
   const baseName = useSelector((state) => state.admin.base_name);
-  const index = useSelector((state) => state.admin.base_name_index)
+  const index = useSelector((state) => state.admin.base_name_index);
+  const names = 'title' + Math.floor(Math.random() * 100);
   const handleClick = (index) => {
     dispatch(setBaseIndex(index));
     navigate(`/admin/base/${index}`);
@@ -23,12 +24,16 @@ const ArticlesAdmin = () => {
   const handlePost = () => {
     dispatch(ARTICLEPOST(token, {
         "category_id": index,
-        "title": 'title',
+        "title": names,
         "description": 'shortDescription', 
         "text": 'description',
         'enabled': 1
-    }));
-    dispatch(BASEADMIN(token, index));
+    })).then(() => {
+      dispatch(BASEADMIN(token, index));
+    }).catch((error) => {
+      console.error(error);
+    });
+    
   };
   return (
     <div className='container-fluid'>

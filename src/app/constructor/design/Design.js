@@ -41,6 +41,7 @@ const Design = () => {
   const handleButtonClick = (theme) => {
     setActiveItem(theme);
     dispatch(changeTheme(theme));
+    dispatch(PUTQUIZ(currentQuizID, token, data));
   };
 
   const handleButtonStyleClick = (style) => {
@@ -74,9 +75,6 @@ const Design = () => {
     setActiveFontModal(false);
   };
 
-  useEffect(() => {
-    dispatch(PUTQUIZ(currentQuizID, token, data));
-  }, [createQuiz.data.theme]);
 
   return (
     <div className="container">

@@ -70,12 +70,19 @@ const LeftBar = () => {
   }, [isActive, isModalActive, isPopupVisible]);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      if (Object.keys(data).length > 0) {
-        dispatch(PUTQUIZ(currentQuizID, token, data));
-      }
-    }, 2000); 
-    return () => clearInterval(interval);
+    const dataSizeInMB = new Blob([JSON.stringify(data)]).size / (1024 * 1024);
+    if (dataSizeInMB > 16) {
+      alert('Объем данных превышает 16 МБ! Вы исчерпали своий лимит данных на квиз, дальше квиз не будет сохранятся. Для дальнейшего сохранения перейдите на другой тариф.');
+    } else {
+      console.log(dataSizeInMB);
+      const interval = setInterval(() => {
+        if (Object.keys(data).length > 0) {
+          dispatch(PUTQUIZ(currentQuizID, token, data));
+        };
+
+      }, 1400); 
+      return () => clearInterval(interval);      
+    }
   }, [currentQuizID, token, data]);
   return (
     <>

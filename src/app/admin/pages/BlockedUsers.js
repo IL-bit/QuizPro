@@ -7,8 +7,10 @@ import './style.scss';
 import eye from '../img/eye_close.svg';
 import edit from '../img/edit.svg';
 import trash from '../img/trash.svg';
+import { useNavigate } from 'react-router';
 
 const BlockedUsers = () => {  
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const token = useSelector((state) => state.Token);
   const blockedUsers = useSelector((state) => state.admin.blockedUsers);  
@@ -76,15 +78,15 @@ const BlockedUsers = () => {
               <p>Редактирование</p>
             </div>
             {filteredBlockedUsers.length > 0 ? filteredBlockedUsers.map(User => (
-              <div className="answer" key={User .id}>
-                <p>{User .id}</p>
-                <p>{User .createAt}</p>                
-                <p>{User .name || User.email}</p>
-                <p>{User .reason}</p>
+              <div className="answer" key={User.id}>
+                <p>{User.id}</p>
+                <p>{User.created_at}</p>                
+                <p>{User.name || User.email}</p>
+                <p>{User.reason}</p>
                 <div>
                   <button><img src={trash} alt="#" /></button>
                   <button><img src={eye} alt="#" /></button>
-                  <button><img src={edit} alt="#" /></button>
+                  <button onClick={() => navigate(`/admin/user/${User.id}`)}><img src={edit} alt="#" /></button>
                 </div>
               </div>
             )) : null}

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Logout from './logout/Logout';
 import LeftBar from './leftBar/LeftBar';
-import { ARTICLEPUT, ARTICLEDELETE } from '../../../middleware';
+import { ARTICLEPUT, ARTICLEDELETE, BASEADMIN } from '../../../middleware';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router';
 
@@ -11,14 +11,14 @@ const ArticleAdmin = () => {
     const token = useSelector((state) => state.Token);
     const dataIndex = useSelector((state) => state.admin.base_index);
     const index = useSelector((state) => state.admin.base_name_index);
-    const data = useSelector((state) => state.current_base[dataIndex]);
+    const data = useSelector((state) => state.admin.current_base[dataIndex]);
 
     const [description, setDescription] = useState('');
     const [title, setTitle] = useState('');
-
     useEffect(() => {
         if (data) {
-            setDescription(data.description);
+            setDescription(data.description || ''); 
+            setTitle(data.title || ''); 
         }
     }, [data]);
 
@@ -36,10 +36,12 @@ const ArticleAdmin = () => {
 
     const handleBack = () => {
         navigate(-1);
+        dispatch(BASEADMIN(token, index));
     };
     const handleDelete = () => {
         dispatch(ARTICLEDELETE(token, data.id))
         navigate(-1);
+        dispatch(BASEADMIN(token, index));
     };
 
     return (
@@ -62,6 +64,7 @@ const ArticleAdmin = () => {
                         <div>
                             <textarea 
                                 value={description} 
+                                placeholder='Описание статьи'
                                 onChange={(e) => setDescription(e.target.value)}  
                             />
                         </div>

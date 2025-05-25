@@ -3,38 +3,44 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { LOGIN } from '../middleware';
 import logo from './img/leftbar/logo.svg';
-import './style.scss';
 
 const Auth = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isAuth = useSelector((state) => state.isAuth);
   const isAdmin = useSelector((state) => state.isAdmin);
+  const [parag, setParag] = useState('hide');
+  const [paragText, setParagText] = useState('Пароль не подходит');
   const [dataForm, setDataForm] = useState({
     email: '',
     password: ''
   });
 
-  const handleClick = (route) => { navigate(route); }; 
+  const handleClick = (route) => { navigate(route); };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setDataForm(prevState => {
-      const newState = {
-        ...prevState,
-        [name]: value
-      };
-      return newState;
-    });
+    setDataForm(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
+    setParag('hide');
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!isAuth) {
-      dispatch(LOGIN(dataForm));      
+      dispatch(LOGIN(dataForm)).then((response) => {
+        setParag("wrong");
+        setParagText(`Пароль или почта не подходят`);
+        
+      }).catch((error) => {
+        setParagText(`Ошибка ${error.response.status}`);
+        setParag("wrong");
+      });
     }
-
   };
+
   useEffect(() => {
     if (isAuth) {
       navigate('/user');
@@ -42,7 +48,8 @@ const Auth = () => {
     if (isAdmin) {
       navigate('/admin/statist');
     }
-  });
+  }, [isAuth, isAdmin, navigate]);
+
   return (
     <div className="container">
       <div className="row">
@@ -55,7 +62,7 @@ const Auth = () => {
                 type="email" 
                 name="email" 
                 placeholder="Введите почту" 
-                className="form" 
+                className='form'
                 value={dataForm.email} 
                 onChange={handleChange} 
                 required 
@@ -64,11 +71,12 @@ const Auth = () => {
                 type="password" 
                 name="password" 
                 placeholder="Введите пароль" 
-                className="form" 
+                className={`form ${parag === 'wrong' ? 'wrong' : ''}`}
                 value={dataForm.password} 
                 onChange={handleChange} 
                 required 
               />
+              <p className={parag}>{paragText}</p>
               <button type="submit">Вход</button>
               <a href="#" onClick={() => handleClick('/forgot')}>Я забыл(а) пароль</a>
           </form>
@@ -77,7 +85,8 @@ const Auth = () => {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default Auth;
+

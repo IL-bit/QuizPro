@@ -82,7 +82,7 @@ const initialState = {
         isUser: false,
         isUsers: false,
         isBlocked: false,
-        current_base: {},
+        current_base: [],
         base_index: null,
         base_name: '',
         base_name_index: ''
@@ -437,9 +437,6 @@ const RootReducer = createReducer(initialState, builder => {
     .addCase('SET_BASE', (state, action) => {
         state.current_base = action.payload;
     })
-    .addCase('SET_BASE_ADMIN', (state, action) => {
-        state.admin.current_base = action.payload;
-    })
     .addCase('SET_CURRENT_BASE', (state, action) => {
         state.current_base_index = action.payload;
     })
@@ -515,6 +512,10 @@ const RootReducer = createReducer(initialState, builder => {
     })
     .addCase('SET_BASE_INDEX', (state, action) => {
         state.admin.base_index = action.payload;
+    })
+    .addCase('SET_BASE_ADMIN', (state, action) => {
+        console.log(action.payload);
+        state.admin.current_base = action.payload;
     })
 });
 

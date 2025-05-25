@@ -43,6 +43,7 @@
         >button {
             background: #105efe !important;
             color: #fff !important;
+            border: 1px solid #105efe !important;
         }    
         a {
             color: #1d2a33 !important;
@@ -72,6 +73,7 @@
         button {
             background: #105efe !important;
             color: #fff !important;
+            border: 1px solid #105efe !important;
         }    
         a {
             color: #fff !important;
@@ -167,19 +169,19 @@
             >:nth-last-child(1) {
                 border: none;
                 border: 0.60px solid #105efe;
-                background: none;
+                background: none !important;
                 border-radius: 39px;
             }
             >:nth-last-child(2) {
                 border: 1.34px solid #6a8496;
-                background: none;
+                background: none !important;
                 border-radius: 39px;
             }
         }
         >.right {
             >button {
                 border: none;
-                background: none;
+                background: none !important;
                 border-radius: 39px;
                 border: 0.60px solid #105efe;
             }
@@ -192,19 +194,19 @@
             >:nth-last-child(1) {
                 border: none;
                 border: 0.60px solid #105efe;
-                background: none;
+                background: none !important;
                 border-radius: 3px;
             }
             >:nth-last-child(2) {
                 border: 1.34px solid #6a8496;
-                background: none;
+                background: none !important;
                 border-radius: 3px;
             }
         }
         >.right {
             >button {
                 border: none;
-                background: none;
+                background: none !important;
                 border-radius: 3px;
             }
         }
