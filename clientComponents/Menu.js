@@ -11,6 +11,8 @@ const Menu = () => {
     const urlLk = useSelector((state) => state.url);
     const isAuth = useSelector((state) => state.isAuth);
     const isOpen = useSelector((state) => state.pop_up);  
+    const [action, setAction] = useState('');
+    const [isAction, setIsAction] = useState(false);
     const [showLogin, setShowLogin] = useState(true);    
     const [formData, setFormData] = useState({
         login: { email: '', password: '', name: '', is_landing: 1 },
@@ -77,15 +79,21 @@ const Menu = () => {
                 body: JSON.stringify(formData),
             });
             if (!response.ok) {
-                // console.error('Fetch failed with status:', response.status); 
+                setAction('wrong');
+                setIsAction(true);                
+                console.error('Fetch failed with status:', response.status); 
                 return;
             }
             const data = await response.json();
             if (data.success === true) {;
                 dispatch(logIn(data)); 
+                setAction('');
+                setIsAction(false);
             }
         } catch (error) {       
-            // console.error(error);
+            setAction('wrong');
+            setIsAction(true);
+            console.error(error);
         }
     };
     const FORGOT = async (formData) => { 
@@ -124,6 +132,8 @@ const Menu = () => {
 
     const handleChange = (formType) => (e) => {
         const { name, value } = e.target;
+        setAction('');
+        setIsAction(false);
         setFormData(prevState => ({
             ...prevState,
             [formType]: {
@@ -178,15 +188,16 @@ const Menu = () => {
                         <h2 className="mob">Войти<br/><span>Нет аккаунта? <a href="#" onClick={() => handleToggle('regist')}>Зарегистрироваться</a></span></h2>
                         <input type="email" 
                             placeholder='Введите почту'
-                            value={formData.login.email} 
+                            value={formData.login.email}
                             onChange={handleChange('login')} 
                             name='email'
                             required />
                         <input type="password" 
-                            placeholder='Введите пароль'
-                            value={formData.login.password} 
+                            placeholder={isAction ? "Неверный пароль или почта" : 'Введите пароль'} 
+                            value={isAction ? "" : formData.login.password} 
                             onChange={handleChange('login')} 
                             name='password'
+                            className={action}
                             required />  
                         <button type="submit">войти</button>                  
                         <button onClick={() => handleToggle('reset')}>Я забыл(а) пароль</button>
@@ -237,9 +248,10 @@ const Menu = () => {
                             type="email" 
                             name="email" 
                             placeholder="Введите почту" 
-                            className="form" 
+                            className="form"
                             value={formData.forgot.email} 
                             onChange={handleChange('forgot')} 
+                            
                             required/>
                         <button type="submit">сбросить пароль</button>
                         <p className="mob">Нажимая на кнопку, вы соглашаетесь<br/><a href="#">с политикой конфиденциальности и политикой<br/>использования персональных данных</a></p>
