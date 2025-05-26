@@ -98,26 +98,26 @@ const Canvas3 = ({ handleButtonClick }) => {
                     {quiz.data.canvas3.name && (
                         <div className="name">
                             <p>Имя*</p>
-                            <input type="text" placeholder='Иван' onChange={handleInputChange(setName)} />
+                            <input type="text" placeholder='Иван' onChange={handleInputChange(setName)} style={{ border: `0.85px solid ${buttonColor}`, color: textColor }} />
                             <img src={user} alt="#" />
                         </div>
                     )}
                     {quiz.data.canvas3.email && (
                         <div className="email">
                             <p>Email*</p>
-                            <input type="text" placeholder='Mail@example.com' onChange={handleInputChange(setEmail)} />
+                            <input type="text" placeholder='Mail@example.com' onChange={handleInputChange(setEmail)} style={{ border: `0.85px solid ${buttonColor}`, color: textColor }} />
                             <img src={letter} alt="#" />
                         </div>
                     )}
                     {quiz.data.canvas3.phone && (
                         <div className="phone">
                             <p>Телефон*</p>
-                            <input type="text" placeholder='+7 (900) 000-00-00' onChange={handleInputChange(setPhone)} />
+                            <input type="text" placeholder='+7 (900) 000-00-00' onChange={handleInputChange(setPhone)} style={{ border: `0.85px solid ${buttonColor}`, color: textColor }} />
                             <img src={phones} alt="#" />
                         </div>
                     )}
                 </div>
-                <button style={{ backgroundColor: buttonColor, color: buttonTextColor }} onClick={() => handleSendForm()}>Отправить</button>
+                <button style={{ backgroundColor: buttonColor, color: buttonTextColor, border: `0.85px solid ${buttonColor}` }} onClick={() => handleSendForm()}>Отправить</button>
                 <button style={{ backgroundColor: buttonColor, color: buttonTextColor }} onClick={() => handleButtonClick('canvas2Back')}>Назад</button>
             </div>
         </div>

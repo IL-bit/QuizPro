@@ -31,21 +31,21 @@ const Canvas3 = () => {
                     {createQuiz.data.canvas3.name && (
                         <div className="name">
                             <p style={{ color: textColor }}>Имя*</p>
-                            <input type="text" placeholder='Иван' style={{ borderColor: buttonColor }} />
+                            <input type="text" placeholder='Иван' style={{ border: `0.85px solid ${buttonColor}`, color: textColor }} />
                             <img src={user} alt="#" />
                         </div>
                     )}
                     {createQuiz.data.canvas3.email && (
                         <div className="email">
                             <p style={{ color: textColor }}>Email*</p>
-                            <input type="text" placeholder='Mail@example.com' style={{ borderColor: buttonColor }} />
+                            <input type="text" placeholder='Mail@example.com' style={{ border: `0.85px solid ${buttonColor}`, color: textColor }} />
                             <img src={letter} alt="#" />
                         </div>
                     )}
                     {createQuiz.data.canvas3.phone && (
                         <div className="phone">
                             <p style={{ color: textColor }}>Телефон*</p>
-                            <input type="text" placeholder='+7 (900) 000-00-00' style={{ borderColor: buttonColor }} />
+                            <input type="text" placeholder='+7 (900) 000-00-00' style={{ border: `0.85px solid ${buttonColor}`, color: textColor }} />
                             <img src={phone} alt="#" />
                         </div>
                     )}

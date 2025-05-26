@@ -33,7 +33,7 @@ const Canvas1 = ({ handleButtonClick }) => {
             <div className="right">
                 <h1 style={{ color: textColor }}>{quiz.data.canvas1.title}</h1>
                 <h3 style={{ color: textColor }}>{quiz.data.canvas1.subtitle}</h3>
-                <button onClick={() => handleButtonClick('canvas2')} style={{ backgroundColor: buttonColor, color: buttonTextColor }}>
+                <button onClick={() => handleButtonClick('canvas2')} style={{ backgroundColor: buttonColor, color: buttonTextColor, border: `0.85px solid ${buttonColor}` }}>
                     {quiz.data.canvas1.button}
                 </button>
                 <a href="http://quizforbiz.ru" style={{ color: textColor, textDecorationColor: buttonColor }}>Создано в <span style={{ color: buttonColor }}>QZ.pro</span></a>
