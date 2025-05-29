@@ -220,3 +220,5 @@ export const setBaseName = createAction('SET_BASE_NAME');
 export const setBaseIndex = createAction('SET_BASE_INDEX');
 
 export const loginLk = createAction('LOGIN_LK');
+
+export const noProfile = createAction('NO_PROFILE');

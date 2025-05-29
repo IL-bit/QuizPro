@@ -93,7 +93,7 @@ const Canvas2 = () => {
             {title}
           </h2>
           <img src={pen} alt="#" />
-          <button className={`type_button ${currentQuestion === null ? 'active' : ''}`} onClick={() => handleSetAnswer()}></button>
+          <button className={`type_button ${currentQuestion === null && index !== 0 ? 'active' : ''}`} onClick={() => handleSetAnswer()}></button>
         </div>
         <div className="canvas">
           {renderComponent()}

@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { LOGOUT } from '../../../../middleware';
 import person from '../../../img/popup/person.svg';
 import Logout from '../../../img/popup/logout.svg';
 import './style.scss';
 
 const PopUp = () => {
+    const dispatch = useDispatch();
     const navigate = useNavigate();   
     const rates = useSelector((state) => state.rate);
+    const token = useSelector((state) => state.Token);
     const application = useSelector((state) => state.applications);
     const profileRate = useSelector((state) => state.profile_rate);
     const notifications = useSelector((state) => state.notifications);
@@ -38,7 +41,10 @@ const PopUp = () => {
         const calculatedScore = (profileRate.appsSumm * 100) / max;
         setScore(Math.min(calculatedScore, 100)); // Ограничиваем значение score до 100
     };
-
+    const handleLogOut = () => {
+        dispatch(LOGOUT(token));
+        // dispatch(logOut());
+    };
 
     useEffect(() => {
         const max = handleMax();
@@ -75,7 +81,7 @@ const PopUp = () => {
         <div className="bottom">
             <p>Оферта</p>
             <p>Copyright © 2013-2020</p>
-            <button><img src={Logout} alt="#" />Выйти</button>            
+            <button onClick={() => handleLogOut()}><img src={Logout} alt="#" />Выйти</button>            
         </div>
         <div className="btns">
             <button></button>

@@ -132,7 +132,7 @@ return (
                         <button onClick={exportToExcel}><img src={expor} alt="#" />Экспорт</button>                            
                     </div>
                     <div className="content">
-                        <Filters />
+                        <Filters datas={output2.length}/>
                         <div className="items">
                             <div className="name">
                                 <p>№ заявки</p>

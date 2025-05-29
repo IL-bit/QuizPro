@@ -1,4 +1,4 @@
-import { setQuizes, setBalance, setProfile, setQuiz, setCurrentQuiz, noQuizes, logOut, isQuizes, setQuiz2, setApllications, noApplications, setStatist, setUsers, setUser, setDeposits, setBannedWords, setBannedUsers, isUser, isUsers, noUser, noUsers, isBlocked, noBlocked, setRate, setConverion, setApllication, setNotifications, setHistory, setCountBase, setBase, setBaseAdmin } from './actions'; 
+import { setQuizes, setBalance, setProfile, setQuiz, setCurrentQuiz, noQuizes, logOut, isQuizes, setQuiz2, setApllications, noApplications, setStatist, setUsers, setUser, setDeposits, setBannedWords, setBannedUsers, isUser, isUsers, noUser, noUsers, isBlocked, noBlocked, setRate, setConverion, setApllication, setNotifications, setHistory, setCountBase, setBase, setBaseAdmin, noProfile } from './actions'; 
 const url = 'http://qzpro.ru:8000';
 
 export const REGISTER = (formData) => async (dispatch) => { 
@@ -250,6 +250,7 @@ export const PUTPROFILE = (token, datas) => async (dispatch) => {
             dispatch(logOut());
             return;
         }
+        dispatch(noProfile());
         if (!response.ok) {
             console.error('Fetch failed with status:', response.status); 
             return;

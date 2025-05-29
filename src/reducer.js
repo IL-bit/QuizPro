@@ -204,6 +204,7 @@ const RootReducer = createReducer(initialState, builder => {
     .addCase('CLEAR_CANVAS2', (state) => {
         state.createQuiz.data.canvas2 = []; 
         state.createQuiz.currentQuestionIndex = 0; 
+        state.createQuiz.currentQuestion = null;
         state.createQuiz.data.title = 'Заголовок страницы';
     })
     .addCase('TURNOFFCANVAS1', (state) => {
@@ -318,6 +319,9 @@ const RootReducer = createReducer(initialState, builder => {
         state.isProfile = true;
         state.profile = action.payload.user;
         state.profile_rate = action.payload.profile;
+    })
+    .addCase('NO_PROFILE', (state) => {
+        state.isProfile = false;
     })
     .addCase('REFRESH_SUCCESS', (state, action) => {
         state.Token = action.payload.data.accessToken;

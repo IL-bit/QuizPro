@@ -6,7 +6,7 @@ import filter from '../../../img/application/filter.svg';
 import reset from '../../../img/application/reset.svg';
 import search from '../../../img/application/search.svg';
 
-const Filters = () => {
+const Filters = ({datas}) => {
   const dispatch = useDispatch();
   const applications = useSelector((state) => state.applications);
   const time = useSelector((state) => state.filters.time);
@@ -133,7 +133,7 @@ const Filters = () => {
       </div>
       <div id="applic" className={activeFilter === 1 ? 'active' : ''}>
         <div className='active'><button></button>Все заявки<p>{applications.length}</p></div>
-        <div><button></button>Новые<p>32</p></div>
+        <div><button></button>Новые<p>{datas}</p></div>
       </div>
 
 

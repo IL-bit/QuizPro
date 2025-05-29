@@ -2,7 +2,7 @@
     >div {
         #answersImg {
             width: 100%;
-            height: 459px;
+            height: 509px;
             border: 1px solid #1d2a33;
             border-radius: 25px;
             background: #0f181e;
@@ -25,6 +25,7 @@
                     font-size: 16px;
                     color: #fff;
                     margin: 0;
+                    min-width: 50px;    
                 }
                 >.index {
                     margin-left: auto;
@@ -152,7 +153,9 @@
             border-radius: 100%;
             border: none;
             background: #105efe;
-            margin-top: 25px;
+            position: absolute;
+            left: 20px;
+            bottom: 30px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -257,7 +260,7 @@
     .type {
         >div {
             #answersImg {
-                height: 314px;
+                height: 364px;
                 border: 0.68px solid #1d2a33;
                 border-radius: 17px;
                 >.head {
@@ -342,6 +345,11 @@
                     height: 23px;
                 }
             }
+            >.add {
+                position: absolute;
+                left: 20px;
+                bottom: 20px;
+            } 
             >.btns {
                 bottom: 17px !important;
             }
@@ -395,18 +403,20 @@
                     border-bottom-right-radius: 25px;
                 }
                 >:nth-last-child(1) {
-                    bottom: -133px;
+                    bottom: -60px;
                     right: auto;
                     left: 65px;
                 }
             }
             >.btns {
-                bottom: 20px;
+                bottom: -63px !important;
+                right: 10px !important;
             }
             >.add {
                 width: 47px !important;
                 height: 47px !important;
-                margin-top: 25px;
+                bottom: -60px !important;
+                left: 10px !important;
                 img {
                     width: 23px;
                     height: 23px;

@@ -2,7 +2,7 @@
     >div {
         #answers {
             width: 100%;
-            height: 459px;
+            height: 509px;
             border: 1px solid #1d2a33;
             border-radius: 25px;
             background: #0f181e;
@@ -25,6 +25,7 @@
                     font-size: 16px;
                     color: #fff;
                     margin: 0;
+                    min-width: 50px;
                 }
                 >.index {
                     margin-left: auto;
@@ -139,14 +140,15 @@
             border-radius: 100%;
             border: none;
             background: #105efe;
-            margin-top: 25px;
+            position: absolute;
+            left: 20px;
+            bottom: 30px;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
         }        
     }
-
 }
 @media (min-width: 1200px) and (max-width: 1400px) {
     .type {
@@ -154,7 +156,7 @@
             #answers {
                 border: 0.81px solid #1d2a33;
                 border-radius: 20px;
-                height: 373px;
+                height: 403px;
                 >.head {
                     height: 62px;
                     padding-left: 24px;
@@ -242,7 +244,7 @@
     .type {
         >div {
             #answers {
-                height: 314px;
+                height: 364px;
                 border: 0.68px solid #1d2a33;
                 border-radius: 17px;
                 >.head {
@@ -322,6 +324,11 @@
                     height: 23px;
                 }
             }
+            >.add {
+                position: absolute;
+                left: 20px;
+                bottom: 20px;
+            }  
             >.btnsa {
                 bottom: 17px !important;
             }
@@ -368,13 +375,18 @@
                     border-bottom-right-radius: 25px;
                 }
                 >:nth-last-child(1) {
-                    bottom: -133px;
+                    bottom: -60px;
                     right: auto;
                     left: 65px;
                 }
             }
+            >.add {
+                bottom: -60px !important;
+                left: 10px !important;
+            }
             >.btnsa {
-                bottom: 8px !important;
+                bottom: -63px !important;
+                right: 10px !important;
             }
         }
     }

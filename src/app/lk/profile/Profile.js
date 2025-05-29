@@ -48,7 +48,7 @@ const Profile = () => {
 
     useEffect(() => {
         if (!isProfile) {
-            dispatch(PROFILE(token, id));            
+            dispatch(PROFILE(token));            
         }
     }, [dispatch, isProfile, token, id]);
     useEffect(() => {

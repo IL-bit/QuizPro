@@ -65,8 +65,19 @@ const Answers = () => {
         dispatch(incremenCountQuestion());
     };
 
-    const handleInput = (value) => {
-        setData({ ...data, question: value });
+    const handleInputChange = (field) => (e) => {
+        const value = e.target.value;
+        if (value === '') {
+            e.target.innerText = "Впишите заголовок вопроса";
+            setData({ ...data, question: "Впишите заголовок вопроса" });
+        } else {
+            setData({ ...data, [field]: value });
+        }
+        const newQuestionData = {
+            ...data,
+            answers: answers.map(answer => answer.text)
+        };
+        dispatch(updateQuestion({ index, newQuestionData }));
     };
 
     const handleAnswerChange = (e, idx) => {
@@ -139,7 +150,28 @@ const Answers = () => {
                 <div id="answers">
                     <div className="head">
                         <img src={answer1} alt="#" />
-                        <h4 contentEditable="true" spellcheck="false" suppressContentEditableWarning={true} onBlur={(e) => handleInput(e.currentTarget.textContent)}>{data.question}</h4>
+                        <h4
+                            contentEditable="true"
+                            spellCheck="false"
+                            suppressContentEditableWarning={true}
+                            onBlur={(e) => {
+                                const value = e.target.innerText.trim();
+                                if (value === '') {
+                                    e.target.innerText = "Впишите заголовок вопроса";
+                                    setData({ ...data, question: "Впишите заголовок вопроса" });
+                                } else {
+                                    setData({ ...data, question: value });
+                                }
+                            }}
+                            onInput={(e) => {
+                                const value = e.target.innerText.trim();
+                                if (value === '') {
+                                    e.target.innerText = "Впишите заголовок вопроса";
+                                }
+                            }}
+                        >
+                            {data.question}
+                        </h4>
                         <div className="index">{index + 1}</div>
                     </div>
                     {answers.map((answer, idx) => (

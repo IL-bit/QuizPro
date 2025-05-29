@@ -33,15 +33,15 @@ const Balance = () => {
                         <p>Тариф «{rate}»</p>
                     </div>
                     <div className="methods">
-                        <h5>Способы пополнения</h5>
+                        {/* <h5>Способы пополнения</h5>
                         <div>
                             <img src={youmoney} alt="f"/>                            
                             <div>Картой</div>
                             <div className="active">СБП</div>
                             <div>Qr-code</div>
-                        </div>
+                        </div> */}
                         <button>Пополнить</button>
-                        <p>Привязать карту</p>
+                        {/* <p>Привязать карту</p> */}
                     </div>
                     <div className="history">
                         <p onClick={() => handleClick('/user/deposits')}><img src={folder1} alt="#" />История платежей</p>
