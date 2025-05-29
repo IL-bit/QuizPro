@@ -397,19 +397,19 @@ export default function Home() {
             </div>
           </section>
           <section className="row" id="sixth_section" aria-labelledby="sixth_section_title">
-            <div className="col-xxl-7 col-xl-7 col-lg-8 offset-xxl-5 offset-xl-5 offset-lg-4 col-12 offset-0">
+            <div className="col-xxl-8 col-xl-8 col-lg-9 offset-xxl-4 offset-xl-4 offset-lg-3 col-12 offset-0">
                 <h2 id="sixth_section_title" className="pc">
                     Смотрите, какие вопросы <b>понижают<br />конверсию квиза</b> и интерес клиентов
                 </h2>
                 <h2 id="sixth_section_title" className="mob">
-                    Смотрите, какие вопросы<br/><b>понижают конверсию<br />квиза</b> и интерес клиентов
+                    Смотрите, какие вопросы<wbr/><b>понижают конверсию<wbr />квиза</b> и интерес клиентов
                 </h2>
                 <p className="pc">
                     Отслеживайте эффективность каждого этапа, тестируйте<br />
                     новые варианты и выбирайте самые лучшие
                 </p>
                 <p className="mob">
-                    Отслеживайте<br />эффективность каждого<br />этапа, тестируйте новые<br />варианты и выбирайте<br />самые лучшие
+                    Отслеживайте<wbr />эффективность каждого<wbr />этапа, тестируйте новые<wbr />варианты и выбирайте<wbr />самые лучшие
                 </p>
             </div>
           </section>
@@ -692,9 +692,9 @@ export default function Home() {
           <section id='thirth_section' className='row'>
             <div className="col-12 col-xxl-12 col-xl-12 col-lg-12">
                 <h2>Ответы на частые вопросы</h2>
-                <div className={currentButton === 1 ? 'active' : ''}>
+                <div className={currentButton === 1 ? 'active' : ''} onClick={() => handleChange(1)}>
                     <button>1. Оплата и тарифы</button>
-                    <div className="img" onClick={() => handleChange(1)}></div>
+                    <div className="img"></div>
                     <div className="text">
                         <p><strong>Почему я не могу просмотреть данные заявки, если на балансе ещё есть заявки?</strong><br/>Если срок подписки истёк, доступ к заявкам временно заблокирован. Чтобы снова их просмотреть, необходимо продлить тариф с таким же или большим лимитом.</p>
                         <p><strong>Где посмотреть заявки, полученные в неоплаченный период?</strong><br/>После окончания подписки заявки остаются в системе, но доступ к ним возможен только после продления тарифа.</p>
@@ -710,9 +710,9 @@ export default function Home() {
                         <p><strong>Что делать, если лимит заявок закончился раньше срока?</strong><br/>Можно докупить дополнительные заявки или перейти на тариф с большим лимитом.</p>
                     </div>
                 </div>
-                <div className={currentButton === 2 ? 'active' : ''}>
+                <div className={currentButton === 2 ? 'active' : ''} onClick={() => handleChange(2)}>
                     <button>2. Работа с квизом</button>
-                    <div className="img" onClick={() => handleChange(2)}></div>
+                    <div className="img"></div>
                     <div className="text">
                         <p><strong>Как тестировать квиз без списания заявок с баланса?</strong><br/>Используйте тестовые данные при заполнении формы (например, test@email.com и +79999999999). Такие заявки не будут списываться.</p>
                         <p><strong>Чем отличается «Стартовая страница» и «Landing page»?</strong><br/>Стартовая страница – это первый экран квиза, который помогает вовлечь пользователя. Landing page – это отдельная промо-страница для квиза, на которую можно вести рекламу.</p>
@@ -730,9 +730,9 @@ export default function Home() {
                         <p><strong>Можно ли использовать квиз без сайта?</strong><br/>Да, вы можете использовать квиз по прямой ссылке или добавить его в соцсети.</p>                       
                     </div>
                 </div>
-                <div className={currentButton === 3 ? 'active' : ''}>
+                <div className={currentButton === 3 ? 'active' : ''} onClick={() => handleChange(3)}>
                     <button>3. Интеграции и уведомления</button>
-                    <div className="img" onClick={() => handleChange(3)}></div>
+                    <div className="img"></div>
                     <div className="text">
                         <p><strong>Как изменить почту для уведомлений?</strong><br/>Почта для уведомлений настраивается в разделе "Интеграции".</p>
                         <p><strong>Как отправлять письмо клиенту?</strong><br/>Вы можете подключить сервис рассылок и настроить автоматическую отправку писем.</p>
@@ -740,9 +740,9 @@ export default function Home() {
                         <p><strong>Где находятся настройки уведомлений?</strong><br/>Все настройки находятся в разделе "Интеграции".</p>
                     </div>
                 </div>
-                <div className={currentButton === 4 ? 'active' : ''}>
+                <div className={currentButton === 4 ? 'active' : ''} onClick={() => handleChange(4)}>
                     <button>4. Настройки и дизайн</button>
-                    <div className="img" onClick={() => handleChange(4)}></div>
+                    <div className="img"></div>
                     <div className="text">
                         <p><strong>Как изменить пароль от аккаунта?</strong><br/>Перейдите в раздел "Аккаунт" и обновите пароль в настройках безопасности.</p>
                         <p><strong>Какие размеры изображений оптимальны для загрузки?</strong><br/>
