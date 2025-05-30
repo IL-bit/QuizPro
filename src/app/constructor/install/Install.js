@@ -39,7 +39,11 @@ const Install = () => {
     const downloadScriptFile = async (variableValue, buttonKey) => {
       try {
 
-        await navigator.clipboard.writeText(variableValue);
+        if (navigator.clipboard) {
+          await navigator.clipboard.writeText(variableValue);
+        } else {
+          console.warn('Clipboard API не доступен');
+        }
 
         const response = await fetch('/script.js');
         let scriptText = await response.text();
@@ -85,7 +89,11 @@ const Install = () => {
     };
     const downloadScriptFile2 = async (text, buttonKey) => {
       try {
-        await navigator.clipboard.writeText(text);
+        if (navigator.clipboard) {
+          await navigator.clipboard.writeText(text);
+        } else {
+          console.warn('Clipboard API не доступен');
+        }
         setButtonText((prev) => ({
           ...prev,
           [buttonKey]: 'Файл скачан',
