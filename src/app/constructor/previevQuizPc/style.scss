@@ -55,7 +55,14 @@
         }   
         input::placeholder {
             color: #6a8496 !important;
-        }                          
+        }     
+        .right {
+            >button {
+                background: #105efe !important;
+                color: #fff !important;
+                border: 1px solid #105efe !important;
+            } 
+        }                     
     }
 }
 .dark-theme {
@@ -85,7 +92,14 @@
         }
         input::placeholder {
             color: #fff !important;
-        }              
+        }      
+        .right {
+            >button {
+                background: #105efe !important;
+                color: #fff !important;
+                border: 1px solid #105efe !important;
+            } 
+        }          
 
     }
 }
@@ -112,7 +126,14 @@
         }
         input::placeholder {
             color: #fff !important;
-        }        
+        }  
+        .right {
+            >button {
+                background: #ff6210 !important;
+                color: #fff !important;
+                border: none!important;
+            } 
+        }         
     }
 }
 .style1 {

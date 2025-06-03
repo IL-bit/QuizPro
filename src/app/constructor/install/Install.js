@@ -124,7 +124,7 @@ const Install = () => {
       }
     };
 
-    const codeInit = `<button id="buttonQuiz">Пройти квиз</button><div id="Quiz"></div><script src="путь до файла JS"/>`;
+    const codeInit = `<button id="buttonQuiz">Пройти квиз</button><div id="Quiz"></div><script src="путь до файла JS"></script>`;
     const codeInit2 = `<link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="путь до вашего файла">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -142,8 +142,8 @@ const Install = () => {
               <div className="status">{status === 1 ? "Опубликовано" : "Не опубликовано"}</div>
               <div className="link">
                 <div>
-                  https://qzpro.ru/quiz/{currentQuizID}
-                  <button onClick={() => copyToClipboard(`https://qzpro.ru/quiz/${currentQuizID}`, 'quizLink')}>
+                  http://quizforbiz.ru:90/quiz/{currentQuizID}
+                  <button onClick={() => copyToClipboard(`http://quizforbiz.ru:90/quiz/${currentQuizID}`, 'quizLink')}>
                     {buttonText['quizLink'] || 'Копировать'}{imageVisible['quizLink'] !== false && <img src={copy} alt="#" />}
                   </button>
                 </div>

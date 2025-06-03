@@ -484,7 +484,7 @@
         >:nth-last-child(1) {
             border: 1px solid #6a8496 !important;
             background: none !important;
-            color: #000;
+            color: #000 !important;
             left: 50% !important;
             transform: translateX(5%) !important;
         }

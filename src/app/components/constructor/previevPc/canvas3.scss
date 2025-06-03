@@ -85,7 +85,7 @@
         }
     }
 }
-.standart-right {
+.canvas3.standart-right {
     >.right {
         text-align: end;
         >.inputs {
@@ -106,7 +106,7 @@
         }
     }
 }
-.background-left {
+.canvas3.background-left {
     >.img {
         position: absolute;
         left: 50%;
@@ -128,7 +128,7 @@
         left: auto !important;
     }
 }
-.background-right {
+.canvas3.background-right {
     >.img {
         position: absolute;
         left: 50%;
@@ -162,7 +162,7 @@
         }
     }
 }
-.background-center {
+.canvas3.background-center {
     >.img {
         position: absolute;
         left: 50%;
@@ -204,7 +204,13 @@
         }
         >button {
             left: 50% !important;
-            transform: translateX(-50%) !important;
+            transform: translateX(-105%) !important;
+        }
+        >:nth-last-child(1) {
+            border: 1px solid #6a8496 !important;
+            background: none !important;
+            left: 50% !important;
+            transform: translateX(5%) !important;
         }
     }
 }
@@ -296,7 +302,7 @@
             }
         }
     }
-    .standart-right {
+    .canvas3.standart-right {
         >.right {
             >p {
                 right: 35px;
@@ -315,7 +321,7 @@
             }
         }
     }
-    .background-left {
+    .canvas3.background-left {
         >.img {
             top: 50%;
             transform: translateY(-50%) translateX(-50%);
@@ -347,7 +353,7 @@
             }
         }
     }
-    .background-right {
+    .canvas3.background-right {
         >.img {
             top: 50%;
             transform: translateY(-50%) translateX(-50%);
@@ -374,7 +380,7 @@
             }
         }
     }
-    .background-center {
+    .canvas3.background-center {
         >.img {
             top: 50%;
             transform: translateY(-50%) translateX(-50%) !important;
@@ -497,7 +503,7 @@
             }
         }
     }
-    .standart-right {
+    .canvas3.standart-right {
         >.right {
             >p {
                 right: 29px;
@@ -516,7 +522,7 @@
             }
         }
     }
-    .background-left {
+    .canvas3.background-left {
         >.img {
             top: 50%;
             transform: translateY(-50%) translateX(-50%);
@@ -555,7 +561,7 @@
             }
         }
     }
-    .background-right {
+    .canvas3.background-right {
         >.img {
             top: 50%;
             transform: translateY(-50%) translateX(-50%);
@@ -583,7 +589,7 @@
             }
         }
     }
-    .background-center {
+    .canvas3.background-center {
         >.img {
             top: 50%;
             transform: translateY(-50%) translateX(-50%) !important;

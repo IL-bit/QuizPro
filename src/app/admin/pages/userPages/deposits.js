@@ -22,12 +22,8 @@ const Deposits = () => {
         "total_less": decimalValue * 100,
         "comment": textAreaValue
       }))
-        .then((response) => {
-          if (response && response.status && response.status >= 199 && response.status < 300) {
-            setPostText('Успешно');
-          } else {
-            setPostText('Ошибка');
-          };
+        .then(() => {
+          setPostText('Успешно');
           setTimeout(() => setPostText('Подтвердить'), 3000);
         })
         .catch(() => {

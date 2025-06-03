@@ -93,15 +93,15 @@
         }
     }
 }    
-.standart-right {
+.canvas1.standart-right {
     >.right {
         text-align: end;
         >.logo {
             justify-content: end;
         }
         p {
-            left: auto;
-            right: 43px;
+            left: auto !important;
+            right: 43px !important;
         }
         a {
             right: auto;
@@ -213,7 +213,7 @@
     }
 
 }
-.background-left {
+.canvas1.background-left {
     position: relative;
     >.img {
         position: absolute;
@@ -233,7 +233,7 @@
 
 
 }
-.background-right {
+.canvas1.background-right {
     position: relative;
     >.img {
         position: absolute;
@@ -409,10 +409,10 @@
             }
         }
     }
-    .standart-right {
+    .canvas1.standart-right {
         >.right {
             >p {
-                right: 35px;
+                right: 35px !important;
             }
         }
     }
@@ -511,7 +511,7 @@
             }
         }
     }
-    .background-left {
+    .canvas1.background-left {
         >.img {
             top: 50%;
             transform: translateY(-50%) translateX(-50%);
@@ -543,7 +543,7 @@
             }
         }
     }
-    .background-right {
+    .canvas1.background-right {
         >.img {
             top: 50%;
             transform: translateY(-50%) translateX(-50%);
@@ -681,10 +681,10 @@
             }
         }
     }
-    .standart-right {
+    .canvas1.standart-right {
         >.right {
             >p {
-                right: 29px;
+                right: 29px !important;
             }
         }
     }
@@ -783,7 +783,7 @@
             }
         }
     }
-    .background-left {
+    .canvas1.background-left {
         >.img {
             top: 50%;
             transform: translateY(-50%) translateX(-50%);
@@ -815,7 +815,7 @@
             }
         }
     }
-    .background-right {
+    .canvas1.background-right {
         >.img {
             top: 50%;
             transform: translateY(-50%) translateX(-50%);
