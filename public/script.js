@@ -1,6 +1,6 @@
 
 document.addEventListener('DOMContentLoaded', () => {
-    const url = 'http://qzpro.ru:8000';
+    const url = 'https://api.quizforbiz.ru';
     const buttonQuiz = document.querySelector('#buttonQuiz');
     const quiz = document.querySelector('#Quiz');
     let currentCanvas = 1;

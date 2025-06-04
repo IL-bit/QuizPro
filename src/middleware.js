@@ -1,5 +1,5 @@
 import { setQuizes, setBalance, setProfile, setQuiz, setCurrentQuiz, noQuizes, logOut, isQuizes, setQuiz2, setApllications, noApplications, setStatist, setUsers, setUser, setDeposits, setBannedWords, setBannedUsers, isUser, isUsers, noUser, noUsers, isBlocked, noBlocked, setRate, setConverion, setApllication, setNotifications, setHistory, setCountBase, setBase, setBaseAdmin, noProfile } from './actions'; 
-const url = 'http://qzpro.ru:8000';
+const url = 'https://api.quizforbiz.ru';
 
 export const REGISTER = (formData) => async (dispatch) => { 
     try {

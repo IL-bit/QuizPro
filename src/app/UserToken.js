@@ -6,7 +6,7 @@ import { loginLk } from '../actions';
 const UserToken = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const url = 'http://qzpro.ru:8000';
+    const url = 'https://api.quizforbiz.ru';
 
     const handleGetToken = async (userID) => {
         try {

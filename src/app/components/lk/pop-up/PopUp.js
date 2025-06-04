@@ -74,7 +74,7 @@ const PopUp = () => {
         <ul>
             <li onClick={() => handleClick('/user/base')}>База знаний</li>
             <li onClick={() => handleClick('/user/createquizes')}>Галерея шаблонов</li>
-            <li onClick={() => window.location.href = 'http://quizforbiz.ru#FAQ'}>Ответы на частые вопросы</li>
+            <li onClick={() => window.location.href = 'https://quizforbiz.ru#FAQ'}>Ответы на частые вопросы</li>
             <li>Новые фичи в Qz</li>
             <li>Предложить идею</li>
         </ul>
