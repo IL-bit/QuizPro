@@ -19,7 +19,7 @@ const Menu = () => {
         register: { email: '', password: '', password_confirmation: '', name: '', is_landing: 1 },
         forgot: { email: '' }
     });
-    const url = 'http://qzpro.ru:8000';
+    const url = 'https://api.quizforbiz.ru';
     const REGISTER = async (formData) => { 
         try {
             const response = await fetch(`${url}/api/register`, {
@@ -274,7 +274,7 @@ const Menu = () => {
                     <div id="burger">
                         <header>
                             <Image src={closeSvg} alt="#"/>
-                            <button onClick={() => {isAuth ? window.location.href = `http://${urlLk}` : handleToggle('log_in')}}>Создать квиз</button>
+                            <button onClick={() => {isAuth ? window.location.href = `https://${urlLk}` : handleToggle('log_in')}}>Создать квиз</button>
                             <button onClick={handleClosePopup}></button>
                         </header>
                         <nav>
@@ -301,7 +301,7 @@ const Menu = () => {
                             <p><Image src={closeSvg} alt="#"/>Закрыть</p>
                         </button>
                         <h2>Вы авторизованы</h2>
-                        <p><a href={`http://${urlLk}`}>Перейти в Личный кабинет</a></p>
+                        <p><a href={`https://${urlLk}`}>Перейти в Личный кабинет</a></p>
                     </form>
                 );
             default:

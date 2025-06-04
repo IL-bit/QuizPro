@@ -35,7 +35,7 @@ const RootReducer = createReducer(initialState, (builder) => {
         .addCase(logIn, (state, action) => {
             state.isAuth = true;
             state.pop_up = 'auth';
-            state.url = action.payload.data.lkUrl.replace("qzpro.ru\/api\/token\/", "quizforbiz.ru:90/user/");
+            state.url = action.payload.data.lkUrl.replace("api.quizforbiz.ru/api/token/", "lk.quizforbiz.ru/user/");
             state.Token = action.payload.data.accessToken;
             localStorage.setItem('access_token', state.Token); 
             state.login = 'ok';

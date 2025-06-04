@@ -130,7 +130,7 @@ export default function Home() {
       <FAQ />
       <Head>
         <title>QuizforBiz - Создайте квиз-сайт для бизнеса</title>
-        <link rel="canonical" href="http://quizforbiz.ru/" />
+        <link rel="canonical" href="https://quizforbiz.ru/" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
         <meta name="description" content="QuizforBiz - платформа для создания интерактивных квизов, которая помогает бизнесам увеличивать конверсию и генерировать лиды. Создавайте маркетинговые квизы без программирования, интегрируйте их с CRM и автоматизируйте процесс сбора заявок. Узнайте, как квизы могут помочь вам вовлечь клиентов и повысить продажи." />
@@ -152,12 +152,12 @@ export default function Home() {
                 <li onClick={() => handleScroll('fifth_section')}>Маркетологам</li>
               </ul>
             </nav>
-            <button className="create" title="Создать новый квиз"onClick={() => {isAuth ? window.location.href = `http://${urlLk}` : handleToggle('log_in')}}>Создать квиз</button>                
+            <button className="create" title="Создать новый квиз"onClick={() => {isAuth ? window.location.href = `https://${urlLk}` : handleToggle('log_in')}}>Создать квиз</button>                
           </div>
           <div className="col-xxl-3 col-xl-3 col-lg-3 col-2">
               <div className="buttons">
                   <button title="Регистрация на платформе" onClick={() => {isAuth ? handleToggle('auth') : handleToggle('regist')}}>{isAuth ? 'Вы авторизованы' : 'Регистрация'}</button>
-                  <button title="Создать новый квиз"    onClick={() => {isAuth ? window.location.href = `http://${urlLk}` : handleToggle('log_in')}}>Создать квиз</button>
+                  <button title="Создать новый квиз"    onClick={() => {isAuth ? window.location.href = `https://${urlLk}` : handleToggle('log_in')}}>Создать квиз</button>
               </div>                               
           </div>
           <div className="col-xxl-1 col-xl-1 col-lg-1 text-end pc">
@@ -178,7 +178,7 @@ export default function Home() {
               <FiveMin />
               <h3 className="pc">Тестируйте маркетинговые квизы <b>без абонентской платы.<br />Платите по факту - </b>за теплые и целевые заявки</h3>
               <h3 className="mob">Тестируйте маркетинговые квизы<br /><b>без абонентской платы.<br /><br />Платите по факту - </b>за теплые<br />и целевые заявки</h3>
-              <button aria-label="Попробовать бесплатно" onClick={() => {isAuth ? window.location.href = `http://${urlLk}` : handleToggle('log_in')}}>попробовать бесплатно</button>
+              <button aria-label="Попробовать бесплатно" onClick={() => {isAuth ? window.location.href = `https://${urlLk}` : handleToggle('log_in')}}>попробовать бесплатно</button>
             </div>
           </section>    
           <section className="row" id="second_section" aria-labelledby="section2-heading">
@@ -324,7 +324,7 @@ export default function Home() {
                 </div>
                 <div className="icon" aria-hidden="true"></div>
                 <div className="screen" aria-hidden="true"></div>
-                <button aria-label="Попробовать бесплатно" onClick={() => {isAuth ? window.location.href = `http://${urlLk}` : handleToggle('log_in')}}>попробовать бесплатно</button>
+                <button aria-label="Попробовать бесплатно" onClick={() => {isAuth ? window.location.href = `https://${urlLk}` : handleToggle('log_in')}}>попробовать бесплатно</button>
               </article>
             </div>
           </section>
@@ -447,11 +447,11 @@ export default function Home() {
                     </div>
                 </div>
                 <Section7 />
-                <div className="more_funct" id="pc" onClick={() => {isAuth ? window.location.href = `http://${urlLk}` : handleToggle('log_in')}}>
+                <div className="more_funct" id="pc" onClick={() => {isAuth ? window.location.href = `https://${urlLk}` : handleToggle('log_in')}}>
                   <Image src={cursor} alt="Иконка курсора"/>
                     <p>Смотреть больше квизов</p>
                 </div>
-                <div className="more_funct" id="mob" onClick={() => {isAuth ? window.location.href = `http://${urlLk}` : handleToggle('log_in')}}>
+                <div className="more_funct" id="mob" onClick={() => {isAuth ? window.location.href = `https://${urlLk}` : handleToggle('log_in')}}>
                   <Image src={cursor2} alt="Иконка курсора"/>
                     <p>Смотреть больше квизов</p>
                 </div>
@@ -534,7 +534,7 @@ export default function Home() {
                         <h5>Стоимость:</h5>
                         <p><span>0 ₽.</span></p>
                     </div>
-                    <button onClick={() => {isAuth ? window.location.href = `http://${urlLk}` : handleToggle('log_in')}}>Подключить</button>
+                    <button onClick={() => {isAuth ? window.location.href = `https://${urlLk}` : handleToggle('log_in')}}>Подключить</button>
                 </div>
             </div>
             <div className="col-xxl-4 col-xl-4 col-lg-4 col-12 text-center">
@@ -552,7 +552,7 @@ export default function Home() {
                         <h5>Стоимость:</h5>
                         <p><span>15 ₽/лид до 150 заявок</span><br/>20 ₽/лид при превышении лимита</p>
                     </div>
-                    <button onClick={() => {isAuth ? window.location.href = `http://${urlLk}` : handleToggle('log_in')}}>Подключить</button>
+                    <button onClick={() => {isAuth ? window.location.href = `https://${urlLk}` : handleToggle('log_in')}}>Подключить</button>
                 </div>
             </div>
             <div className="col-xxl-4 col-xl-4 col-lg-4 col-12 text-center">
@@ -570,7 +570,7 @@ export default function Home() {
                         <h5>Стоимость:</h5>
                         <p><span>150–300 заявок: 10 ₽/лид</span><br/>301–500 заявок: 8,5 ₽/лид<br/>501–1 000 заявок: 7 ₽/лид<br/>1 001+ заявок: 5 ₽/лид</p>
                     </div>
-                  <button onClick={() => {isAuth ? window.location.href = `http://${urlLk}` : handleToggle('log_in')}}>Подключить</button>                
+                  <button onClick={() => {isAuth ? window.location.href = `https://${urlLk}` : handleToggle('log_in')}}>Подключить</button>                
                 </div>
             </div>
           </section>
@@ -589,7 +589,7 @@ export default function Home() {
             </div>
             <div className="col-xxl-5 col-xl-5 col-lg-6 offset-xxl-1 offset-xl-0 offset-lg-0 pc">
                 <div className="right" aria-hidden="true"></div>
-                <button title="Попробовать бесплатно" aria-label="Попробовать Quiz Pro бесплатно" onClick={() => {isAuth ? window.location.href = `http://${urlLk}` : handleToggle('log_in')}}>попробовать бесплатно</button>
+                <button title="Попробовать бесплатно" aria-label="Попробовать Quiz Pro бесплатно" onClick={() => {isAuth ? window.location.href = `https://${urlLk}` : handleToggle('log_in')}}>попробовать бесплатно</button>
             </div>
             <div className="col-12 mob">
                 <h2 id="section9-title">Внедряйте Quiz Pro своим<br />клиентам и зарабатывайте</h2>
@@ -603,7 +603,7 @@ export default function Home() {
                     <p>Чем больше проектов и заявок,<br />тем больше вы зарабатываете</p>
                 </div>
                 <div className="right" aria-hidden="true"></div>
-                <button title="Попробовать бесплатно" aria-label="Попробовать Quiz Pro бесплатно" onClick={() => {isAuth ? window.location.href = `http://${urlLk}` : handleToggle('log_in')}}>попробовать бесплатно</button>                
+                <button title="Попробовать бесплатно" aria-label="Попробовать Quiz Pro бесплатно" onClick={() => {isAuth ? window.location.href = `https://${urlLk}` : handleToggle('log_in')}}>попробовать бесплатно</button>                
             </div>
           </section>
           <section className="row" id="tenth_section" aria-labelledby="section10-title">
@@ -638,7 +638,7 @@ export default function Home() {
                         <h5 id="card-title-6"><strong>Удобные варианты оплаты</strong><br />для клиентов</h5>
                     </article>
                 </div>
-                <button title="Попробовать бесплатно" aria-label="Попробовать бесплатно" onClick={() => {isAuth ? window.location.href = `http://${urlLk}` : handleToggle('log_in')}}>попробовать бесплатно</button>
+                <button title="Попробовать бесплатно" aria-label="Попробовать бесплатно" onClick={() => {isAuth ? window.location.href = `https://${urlLk}` : handleToggle('log_in')}}>попробовать бесплатно</button>
             </div>
           </section>
           <section className="row" id="eleventh_section" aria-labelledby="section11-title">
@@ -650,19 +650,19 @@ export default function Home() {
                           <Image src={fast} alt="Быстрый опросник" />
                           <h5 id="card-title-1"><b>Быстрый опросник</b></h5>
                           <p>Один из самых эффективных<br />способов стабильно<br />получать заявки</p>
-                          <button title="Смотреть квиз" aria-label="Смотреть квиз Быстрый опросник" onClick={() => {isAuth ? window.location.href = `http://${urlLk}` : handleToggle('log_in')}}>Смотреть квиз</button>
+                          <button title="Смотреть квиз" aria-label="Смотреть квиз Быстрый опросник" onClick={() => {isAuth ? window.location.href = `https://${urlLk}` : handleToggle('log_in')}}>Смотреть квиз</button>
                       </article>
                       <article className="card" aria-labelledby="card-title-2">
                           <Image src={company} alt="Страница о компании" />
                           <h5 id="card-title-2"><b>Страница о компании</b></h5>
                           <p>Мини-сайт с информацией<br />о вашем бизнесе и квиз<br />в одном месте</p>
-                          <button title="Смотреть квиз" aria-label="Смотреть квиз Страница о компании" onClick={() => {isAuth ? window.location.href = `http://${urlLk}` : handleToggle('log_in')}}>Смотреть квиз</button>
+                          <button title="Смотреть квиз" aria-label="Смотреть квиз Страница о компании" onClick={() => {isAuth ? window.location.href = `https://${urlLk}` : handleToggle('log_in')}}>Смотреть квиз</button>
                       </article>
                       <article className="card" aria-labelledby="card-title-3">
                           <Image src={shop} alt="Магазин" />
                           <h5 id="card-title-3"><b>Магазин</b></h5>
                           <p>Поможет подобрать клиенту нужный<br />товар или предложить несколько<br />вариантов</p>
-                          <button title="Смотреть квиз" aria-label="Смотреть квиз Магазин" onClick={() => {isAuth ? window.location.href = `http://${urlLk}` : handleToggle('log_in')}}>Смотреть квиз</button>
+                          <button title="Смотреть квиз" aria-label="Смотреть квиз Магазин" onClick={() => {isAuth ? window.location.href = `https://${urlLk}` : handleToggle('log_in')}}>Смотреть квиз</button>
                       </article>
                   </div>
                   <div className="cards">
@@ -670,13 +670,13 @@ export default function Home() {
                           <Image src={calculator} alt="Калькулятор" />
                           <h5 id="card-title-4"><b>Калькулятор</b></h5>
                           <p>Соберёт контакты, рассчитает<br />стоимость и создаст чат<br />с вашим менеджером</p>
-                          <button title="Смотреть квиз" aria-label="Смотреть квиз Калькулятор" onClick={() => {isAuth ? window.location.href = `http://${urlLk}` : handleToggle('log_in')}}>Смотреть квиз</button>
+                          <button title="Смотреть квиз" aria-label="Смотреть квиз Калькулятор" onClick={() => {isAuth ? window.location.href = `https://${urlLk}` : handleToggle('log_in')}}>Смотреть квиз</button>
                       </article>
                       <article className="card" aria-labelledby="card-title-5">
                           <Image src={video} alt="Видео-консультант" />
                           <h5 id="card-title-5"><b>Видео-консультант</b></h5>
                           <p>Живое общение с клиентом<br />и ответы на самые частые вопросы</p>
-                          <button title="Смотреть квиз" aria-label="Смотреть квиз Видео-консультант"onClick={() => {isAuth ? window.location.href = `http://${urlLk}` : handleToggle('log_in')}}>Смотреть квиз</button>
+                          <button title="Смотреть квиз" aria-label="Смотреть квиз Видео-консультант"onClick={() => {isAuth ? window.location.href = `https://${urlLk}` : handleToggle('log_in')}}>Смотреть квиз</button>
                       </article>
                       <article className="card" aria-labelledby="card-title-6">
                           <Image src={smthnew} alt="Что-то новое" />
