@@ -104,6 +104,9 @@
             left: auto !important;
             right: 43px !important;
         }
+        >:nth-last-child(1) {
+            right: 243px !important;
+        }
     }
 }
 .canvas3.background-left {
@@ -319,6 +322,9 @@
                 left: auto !important;
                 right: 35px !important;
             }
+            >:nth-last-child(1) {
+                right: 200px !important;
+            }
         }
     }
     .canvas3.background-left {
@@ -519,6 +525,9 @@
             >button {
                 left: auto !important;
                 right: 29px !important;
+            }
+            >:nth-last-child(1) {
+                right: 165px !important;
             }
         }
     }

@@ -255,8 +255,8 @@
             justify-content: end;
         }
         p {
-            left: auto;
-            right: 43px;
+            left: auto !important;
+            right: 43px !important;
         }
         a {
             position: absolute;
@@ -265,7 +265,7 @@
         }
     }
 }
-.background-center {
+.canvas1.background-center {
     >.img {
         position: absolute;
         left: 50% !important;
@@ -297,8 +297,8 @@
         }
         p {
             text-align: right;
-            left: auto;
-            right: 43px;
+            left: auto !important;
+            right: 43px !important;
         }
         a {
             position: absolute;
@@ -307,8 +307,8 @@
         }
         >button {
             position: absolute !important;
-            left: 50%;
-            transform: translateX(-50%);
+            left: 50% !important;
+            transform: translateX(-50%) !important;
             bottom: auto;
         }
     }
