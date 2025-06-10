@@ -680,8 +680,8 @@ export default function Home() {
                       </article>
                       <article className="card" aria-labelledby="card-title-6">
                           <Image src={smthnew} alt="Что-то новое" />
-                          <h5 id="card-title-6"><b>Что-то новое...</b></h5>
-                          <p>Превью вариации квиза, который будет в<br />разработке в будущем. Чтобы показать<br />амбиции. Квиз дота2. Найди мать</p>
+                          <h5 id="card-title-6"><b>Искусственный интеллект</b></h5>
+                          <p>Нейросеть, которая будет сама создавать<br/>квизы под ваш бизнес — по описанию,<br/>нише и целям</p>
                           <button className="soon" title="Скоро" aria-label="Скоро">Скоро</button>
                         </article>
                     </div>                     
